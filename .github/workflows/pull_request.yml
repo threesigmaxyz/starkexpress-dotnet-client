@@ -1,0 +1,27 @@
+name: Pull request workflow
+
+on: pull_request
+
+jobs:
+  build:
+    name: Build SDKs
+    runs-on: ubuntu-latest
+    env:
+      dotnet-version: '6.0'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET Core SDK ${{ env.dotnet-version }}
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ env.dotnet-version }}
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
