@@ -3,7 +3,7 @@ name: Main branch workflow
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
         run: dotnet pack --configuration Release  -p:Version=${{ steps.sdk-version.outputs.version }}
 
       - name: Add nuget sources
-        run: dotnet nuget add source --username USERNAME --password ${{ secrets.API_TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/asynctomatic/index.json"
+        run: dotnet nuget add source --username USERNAME --password ${{ secrets.API_TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/threesigmaxyz/index.json"
 
       - name: Publish SDK
         run: dotnet nuget push "src/StarkExpress.SDK.Client/bin/Release/*.nupkg" --api-key ${{ secrets.API_TOKEN_GITHUB }} --source "github"
