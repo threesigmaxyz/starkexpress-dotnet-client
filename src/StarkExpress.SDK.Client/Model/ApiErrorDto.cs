@@ -60,7 +60,7 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <value>The explicit error message.</value>
         [DataMember(Name = "errorMessage", EmitDefaultValue = true)]
-        public string ErrorMessage { get; private set; }
+        public string ErrorMessage { get; set; }
 
         /// <summary>
         /// Returns false as ErrorMessage should not be serialized given that it's read-only.
