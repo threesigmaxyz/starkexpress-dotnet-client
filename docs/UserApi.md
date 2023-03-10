@@ -10,7 +10,7 @@ All URIs are relative to *http://localhost*
 
 <a name="getallusers"></a>
 # **GetAllUsers**
-> List&lt;UserDto&gt; GetAllUsers ()
+> List&lt;UserDto&gt; GetAllUsers (int pageNumber, int pageSize, string username = null, FilterOptions? usernameComparison = null, string address = null, string creationDate = null, FilterOptions? creationDateComparison = null, string sortBy = null)
 
 Get All Users
 
@@ -36,11 +36,19 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserApi(config);
+            var pageNumber = 56;  // int | 
+            var pageSize = 56;  // int | 
+            var username = "username_example";  // string |  (optional) 
+            var usernameComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
+            var address = "address_example";  // string |  (optional) 
+            var creationDate = "creationDate_example";  // string |  (optional) 
+            var creationDateComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
+            var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Users
-                List<UserDto> result = apiInstance.GetAllUsers();
+                List<UserDto> result = apiInstance.GetAllUsers(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -61,7 +69,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Users
-    ApiResponse<List<UserDto>> response = apiInstance.GetAllUsersWithHttpInfo();
+    ApiResponse<List<UserDto>> response = apiInstance.GetAllUsersWithHttpInfo(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -75,7 +83,18 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **pageNumber** | **int** |  |  |
+| **pageSize** | **int** |  |  |
+| **username** | **string** |  | [optional]  |
+| **usernameComparison** | **FilterOptions?** |  | [optional]  |
+| **address** | **string** |  | [optional]  |
+| **creationDate** | **string** |  | [optional]  |
+| **creationDateComparison** | **FilterOptions?** |  | [optional]  |
+| **sortBy** | **string** |  | [optional]  |
+
 ### Return type
 
 [**List&lt;UserDto&gt;**](UserDto.md)
