@@ -14,7 +14,6 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Model;
 using StarkExpress.SDK.Client.Client;
 using System.Reflection;
@@ -87,6 +86,14 @@ namespace StarkExpress.SDK.Client.Test.Model
         public void TokenIdTest()
         {
             // TODO unit test for the property 'TokenId'
+        }
+        /// <summary>
+        /// Test the property 'MintingBlob'
+        /// </summary>
+        [Fact]
+        public void MintingBlobTest()
+        {
+            // TODO unit test for the property 'MintingBlob'
         }
         /// <summary>
         /// Test the property 'SenderDataAvailabilityMode'

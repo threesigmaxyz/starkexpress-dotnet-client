@@ -55,10 +55,11 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="receiverUserId">The unique identifier of the user receiving the transfer. (required).</param>
         /// <param name="assetId">The unique identifier of the asset being transferred. (required).</param>
         /// <param name="tokenId">The hexadecimal string representation of the token ID, if applicable (ie. ERC-721/ERC-1155)..</param>
+        /// <param name="mintingBlob">The hexadecimal string representation of the minting blob, if applicable (ie. Mintable ERC-20/ERC-721/ERC-1155)..</param>
         /// <param name="senderDataAvailabilityMode">senderDataAvailabilityMode (required).</param>
         /// <param name="receiverDataAvailabilityMode">receiverDataAvailabilityMode (required).</param>
         /// <param name="amount">The amount of the asset to be transferred. (required).</param>
-        public TransferDetailsModel(Guid senderUserId = default(Guid), Guid receiverUserId = default(Guid), Guid assetId = default(Guid), string tokenId = default(string), DataAvailabilityModes senderDataAvailabilityMode = default(DataAvailabilityModes), DataAvailabilityModes receiverDataAvailabilityMode = default(DataAvailabilityModes), string amount = default(string))
+        public TransferDetailsModel(Guid senderUserId = default(Guid), Guid receiverUserId = default(Guid), Guid assetId = default(Guid), string tokenId = default(string), string mintingBlob = default(string), DataAvailabilityModes senderDataAvailabilityMode = default(DataAvailabilityModes), DataAvailabilityModes receiverDataAvailabilityMode = default(DataAvailabilityModes), string amount = default(string))
         {
             this.SenderUserId = senderUserId;
             this.ReceiverUserId = receiverUserId;
@@ -72,6 +73,7 @@ namespace StarkExpress.SDK.Client.Model
             }
             this.Amount = amount;
             this.TokenId = tokenId;
+            this.MintingBlob = mintingBlob;
         }
 
         /// <summary>
@@ -103,6 +105,13 @@ namespace StarkExpress.SDK.Client.Model
         public string TokenId { get; set; }
 
         /// <summary>
+        /// The hexadecimal string representation of the minting blob, if applicable (ie. Mintable ERC-20/ERC-721/ERC-1155).
+        /// </summary>
+        /// <value>The hexadecimal string representation of the minting blob, if applicable (ie. Mintable ERC-20/ERC-721/ERC-1155).</value>
+        [DataMember(Name = "mintingBlob", EmitDefaultValue = true)]
+        public string MintingBlob { get; set; }
+
+        /// <summary>
         /// The amount of the asset to be transferred.
         /// </summary>
         /// <value>The amount of the asset to be transferred.</value>
@@ -121,6 +130,7 @@ namespace StarkExpress.SDK.Client.Model
             sb.Append("  ReceiverUserId: ").Append(ReceiverUserId).Append("\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
             sb.Append("  TokenId: ").Append(TokenId).Append("\n");
+            sb.Append("  MintingBlob: ").Append(MintingBlob).Append("\n");
             sb.Append("  SenderDataAvailabilityMode: ").Append(SenderDataAvailabilityMode).Append("\n");
             sb.Append("  ReceiverDataAvailabilityMode: ").Append(ReceiverDataAvailabilityMode).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
@@ -180,6 +190,11 @@ namespace StarkExpress.SDK.Client.Model
                     this.TokenId.Equals(input.TokenId))
                 ) && 
                 (
+                    this.MintingBlob == input.MintingBlob ||
+                    (this.MintingBlob != null &&
+                    this.MintingBlob.Equals(input.MintingBlob))
+                ) && 
+                (
                     this.SenderDataAvailabilityMode == input.SenderDataAvailabilityMode ||
                     this.SenderDataAvailabilityMode.Equals(input.SenderDataAvailabilityMode)
                 ) && 
@@ -218,6 +233,10 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.TokenId != null)
                 {
                     hashCode = (hashCode * 59) + this.TokenId.GetHashCode();
+                }
+                if (this.MintingBlob != null)
+                {
+                    hashCode = (hashCode * 59) + this.MintingBlob.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SenderDataAvailabilityMode.GetHashCode();
                 hashCode = (hashCode * 59) + this.ReceiverDataAvailabilityMode.GetHashCode();
