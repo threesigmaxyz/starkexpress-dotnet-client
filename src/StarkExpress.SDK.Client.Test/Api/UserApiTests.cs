@@ -61,7 +61,15 @@ namespace StarkExpress.SDK.Client.Test.Api
         public void GetAllUsersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.GetAllUsers();
+            //int pageNumber = null;
+            //int pageSize = null;
+            //string username = null;
+            //FilterOptions? usernameComparison = null;
+            //string address = null;
+            //string creationDate = null;
+            //FilterOptions? creationDateComparison = null;
+            //string sortBy = null;
+            //var response = instance.GetAllUsers(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
             //Assert.IsType<List<UserDto>>(response);
         }
 
