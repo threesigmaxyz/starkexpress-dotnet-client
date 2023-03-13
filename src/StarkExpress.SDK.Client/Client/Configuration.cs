@@ -111,7 +111,7 @@ namespace StarkExpress.SDK.Client.Client
         {
             Proxy = null;
             UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/1.0.0/csharp");
-            BasePath = "http://localhost";
+            BasePath = "https://testnet-api.starkexpress.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -119,8 +119,14 @@ namespace StarkExpress.SDK.Client.Client
             {
                 {
                     new Dictionary<string, object> {
-                        {"url", ""},
-                        {"description", "No description provided"},
+                        {"url", "https://testnet-api.starkexpress.io"},
+                        {"description", "Testnet server (uses test data)."},
+                    }
+                },
+                {
+                    new Dictionary<string, object> {
+                        {"url", "https://api.starkexpress.io"},
+                        {"description", "Mainnet server (uses live data)."},
                     }
                 }
             };
@@ -140,7 +146,7 @@ namespace StarkExpress.SDK.Client.Client
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "http://localhost") : this()
+            string basePath = "https://testnet-api.starkexpress.io") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");

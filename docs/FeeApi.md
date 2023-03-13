@@ -1,6 +1,6 @@
 # StarkExpress.SDK.Client.Api.FeeApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -30,7 +30,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost";
+            config.BasePath = "https://testnet-api.starkexpress.io";
             var apiInstance = new FeeApi(config);
             var configureFeeModel = new ConfigureFeeModel(); // ConfigureFeeModel | The fee model configuration request.
 
@@ -122,7 +122,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost";
+            config.BasePath = "https://testnet-api.starkexpress.io";
             var apiInstance = new FeeApi(config);
             var feeId = "feeId_example";  // Guid | The fee model configuration ID.
 
