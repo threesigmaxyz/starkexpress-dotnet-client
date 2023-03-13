@@ -35,15 +35,13 @@ namespace StarkExpress.SDK.Client.Model
         /// Initializes a new instance of the <see cref="TenantAssetDto" /> class.
         /// </summary>
         /// <param name="assetId">The unique identifier of the asset..</param>
-        /// <param name="assetType">The asset type used for on-chain interactions..</param>
         /// <param name="address">The Ethereum address of the asset..</param>
         /// <param name="name">The name of the asset..</param>
         /// <param name="symbol">The symbol of the asset..</param>
         /// <param name="quantum">The quantum of the asset..</param>
-        public TenantAssetDto(Guid assetId = default(Guid), string assetType = default(string), string address = default(string), string name = default(string), string symbol = default(string), string quantum = default(string))
+        public TenantAssetDto(Guid assetId = default(Guid), string address = default(string), string name = default(string), string symbol = default(string), string quantum = default(string))
         {
             this.AssetId = assetId;
-            this.AssetType = assetType;
             this.Address = address;
             this.Name = name;
             this.Symbol = symbol;
@@ -56,13 +54,6 @@ namespace StarkExpress.SDK.Client.Model
         /// <value>The unique identifier of the asset.</value>
         [DataMember(Name = "assetId", EmitDefaultValue = false)]
         public Guid AssetId { get; set; }
-
-        /// <summary>
-        /// The asset type used for on-chain interactions.
-        /// </summary>
-        /// <value>The asset type used for on-chain interactions.</value>
-        [DataMember(Name = "assetType", EmitDefaultValue = true)]
-        public string AssetType { get; set; }
 
         /// <summary>
         /// The Ethereum address of the asset.
@@ -101,7 +92,6 @@ namespace StarkExpress.SDK.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TenantAssetDto {\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
-            sb.Append("  AssetType: ").Append(AssetType).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Symbol: ").Append(Symbol).Append("\n");
@@ -147,11 +137,6 @@ namespace StarkExpress.SDK.Client.Model
                     this.AssetId.Equals(input.AssetId))
                 ) && 
                 (
-                    this.AssetType == input.AssetType ||
-                    (this.AssetType != null &&
-                    this.AssetType.Equals(input.AssetType))
-                ) && 
-                (
                     this.Address == input.Address ||
                     (this.Address != null &&
                     this.Address.Equals(input.Address))
@@ -185,10 +170,6 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.AssetId != null)
                 {
                     hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
-                }
-                if (this.AssetType != null)
-                {
-                    hashCode = (hashCode * 59) + this.AssetType.GetHashCode();
                 }
                 if (this.Address != null)
                 {

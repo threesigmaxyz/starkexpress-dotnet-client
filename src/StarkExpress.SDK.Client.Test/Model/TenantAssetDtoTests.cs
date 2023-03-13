@@ -64,14 +64,6 @@ namespace StarkExpress.SDK.Client.Test.Model
             // TODO unit test for the property 'AssetId'
         }
         /// <summary>
-        /// Test the property 'AssetType'
-        /// </summary>
-        [Fact]
-        public void AssetTypeTest()
-        {
-            // TODO unit test for the property 'AssetType'
-        }
-        /// <summary>
         /// Test the property 'Address'
         /// </summary>
         [Fact]

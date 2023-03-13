@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetId** | **Guid** | The unique identifier of the asset. | [optional] 
-**AssetType** | **string** | The asset type used for on-chain interactions. | [optional] 
 **Address** | **string** | The Ethereum address of the asset. | [optional] 
 **Name** | **string** | The name of the asset. | [optional] 
 **Symbol** | **string** | The symbol of the asset. | [optional] 
