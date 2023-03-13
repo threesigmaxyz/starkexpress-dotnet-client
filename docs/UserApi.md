@@ -21,6 +21,7 @@ This endpoint return the typed data to be signed with EIP712 that is used on use
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -36,7 +37,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var username = "username_example";  // string | 
             var starkKey = "starkKey_example";  // string | 
             var address = "address_example";  // string | 
@@ -122,6 +126,7 @@ This endpoint fetches all users.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -137,7 +142,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var pageNumber = 56;  // int | 
             var pageSize = 56;  // int | 
             var username = "username_example";  // string |  (optional) 
@@ -232,6 +240,7 @@ This endpoint fetches a specific user by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -247,7 +256,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var userId = "userId_example";  // Guid | 
 
             try
@@ -329,6 +341,7 @@ This endpoint registers a user.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -344,7 +357,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var registerUserModel = new RegisterUserModel(); // RegisterUserModel | The user registration request.
 
             try
