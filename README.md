@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
 *TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /api/transactions/{transactionId} | Get Transaction
 *TransferApi* | [**Transfer**](docs/TransferApi.md#transfer) | **POST** /api/transfers | Transfer Asset
 *TransferApi* | [**TransferDetails**](docs/TransferApi.md#transferdetails) | **POST** /api/transfers/details | Get Transfer Details
+*UserApi* | [**EIP712Details**](docs/UserApi.md#eip712details) | **GET** /api/users/register-details | Get EIP712 data to be signed
 *UserApi* | [**GetAllUsers**](docs/UserApi.md#getallusers) | **GET** /api/users | Get All Users
 *UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **GET** /api/users/{userId} | Get User
 *UserApi* | [**RegisterUser**](docs/UserApi.md#registeruser) | **POST** /api/users | Register new User
@@ -133,11 +134,15 @@ Class | Method | HTTP request | Description
  - [Model.BatchMintRequestModel](docs/BatchMintRequestModel.md)
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)
+ - [Model.Domain](docs/Domain.md)
+ - [Model.DomainTypedData](docs/DomainTypedData.md)
  - [Model.EnableAssetModel](docs/EnableAssetModel.md)
  - [Model.ErrorCodes](docs/ErrorCodes.md)
  - [Model.FeeAction](docs/FeeAction.md)
  - [Model.FeeConfigDto](docs/FeeConfigDto.md)
  - [Model.FilterOptions](docs/FilterOptions.md)
+ - [Model.MemberDescription](docs/MemberDescription.md)
+ - [Model.MemberValue](docs/MemberValue.md)
  - [Model.MintDataModel](docs/MintDataModel.md)
  - [Model.MintRequestDataModel](docs/MintRequestDataModel.md)
  - [Model.PaginationDto](docs/PaginationDto.md)
