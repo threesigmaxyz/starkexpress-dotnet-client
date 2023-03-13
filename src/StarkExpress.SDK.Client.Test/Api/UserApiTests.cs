@@ -55,13 +55,35 @@ namespace StarkExpress.SDK.Client.Test.Api
         }
 
         /// <summary>
+        /// Test EIP712Details
+        /// </summary>
+        [Fact]
+        public void EIP712DetailsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string username = null;
+            //string starkKey = null;
+            //string address = null;
+            //var response = instance.EIP712Details(username, starkKey, address);
+            //Assert.IsType<DomainTypedData>(response);
+        }
+
+        /// <summary>
         /// Test GetAllUsers
         /// </summary>
         [Fact]
         public void GetAllUsersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.GetAllUsers();
+            //int pageNumber = null;
+            //int pageSize = null;
+            //string username = null;
+            //FilterOptions? usernameComparison = null;
+            //string address = null;
+            //string creationDate = null;
+            //FilterOptions? creationDateComparison = null;
+            //string sortBy = null;
+            //var response = instance.GetAllUsers(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
             //Assert.IsType<List<UserDto>>(response);
         }
 

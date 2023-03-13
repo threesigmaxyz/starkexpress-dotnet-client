@@ -4,13 +4,115 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**EIP712Details**](UserApi.md#eip712details) | **GET** /api/users/register-details | Get EIP712 data to be signed |
 | [**GetAllUsers**](UserApi.md#getallusers) | **GET** /api/users | Get All Users |
 | [**GetUser**](UserApi.md#getuser) | **GET** /api/users/{userId} | Get User |
 | [**RegisterUser**](UserApi.md#registeruser) | **POST** /api/users | Register new User |
 
+<a name="eip712details"></a>
+# **EIP712Details**
+> DomainTypedData EIP712Details (string username, string starkKey, string address)
+
+Get EIP712 data to be signed
+
+This endpoint return the typed data to be signed with EIP712 that is used on user registration.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using StarkExpress.SDK.Client.Api;
+using StarkExpress.SDK.Client.Client;
+using StarkExpress.SDK.Client.Model;
+
+namespace Example
+{
+    public class EIP712DetailsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new UserApi(config);
+            var username = "username_example";  // string | 
+            var starkKey = "starkKey_example";  // string | 
+            var address = "address_example";  // string | 
+
+            try
+            {
+                // Get EIP712 data to be signed
+                DomainTypedData result = apiInstance.EIP712Details(username, starkKey, address);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling UserApi.EIP712Details: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EIP712DetailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get EIP712 data to be signed
+    ApiResponse<DomainTypedData> response = apiInstance.EIP712DetailsWithHttpInfo(username, starkKey, address);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling UserApi.EIP712DetailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **username** | **string** |  |  |
+| **starkKey** | **string** |  |  |
+| **address** | **string** |  |  |
+
+### Return type
+
+[**DomainTypedData**](DomainTypedData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the EIP712 typed data. |  -  |
+| **404** | Not Found. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallusers"></a>
 # **GetAllUsers**
-> List&lt;UserDto&gt; GetAllUsers ()
+> List&lt;UserDto&gt; GetAllUsers (int pageNumber, int pageSize, string username = null, FilterOptions? usernameComparison = null, string address = null, string creationDate = null, FilterOptions? creationDateComparison = null, string sortBy = null)
 
 Get All Users
 
@@ -36,11 +138,19 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserApi(config);
+            var pageNumber = 56;  // int | 
+            var pageSize = 56;  // int | 
+            var username = "username_example";  // string |  (optional) 
+            var usernameComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
+            var address = "address_example";  // string |  (optional) 
+            var creationDate = "creationDate_example";  // string |  (optional) 
+            var creationDateComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
+            var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Users
-                List<UserDto> result = apiInstance.GetAllUsers();
+                List<UserDto> result = apiInstance.GetAllUsers(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -61,7 +171,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Users
-    ApiResponse<List<UserDto>> response = apiInstance.GetAllUsersWithHttpInfo();
+    ApiResponse<List<UserDto>> response = apiInstance.GetAllUsersWithHttpInfo(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -75,7 +185,18 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **pageNumber** | **int** |  |  |
+| **pageSize** | **int** |  |  |
+| **username** | **string** |  | [optional]  |
+| **usernameComparison** | **FilterOptions?** |  | [optional]  |
+| **address** | **string** |  | [optional]  |
+| **creationDate** | **string** |  | [optional]  |
+| **creationDateComparison** | **FilterOptions?** |  | [optional]  |
+| **sortBy** | **string** |  | [optional]  |
+
 ### Return type
 
 [**List&lt;UserDto&gt;**](UserDto.md)

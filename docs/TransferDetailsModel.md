@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ReceiverUserId** | **Guid** | The unique identifier of the user receiving the transfer. | 
 **AssetId** | **Guid** | The unique identifier of the asset being transferred. | 
 **TokenId** | **string** | The hexadecimal string representation of the token ID, if applicable (ie. ERC-721/ERC-1155). | [optional] 
+**MintingBlob** | **string** | The hexadecimal string representation of the minting blob, if applicable (ie. Mintable ERC-20/ERC-721/ERC-1155). | [optional] 
 **SenderDataAvailabilityMode** | **DataAvailabilityModes** |  | 
 **ReceiverDataAvailabilityMode** | **DataAvailabilityModes** |  | 
 **Amount** | **string** | The amount of the asset to be transferred. | 

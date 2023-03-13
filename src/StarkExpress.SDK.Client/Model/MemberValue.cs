@@ -26,50 +26,34 @@ using OpenAPIDateConverter = StarkExpress.SDK.Client.Client.OpenAPIDateConverter
 namespace StarkExpress.SDK.Client.Model
 {
     /// <summary>
-    /// ApiErrorDto
+    /// MemberValue
     /// </summary>
-    [DataContract(Name = "ApiErrorDto")]
-    public partial class ApiErrorDto : IEquatable<ApiErrorDto>, IValidatableObject
+    [DataContract(Name = "MemberValue")]
+    public partial class MemberValue : IEquatable<MemberValue>, IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets ErrorCode
+        /// Initializes a new instance of the <see cref="MemberValue" /> class.
         /// </summary>
-        [DataMember(Name = "errorCode", EmitDefaultValue = false)]
-        public ErrorCodes? ErrorCode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiErrorDto" /> class.
-        /// </summary>
-        /// <param name="errorCode">errorCode.</param>
-        /// <param name="fieldName">The request field that originated the error..</param>
-        public ApiErrorDto(ErrorCodes? errorCode = default(ErrorCodes?), string fieldName = default(string))
+        /// <param name="typeName">typeName.</param>
+        /// <param name="value">value.</param>
+        public MemberValue(string typeName = default(string), Object value = default(Object))
         {
-            this.ErrorCode = errorCode;
-            this.FieldName = fieldName;
+            this.TypeName = typeName;
+            this.Value = value;
         }
 
         /// <summary>
-        /// The request field that originated the error.
+        /// Gets or Sets TypeName
         /// </summary>
-        /// <value>The request field that originated the error.</value>
-        [DataMember(Name = "fieldName", EmitDefaultValue = true)]
-        public string FieldName { get; set; }
+        [DataMember(Name = "typeName", EmitDefaultValue = true)]
+        public string TypeName { get; set; }
 
         /// <summary>
-        /// The explicit error message.
+        /// Gets or Sets Value
         /// </summary>
-        /// <value>The explicit error message.</value>
-        [DataMember(Name = "errorMessage", EmitDefaultValue = true)]
-        public string ErrorMessage { get; private set; }
+        [DataMember(Name = "value", EmitDefaultValue = true)]
+        public Object Value { get; set; }
 
-        /// <summary>
-        /// Returns false as ErrorMessage should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeErrorMessage()
-        {
-            return false;
-        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -77,10 +61,9 @@ namespace StarkExpress.SDK.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ApiErrorDto {\n");
-            sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
-            sb.Append("  FieldName: ").Append(FieldName).Append("\n");
-            sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
+            sb.Append("class MemberValue {\n");
+            sb.Append("  TypeName: ").Append(TypeName).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,15 +84,15 @@ namespace StarkExpress.SDK.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ApiErrorDto);
+            return this.Equals(input as MemberValue);
         }
 
         /// <summary>
-        /// Returns true if ApiErrorDto instances are equal
+        /// Returns true if MemberValue instances are equal
         /// </summary>
-        /// <param name="input">Instance of ApiErrorDto to be compared</param>
+        /// <param name="input">Instance of MemberValue to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiErrorDto input)
+        public bool Equals(MemberValue input)
         {
             if (input == null)
             {
@@ -117,18 +100,14 @@ namespace StarkExpress.SDK.Client.Model
             }
             return 
                 (
-                    this.ErrorCode == input.ErrorCode ||
-                    this.ErrorCode.Equals(input.ErrorCode)
+                    this.TypeName == input.TypeName ||
+                    (this.TypeName != null &&
+                    this.TypeName.Equals(input.TypeName))
                 ) && 
                 (
-                    this.FieldName == input.FieldName ||
-                    (this.FieldName != null &&
-                    this.FieldName.Equals(input.FieldName))
-                ) && 
-                (
-                    this.ErrorMessage == input.ErrorMessage ||
-                    (this.ErrorMessage != null &&
-                    this.ErrorMessage.Equals(input.ErrorMessage))
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -141,14 +120,13 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.ErrorCode.GetHashCode();
-                if (this.FieldName != null)
+                if (this.TypeName != null)
                 {
-                    hashCode = (hashCode * 59) + this.FieldName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TypeName.GetHashCode();
                 }
-                if (this.ErrorMessage != null)
+                if (this.Value != null)
                 {
-                    hashCode = (hashCode * 59) + this.ErrorMessage.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
                 }
                 return hashCode;
             }
