@@ -18,6 +18,7 @@ This endpoint allows for the minting of fungible and non-fungible assets.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -33,7 +34,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new MintApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new MintApi(httpClient, config, httpClientHandler);
             var batchMintRequestModel = new BatchMintRequestModel(); // BatchMintRequestModel | The assets to mint for each user.
 
             try

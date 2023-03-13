@@ -19,6 +19,7 @@ This endpoint allocates a vault for a given user, asset, and data availability m
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -34,7 +35,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new VaultApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new VaultApi(httpClient, config, httpClientHandler);
             var allocateVaultModel = new AllocateVaultModel(); // AllocateVaultModel | The vault allocation request.
 
             try
@@ -117,6 +121,7 @@ This endpoint fetches all vaults in the system, with support for filters and pag
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -132,7 +137,10 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new VaultApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new VaultApi(httpClient, config, httpClientHandler);
             var pageNumber = 56;  // int | 
             var pageSize = 56;  // int | 
             var tenantId = "tenantId_example";  // Guid? |  (optional) 

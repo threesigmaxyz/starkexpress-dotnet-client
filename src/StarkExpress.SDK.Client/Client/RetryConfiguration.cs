@@ -10,6 +10,7 @@
 
 using Polly;
 using RestSharp;
+using System.Net.Http;
 
 namespace StarkExpress.SDK.Client.Client
 {
@@ -27,5 +28,14 @@ namespace StarkExpress.SDK.Client.Client
         /// Async retry policy
         /// </summary>
         public static AsyncPolicy<RestResponse> AsyncRetryPolicy { get; set; }
+        /// <summary>
+        /// Retry policy
+        /// </summary>
+        public static Policy<HttpResponseMessage> RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Async retry policy
+        /// </summary>
+        public static AsyncPolicy<HttpResponseMessage> AsyncRetryPolicy { get; set; }
     }
 }

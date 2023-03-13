@@ -19,6 +19,7 @@ This endpoint allows to configure the fee model for a specific operation.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -31,7 +32,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
-            var apiInstance = new FeeApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new FeeApi(httpClient, config, httpClientHandler);
             var configureFeeModel = new ConfigureFeeModel(); // ConfigureFeeModel | The fee model configuration request.
 
             try
@@ -111,6 +115,7 @@ This endpoint fetches a configured operation fee by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -123,7 +128,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "http://localhost";
-            var apiInstance = new FeeApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new FeeApi(httpClient, config, httpClientHandler);
             var feeId = "feeId_example";  // Guid | The fee model configuration ID.
 
             try
