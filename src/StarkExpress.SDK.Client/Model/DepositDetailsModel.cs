@@ -26,10 +26,10 @@ using OpenAPIDateConverter = StarkExpress.SDK.Client.Client.OpenAPIDateConverter
 namespace StarkExpress.SDK.Client.Model
 {
     /// <summary>
-    /// AllocateVaultModel
+    /// DepositDetailsModel
     /// </summary>
-    [DataContract(Name = "AllocateVaultModel")]
-    public partial class AllocateVaultModel : IEquatable<AllocateVaultModel>, IValidatableObject
+    [DataContract(Name = "DepositDetailsModel")]
+    public partial class DepositDetailsModel : IEquatable<DepositDetailsModel>, IValidatableObject
     {
 
         /// <summary>
@@ -38,25 +38,30 @@ namespace StarkExpress.SDK.Client.Model
         [DataMember(Name = "dataAvailabilityMode", IsRequired = true, EmitDefaultValue = true)]
         public DataAvailabilityModes DataAvailabilityMode { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllocateVaultModel" /> class.
+        /// Initializes a new instance of the <see cref="DepositDetailsModel" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AllocateVaultModel() { }
+        protected DepositDetailsModel() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllocateVaultModel" /> class.
+        /// Initializes a new instance of the <see cref="DepositDetailsModel" /> class.
         /// </summary>
         /// <param name="userId">The ID of the user for which the vault should be allocated. (required).</param>
         /// <param name="assetId">The ID of the vault&#39;s asset. (required).</param>
         /// <param name="dataAvailabilityMode">dataAvailabilityMode (required).</param>
         /// <param name="tokenId">The hexadecimal string representation of the vault&#39;s asset token ID, if applicable (ie. ERC-721/ERC-1155)..</param>
-        /// <param name="mintingBlob">The hexadecimal string representation of the data to be associated with the vault&#39;s asset..</param>
-        public AllocateVaultModel(Guid userId = default(Guid), Guid assetId = default(Guid), DataAvailabilityModes dataAvailabilityMode = default(DataAvailabilityModes), string tokenId = default(string), string mintingBlob = default(string))
+        /// <param name="amount">The amount of the asset to be deposited. (required).</param>
+        public DepositDetailsModel(Guid userId = default(Guid), Guid assetId = default(Guid), DataAvailabilityModes dataAvailabilityMode = default(DataAvailabilityModes), string tokenId = default(string), string amount = default(string))
         {
             this.UserId = userId;
             this.AssetId = assetId;
             this.DataAvailabilityMode = dataAvailabilityMode;
+            // to ensure "amount" is required (not null)
+            if (amount == null)
+            {
+                throw new ArgumentNullException("amount is a required property for DepositDetailsModel and cannot be null");
+            }
+            this.Amount = amount;
             this.TokenId = tokenId;
-            this.MintingBlob = mintingBlob;
         }
 
         /// <summary>
@@ -81,11 +86,11 @@ namespace StarkExpress.SDK.Client.Model
         public string TokenId { get; set; }
 
         /// <summary>
-        /// The hexadecimal string representation of the data to be associated with the vault&#39;s asset.
+        /// The amount of the asset to be deposited.
         /// </summary>
-        /// <value>The hexadecimal string representation of the data to be associated with the vault&#39;s asset.</value>
-        [DataMember(Name = "mintingBlob", EmitDefaultValue = true)]
-        public string MintingBlob { get; set; }
+        /// <value>The amount of the asset to be deposited.</value>
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
+        public string Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,12 +99,12 @@ namespace StarkExpress.SDK.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AllocateVaultModel {\n");
+            sb.Append("class DepositDetailsModel {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
             sb.Append("  DataAvailabilityMode: ").Append(DataAvailabilityMode).Append("\n");
             sb.Append("  TokenId: ").Append(TokenId).Append("\n");
-            sb.Append("  MintingBlob: ").Append(MintingBlob).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,15 +125,15 @@ namespace StarkExpress.SDK.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AllocateVaultModel);
+            return this.Equals(input as DepositDetailsModel);
         }
 
         /// <summary>
-        /// Returns true if AllocateVaultModel instances are equal
+        /// Returns true if DepositDetailsModel instances are equal
         /// </summary>
-        /// <param name="input">Instance of AllocateVaultModel to be compared</param>
+        /// <param name="input">Instance of DepositDetailsModel to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AllocateVaultModel input)
+        public bool Equals(DepositDetailsModel input)
         {
             if (input == null)
             {
@@ -155,9 +160,9 @@ namespace StarkExpress.SDK.Client.Model
                     this.TokenId.Equals(input.TokenId))
                 ) && 
                 (
-                    this.MintingBlob == input.MintingBlob ||
-                    (this.MintingBlob != null &&
-                    this.MintingBlob.Equals(input.MintingBlob))
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 );
         }
 
@@ -183,9 +188,9 @@ namespace StarkExpress.SDK.Client.Model
                 {
                     hashCode = (hashCode * 59) + this.TokenId.GetHashCode();
                 }
-                if (this.MintingBlob != null)
+                if (this.Amount != null)
                 {
-                    hashCode = (hashCode * 59) + this.MintingBlob.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 }
                 return hashCode;
             }

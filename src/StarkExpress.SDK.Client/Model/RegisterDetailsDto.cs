@@ -26,57 +26,61 @@ using OpenAPIDateConverter = StarkExpress.SDK.Client.Client.OpenAPIDateConverter
 namespace StarkExpress.SDK.Client.Model
 {
     /// <summary>
-    /// DomainTypedData
+    /// RegisterDetailsDto
     /// </summary>
-    [DataContract(Name = "DomainTypedData")]
-    public partial class DomainTypedData : IEquatable<DomainTypedData>, IValidatableObject
+    [DataContract(Name = "RegisterDetailsDto")]
+    public partial class RegisterDetailsDto : IEquatable<RegisterDetailsDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DomainTypedData" /> class.
+        /// Initializes a new instance of the <see cref="RegisterDetailsDto" /> class.
         /// </summary>
-        /// <param name="types">types.</param>
-        /// <param name="primaryType">primaryType.</param>
-        /// <param name="message">message.</param>
-        /// <param name="domainRawValues">domainRawValues.</param>
         /// <param name="domain">domain.</param>
-        public DomainTypedData(Dictionary<string, List<MemberDescription>> types = default(Dictionary<string, List<MemberDescription>>), string primaryType = default(string), List<MemberValue> message = default(List<MemberValue>), List<MemberValue> domainRawValues = default(List<MemberValue>), Domain domain = default(Domain))
+        /// <param name="types">The types in the EIP712 message..</param>
+        /// <param name="primaryType">The message primary type..</param>
+        /// <param name="message">The register details message to be signed..</param>
+        /// <param name="domainRawValues">The STARK key of the sender..</param>
+        public RegisterDetailsDto(DomainDto domain = default(DomainDto), Dictionary<string, List<MemberDescriptionDto>> types = default(Dictionary<string, List<MemberDescriptionDto>>), string primaryType = default(string), List<MemberValueDto> message = default(List<MemberValueDto>), List<MemberValueDto> domainRawValues = default(List<MemberValueDto>))
         {
+            this.Domain = domain;
             this.Types = types;
             this.PrimaryType = primaryType;
             this.Message = message;
             this.DomainRawValues = domainRawValues;
-            this.Domain = domain;
         }
-
-        /// <summary>
-        /// Gets or Sets Types
-        /// </summary>
-        [DataMember(Name = "types", EmitDefaultValue = true)]
-        public Dictionary<string, List<MemberDescription>> Types { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PrimaryType
-        /// </summary>
-        [DataMember(Name = "primaryType", EmitDefaultValue = true)]
-        public string PrimaryType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Message
-        /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = true)]
-        public List<MemberValue> Message { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DomainRawValues
-        /// </summary>
-        [DataMember(Name = "domainRawValues", EmitDefaultValue = true)]
-        public List<MemberValue> DomainRawValues { get; set; }
 
         /// <summary>
         /// Gets or Sets Domain
         /// </summary>
         [DataMember(Name = "domain", EmitDefaultValue = false)]
-        public Domain Domain { get; set; }
+        public DomainDto Domain { get; set; }
+
+        /// <summary>
+        /// The types in the EIP712 message.
+        /// </summary>
+        /// <value>The types in the EIP712 message.</value>
+        [DataMember(Name = "types", EmitDefaultValue = true)]
+        public Dictionary<string, List<MemberDescriptionDto>> Types { get; set; }
+
+        /// <summary>
+        /// The message primary type.
+        /// </summary>
+        /// <value>The message primary type.</value>
+        [DataMember(Name = "primaryType", EmitDefaultValue = true)]
+        public string PrimaryType { get; set; }
+
+        /// <summary>
+        /// The register details message to be signed.
+        /// </summary>
+        /// <value>The register details message to be signed.</value>
+        [DataMember(Name = "message", EmitDefaultValue = true)]
+        public List<MemberValueDto> Message { get; set; }
+
+        /// <summary>
+        /// The STARK key of the sender.
+        /// </summary>
+        /// <value>The STARK key of the sender.</value>
+        [DataMember(Name = "domainRawValues", EmitDefaultValue = true)]
+        public List<MemberValueDto> DomainRawValues { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,12 +89,12 @@ namespace StarkExpress.SDK.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DomainTypedData {\n");
+            sb.Append("class RegisterDetailsDto {\n");
+            sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Types: ").Append(Types).Append("\n");
             sb.Append("  PrimaryType: ").Append(PrimaryType).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  DomainRawValues: ").Append(DomainRawValues).Append("\n");
-            sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -111,21 +115,26 @@ namespace StarkExpress.SDK.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DomainTypedData);
+            return this.Equals(input as RegisterDetailsDto);
         }
 
         /// <summary>
-        /// Returns true if DomainTypedData instances are equal
+        /// Returns true if RegisterDetailsDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of DomainTypedData to be compared</param>
+        /// <param name="input">Instance of RegisterDetailsDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DomainTypedData input)
+        public bool Equals(RegisterDetailsDto input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
+                (
+                    this.Domain == input.Domain ||
+                    (this.Domain != null &&
+                    this.Domain.Equals(input.Domain))
+                ) && 
                 (
                     this.Types == input.Types ||
                     this.Types != null &&
@@ -148,11 +157,6 @@ namespace StarkExpress.SDK.Client.Model
                     this.DomainRawValues != null &&
                     input.DomainRawValues != null &&
                     this.DomainRawValues.SequenceEqual(input.DomainRawValues)
-                ) && 
-                (
-                    this.Domain == input.Domain ||
-                    (this.Domain != null &&
-                    this.Domain.Equals(input.Domain))
                 );
         }
 
@@ -165,6 +169,10 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Domain != null)
+                {
+                    hashCode = (hashCode * 59) + this.Domain.GetHashCode();
+                }
                 if (this.Types != null)
                 {
                     hashCode = (hashCode * 59) + this.Types.GetHashCode();
@@ -180,10 +188,6 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.DomainRawValues != null)
                 {
                     hashCode = (hashCode * 59) + this.DomainRawValues.GetHashCode();
-                }
-                if (this.Domain != null)
-                {
-                    hashCode = (hashCode * 59) + this.Domain.GetHashCode();
                 }
                 return hashCode;
             }

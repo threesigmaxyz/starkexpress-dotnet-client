@@ -26,33 +26,35 @@ using OpenAPIDateConverter = StarkExpress.SDK.Client.Client.OpenAPIDateConverter
 namespace StarkExpress.SDK.Client.Model
 {
     /// <summary>
-    /// MemberValue
+    /// MemberDescriptionDto
     /// </summary>
-    [DataContract(Name = "MemberValue")]
-    public partial class MemberValue : IEquatable<MemberValue>, IValidatableObject
+    [DataContract(Name = "MemberDescriptionDto")]
+    public partial class MemberDescriptionDto : IEquatable<MemberDescriptionDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MemberValue" /> class.
+        /// Initializes a new instance of the <see cref="MemberDescriptionDto" /> class.
         /// </summary>
-        /// <param name="typeName">typeName.</param>
-        /// <param name="value">value.</param>
-        public MemberValue(string typeName = default(string), Object value = default(Object))
+        /// <param name="name">The name of the variable..</param>
+        /// <param name="type">The type of the variable..</param>
+        public MemberDescriptionDto(string name = default(string), string type = default(string))
         {
-            this.TypeName = typeName;
-            this.Value = value;
+            this.Name = name;
+            this.Type = type;
         }
 
         /// <summary>
-        /// Gets or Sets TypeName
+        /// The name of the variable.
         /// </summary>
-        [DataMember(Name = "typeName", EmitDefaultValue = true)]
-        public string TypeName { get; set; }
+        /// <value>The name of the variable.</value>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The type of the variable.
         /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = true)]
-        public Object Value { get; set; }
+        /// <value>The type of the variable.</value>
+        [DataMember(Name = "type", EmitDefaultValue = true)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +63,9 @@ namespace StarkExpress.SDK.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class MemberValue {\n");
-            sb.Append("  TypeName: ").Append(TypeName).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class MemberDescriptionDto {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,15 +86,15 @@ namespace StarkExpress.SDK.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MemberValue);
+            return this.Equals(input as MemberDescriptionDto);
         }
 
         /// <summary>
-        /// Returns true if MemberValue instances are equal
+        /// Returns true if MemberDescriptionDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of MemberValue to be compared</param>
+        /// <param name="input">Instance of MemberDescriptionDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MemberValue input)
+        public bool Equals(MemberDescriptionDto input)
         {
             if (input == null)
             {
@@ -100,14 +102,14 @@ namespace StarkExpress.SDK.Client.Model
             }
             return 
                 (
-                    this.TypeName == input.TypeName ||
-                    (this.TypeName != null &&
-                    this.TypeName.Equals(input.TypeName))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -120,13 +122,13 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.TypeName != null)
+                if (this.Name != null)
                 {
-                    hashCode = (hashCode * 59) + this.TypeName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.Value != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 return hashCode;
             }
