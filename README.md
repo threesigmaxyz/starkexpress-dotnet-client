@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *AssetApi* | [**EnableAsset**](docs/AssetApi.md#enableasset) | **POST** /api/assets | Enable Asset
 *AssetApi* | [**GetAllAssets**](docs/AssetApi.md#getallassets) | **GET** /api/assets | Get All Assets
 *AssetApi* | [**GetAsset**](docs/AssetApi.md#getasset) | **GET** /api/assets/{assetId} | Get Asset
+*DepositApi* | [**DepositDetails**](docs/DepositApi.md#depositdetails) | **POST** /api/vaults/deposit-details | Returns the deposit details for a given asset.
 *FeeApi* | [**ConfigureFeeModel**](docs/FeeApi.md#configurefeemodel) | **POST** /api/fees | Configure Fee Model
 *FeeApi* | [**GetFeeModel**](docs/FeeApi.md#getfeemodel) | **GET** /api/fees/{feeId} | Get Fee Model
 *MintApi* | [**MintAssets**](docs/MintApi.md#mintassets) | **POST** /api/mint | Mint Assets
@@ -113,7 +114,6 @@ Class | Method | HTTP request | Description
 *UserApi* | [**GetAllUsers**](docs/UserApi.md#getallusers) | **GET** /api/users | Get All Users
 *UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **GET** /api/users/{userId} | Get User
 *UserApi* | [**RegisterUser**](docs/UserApi.md#registeruser) | **POST** /api/users | Register new User
-*VaultApi* | [**AllocateVault**](docs/VaultApi.md#allocatevault) | **POST** /api/vaults | Allocate Vault
 *VaultApi* | [**GetAllVaults**](docs/VaultApi.md#getallvaults) | **GET** /api/vaults | Get All Vaults
 *WithdrawApi* | [**Withdraw**](docs/WithdrawApi.md#withdraw) | **POST** /api/vaults/withdraw | Withdraw Asset
 
@@ -121,26 +121,26 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [Model.AllocateVaultDto](docs/AllocateVaultDto.md)
- - [Model.AllocateVaultModel](docs/AllocateVaultModel.md)
  - [Model.ApiErrorDto](docs/ApiErrorDto.md)
  - [Model.ApiErrorResponseDto](docs/ApiErrorResponseDto.md)
  - [Model.AssetType](docs/AssetType.md)
  - [Model.BatchMintRequestModel](docs/BatchMintRequestModel.md)
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)
- - [Model.Domain](docs/Domain.md)
- - [Model.DomainTypedData](docs/DomainTypedData.md)
+ - [Model.DepositDetailsDto](docs/DepositDetailsDto.md)
+ - [Model.DepositDetailsModel](docs/DepositDetailsModel.md)
+ - [Model.DomainDto](docs/DomainDto.md)
  - [Model.EnableAssetModel](docs/EnableAssetModel.md)
  - [Model.ErrorCodes](docs/ErrorCodes.md)
  - [Model.FeeAction](docs/FeeAction.md)
  - [Model.FeeConfigDto](docs/FeeConfigDto.md)
  - [Model.FilterOptions](docs/FilterOptions.md)
- - [Model.MemberDescription](docs/MemberDescription.md)
- - [Model.MemberValue](docs/MemberValue.md)
+ - [Model.MemberDescriptionDto](docs/MemberDescriptionDto.md)
+ - [Model.MemberValueDto](docs/MemberValueDto.md)
  - [Model.MintDataModel](docs/MintDataModel.md)
  - [Model.MintRequestDataModel](docs/MintRequestDataModel.md)
  - [Model.PaginationDto](docs/PaginationDto.md)
+ - [Model.RegisterDetailsDto](docs/RegisterDetailsDto.md)
  - [Model.RegisterUserModel](docs/RegisterUserModel.md)
  - [Model.SignatureModel](docs/SignatureModel.md)
  - [Model.StarkExOperation](docs/StarkExOperation.md)

@@ -1,18 +1,18 @@
-# StarkExpress.SDK.Client.Api.VaultApi
+# StarkExpress.SDK.Client.Api.DepositApi
 
 All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetAllVaults**](VaultApi.md#getallvaults) | **GET** /api/vaults | Get All Vaults |
+| [**DepositDetails**](DepositApi.md#depositdetails) | **POST** /api/vaults/deposit-details | Returns the deposit details for a given asset. |
 
-<a name="getallvaults"></a>
-# **GetAllVaults**
-> VaultDtoPaginatedResponseDto GetAllVaults (int pageNumber, int pageSize, Guid? tenantId = null, Guid? assetId = null, string sortBy = null)
+<a name="depositdetails"></a>
+# **DepositDetails**
+> DepositDetailsDto DepositDetails (DepositDetailsModel depositDetailsModel)
 
-Get All Vaults
+Returns the deposit details for a given asset.
 
-This endpoint fetches all vaults in the system, with support for filters and pagination.
+This endpoint returns the deposit details for a given user, asset, and data availability mode.
 
 ### Example
 ```csharp
@@ -24,7 +24,7 @@ using StarkExpress.SDK.Client.Model;
 
 namespace Example
 {
-    public class GetAllVaultsExample
+    public class DepositDetailsExample
     {
         public static void Main()
         {
@@ -33,22 +33,18 @@ namespace Example
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new VaultApi(config);
-            var pageNumber = 56;  // int | 
-            var pageSize = 56;  // int | 
-            var tenantId = "tenantId_example";  // Guid? |  (optional) 
-            var assetId = "assetId_example";  // Guid? |  (optional) 
-            var sortBy = "sortBy_example";  // string |  (optional) 
+            var apiInstance = new DepositApi(config);
+            var depositDetailsModel = new DepositDetailsModel(); // DepositDetailsModel | The deposit details request.
 
             try
             {
-                // Get All Vaults
-                VaultDtoPaginatedResponseDto result = apiInstance.GetAllVaults(pageNumber, pageSize, tenantId, assetId, sortBy);
+                // Returns the deposit details for a given asset.
+                DepositDetailsDto result = apiInstance.DepositDetails(depositDetailsModel);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling VaultApi.GetAllVaults: " + e.Message);
+                Debug.Print("Exception when calling DepositApi.DepositDetails: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -57,21 +53,21 @@ namespace Example
 }
 ```
 
-#### Using the GetAllVaultsWithHttpInfo variant
+#### Using the DepositDetailsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Get All Vaults
-    ApiResponse<VaultDtoPaginatedResponseDto> response = apiInstance.GetAllVaultsWithHttpInfo(pageNumber, pageSize, tenantId, assetId, sortBy);
+    // Returns the deposit details for a given asset.
+    ApiResponse<DepositDetailsDto> response = apiInstance.DepositDetailsWithHttpInfo(depositDetailsModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling VaultApi.GetAllVaultsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DepositApi.DepositDetailsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -81,15 +77,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pageNumber** | **int** |  |  |
-| **pageSize** | **int** |  |  |
-| **tenantId** | **Guid?** |  | [optional]  |
-| **assetId** | **Guid?** |  | [optional]  |
-| **sortBy** | **string** |  | [optional]  |
+| **depositDetailsModel** | [**DepositDetailsModel**](DepositDetailsModel.md) | The deposit details request. |  |
 
 ### Return type
 
-[**VaultDtoPaginatedResponseDto**](VaultDtoPaginatedResponseDto.md)
+[**DepositDetailsDto**](DepositDetailsDto.md)
 
 ### Authorization
 
@@ -97,14 +89,16 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Returns all vaults in the system (paginated). |  -  |
+| **200** | Returns the deposit details. |  -  |
+| **400** | The deposit details request was invalid. |  -  |
+| **404** | Not Found. |  -  |
 | **401** | Unauthorized. |  -  |
 | **403** | Forbidden. |  -  |
 

@@ -65,7 +65,7 @@ namespace StarkExpress.SDK.Client.Test.Api
             //string starkKey = null;
             //string address = null;
             //var response = instance.EIP712Details(username, starkKey, address);
-            //Assert.IsType<DomainTypedData>(response);
+            //Assert.IsType<RegisterDetailsDto>(response);
         }
 
         /// <summary>

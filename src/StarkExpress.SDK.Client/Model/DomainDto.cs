@@ -26,19 +26,19 @@ using OpenAPIDateConverter = StarkExpress.SDK.Client.Client.OpenAPIDateConverter
 namespace StarkExpress.SDK.Client.Model
 {
     /// <summary>
-    /// Domain
+    /// DomainDto
     /// </summary>
-    [DataContract(Name = "Domain")]
-    public partial class Domain : IEquatable<Domain>, IValidatableObject
+    [DataContract(Name = "DomainDto")]
+    public partial class DomainDto : IEquatable<DomainDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Domain" /> class.
+        /// Initializes a new instance of the <see cref="DomainDto" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="version">version.</param>
-        /// <param name="chainId">chainId.</param>
-        /// <param name="verifyingContract">verifyingContract.</param>
-        public Domain(string name = default(string), string version = default(string), string chainId = default(string), string verifyingContract = default(string))
+        /// <param name="name">The name of the domain for the EIP712 signing..</param>
+        /// <param name="version">The version of the domain for the EIP712 signing..</param>
+        /// <param name="chainId">The chainId for the domain for the EIP712 signing..</param>
+        /// <param name="verifyingContract">The verifying contract for the domain for the EIP712 signing..</param>
+        public DomainDto(string name = default(string), string version = default(string), string chainId = default(string), string verifyingContract = default(string))
         {
             this.Name = name;
             this._Version = version;
@@ -47,26 +47,30 @@ namespace StarkExpress.SDK.Client.Model
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name of the domain for the EIP712 signing.
         /// </summary>
+        /// <value>The name of the domain for the EIP712 signing.</value>
         [DataMember(Name = "name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Version
+        /// The version of the domain for the EIP712 signing.
         /// </summary>
+        /// <value>The version of the domain for the EIP712 signing.</value>
         [DataMember(Name = "version", EmitDefaultValue = true)]
         public string _Version { get; set; }
 
         /// <summary>
-        /// Gets or Sets ChainId
+        /// The chainId for the domain for the EIP712 signing.
         /// </summary>
+        /// <value>The chainId for the domain for the EIP712 signing.</value>
         [DataMember(Name = "chainId", EmitDefaultValue = true)]
         public string ChainId { get; set; }
 
         /// <summary>
-        /// Gets or Sets VerifyingContract
+        /// The verifying contract for the domain for the EIP712 signing.
         /// </summary>
+        /// <value>The verifying contract for the domain for the EIP712 signing.</value>
         [DataMember(Name = "verifyingContract", EmitDefaultValue = true)]
         public string VerifyingContract { get; set; }
 
@@ -77,7 +81,7 @@ namespace StarkExpress.SDK.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Domain {\n");
+            sb.Append("class DomainDto {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
@@ -102,15 +106,15 @@ namespace StarkExpress.SDK.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Domain);
+            return this.Equals(input as DomainDto);
         }
 
         /// <summary>
-        /// Returns true if Domain instances are equal
+        /// Returns true if DomainDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of Domain to be compared</param>
+        /// <param name="input">Instance of DomainDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Domain input)
+        public bool Equals(DomainDto input)
         {
             if (input == null)
             {

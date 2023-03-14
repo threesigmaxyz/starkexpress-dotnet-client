@@ -11,7 +11,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 <a name="eip712details"></a>
 # **EIP712Details**
-> DomainTypedData EIP712Details (string username, string starkKey, string address)
+> RegisterDetailsDto EIP712Details (string username, string starkKey, string address)
 
 Get EIP712 data to be signed
 
@@ -44,7 +44,7 @@ namespace Example
             try
             {
                 // Get EIP712 data to be signed
-                DomainTypedData result = apiInstance.EIP712Details(username, starkKey, address);
+                RegisterDetailsDto result = apiInstance.EIP712Details(username, starkKey, address);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -65,7 +65,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get EIP712 data to be signed
-    ApiResponse<DomainTypedData> response = apiInstance.EIP712DetailsWithHttpInfo(username, starkKey, address);
+    ApiResponse<RegisterDetailsDto> response = apiInstance.EIP712DetailsWithHttpInfo(username, starkKey, address);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -88,7 +88,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**DomainTypedData**](DomainTypedData.md)
+[**RegisterDetailsDto**](RegisterDetailsDto.md)
 
 ### Authorization
 

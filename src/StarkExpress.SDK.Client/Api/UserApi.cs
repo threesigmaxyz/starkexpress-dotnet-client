@@ -38,8 +38,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="starkKey"></param>
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DomainTypedData</returns>
-        DomainTypedData EIP712Details(string username, string starkKey, string address, int operationIndex = 0);
+        /// <returns>RegisterDetailsDto</returns>
+        RegisterDetailsDto EIP712Details(string username, string starkKey, string address, int operationIndex = 0);
 
         /// <summary>
         /// Get EIP712 data to be signed
@@ -52,8 +52,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="starkKey"></param>
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DomainTypedData</returns>
-        ApiResponse<DomainTypedData> EIP712DetailsWithHttpInfo(string username, string starkKey, string address, int operationIndex = 0);
+        /// <returns>ApiResponse of RegisterDetailsDto</returns>
+        ApiResponse<RegisterDetailsDto> EIP712DetailsWithHttpInfo(string username, string starkKey, string address, int operationIndex = 0);
         /// <summary>
         /// Get All Users
         /// </summary>
@@ -158,8 +158,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DomainTypedData</returns>
-        System.Threading.Tasks.Task<DomainTypedData> EIP712DetailsAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of RegisterDetailsDto</returns>
+        System.Threading.Tasks.Task<RegisterDetailsDto> EIP712DetailsAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get EIP712 data to be signed
@@ -173,8 +173,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DomainTypedData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DomainTypedData>> EIP712DetailsWithHttpInfoAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (RegisterDetailsDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RegisterDetailsDto>> EIP712DetailsWithHttpInfoAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get All Users
         /// </summary>
@@ -392,10 +392,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="starkKey"></param>
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DomainTypedData</returns>
-        public DomainTypedData EIP712Details(string username, string starkKey, string address, int operationIndex = 0)
+        /// <returns>RegisterDetailsDto</returns>
+        public RegisterDetailsDto EIP712Details(string username, string starkKey, string address, int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<DomainTypedData> localVarResponse = EIP712DetailsWithHttpInfo(username, starkKey, address);
+            StarkExpress.SDK.Client.Client.ApiResponse<RegisterDetailsDto> localVarResponse = EIP712DetailsWithHttpInfo(username, starkKey, address);
             return localVarResponse.Data;
         }
 
@@ -407,8 +407,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="starkKey"></param>
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DomainTypedData</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<DomainTypedData> EIP712DetailsWithHttpInfo(string username, string starkKey, string address, int operationIndex = 0)
+        /// <returns>ApiResponse of RegisterDetailsDto</returns>
+        public StarkExpress.SDK.Client.Client.ApiResponse<RegisterDetailsDto> EIP712DetailsWithHttpInfo(string username, string starkKey, string address, int operationIndex = 0)
         {
             // verify the required parameter 'username' is set
             if (username == null)
@@ -475,7 +475,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<DomainTypedData>("/api/users/register-details", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<RegisterDetailsDto>("/api/users/register-details", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("EIP712Details", localVarResponse);
@@ -497,10 +497,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DomainTypedData</returns>
-        public async System.Threading.Tasks.Task<DomainTypedData> EIP712DetailsAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of RegisterDetailsDto</returns>
+        public async System.Threading.Tasks.Task<RegisterDetailsDto> EIP712DetailsAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<DomainTypedData> localVarResponse = await EIP712DetailsWithHttpInfoAsync(username, starkKey, address, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<RegisterDetailsDto> localVarResponse = await EIP712DetailsWithHttpInfoAsync(username, starkKey, address, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -513,8 +513,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="address"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DomainTypedData)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<DomainTypedData>> EIP712DetailsWithHttpInfoAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (RegisterDetailsDto)</returns>
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<RegisterDetailsDto>> EIP712DetailsWithHttpInfoAsync(string username, string starkKey, string address, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'username' is set
             if (username == null)
@@ -582,7 +582,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DomainTypedData>("/api/users/register-details", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<RegisterDetailsDto>("/api/users/register-details", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
