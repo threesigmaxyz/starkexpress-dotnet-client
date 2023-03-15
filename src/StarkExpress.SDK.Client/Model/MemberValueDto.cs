@@ -36,7 +36,7 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <param name="typeName">The type name of the variable..</param>
         /// <param name="value">The value of the variable..</param>
-        public MemberValueDto(string typeName = default(string), Object value = default(Object))
+        public MemberValueDto(string typeName = default(string), string value = default(string))
         {
             this.TypeName = typeName;
             this.Value = value;
@@ -54,7 +54,7 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <value>The value of the variable.</value>
         [DataMember(Name = "value", EmitDefaultValue = true)]
-        public Object Value { get; set; }
+        public string Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
