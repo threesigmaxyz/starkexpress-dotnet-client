@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DepositFunction** | **string** | The deposit function to use on-chain. | [optional] 
 **StarkKey** | **string** | The user&#39;s public STARK key | [optional] 
 **AssetType** | **string** | The asset type identifier. | [optional] 
-**TokenId** | **string** | The asset token Id for NFTs. | [optional] 
+**TokenId** | **string** | The token Id for ERC-721 and ERC-1155 assets. | [optional] 
 **VaultId** | **string** | The user&#39;s vault id. | [optional] 
 **QuantizedAmount** | **string** | The quantized amount to deposit. | [optional] 
 

@@ -5,12 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SenderStarkKey** | **string** | The STARK key of the sender. | [optional] 
-**SenderVaultId** | **string** | The vault ID of the sender. | [optional] 
+**SenderVaultChainId** | **string** | The vault chain ID of the sender. | [optional] 
+**SenderVaultId** | **Guid** | The vault ID of the sender. | [optional] 
 **ReceiverStarkKey** | **string** | The STARK key of the receiver. | [optional] 
-**ReceiverVaultId** | **string** | The vault ID of the receiver. | [optional] 
+**ReceiverVaultChainId** | **string** | The vault chain ID of the receiver. | [optional] 
+**ReceiverVaultId** | **Guid** | The vault ID of the receiver. | [optional] 
 **AssetId** | **string** | The StarkEx ID of the asset being transferred. | [optional] 
 **QuantizedAmount** | **string** | The amount of the asset to be transferred, in quantized form. | [optional] 
-**FeeVaultId** | **string** | The vault ID of the fee sender. | [optional] 
+**FeeVaultChainId** | **string** | The vault chain ID of the fee sender. | [optional] 
+**FeeVaultId** | **Guid** | The vault ID of the fee sender. | [optional] 
 **FeeQuantizedAmount** | **string** | The amount of the fee asset to be collected, in quantized form. | [optional] 
 **FeeAssetId** | **string** | The StarkEx ID of the fee asset to be collected. | [optional] 
 **ExpirationTimestamp** | **long** | The timestamp at which this transfer becomes invalid, in seconds since the Unix epoch. | [optional] 

@@ -38,7 +38,7 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="depositFunction">The deposit function to use on-chain..</param>
         /// <param name="starkKey">The user&#39;s public STARK key.</param>
         /// <param name="assetType">The asset type identifier..</param>
-        /// <param name="tokenId">The asset token Id for NFTs..</param>
+        /// <param name="tokenId">The token Id for ERC-721 and ERC-1155 assets..</param>
         /// <param name="vaultId">The user&#39;s vault id..</param>
         /// <param name="quantizedAmount">The quantized amount to deposit..</param>
         public DepositDetailsDto(string contractAddress = default(string), string depositFunction = default(string), string starkKey = default(string), string assetType = default(string), string tokenId = default(string), string vaultId = default(string), string quantizedAmount = default(string))
@@ -81,9 +81,9 @@ namespace StarkExpress.SDK.Client.Model
         public string AssetType { get; set; }
 
         /// <summary>
-        /// The asset token Id for NFTs.
+        /// The token Id for ERC-721 and ERC-1155 assets.
         /// </summary>
-        /// <value>The asset token Id for NFTs.</value>
+        /// <value>The token Id for ERC-721 and ERC-1155 assets.</value>
         [DataMember(Name = "tokenId", EmitDefaultValue = true)]
         public string TokenId { get; set; }
 

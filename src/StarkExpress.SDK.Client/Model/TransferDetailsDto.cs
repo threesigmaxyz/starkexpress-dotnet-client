@@ -35,25 +35,31 @@ namespace StarkExpress.SDK.Client.Model
         /// Initializes a new instance of the <see cref="TransferDetailsDto" /> class.
         /// </summary>
         /// <param name="senderStarkKey">The STARK key of the sender..</param>
+        /// <param name="senderVaultChainId">The vault chain ID of the sender..</param>
         /// <param name="senderVaultId">The vault ID of the sender..</param>
         /// <param name="receiverStarkKey">The STARK key of the receiver..</param>
+        /// <param name="receiverVaultChainId">The vault chain ID of the receiver..</param>
         /// <param name="receiverVaultId">The vault ID of the receiver..</param>
         /// <param name="assetId">The StarkEx ID of the asset being transferred..</param>
         /// <param name="quantizedAmount">The amount of the asset to be transferred, in quantized form..</param>
+        /// <param name="feeVaultChainId">The vault chain ID of the fee sender..</param>
         /// <param name="feeVaultId">The vault ID of the fee sender..</param>
         /// <param name="feeQuantizedAmount">The amount of the fee asset to be collected, in quantized form..</param>
         /// <param name="feeAssetId">The StarkEx ID of the fee asset to be collected..</param>
         /// <param name="expirationTimestamp">The timestamp at which this transfer becomes invalid, in seconds since the Unix epoch..</param>
         /// <param name="nonce">The unique nonce for the transfer..</param>
         /// <param name="signablePayload">The signable payload for the transfer..</param>
-        public TransferDetailsDto(string senderStarkKey = default(string), string senderVaultId = default(string), string receiverStarkKey = default(string), string receiverVaultId = default(string), string assetId = default(string), string quantizedAmount = default(string), string feeVaultId = default(string), string feeQuantizedAmount = default(string), string feeAssetId = default(string), long expirationTimestamp = default(long), int nonce = default(int), string signablePayload = default(string))
+        public TransferDetailsDto(string senderStarkKey = default(string), string senderVaultChainId = default(string), Guid senderVaultId = default(Guid), string receiverStarkKey = default(string), string receiverVaultChainId = default(string), Guid receiverVaultId = default(Guid), string assetId = default(string), string quantizedAmount = default(string), string feeVaultChainId = default(string), Guid feeVaultId = default(Guid), string feeQuantizedAmount = default(string), string feeAssetId = default(string), long expirationTimestamp = default(long), int nonce = default(int), string signablePayload = default(string))
         {
             this.SenderStarkKey = senderStarkKey;
+            this.SenderVaultChainId = senderVaultChainId;
             this.SenderVaultId = senderVaultId;
             this.ReceiverStarkKey = receiverStarkKey;
+            this.ReceiverVaultChainId = receiverVaultChainId;
             this.ReceiverVaultId = receiverVaultId;
             this.AssetId = assetId;
             this.QuantizedAmount = quantizedAmount;
+            this.FeeVaultChainId = feeVaultChainId;
             this.FeeVaultId = feeVaultId;
             this.FeeQuantizedAmount = feeQuantizedAmount;
             this.FeeAssetId = feeAssetId;
@@ -70,11 +76,18 @@ namespace StarkExpress.SDK.Client.Model
         public string SenderStarkKey { get; set; }
 
         /// <summary>
+        /// The vault chain ID of the sender.
+        /// </summary>
+        /// <value>The vault chain ID of the sender.</value>
+        [DataMember(Name = "senderVaultChainId", EmitDefaultValue = false)]
+        public string SenderVaultChainId { get; set; }
+
+        /// <summary>
         /// The vault ID of the sender.
         /// </summary>
         /// <value>The vault ID of the sender.</value>
         [DataMember(Name = "senderVaultId", EmitDefaultValue = false)]
-        public string SenderVaultId { get; set; }
+        public Guid SenderVaultId { get; set; }
 
         /// <summary>
         /// The STARK key of the receiver.
@@ -84,11 +97,18 @@ namespace StarkExpress.SDK.Client.Model
         public string ReceiverStarkKey { get; set; }
 
         /// <summary>
+        /// The vault chain ID of the receiver.
+        /// </summary>
+        /// <value>The vault chain ID of the receiver.</value>
+        [DataMember(Name = "receiverVaultChainId", EmitDefaultValue = false)]
+        public string ReceiverVaultChainId { get; set; }
+
+        /// <summary>
         /// The vault ID of the receiver.
         /// </summary>
         /// <value>The vault ID of the receiver.</value>
         [DataMember(Name = "receiverVaultId", EmitDefaultValue = false)]
-        public string ReceiverVaultId { get; set; }
+        public Guid ReceiverVaultId { get; set; }
 
         /// <summary>
         /// The StarkEx ID of the asset being transferred.
@@ -105,11 +125,18 @@ namespace StarkExpress.SDK.Client.Model
         public string QuantizedAmount { get; set; }
 
         /// <summary>
+        /// The vault chain ID of the fee sender.
+        /// </summary>
+        /// <value>The vault chain ID of the fee sender.</value>
+        [DataMember(Name = "feeVaultChainId", EmitDefaultValue = false)]
+        public string FeeVaultChainId { get; set; }
+
+        /// <summary>
         /// The vault ID of the fee sender.
         /// </summary>
         /// <value>The vault ID of the fee sender.</value>
         [DataMember(Name = "feeVaultId", EmitDefaultValue = false)]
-        public string FeeVaultId { get; set; }
+        public Guid FeeVaultId { get; set; }
 
         /// <summary>
         /// The amount of the fee asset to be collected, in quantized form.
@@ -155,11 +182,14 @@ namespace StarkExpress.SDK.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TransferDetailsDto {\n");
             sb.Append("  SenderStarkKey: ").Append(SenderStarkKey).Append("\n");
+            sb.Append("  SenderVaultChainId: ").Append(SenderVaultChainId).Append("\n");
             sb.Append("  SenderVaultId: ").Append(SenderVaultId).Append("\n");
             sb.Append("  ReceiverStarkKey: ").Append(ReceiverStarkKey).Append("\n");
+            sb.Append("  ReceiverVaultChainId: ").Append(ReceiverVaultChainId).Append("\n");
             sb.Append("  ReceiverVaultId: ").Append(ReceiverVaultId).Append("\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
             sb.Append("  QuantizedAmount: ").Append(QuantizedAmount).Append("\n");
+            sb.Append("  FeeVaultChainId: ").Append(FeeVaultChainId).Append("\n");
             sb.Append("  FeeVaultId: ").Append(FeeVaultId).Append("\n");
             sb.Append("  FeeQuantizedAmount: ").Append(FeeQuantizedAmount).Append("\n");
             sb.Append("  FeeAssetId: ").Append(FeeAssetId).Append("\n");
@@ -207,6 +237,11 @@ namespace StarkExpress.SDK.Client.Model
                     this.SenderStarkKey.Equals(input.SenderStarkKey))
                 ) && 
                 (
+                    this.SenderVaultChainId == input.SenderVaultChainId ||
+                    (this.SenderVaultChainId != null &&
+                    this.SenderVaultChainId.Equals(input.SenderVaultChainId))
+                ) && 
+                (
                     this.SenderVaultId == input.SenderVaultId ||
                     (this.SenderVaultId != null &&
                     this.SenderVaultId.Equals(input.SenderVaultId))
@@ -215,6 +250,11 @@ namespace StarkExpress.SDK.Client.Model
                     this.ReceiverStarkKey == input.ReceiverStarkKey ||
                     (this.ReceiverStarkKey != null &&
                     this.ReceiverStarkKey.Equals(input.ReceiverStarkKey))
+                ) && 
+                (
+                    this.ReceiverVaultChainId == input.ReceiverVaultChainId ||
+                    (this.ReceiverVaultChainId != null &&
+                    this.ReceiverVaultChainId.Equals(input.ReceiverVaultChainId))
                 ) && 
                 (
                     this.ReceiverVaultId == input.ReceiverVaultId ||
@@ -230,6 +270,11 @@ namespace StarkExpress.SDK.Client.Model
                     this.QuantizedAmount == input.QuantizedAmount ||
                     (this.QuantizedAmount != null &&
                     this.QuantizedAmount.Equals(input.QuantizedAmount))
+                ) && 
+                (
+                    this.FeeVaultChainId == input.FeeVaultChainId ||
+                    (this.FeeVaultChainId != null &&
+                    this.FeeVaultChainId.Equals(input.FeeVaultChainId))
                 ) && 
                 (
                     this.FeeVaultId == input.FeeVaultId ||
@@ -274,6 +319,10 @@ namespace StarkExpress.SDK.Client.Model
                 {
                     hashCode = (hashCode * 59) + this.SenderStarkKey.GetHashCode();
                 }
+                if (this.SenderVaultChainId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SenderVaultChainId.GetHashCode();
+                }
                 if (this.SenderVaultId != null)
                 {
                     hashCode = (hashCode * 59) + this.SenderVaultId.GetHashCode();
@@ -281,6 +330,10 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.ReceiverStarkKey != null)
                 {
                     hashCode = (hashCode * 59) + this.ReceiverStarkKey.GetHashCode();
+                }
+                if (this.ReceiverVaultChainId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReceiverVaultChainId.GetHashCode();
                 }
                 if (this.ReceiverVaultId != null)
                 {
@@ -293,6 +346,10 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.QuantizedAmount != null)
                 {
                     hashCode = (hashCode * 59) + this.QuantizedAmount.GetHashCode();
+                }
+                if (this.FeeVaultChainId != null)
+                {
+                    hashCode = (hashCode * 59) + this.FeeVaultChainId.GetHashCode();
                 }
                 if (this.FeeVaultId != null)
                 {

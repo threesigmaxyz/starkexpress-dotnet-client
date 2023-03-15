@@ -65,6 +65,14 @@ namespace StarkExpress.SDK.Client.Test.Model
             // TODO unit test for the property 'SenderStarkKey'
         }
         /// <summary>
+        /// Test the property 'SenderVaultChainId'
+        /// </summary>
+        [Fact]
+        public void SenderVaultChainIdTest()
+        {
+            // TODO unit test for the property 'SenderVaultChainId'
+        }
+        /// <summary>
         /// Test the property 'SenderVaultId'
         /// </summary>
         [Fact]
@@ -79,6 +87,14 @@ namespace StarkExpress.SDK.Client.Test.Model
         public void ReceiverStarkKeyTest()
         {
             // TODO unit test for the property 'ReceiverStarkKey'
+        }
+        /// <summary>
+        /// Test the property 'ReceiverVaultChainId'
+        /// </summary>
+        [Fact]
+        public void ReceiverVaultChainIdTest()
+        {
+            // TODO unit test for the property 'ReceiverVaultChainId'
         }
         /// <summary>
         /// Test the property 'ReceiverVaultId'
@@ -103,6 +119,14 @@ namespace StarkExpress.SDK.Client.Test.Model
         public void QuantizedAmountTest()
         {
             // TODO unit test for the property 'QuantizedAmount'
+        }
+        /// <summary>
+        /// Test the property 'FeeVaultChainId'
+        /// </summary>
+        [Fact]
+        public void FeeVaultChainIdTest()
+        {
+            // TODO unit test for the property 'FeeVaultChainId'
         }
         /// <summary>
         /// Test the property 'FeeVaultId'
