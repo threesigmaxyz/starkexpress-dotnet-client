@@ -106,6 +106,14 @@ Class | Method | HTTP request | Description
 *FeeApi* | [**ConfigureFeeModel**](docs/FeeApi.md#configurefeemodel) | **POST** /api/fees | Configure Fee Model
 *FeeApi* | [**GetFeeModel**](docs/FeeApi.md#getfeemodel) | **GET** /api/fees/{feeId} | Get Fee Model
 *MintApi* | [**MintAssets**](docs/MintApi.md#mintassets) | **POST** /api/mint | Mint Assets
+*OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **DELETE** /api/orders/{orderId} | Cancel Order
+*OrderApi* | [**OrderDetails**](docs/OrderApi.md#orderdetails) | **POST** /api/orders/details | Get Order Details
+*OrderApi* | [**SubmitOrder**](docs/OrderApi.md#submitorder) | **POST** /api/orders | Submit Order
+*OrderbookApi* | [**CreateOrderbook**](docs/OrderbookApi.md#createorderbook) | **POST** /api/orderbooks | Create Orderbook
+*OrderbookApi* | [**GetOrderbook**](docs/OrderbookApi.md#getorderbook) | **GET** /api/orderbooks/{orderbookId} | Get Orderbook
+*OrderbookApi* | [**GetOrderbookLevel1Data**](docs/OrderbookApi.md#getorderbooklevel1data) | **GET** /api/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data
+*OrderbookApi* | [**GetOrderbookLevel2Data**](docs/OrderbookApi.md#getorderbooklevel2data) | **GET** /api/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data
+*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/settlements | Submit Settlement
 *TransactionApi* | [**GetAllTransactions**](docs/TransactionApi.md#getalltransactions) | **GET** /api/transactions | Get All Transactions
 *TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /api/transactions/{transactionId} | Get Transaction
 *TransferApi* | [**Transfer**](docs/TransferApi.md#transfer) | **POST** /api/transfers | Transfer Asset
@@ -125,7 +133,9 @@ Class | Method | HTTP request | Description
  - [Model.ApiErrorResponseDto](docs/ApiErrorResponseDto.md)
  - [Model.AssetType](docs/AssetType.md)
  - [Model.BatchMintRequestModel](docs/BatchMintRequestModel.md)
+ - [Model.BigInteger](docs/BigInteger.md)
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
+ - [Model.CreateOrderbookModel](docs/CreateOrderbookModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)
  - [Model.DepositDetailsDto](docs/DepositDetailsDto.md)
  - [Model.DepositDetailsModel](docs/DepositDetailsModel.md)
@@ -134,16 +144,30 @@ Class | Method | HTTP request | Description
  - [Model.ErrorCodes](docs/ErrorCodes.md)
  - [Model.FeeAction](docs/FeeAction.md)
  - [Model.FeeConfigDto](docs/FeeConfigDto.md)
+ - [Model.FeeDto](docs/FeeDto.md)
  - [Model.FilterOptions](docs/FilterOptions.md)
  - [Model.MemberDescriptionDto](docs/MemberDescriptionDto.md)
  - [Model.MemberValueDto](docs/MemberValueDto.md)
  - [Model.MintDataModel](docs/MintDataModel.md)
  - [Model.MintRequestDataModel](docs/MintRequestDataModel.md)
+ - [Model.OrderDetailsDto](docs/OrderDetailsDto.md)
+ - [Model.OrderDetailsModel](docs/OrderDetailsModel.md)
+ - [Model.OrderDto](docs/OrderDto.md)
+ - [Model.OrderFillDto](docs/OrderFillDto.md)
+ - [Model.OrderSide](docs/OrderSide.md)
+ - [Model.OrderbookAssetDto](docs/OrderbookAssetDto.md)
+ - [Model.OrderbookDto](docs/OrderbookDto.md)
+ - [Model.OrderbookLevel1DataDto](docs/OrderbookLevel1DataDto.md)
+ - [Model.OrderbookLevel2DataDto](docs/OrderbookLevel2DataDto.md)
+ - [Model.OrderbookLevel2EntryDto](docs/OrderbookLevel2EntryDto.md)
  - [Model.PaginationDto](docs/PaginationDto.md)
  - [Model.RegisterDetailsDto](docs/RegisterDetailsDto.md)
  - [Model.RegisterUserModel](docs/RegisterUserModel.md)
+ - [Model.SettlementInfoModel](docs/SettlementInfoModel.md)
  - [Model.SignatureModel](docs/SignatureModel.md)
  - [Model.StarkExOperation](docs/StarkExOperation.md)
+ - [Model.SubmitOrderModel](docs/SubmitOrderModel.md)
+ - [Model.SubmitSettlementModel](docs/SubmitSettlementModel.md)
  - [Model.TenantAssetDto](docs/TenantAssetDto.md)
  - [Model.TenantAssetDtoPaginatedResponseDto](docs/TenantAssetDtoPaginatedResponseDto.md)
  - [Model.TransactionDto](docs/TransactionDto.md)
