@@ -43,5 +43,9 @@ jobs:
       - name: Add nuget sources
         run: dotnet nuget add source --username USERNAME --password ${{ secrets.API_TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/threesigmaxyz/index.json"
 
-      - name: Publish SDK
+      - name: Publish SDK to github
         run: dotnet nuget push "src/StarkExpress.SDK.Client/bin/Release/*.nupkg" --api-key ${{ secrets.API_TOKEN_GITHUB }} --source "github"
+        
+      # Publish to nuget.org
+      - name: Publish SDK to nuget.org
+        run: dotnet nuget push "src/StarkExpress.SDK.Client/bin/Release/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source "nuget.org"
