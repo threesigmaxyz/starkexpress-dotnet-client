@@ -8,7 +8,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 <a name="mintassets"></a>
 # **MintAssets**
-> List&lt;VaultDto&gt; MintAssets (BatchMintRequestModel batchMintRequestModel)
+> Dictionary&lt;string, List&lt;VaultDto&gt;&gt; MintAssets (BatchMintRequestModel batchMintRequestModel)
 
 Mint Assets
 
@@ -39,7 +39,7 @@ namespace Example
             try
             {
                 // Mint Assets
-                List<VaultDto> result = apiInstance.MintAssets(batchMintRequestModel);
+                Dictionary<string, List<VaultDto>> result = apiInstance.MintAssets(batchMintRequestModel);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -60,7 +60,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Mint Assets
-    ApiResponse<List<VaultDto>> response = apiInstance.MintAssetsWithHttpInfo(batchMintRequestModel);
+    ApiResponse<Dictionary<string, List<VaultDto>>> response = apiInstance.MintAssetsWithHttpInfo(batchMintRequestModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -81,7 +81,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**List&lt;VaultDto&gt;**](VaultDto.md)
+**Dictionary<string, List<VaultDto>>**
 
 ### Authorization
 

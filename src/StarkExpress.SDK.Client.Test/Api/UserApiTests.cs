@@ -96,7 +96,7 @@ namespace StarkExpress.SDK.Client.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //Guid userId = null;
             //var response = instance.GetUser(userId);
-            //Assert.IsType<UserDto>(response);
+            //Assert.IsType<UserWithVaultsDto>(response);
         }
 
         /// <summary>

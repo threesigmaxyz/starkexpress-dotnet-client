@@ -36,8 +36,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;VaultDto&gt;</returns>
-        List<VaultDto> MintAssets(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0);
+        /// <returns>Dictionary&lt;string, List&lt;VaultDto&gt;&gt;</returns>
+        Dictionary<string, List<VaultDto>> MintAssets(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0);
 
         /// <summary>
         /// Mint Assets
@@ -48,8 +48,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;VaultDto&gt;</returns>
-        ApiResponse<List<VaultDto>> MintAssetsWithHttpInfo(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0);
+        /// <returns>ApiResponse of Dictionary&lt;string, List&lt;VaultDto&gt;&gt;</returns>
+        ApiResponse<Dictionary<string, List<VaultDto>>> MintAssetsWithHttpInfo(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -69,8 +69,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;VaultDto&gt;</returns>
-        System.Threading.Tasks.Task<List<VaultDto>> MintAssetsAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of Dictionary&lt;string, List&lt;VaultDto&gt;&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, List<VaultDto>>> MintAssetsAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mint Assets
@@ -82,8 +82,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;VaultDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<VaultDto>>> MintAssetsWithHttpInfoAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;VaultDto&gt;&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, List<VaultDto>>>> MintAssetsWithHttpInfoAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -210,10 +210,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;VaultDto&gt;</returns>
-        public List<VaultDto> MintAssets(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0)
+        /// <returns>Dictionary&lt;string, List&lt;VaultDto&gt;&gt;</returns>
+        public Dictionary<string, List<VaultDto>> MintAssets(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<List<VaultDto>> localVarResponse = MintAssetsWithHttpInfo(batchMintRequestModel);
+            StarkExpress.SDK.Client.Client.ApiResponse<Dictionary<string, List<VaultDto>>> localVarResponse = MintAssetsWithHttpInfo(batchMintRequestModel);
             return localVarResponse.Data;
         }
 
@@ -223,8 +223,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;VaultDto&gt;</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<List<VaultDto>> MintAssetsWithHttpInfo(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0)
+        /// <returns>ApiResponse of Dictionary&lt;string, List&lt;VaultDto&gt;&gt;</returns>
+        public StarkExpress.SDK.Client.Client.ApiResponse<Dictionary<string, List<VaultDto>>> MintAssetsWithHttpInfo(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0)
         {
             // verify the required parameter 'batchMintRequestModel' is set
             if (batchMintRequestModel == null)
@@ -278,7 +278,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<List<VaultDto>>("/api/mint", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Dictionary<string, List<VaultDto>>>("/api/mint", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("MintAssets", localVarResponse);
@@ -298,10 +298,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;VaultDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<VaultDto>> MintAssetsAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of Dictionary&lt;string, List&lt;VaultDto&gt;&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, List<VaultDto>>> MintAssetsAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<List<VaultDto>> localVarResponse = await MintAssetsWithHttpInfoAsync(batchMintRequestModel, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<Dictionary<string, List<VaultDto>>> localVarResponse = await MintAssetsWithHttpInfoAsync(batchMintRequestModel, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -312,8 +312,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="batchMintRequestModel">The assets to mint for each user.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;VaultDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<List<VaultDto>>> MintAssetsWithHttpInfoAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, List&lt;VaultDto&gt;&gt;)</returns>
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<Dictionary<string, List<VaultDto>>>> MintAssetsWithHttpInfoAsync(BatchMintRequestModel batchMintRequestModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'batchMintRequestModel' is set
             if (batchMintRequestModel == null)
@@ -368,7 +368,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<List<VaultDto>>("/api/mint", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Dictionary<string, List<VaultDto>>>("/api/mint", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
