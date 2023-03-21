@@ -57,12 +57,20 @@ namespace StarkExpress.SDK.Client.Test.Model
 
 
         /// <summary>
-        /// Test the property 'ContractAddress'
+        /// Test the property 'OperatorContractAddress'
         /// </summary>
         [Fact]
-        public void ContractAddressTest()
+        public void OperatorContractAddressTest()
         {
-            // TODO unit test for the property 'ContractAddress'
+            // TODO unit test for the property 'OperatorContractAddress'
+        }
+        /// <summary>
+        /// Test the property 'AssetContractAddress'
+        /// </summary>
+        [Fact]
+        public void AssetContractAddressTest()
+        {
+            // TODO unit test for the property 'AssetContractAddress'
         }
         /// <summary>
         /// Test the property 'DepositFunction'

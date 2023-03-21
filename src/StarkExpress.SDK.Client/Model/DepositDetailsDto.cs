@@ -34,16 +34,18 @@ namespace StarkExpress.SDK.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DepositDetailsDto" /> class.
         /// </summary>
-        /// <param name="contractAddress">The smart contract address that processes on-chain deposits..</param>
+        /// <param name="operatorContractAddress">The smart contract address that processes on-chain deposits..</param>
+        /// <param name="assetContractAddress">The asset&#39;s smart contract address..</param>
         /// <param name="depositFunction">The deposit function to use on-chain..</param>
         /// <param name="starkKey">The user&#39;s public STARK key.</param>
         /// <param name="assetType">The asset type identifier..</param>
         /// <param name="tokenId">The token Id for ERC-721 and ERC-1155 assets..</param>
         /// <param name="vaultId">The user&#39;s vault id..</param>
         /// <param name="quantizedAmount">The quantized amount to deposit..</param>
-        public DepositDetailsDto(string contractAddress = default(string), string depositFunction = default(string), string starkKey = default(string), string assetType = default(string), string tokenId = default(string), string vaultId = default(string), string quantizedAmount = default(string))
+        public DepositDetailsDto(string operatorContractAddress = default(string), string assetContractAddress = default(string), string depositFunction = default(string), string starkKey = default(string), string assetType = default(string), string tokenId = default(string), string vaultId = default(string), string quantizedAmount = default(string))
         {
-            this.ContractAddress = contractAddress;
+            this.OperatorContractAddress = operatorContractAddress;
+            this.AssetContractAddress = assetContractAddress;
             this.DepositFunction = depositFunction;
             this.StarkKey = starkKey;
             this.AssetType = assetType;
@@ -56,8 +58,15 @@ namespace StarkExpress.SDK.Client.Model
         /// The smart contract address that processes on-chain deposits.
         /// </summary>
         /// <value>The smart contract address that processes on-chain deposits.</value>
-        [DataMember(Name = "contractAddress", EmitDefaultValue = true)]
-        public string ContractAddress { get; set; }
+        [DataMember(Name = "operatorContractAddress", EmitDefaultValue = true)]
+        public string OperatorContractAddress { get; set; }
+
+        /// <summary>
+        /// The asset&#39;s smart contract address.
+        /// </summary>
+        /// <value>The asset&#39;s smart contract address.</value>
+        [DataMember(Name = "assetContractAddress", EmitDefaultValue = true)]
+        public string AssetContractAddress { get; set; }
 
         /// <summary>
         /// The deposit function to use on-chain.
@@ -109,7 +118,8 @@ namespace StarkExpress.SDK.Client.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DepositDetailsDto {\n");
-            sb.Append("  ContractAddress: ").Append(ContractAddress).Append("\n");
+            sb.Append("  OperatorContractAddress: ").Append(OperatorContractAddress).Append("\n");
+            sb.Append("  AssetContractAddress: ").Append(AssetContractAddress).Append("\n");
             sb.Append("  DepositFunction: ").Append(DepositFunction).Append("\n");
             sb.Append("  StarkKey: ").Append(StarkKey).Append("\n");
             sb.Append("  AssetType: ").Append(AssetType).Append("\n");
@@ -152,9 +162,14 @@ namespace StarkExpress.SDK.Client.Model
             }
             return 
                 (
-                    this.ContractAddress == input.ContractAddress ||
-                    (this.ContractAddress != null &&
-                    this.ContractAddress.Equals(input.ContractAddress))
+                    this.OperatorContractAddress == input.OperatorContractAddress ||
+                    (this.OperatorContractAddress != null &&
+                    this.OperatorContractAddress.Equals(input.OperatorContractAddress))
+                ) && 
+                (
+                    this.AssetContractAddress == input.AssetContractAddress ||
+                    (this.AssetContractAddress != null &&
+                    this.AssetContractAddress.Equals(input.AssetContractAddress))
                 ) && 
                 (
                     this.DepositFunction == input.DepositFunction ||
@@ -197,9 +212,13 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ContractAddress != null)
+                if (this.OperatorContractAddress != null)
                 {
-                    hashCode = (hashCode * 59) + this.ContractAddress.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OperatorContractAddress.GetHashCode();
+                }
+                if (this.AssetContractAddress != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssetContractAddress.GetHashCode();
                 }
                 if (this.DepositFunction != null)
                 {
