@@ -446,6 +446,51 @@ namespace StarkExpress.SDK.Client.Model
         NUMBER_17017 = 17017,
 
         /// <summary>
+        /// Enum NUMBER_18001 for value: 18001
+        /// </summary>
+        NUMBER_18001 = 18001,
+
+        /// <summary>
+        /// Enum NUMBER_18002 for value: 18002
+        /// </summary>
+        NUMBER_18002 = 18002,
+
+        /// <summary>
+        /// Enum NUMBER_18003 for value: 18003
+        /// </summary>
+        NUMBER_18003 = 18003,
+
+        /// <summary>
+        /// Enum NUMBER_18004 for value: 18004
+        /// </summary>
+        NUMBER_18004 = 18004,
+
+        /// <summary>
+        /// Enum NUMBER_18005 for value: 18005
+        /// </summary>
+        NUMBER_18005 = 18005,
+
+        /// <summary>
+        /// Enum NUMBER_19001 for value: 19001
+        /// </summary>
+        NUMBER_19001 = 19001,
+
+        /// <summary>
+        /// Enum NUMBER_19002 for value: 19002
+        /// </summary>
+        NUMBER_19002 = 19002,
+
+        /// <summary>
+        /// Enum NUMBER_19003 for value: 19003
+        /// </summary>
+        NUMBER_19003 = 19003,
+
+        /// <summary>
+        /// Enum NUMBER_19004 for value: 19004
+        /// </summary>
+        NUMBER_19004 = 19004,
+
+        /// <summary>
         /// Enum NUMBER_20101 for value: 20101
         /// </summary>
         NUMBER_20101 = 20101,
