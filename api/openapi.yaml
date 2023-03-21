@@ -1,0 +1,2972 @@
+openapi: 3.0.1
+info:
+  description: An API for the StarkExpress platform.
+  license:
+    name: License
+    url: https://starkexpress.io/license
+  termsOfService: https://starkexpress.io/terms
+  title: StarkExpress API Docs
+  version: v1
+  x-logo:
+    url: https://starkexpress.io/_next/static/media/starkexpress-logo.c94e6c9d.svg
+    altText: StarkExpress logo
+servers:
+- description: Testnet server (uses test data).
+  url: https://testnet-api.starkexpress.io
+- description: Mainnet server (uses live data).
+  url: https://api.starkexpress.io
+tags:
+- description: Operations related with the user management.
+  name: User
+- description: Operations related with the management of assets in the tenant system.
+  name: Asset
+- description: "Operations related with the minting of ERC-20, ERC-721 and ERC-1155\
+    \ assets."
+  name: Mint
+- description: Operations related with the transfer of assets.
+  name: Transfer
+- description: Operations related with the transactions submitted by the system.
+  name: Transaction
+- description: Operations related with the withdrawal of assets.
+  name: Withdraw
+- description: Operations related with the vault management.
+  name: Vault
+- description: Operations related with the configuration of the fee model in the tenant
+    system.
+  name: Fee
+- description: Operations related with the orderbook management.
+  name: Orderbook
+- description: Operations related with the order management.
+  name: Order
+paths:
+  /api/fees:
+    post:
+      description: This endpoint allows to configure the fee model for a specific
+        operation.
+      operationId: ConfigureFeeModel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigureFeeModel'
+        description: The fee model configuration request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeeConfigDto'
+          description: Returns the configured operation fee.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The fee model configuration request was invalid.
+      summary: Configure Fee Model
+      tags:
+      - Fee
+  /api/fees/{feeId}:
+    get:
+      description: This endpoint fetches a configured operation fee by ID.
+      operationId: GetFeeModel
+      parameters:
+      - description: The fee model configuration ID.
+        explode: false
+        in: path
+        name: feeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeeConfigDto'
+          description: Returns a configured operation fee.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Get Fee Model
+      tags:
+      - Fee
+  /api/mint:
+    post:
+      description: This endpoint allows for the minting of fungible and non-fungible
+        assets.
+      operationId: MintAssets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchMintRequestModel'
+        description: The assets to mint for each user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VaultDto'
+                type: array
+          description: Returns the vaults updated by the mint operation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The mint request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - mint:assets
+      summary: Mint Assets
+      tags:
+      - Mint
+  /api/orders/details:
+    post:
+      description: This endpoint allows for fetching details of an order to be signed.
+      operationId: OrderDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderDetailsModel'
+        description: The signable order details request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetailsDto'
+          description: Returns the signable order details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The signable order request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Get Order Details
+      tags:
+      - Order
+  /api/orders:
+    post:
+      description: This endpoint submits an order to the matching engine.
+      operationId: SubmitOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitOrderModel'
+        description: The order submission request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDto'
+          description: Returns the created order.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The order submission request was invalid.
+      summary: Submit Order
+      tags:
+      - Order
+  /api/orders/{orderId}:
+    delete:
+      description: This endpoint cancels an active order.
+      operationId: CancelOrder
+      parameters:
+      - explode: false
+        in: path
+        name: orderId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDto'
+          description: Returns the cancelled order.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Cancel Order
+      tags:
+      - Order
+  /api/orderbooks:
+    post:
+      description: This endpoint creates an orderbook.
+      operationId: CreateOrderbook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderbookModel'
+        description: The orderbook creation request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderbookDto'
+          description: Returns the created orderbook.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The orderbook creation request was invalid.
+      summary: Create Orderbook
+      tags:
+      - Orderbook
+  /api/orderbooks/{orderbookId}:
+    get:
+      description: This endpoint fetches orderbook metadata by ID.
+      operationId: GetOrderbook
+      parameters:
+      - explode: false
+        in: path
+        name: orderbookId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderbookDto'
+          description: Returns orderbook metadata.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Get Orderbook
+      tags:
+      - Orderbook
+  /api/orderbooks/{orderbookId}/l1:
+    get:
+      description: This endpoint fetches orderbook level 1 data by ID.
+      operationId: GetOrderbookLevel1Data
+      parameters:
+      - explode: false
+        in: path
+        name: orderbookId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderbookLevel1DataDto'
+          description: Returns orderbook level 1 data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Get Orderbook L1 Data
+      tags:
+      - Orderbook
+  /api/orderbooks/{orderbookId}/l2:
+    get:
+      description: This endpoint fetches orderbook level 2 data by ID.
+      operationId: GetOrderbookLevel2Data
+      parameters:
+      - explode: false
+        in: path
+        name: orderbookId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: depth
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderbookLevel2DataDto'
+          description: Returns orderbook level 2 data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Get Orderbook L2 Data
+      tags:
+      - Orderbook
+  /api/settlements:
+    post:
+      description: This endpoint submits an order settlement.
+      operationId: SubmitSettlement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitSettlementModel'
+        description: The settlement request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VaultDto'
+                type: array
+          description: Returns the vaults updated by the settlement operation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The settlement request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+      summary: Submit Settlement
+      tags:
+      - Settlement
+  /api/assets:
+    get:
+      description: "This endpoint fetches all assets enabled in the tenant system,\
+        \ with support for filters and pagination."
+      operationId: GetAllAssets
+      parameters:
+      - explode: true
+        in: query
+        name: asset_id
+        required: false
+        schema:
+          description: The unique identifier of the asset.
+          format: uuid
+          title: Asset ID
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: asset_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/AssetType'
+        style: form
+      - explode: true
+        in: query
+        name: asset_type_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: asset_symbol
+        required: false
+        schema:
+          description: The symbol of the asset.
+          format: string
+          title: Symbol
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: asset_symbol_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: page_number
+        required: true
+        schema:
+          description: The page number to retrieve.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Number
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: true
+        schema:
+          description: The number of items to retrieve per page.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Size
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          description: The field to sort the results by.
+          title: Sort By
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDtoPaginatedResponseDto'
+          description: Returns all assets enabled in the tenant system (paginated).
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:tenant_assets
+      summary: Get All Assets
+      tags:
+      - Asset
+    post:
+      description: This endpoint allows to enable an asset in the tenant system.
+      operationId: EnableAsset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnableAssetModel'
+        description: The asset enabling request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns the enabled asset.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The asset enabling request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:tenant_assets
+      summary: Enable Asset
+      tags:
+      - Asset
+  /api/assets/{assetId}:
+    get:
+      description: This endpoint fetches a specific enabled asset by ID.
+      operationId: GetAsset
+      parameters:
+      - description: The asset ID.
+        explode: false
+        in: path
+        name: assetId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns an asset enabled in the tenant system.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:tenant_assets
+      summary: Get Asset
+      tags:
+      - Asset
+  /api/transactions:
+    get:
+      description: "This endpoint fetches all transactions submitted by the system,\
+        \ with support for filters and pagination."
+      operationId: GetAllTransactions
+      parameters:
+      - explode: true
+        in: query
+        name: transaction_status
+        required: false
+        schema:
+          $ref: '#/components/schemas/TransactionStatus'
+        style: form
+      - explode: true
+        in: query
+        name: transaction_status_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: starkex_tx_id
+        required: false
+        schema:
+          description: The unique identifier of the StarkEx transaction.
+          format: integer
+          title: StarkEx Transaction ID
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: starkex_tx_id_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: page_number
+        required: true
+        schema:
+          description: The page number to retrieve.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Number
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: true
+        schema:
+          description: The number of items to retrieve per page.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Size
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          description: The field to sort the results by.
+          title: Sort By
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionDtoPaginatedResponseDto'
+          description: Returns all transactions submitted by the system (paginated).
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:transactions
+      summary: Get All Transactions
+      tags:
+      - Transaction
+  /api/transactions/{transactionId}:
+    get:
+      description: This endpoint fetches a specific transaction by ID.
+      operationId: GetTransaction
+      parameters:
+      - description: The transaction ID.
+        explode: false
+        in: path
+        name: transactionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionDto'
+          description: Returns a transaction.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:transactions
+      summary: Get Transaction
+      tags:
+      - Transaction
+  /api/transfers:
+    post:
+      description: This endpoint allows for transferring assets between users.
+      operationId: Transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferModel'
+        description: The transfer request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VaultDto'
+                type: array
+          description: Returns the vaults updated by the transfer operation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The transfer request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:transfers
+      summary: Transfer Asset
+      tags:
+      - Transfer
+  /api/transfers/details:
+    post:
+      description: This endpoint allows for fetching details of a transfer to be signed
+        (allocates a vault for the receiver)
+      operationId: TransferDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferDetailsModel'
+        description: The signable transfer details request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferDetailsDto'
+          description: Returns the signable transfer details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The signable transfer request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:transfers
+      summary: Get Transfer Details
+      tags:
+      - Transfer
+  /api/users:
+    get:
+      description: This endpoint fetches all users.
+      operationId: GetAllUsers
+      parameters:
+      - explode: true
+        in: query
+        name: username
+        required: false
+        schema:
+          description: The username of the user.
+          format: string
+          title: Username
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: username_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: address
+        required: false
+        schema:
+          description: The Ethereum address associated with the user.
+          format: hex
+          title: Ethereum Address
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: creation_date
+        required: false
+        schema:
+          description: The creation date of the user.
+          format: string
+          title: Creation Date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: creation_date_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: page_number
+        required: true
+        schema:
+          description: The page number to retrieve.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Number
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: true
+        schema:
+          description: The number of items to retrieve per page.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Size
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          description: The field to sort the results by.
+          title: Sort By
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserDto'
+                type: array
+          description: Returns all users.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:users
+      summary: Get All Users
+      tags:
+      - User
+    post:
+      description: This endpoint registers a user.
+      operationId: RegisterUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUserModel'
+        description: The user registration request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+          description: Returns the newly registered user.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The user registration request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:users
+      summary: Register new User
+      tags:
+      - User
+  /api/users/register-details:
+    get:
+      description: This endpoint return the typed data to be signed with EIP712 that
+        is used on user registration.
+      operationId: EIP712Details
+      parameters:
+      - explode: true
+        in: query
+        name: username
+        required: true
+        schema:
+          description: The username of the user.
+          format: string
+          maxLength: 30
+          minLength: 6
+          title: Username
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: stark_key
+        required: true
+        schema:
+          description: The STARK key of the user.
+          format: hex
+          title: STARK Key
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: address
+        required: true
+        schema:
+          description: The Ethereum address associated with the user.
+          format: hex
+          title: Address
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterDetailsDto'
+          description: Returns the EIP712 typed data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:users
+      summary: Get EIP712 data to be signed
+      tags:
+      - User
+  /api/users/{userId}:
+    get:
+      description: This endpoint fetches a specific user by ID.
+      operationId: GetUser
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+          description: Returns an user.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:users
+      summary: Get User
+      tags:
+      - User
+  /api/vaults/deposit-details:
+    post:
+      description: "This endpoint returns the deposit details for a given user, asset,\
+        \ and data availability mode."
+      operationId: DepositDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepositDetailsModel'
+        description: The deposit details request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepositDetailsDto'
+          description: Returns the deposit details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The deposit details request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:vaults
+        - write:vaults
+      summary: Returns the deposit details for a given asset.
+      tags:
+      - Deposit
+  /api/vaults:
+    get:
+      description: "This endpoint fetches all vaults in the system, with support for\
+        \ filters and pagination."
+      operationId: GetAllVaults
+      parameters:
+      - explode: true
+        in: query
+        name: tenant_id
+        required: false
+        schema:
+          description: The unique identifier of the tenant.
+          format: uuid
+          title: Tenant ID
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: asset_id
+        required: false
+        schema:
+          description: The unique identifier of the asset.
+          format: uuid
+          title: Asset ID
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_number
+        required: true
+        schema:
+          description: The page number to retrieve.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Number
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: true
+        schema:
+          description: The number of items to retrieve per page.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          title: Page Size
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          description: The field to sort the results by.
+          title: Sort By
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VaultDtoPaginatedResponseDto'
+          description: Returns all vaults in the system (paginated).
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - read:vaults
+      summary: Get All Vaults
+      tags:
+      - Vault
+  /api/vaults/withdraw:
+    post:
+      description: This endpoint allows for transferring withdrawing assets from StarkExpress.
+      operationId: Withdraw
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawModel'
+        description: The withdraw request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VaultDto'
+          description: Returns the vault updated by the withdraw operation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The withdraw request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:vaults
+      summary: Withdraw Asset
+      tags:
+      - Withdraw
+components:
+  schemas:
+    ApiErrorDto:
+      additionalProperties: false
+      properties:
+        errorCode:
+          $ref: '#/components/schemas/ErrorCodes'
+        fieldName:
+          description: The request field that originated the error.
+          nullable: true
+          title: Field
+          type: string
+        errorMessage:
+          description: The explicit error message.
+          nullable: true
+          readOnly: true
+          title: Error Message
+          type: string
+      type: object
+    ApiErrorResponseDto:
+      additionalProperties: false
+      properties:
+        errors:
+          description: The array of errors triggered by the request.
+          format: array
+          items:
+            $ref: '#/components/schemas/ApiErrorDto'
+          nullable: true
+          title: Errors
+          type: array
+      type: object
+    AssetType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      format: int32
+      type: integer
+    BatchMintRequestModel:
+      additionalProperties: false
+      description: Request model to mint a batch of assets.
+      example:
+        users:
+        - mints:
+          - amount: amount
+            mintingBlob: mintingBlob
+            assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            dataAvailabilityMode: null
+          - amount: amount
+            mintingBlob: mintingBlob
+            assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            dataAvailabilityMode: null
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - mints:
+          - amount: amount
+            mintingBlob: mintingBlob
+            assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            dataAvailabilityMode: null
+          - amount: amount
+            mintingBlob: mintingBlob
+            assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            dataAvailabilityMode: null
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        users:
+          description: The array of assets to mint grouped by user.
+          format: array
+          items:
+            $ref: '#/components/schemas/MintRequestDataModel'
+          minItems: 1
+          title: Mints
+          type: array
+      required:
+      - users
+      type: object
+    BigInteger:
+      additionalProperties: false
+      example:
+        bitLength: 6
+        longValueExact: 2
+        intValue: 1
+        bitCount: 0
+        signValue: 7
+        intValueExact: 5
+        longValue: 5
+      properties:
+        bitCount:
+          format: int32
+          readOnly: true
+          type: integer
+        bitLength:
+          format: int32
+          readOnly: true
+          type: integer
+        intValue:
+          format: int32
+          readOnly: true
+          type: integer
+        intValueExact:
+          format: int32
+          readOnly: true
+          type: integer
+        longValue:
+          format: int64
+          readOnly: true
+          type: integer
+        longValueExact:
+          format: int64
+          readOnly: true
+          type: integer
+        signValue:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    ConfigureFeeModel:
+      additionalProperties: false
+      description: Request model to configure the fee model for an operation.
+      example:
+        basisPoints: 800
+        feeAction: null
+      properties:
+        feeAction:
+          $ref: '#/components/schemas/FeeAction'
+        basisPoints:
+          description: The basis points (1/100 of a percent) of the fee to take on
+            the operation.
+          format: int32
+          maximum: 10000
+          minimum: 0
+          title: Basis Points
+          type: integer
+      required:
+      - basisPoints
+      - feeAction
+      type: object
+    CreateOrderbookModel:
+      additionalProperties: false
+      description: Request model to create an orderbook.
+      example:
+        baseAssetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        quoteAssetPrecision: 6
+        quoteAssetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        baseAssetPrecision: 0
+      properties:
+        baseAssetId:
+          description: The ID of the orderbook base asset.
+          format: uuid
+          title: Base Asset ID
+          type: string
+        quoteAssetId:
+          description: The ID of the orderbook quote asset.
+          format: uuid
+          title: Quote Asset ID
+          type: string
+        baseAssetPrecision:
+          description: The orderbook base asset decimal precision.
+          format: int32
+          title: Base Asset Precision
+          type: integer
+        quoteAssetPrecision:
+          description: The orderbook quote asset decimal precision.
+          format: int32
+          title: Quote Asset Precision
+          type: integer
+      required:
+      - baseAssetId
+      - baseAssetPrecision
+      - quoteAssetId
+      - quoteAssetPrecision
+      type: object
+    DataAvailabilityModes:
+      enum:
+      - 0
+      - 1
+      format: int32
+      type: integer
+    DepositDetailsDto:
+      additionalProperties: false
+      example:
+        depositFunction: depositFunction
+        tokenId: tokenId
+        vaultId: vaultId
+        quantizedAmount: quantizedAmount
+        assetContractAddress: assetContractAddress
+        operatorContractAddress: operatorContractAddress
+        starkKey: starkKey
+        assetType: assetType
+      properties:
+        operatorContractAddress:
+          description: The smart contract address that processes on-chain deposits.
+          format: hex
+          nullable: true
+          title: Operator Smart Contract Address
+          type: string
+        assetContractAddress:
+          description: The asset's smart contract address.
+          format: hex
+          nullable: true
+          title: Asset Smart Contract Address
+          type: string
+        depositFunction:
+          description: The deposit function to use on-chain.
+          format: string
+          nullable: true
+          title: Smart Contract Address
+          type: string
+        starkKey:
+          description: The user's public STARK key
+          format: hex
+          nullable: true
+          title: User's STARK Key
+          type: string
+        assetType:
+          description: The asset type identifier.
+          format: hex
+          nullable: true
+          title: Asset type
+          type: string
+        tokenId:
+          description: The token Id for ERC-721 and ERC-1155 assets.
+          format: hex
+          nullable: true
+          title: Token Id
+          type: string
+        vaultId:
+          description: The user's vault id.
+          format: string
+          title: Vault Id
+          type: string
+        quantizedAmount:
+          description: The quantized amount to deposit.
+          format: string
+          title: Quantized amount
+          type: string
+      type: object
+    DepositDetailsModel:
+      additionalProperties: false
+      example:
+        amount: amount
+        tokenId: tokenId
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dataAvailabilityMode: null
+      properties:
+        userId:
+          description: The ID of the user for which the vault should be allocated.
+          format: uuid
+          title: User ID
+          type: string
+        assetId:
+          description: The ID of the vault's asset.
+          format: uuid
+          title: Asset ID
+          type: string
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        tokenId:
+          description: "The hexadecimal string representation of the vault's asset\
+            \ token ID, if applicable (ie. ERC-721/ERC-1155)."
+          format: hex
+          nullable: true
+          title: Token ID
+          type: string
+        amount:
+          description: The amount of the asset to be deposited.
+          format: string
+          title: Amount
+          type: string
+      required:
+      - amount
+      - assetId
+      - dataAvailabilityMode
+      - userId
+      type: object
+    DomainDto:
+      additionalProperties: false
+      example:
+        chainId: chainId
+        name: name
+        version: version
+        verifyingContract: verifyingContract
+      properties:
+        name:
+          description: The name of the domain for the EIP712 signing.
+          format: string
+          nullable: true
+          title: Name
+          type: string
+        version:
+          description: The version of the domain for the EIP712 signing.
+          format: string
+          nullable: true
+          title: Version
+          type: string
+        chainId:
+          description: The chainId for the domain for the EIP712 signing.
+          format: string
+          nullable: true
+          title: ChainId
+          type: string
+        verifyingContract:
+          description: The verifying contract for the domain for the EIP712 signing.
+          format: hex
+          nullable: true
+          title: VerifyingContract
+          type: string
+      type: object
+    EnableAssetModel:
+      additionalProperties: false
+      description: Request model to enable an asset in the tenant system.
+      example:
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        assetId:
+          description: The unique identifier of the asset to enable.
+          format: uuid
+          title: Asset ID
+          type: string
+      required:
+      - assetId
+      type: object
+    ErrorCodes:
+      enum:
+      - 10000
+      - 10001
+      - 10002
+      - 10101
+      - 10102
+      - 10103
+      - 10104
+      - 10105
+      - 10106
+      - 10201
+      - 10202
+      - 10203
+      - 10301
+      - 10302
+      - 10303
+      - 10304
+      - 10401
+      - 10402
+      - 10403
+      - 10404
+      - 10501
+      - 10502
+      - 10601
+      - 10602
+      - 10603
+      - 10604
+      - 10605
+      - 10606
+      - 10607
+      - 10608
+      - 10609
+      - 10610
+      - 10611
+      - 10612
+      - 10613
+      - 10701
+      - 10801
+      - 10802
+      - 10803
+      - 10901
+      - 10902
+      - 10903
+      - 11001
+      - 12001
+      - 12002
+      - 12003
+      - 12101
+      - 12102
+      - 12103
+      - 12104
+      - 12201
+      - 12301
+      - 12302
+      - 12303
+      - 12304
+      - 13001
+      - 13002
+      - 13003
+      - 13004
+      - 13005
+      - 14001
+      - 14002
+      - 14003
+      - 15001
+      - 16001
+      - 16002
+      - 17001
+      - 17002
+      - 17003
+      - 17004
+      - 17005
+      - 17006
+      - 17007
+      - 17008
+      - 17009
+      - 17010
+      - 17011
+      - 17012
+      - 17013
+      - 17014
+      - 17015
+      - 17016
+      - 17017
+      - 18001
+      - 18002
+      - 18003
+      - 18004
+      - 18005
+      - 19001
+      - 19002
+      - 19003
+      - 19004
+      - 20101
+      - 20301
+      - 20302
+      - 20303
+      - 20305
+      - 20401
+      - 50000
+      format: int32
+      type: integer
+    FeeAction:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      format: int32
+      type: integer
+    FeeConfigDto:
+      additionalProperties: false
+      example:
+        basisPoints: 0
+        action: null
+        feeId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        feeId:
+          description: The unique identifier of the fee configuration.
+          format: uuid
+          title: Fee ID
+          type: string
+        action:
+          $ref: '#/components/schemas/FeeAction'
+        basisPoints:
+          description: The basis points (1/100 of a percent) of the fee to take on
+            the operation.
+          format: int32
+          title: Basis Points
+          type: integer
+      type: object
+    FeeDto:
+      additionalProperties: false
+      example:
+        vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assetId: assetId
+        quantizedAmount:
+          bitLength: 6
+          longValueExact: 2
+          intValue: 1
+          bitCount: 0
+          signValue: 7
+          intValueExact: 5
+          longValue: 5
+        vaultChainId:
+          bitLength: 6
+          longValueExact: 2
+          intValue: 1
+          bitCount: 0
+          signValue: 7
+          intValueExact: 5
+          longValue: 5
+      properties:
+        vaultId:
+          description: The vault ID of the fee sender.
+          format: uuid
+          title: Vault ID
+          type: string
+        vaultChainId:
+          $ref: '#/components/schemas/BigInteger'
+        assetId:
+          description: The StarkEx ID of the fee asset to be collected.
+          format: string
+          nullable: true
+          title: StarkEx Asset ID
+          type: string
+        quantizedAmount:
+          $ref: '#/components/schemas/BigInteger'
+      type: object
+    FilterOptions:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      format: int32
+      type: integer
+    MemberDescriptionDto:
+      additionalProperties: false
+      example:
+        name: name
+        type: type
+      properties:
+        name:
+          description: The name of the variable.
+          format: string
+          nullable: true
+          title: Name
+          type: string
+        type:
+          description: The type of the variable.
+          format: string
+          nullable: true
+          title: Type
+          type: string
+      type: object
+    MemberValueDto:
+      additionalProperties: false
+      example:
+        typeName: typeName
+        value: value
+      properties:
+        typeName:
+          description: The type name of the variable.
+          format: string
+          nullable: true
+          title: Type Name
+          type: string
+        value:
+          description: The value of the variable.
+          format: string
+          nullable: true
+          title: Value
+          type: string
+      type: object
+    MintDataModel:
+      additionalProperties: false
+      description: Model containing information to mint an asset.
+      example:
+        amount: amount
+        mintingBlob: mintingBlob
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dataAvailabilityMode: null
+      properties:
+        mintingBlob:
+          description: The hexadecimal string representation of the data to be associated
+            with the asset being minted.
+          format: hex
+          minLength: 1
+          title: Minting Blob
+          type: string
+        assetId:
+          description: The unique identifier of the asset being minted.
+          format: uuid
+          title: Asset ID
+          type: string
+        amount:
+          description: The amount of the asset to be minted.
+          format: string
+          title: Amount
+          type: string
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+      required:
+      - amount
+      - assetId
+      - dataAvailabilityMode
+      - mintingBlob
+      type: object
+    MintRequestDataModel:
+      additionalProperties: false
+      description: Request model to mint a batch of assets.
+      example:
+        mints:
+        - amount: amount
+          mintingBlob: mintingBlob
+          assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          dataAvailabilityMode: null
+        - amount: amount
+          mintingBlob: mintingBlob
+          assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          dataAvailabilityMode: null
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        userId:
+          description: The ID of the user for which the assets should be minted.
+          format: uuid
+          title: User ID
+          type: string
+        mints:
+          description: The array of assets to mint for the user.
+          items:
+            $ref: '#/components/schemas/MintDataModel'
+          minItems: 1
+          title: User Mints
+          type: array
+      required:
+      - mints
+      - userId
+      type: object
+    OrderDetailsDto:
+      additionalProperties: false
+      example:
+        sellVaultChainId: sellVaultChainId
+        signablePayload: signablePayload
+        buyQuantizedAmount: buyQuantizedAmount
+        fee:
+          vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assetId: assetId
+          quantizedAmount:
+            bitLength: 6
+            longValueExact: 2
+            intValue: 1
+            bitCount: 0
+            signValue: 7
+            intValueExact: 5
+            longValue: 5
+          vaultChainId:
+            bitLength: 6
+            longValueExact: 2
+            intValue: 1
+            bitCount: 0
+            signValue: 7
+            intValueExact: 5
+            longValue: 5
+        buyVaultChainId: buyVaultChainId
+        expirationTimestamp: 9
+        sellQuantizedAmount: sellQuantizedAmount
+        nonce: 3
+        starkKey: starkKey
+      properties:
+        starkKey:
+          description: The STARK key of the user.
+          format: hex
+          nullable: true
+          title: User STARK Key
+          type: string
+        sellQuantizedAmount:
+          description: "The amount to be sold, in quantized form."
+          title: Sell Quantized Amount
+          type: string
+        buyQuantizedAmount:
+          description: "The amount to be bough, in quantized form."
+          title: Buy Quantized Amount
+          type: string
+        sellVaultChainId:
+          description: The vault chain ID for the asset being sold.
+          format: string
+          title: Sell Vault Chain ID
+          type: string
+        buyVaultChainId:
+          description: The vault chain ID for the asset being bought.
+          format: string
+          title: Sell Vault Chain ID
+          type: string
+        fee:
+          $ref: '#/components/schemas/FeeDto'
+        expirationTimestamp:
+          description: "The timestamp at which this order becomes invalid, in seconds\
+            \ since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
+        nonce:
+          description: The unique nonce for the order.
+          format: int32
+          title: Nonce
+          type: integer
+        signablePayload:
+          description: The signable payload for the order.
+          format: hex
+          nullable: true
+          title: Signable Payload
+          type: string
+      type: object
+    OrderDetailsModel:
+      additionalProperties: false
+      description: Request model to fetch details for a signable order.
+      example:
+        side: null
+        amount:
+          bitLength: 6
+          longValueExact: 2
+          intValue: 1
+          bitCount: 0
+          signValue: 7
+          intValueExact: 5
+          longValue: 5
+        orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        price: 0.8008281904610115
+        sellDataAvailabilityMode: null
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        buyDataAvailabilityMode: null
+      properties:
+        orderbookId:
+          description: The ID of the orderbook.
+          format: uuid
+          title: Orderbook ID
+          type: string
+        userId:
+          description: The unique identifier of the user submitting the order.
+          format: uuid
+          title: User ID
+          type: string
+        side:
+          $ref: '#/components/schemas/OrderSide'
+        price:
+          description: The order price.
+          format: double
+          title: Price
+          type: number
+        amount:
+          $ref: '#/components/schemas/BigInteger'
+        sellDataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        buyDataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+      required:
+      - amount
+      - buyDataAvailabilityMode
+      - orderbookId
+      - price
+      - sellDataAvailabilityMode
+      - side
+      - userId
+      type: object
+    OrderDto:
+      additionalProperties: false
+      example:
+        orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        originalAmount: originalAmount
+        orderId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        price: 0.8008281904610115
+        executedAmount: executedAmount
+        fills:
+        - amount: amount
+          price: 6.027456183070403
+        - amount: amount
+          price: 6.027456183070403
+      properties:
+        orderId:
+          description: The ID of the order.
+          format: uuid
+          title: Order ID
+          type: string
+        orderbookId:
+          description: The ID of the orderbook.
+          format: uuid
+          title: Orderbook ID
+          type: string
+        price:
+          description: The order price.
+          format: double
+          title: Price
+          type: number
+        originalAmount:
+          description: The original order amount.
+          format: string
+          title: Original Amount
+          type: string
+        executedAmount:
+          description: The executed order amount.
+          format: string
+          title: Executed Amount
+          type: string
+        fills:
+          description: The order fills.
+          format: array
+          items:
+            $ref: '#/components/schemas/OrderFillDto'
+          nullable: true
+          title: Fills
+          type: array
+      type: object
+    OrderFillDto:
+      additionalProperties: false
+      example:
+        amount: amount
+        price: 6.027456183070403
+      properties:
+        price:
+          description: The fill price.
+          format: double
+          title: Price
+          type: number
+        amount:
+          description: The fill amount.
+          format: string
+          title: Amount
+          type: string
+      type: object
+    OrderSide:
+      enum:
+      - 0
+      - 1
+      format: int32
+      type: integer
+    OrderbookAssetDto:
+      additionalProperties: false
+      example:
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        precision: 0
+      properties:
+        assetId:
+          description: The ID of the asset.
+          format: uuid
+          title: Asset ID
+          type: string
+        precision:
+          description: The orderbook precision of the asset.
+          format: int32
+          title: Precision
+          type: integer
+      type: object
+    OrderbookDto:
+      additionalProperties: false
+      example:
+        symbol: symbol
+        orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        baseAsset:
+          assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          precision: 0
+        quoteAsset:
+          assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          precision: 0
+      properties:
+        orderbookId:
+          description: The ID of the orderbook.
+          format: uuid
+          title: Orderbook ID
+          type: string
+        symbol:
+          description: The orderbook symbol.
+          nullable: true
+          title: Symbol
+          type: string
+        baseAsset:
+          $ref: '#/components/schemas/OrderbookAssetDto'
+        quoteAsset:
+          $ref: '#/components/schemas/OrderbookAssetDto'
+      type: object
+    OrderbookLevel1DataDto:
+      additionalProperties: false
+      example:
+        askPrice: 6.027456183070403
+        orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        lastSize: lastSize
+        bidSize: bidSize
+        bidPrice: 0.8008281904610115
+        askSize: askSize
+        lastPrice: 1.4658129805029452
+      properties:
+        orderbookId:
+          description: The ID of the orderbook.
+          format: uuid
+          title: Orderbook ID
+          type: string
+        bidPrice:
+          description: The highest posted price where someone is willing to buy an
+            asset.
+          format: double
+          title: Bid Price
+          type: number
+        bidSize:
+          description: The number of asset shares that users are trying to buy at
+            the bid price.
+          format: string
+          title: Bid Size
+          type: string
+        askPrice:
+          description: The lowest posted price where someone is willing to sell an
+            asset.
+          format: double
+          title: Ask Price
+          type: number
+        askSize:
+          description: The number of asset shares that users are trying to sell at
+            the bid ask.
+          format: string
+          title: Ask Size
+          type: string
+        lastPrice:
+          description: The price at which the last transaction occurred.
+          format: double
+          title: Last Price
+          type: number
+        lastSize:
+          description: The number of asset shares involved in the last transaction.
+          format: string
+          title: Last Size
+          type: string
+      type: object
+    OrderbookLevel2DataDto:
+      additionalProperties: false
+      example:
+        orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asks:
+        - amount: amount
+          price: 0.8008281904610115
+        - amount: amount
+          price: 0.8008281904610115
+        bids:
+        - amount: amount
+          price: 0.8008281904610115
+        - amount: amount
+          price: 0.8008281904610115
+      properties:
+        orderbookId:
+          description: The ID of the orderbook.
+          format: uuid
+          title: Orderbook ID
+          type: string
+        bids:
+          description: The orderbook bids.
+          format: array
+          items:
+            $ref: '#/components/schemas/OrderbookLevel2EntryDto'
+          nullable: true
+          title: Bids
+          type: array
+        asks:
+          description: The orderbook asks.
+          format: array
+          items:
+            $ref: '#/components/schemas/OrderbookLevel2EntryDto'
+          nullable: true
+          title: Asks
+          type: array
+      type: object
+    OrderbookLevel2EntryDto:
+      additionalProperties: false
+      example:
+        amount: amount
+        price: 0.8008281904610115
+      properties:
+        price:
+          description: The orderbook level price.
+          format: double
+          title: Price
+          type: number
+        amount:
+          description: The orderbook level amount.
+          format: string
+          title: Amount
+          type: string
+      type: object
+    PaginationDto:
+      additionalProperties: false
+      example:
+        pageNumber: 0
+        pageSize: 6
+        hasNext: true
+      properties:
+        pageNumber:
+          description: The page number.
+          format: int32
+          title: Page Number
+          type: integer
+        pageSize:
+          description: The number of items per page.
+          format: int32
+          title: Page Size
+          type: integer
+        hasNext:
+          description: Indicates whether there is a next page available.
+          title: HasNext
+          type: boolean
+      type: object
+    RegisterDetailsDto:
+      additionalProperties: false
+      example:
+        types:
+          key:
+          - name: name
+            type: type
+          - name: name
+            type: type
+        domainRawValues:
+        - typeName: typeName
+          value: value
+        - typeName: typeName
+          value: value
+        primaryType: primaryType
+        domain:
+          chainId: chainId
+          name: name
+          version: version
+          verifyingContract: verifyingContract
+        message:
+        - typeName: typeName
+          value: value
+        - typeName: typeName
+          value: value
+      properties:
+        domain:
+          $ref: '#/components/schemas/DomainDto'
+        types:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/MemberDescriptionDto'
+            type: array
+          description: The types in the EIP712 message.
+          format: dict
+          nullable: true
+          title: Types
+          type: object
+        primaryType:
+          description: The message primary type.
+          format: string
+          nullable: true
+          title: Primary Type
+          type: string
+        message:
+          description: The register details message to be signed.
+          format: array
+          items:
+            $ref: '#/components/schemas/MemberValueDto'
+          nullable: true
+          title: Message
+          type: array
+        domainRawValues:
+          description: The STARK key of the sender.
+          format: array
+          items:
+            $ref: '#/components/schemas/MemberValueDto'
+          nullable: true
+          title: Sender STARK Key
+          type: array
+      type: object
+    RegisterUserModel:
+      additionalProperties: false
+      example:
+        address: address
+        starkSignature:
+          r: r
+          s: s
+        eip712Signature: eip712Signature
+        starkKey: starkKey
+        username: username
+      properties:
+        username:
+          description: The username of the user.
+          format: string
+          maxLength: 30
+          minLength: 6
+          title: Username
+          type: string
+        starkKey:
+          description: The STARK key of the user.
+          format: hex
+          minLength: 1
+          title: STARK Key
+          type: string
+        starkSignature:
+          $ref: '#/components/schemas/SignatureModel'
+        address:
+          description: The Ethereum address associated with the user.
+          format: hex
+          minLength: 1
+          title: Address
+          type: string
+        eip712Signature:
+          description: "The EIP-712 Signature of the Username, Stark Key and Address."
+          format: hex
+          minLength: 1
+          title: EIP-712 Signature
+          type: string
+      required:
+      - address
+      - eip712Signature
+      - starkKey
+      - starkSignature
+      - username
+      type: object
+    SettlementInfoModel:
+      additionalProperties: false
+      description: Settlement details model.
+      example:
+        makerAmount: makerAmount
+        takerFeeAmount: takerFeeAmount
+        takerAmount: takerAmount
+        makerFeeAmount: makerFeeAmount
+      properties:
+        makerAmount:
+          description: The settlement maker amount.
+          format: string
+          title: Maker Amount
+          type: string
+        takerAmount:
+          description: The settlement maker amount.
+          format: string
+          title: Taker Amount
+          type: string
+        makerFeeAmount:
+          description: The settlement maker fee amount.
+          format: string
+          title: Maker Fee Amount
+          type: string
+        takerFeeAmount:
+          description: The settlement taker fee amount.
+          format: string
+          title: Taker Fee Amount
+          type: string
+      required:
+      - makerAmount
+      - makerFeeAmount
+      - takerAmount
+      - takerFeeAmount
+      type: object
+    SignatureModel:
+      additionalProperties: false
+      description: Model representing an ECDSA signature data.
+      example:
+        r: r
+        s: s
+      properties:
+        r:
+          description: "The R component of the ECDSA signature, represented as a hexadecimal\
+            \ string."
+          format: hex
+          minLength: 1
+          title: Signature R
+          type: string
+        s:
+          description: "The S component of the ECDSA signature, represented as a hexadecimal\
+            \ string."
+          format: hex
+          minLength: 1
+          title: Signature S
+          type: string
+      required:
+      - r
+      - s
+      type: object
+    StarkExOperation:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      format: int32
+      type: integer
+    SubmitOrderModel:
+      additionalProperties: false
+      description: Request model to submit an orderbook order.
+      example:
+        side: null
+        amount: amount
+        orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signature:
+          r: r
+          s: s
+        price: 0.8008281904610115
+        sellDataAvailabilityMode: null
+        expirationTimestamp: 6
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        buyDataAvailabilityMode: null
+        nonce: 314780940
+      properties:
+        orderbookId:
+          description: The ID of the orderbook.
+          format: uuid
+          title: Orderbook ID
+          type: string
+        userId:
+          description: The unique identifier of the user submitting the order.
+          format: uuid
+          title: User ID
+          type: string
+        side:
+          $ref: '#/components/schemas/OrderSide'
+        price:
+          description: The order price.
+          format: double
+          title: Price
+          type: number
+        amount:
+          description: The order amount.
+          format: string
+          title: Amount
+          type: string
+        sellDataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        buyDataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        expirationTimestamp:
+          description: "The timestamp at which this order becomes invalid, in seconds\
+            \ since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
+        nonce:
+          description: The unique nonce for the order.
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          title: Nonce
+          type: integer
+        signature:
+          $ref: '#/components/schemas/SignatureModel'
+      required:
+      - amount
+      - buyDataAvailabilityMode
+      - expirationTimestamp
+      - nonce
+      - orderbookId
+      - price
+      - sellDataAvailabilityMode
+      - side
+      - signature
+      - userId
+      type: object
+    SubmitSettlementModel:
+      additionalProperties: false
+      description: Request model to transfer assets between users.
+      example:
+        makerOrder:
+          side: null
+          amount: amount
+          orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signature:
+            r: r
+            s: s
+          price: 0.8008281904610115
+          sellDataAvailabilityMode: null
+          expirationTimestamp: 6
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          buyDataAvailabilityMode: null
+          nonce: 314780940
+        settlementInfo:
+          makerAmount: makerAmount
+          takerFeeAmount: takerFeeAmount
+          takerAmount: takerAmount
+          makerFeeAmount: makerFeeAmount
+        takerOrder:
+          side: null
+          amount: amount
+          orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signature:
+            r: r
+            s: s
+          price: 0.8008281904610115
+          sellDataAvailabilityMode: null
+          expirationTimestamp: 6
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          buyDataAvailabilityMode: null
+          nonce: 314780940
+      properties:
+        makerOrder:
+          $ref: '#/components/schemas/SubmitOrderModel'
+        takerOrder:
+          $ref: '#/components/schemas/SubmitOrderModel'
+        settlementInfo:
+          $ref: '#/components/schemas/SettlementInfoModel'
+      required:
+      - makerOrder
+      - settlementInfo
+      - takerOrder
+      type: object
+    TenantAssetDto:
+      additionalProperties: false
+      example:
+        symbol: symbol
+        address: address
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        quantum: quantum
+        assetType: assetType
+      properties:
+        assetId:
+          description: The unique identifier of the asset.
+          format: uuid
+          title: Asset ID
+          type: string
+        assetType:
+          description: The asset type used for on-chain interactions.
+          format: hex
+          nullable: true
+          title: Asset Type
+          type: string
+        address:
+          description: The Ethereum address of the asset.
+          format: hex
+          nullable: true
+          title: Address
+          type: string
+        name:
+          description: The name of the asset.
+          nullable: true
+          title: Name
+          type: string
+        symbol:
+          description: The symbol of the asset.
+          nullable: true
+          title: Symbol
+          type: string
+        quantum:
+          description: The quantum of the asset.
+          title: Quantum
+          type: string
+      type: object
+    TenantAssetDtoPaginatedResponseDto:
+      additionalProperties: false
+      example:
+        pagination:
+          pageNumber: 0
+          pageSize: 6
+          hasNext: true
+        data:
+        - symbol: symbol
+          address: address
+          assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          quantum: quantum
+          assetType: assetType
+        - symbol: symbol
+          address: address
+          assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          quantum: quantum
+          assetType: assetType
+        totalCount: 1
+      properties:
+        data:
+          description: The data in the paginated response.
+          items:
+            $ref: '#/components/schemas/TenantAssetDto'
+          nullable: true
+          title: Data
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationDto'
+        totalCount:
+          description: The total count of results available.
+          format: int32
+          title: TotalCount
+          type: integer
+      type: object
+    TransactionDto:
+      additionalProperties: false
+      example:
+        starkExInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        rawTransaction:
+          type: type
+        starkExTransactionId: 0
+        tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        creationDate: 2000-01-23
+        operation: null
+        transactionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: null
+      properties:
+        transactionId:
+          description: The ID of the transaction.
+          format: uuid
+          title: Transaction ID
+          type: string
+        starkExTransactionId:
+          description: The sequence ID of the transaction in StarkEx.
+          format: int64
+          nullable: true
+          title: StarkEx Sequence ID
+          type: integer
+        starkExInstanceId:
+          description: The ID of the StarkEx instance.
+          format: uuid
+          title: StarkEx Instance ID
+          type: string
+        tenantId:
+          description: The ID of the tenant.
+          format: uuid
+          title: Tenant ID
+          type: string
+        operation:
+          $ref: '#/components/schemas/StarkExOperation'
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        creationDate:
+          description: The date the transaction was created.
+          format: date
+          title: Creation Date
+          type: string
+        rawTransaction:
+          $ref: '#/components/schemas/TransactionModel'
+      type: object
+    TransactionDtoPaginatedResponseDto:
+      additionalProperties: false
+      example:
+        pagination:
+          pageNumber: 0
+          pageSize: 6
+          hasNext: true
+        data:
+        - starkExInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          rawTransaction:
+            type: type
+          starkExTransactionId: 0
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          creationDate: 2000-01-23
+          operation: null
+          transactionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: null
+        - starkExInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          rawTransaction:
+            type: type
+          starkExTransactionId: 0
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          creationDate: 2000-01-23
+          operation: null
+          transactionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: null
+        totalCount: 6
+      properties:
+        data:
+          description: The data in the paginated response.
+          items:
+            $ref: '#/components/schemas/TransactionDto'
+          nullable: true
+          title: Data
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationDto'
+        totalCount:
+          description: The total count of results available.
+          format: int32
+          title: TotalCount
+          type: integer
+      type: object
+    TransactionModel:
+      additionalProperties: false
+      example:
+        type: type
+      properties:
+        type:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    TransactionStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      format: int32
+      type: integer
+    TransferDetailsDto:
+      additionalProperties: false
+      example:
+        receiverVaultChainId: receiverVaultChainId
+        senderVaultChainId: senderVaultChainId
+        expirationTimestamp: 0
+        nonce: 6
+        feeQuantizedAmount: feeQuantizedAmount
+        signablePayload: signablePayload
+        feeAssetId: feeAssetId
+        senderVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assetId: assetId
+        senderStarkKey: senderStarkKey
+        receiverVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        quantizedAmount: quantizedAmount
+        receiverStarkKey: receiverStarkKey
+        feeVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        feeVaultChainId: feeVaultChainId
+      properties:
+        senderStarkKey:
+          description: The STARK key of the sender.
+          format: hex
+          nullable: true
+          title: Sender STARK Key
+          type: string
+        senderVaultChainId:
+          description: The vault chain ID of the sender.
+          title: Sender Vault Chain ID
+          type: string
+        senderVaultId:
+          description: The vault ID of the sender.
+          format: uuid
+          title: Sender Vault ID
+          type: string
+        receiverStarkKey:
+          description: The STARK key of the receiver.
+          format: hex
+          nullable: true
+          title: Receiver STARK Key
+          type: string
+        receiverVaultChainId:
+          description: The vault chain ID of the receiver.
+          title: Receiver Vault Chain ID
+          type: string
+        receiverVaultId:
+          description: The vault ID of the receiver.
+          format: uuid
+          title: Receiver Vault ID
+          type: string
+        assetId:
+          description: The StarkEx ID of the asset being transferred.
+          format: hex
+          nullable: true
+          title: StarkEx Asset ID
+          type: string
+        quantizedAmount:
+          description: "The amount of the asset to be transferred, in quantized form."
+          title: Quantized Amount
+          type: string
+        feeVaultChainId:
+          description: The vault chain ID of the fee sender.
+          title: Fee Vault Chain ID
+          type: string
+        feeVaultId:
+          description: The vault ID of the fee sender.
+          format: uuid
+          title: Fee Vault ID
+          type: string
+        feeQuantizedAmount:
+          description: "The amount of the fee asset to be collected, in quantized\
+            \ form."
+          title: Quantized Fee Amount
+          type: string
+        feeAssetId:
+          description: The StarkEx ID of the fee asset to be collected.
+          format: string
+          nullable: true
+          title: StarkEx Fee Asset ID
+          type: string
+        expirationTimestamp:
+          description: "The timestamp at which this transfer becomes invalid, in seconds\
+            \ since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
+        nonce:
+          description: The unique nonce for the transfer.
+          format: int32
+          title: Nonce
+          type: integer
+        signablePayload:
+          description: The signable payload for the transfer.
+          format: hex
+          nullable: true
+          title: Signable Payload
+          type: string
+      type: object
+    TransferDetailsModel:
+      additionalProperties: false
+      description: Request model to fetch details for a signable transfer.
+      example:
+        receiverDataAvailabilityMode: null
+        amount: amount
+        mintingBlob: mintingBlob
+        tokenId: tokenId
+        senderUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        senderDataAvailabilityMode: null
+        receiverUserId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        senderUserId:
+          description: The unique identifier of the user sending the transfer.
+          format: uuid
+          title: Sender User ID
+          type: string
+        receiverUserId:
+          description: The unique identifier of the user receiving the transfer.
+          format: uuid
+          title: Receiver User ID
+          type: string
+        assetId:
+          description: The unique identifier of the asset being transferred.
+          format: uuid
+          title: Asset ID
+          type: string
+        tokenId:
+          description: "The hexadecimal string representation of the token ID, if\
+            \ applicable (ie. ERC-721/ERC-1155)."
+          format: hex
+          nullable: true
+          title: Token ID
+          type: string
+        mintingBlob:
+          description: "The hexadecimal string representation of the minting blob,\
+            \ if applicable (ie. Mintable ERC-20/ERC-721/ERC-1155)."
+          format: hex
+          nullable: true
+          title: Minting Blob
+          type: string
+        senderDataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        receiverDataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        amount:
+          description: The amount of the asset to be transferred.
+          title: Amount
+          type: string
+      required:
+      - amount
+      - assetId
+      - receiverDataAvailabilityMode
+      - receiverUserId
+      - senderDataAvailabilityMode
+      - senderUserId
+      type: object
+    TransferModel:
+      additionalProperties: false
+      description: Request model to transfer assets between users.
+      example:
+        signature:
+          r: r
+          s: s
+        senderVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        receiverVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        quantizedAmount: quantizedAmount
+        expirationTimestamp: 0
+        nonce: 1294386358
+      properties:
+        senderVaultId:
+          description: The unique identifier of the transfer sender vault.
+          format: uuid
+          title: Sender Vault ID
+          type: string
+        receiverVaultId:
+          description: The unique identifier of the transfer recipient vault.
+          format: uuid
+          title: Receiver Vault ID
+          type: string
+        quantizedAmount:
+          description: "The amount of the asset to be transferred, in quantized form."
+          title: Quantized Amount
+          type: string
+        expirationTimestamp:
+          description: "The timestamp at which this transfer becomes invalid, in seconds\
+            \ since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
+        nonce:
+          description: The unique nonce for the transfer.
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          title: Nonce
+          type: integer
+        signature:
+          $ref: '#/components/schemas/SignatureModel'
+      required:
+      - expirationTimestamp
+      - nonce
+      - quantizedAmount
+      - receiverVaultId
+      - senderVaultId
+      - signature
+      type: object
+    UserDto:
+      additionalProperties: false
+      example:
+        address: address
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        starkKey: starkKey
+        username: username
+      properties:
+        userId:
+          description: The ID of the user.
+          format: uuid
+          title: User ID
+          type: string
+        username:
+          description: The username of the user.
+          format: string
+          nullable: true
+          title: Username
+          type: string
+        starkKey:
+          description: The STARK key of the user.
+          format: hex
+          nullable: true
+          title: STARK Key
+          type: string
+        address:
+          description: The Ethereum address associated with the user.
+          format: hex
+          nullable: true
+          title: Address
+          type: string
+      type: object
+    VaultDto:
+      additionalProperties: false
+      example:
+        starkExAddress: starkExAddress
+        assetStarkExId: assetStarkExId
+        userStarkKey: userStarkKey
+        accountingBalance: accountingBalance
+        vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        vaultChainId: vaultChainId
+        availableBalance: availableBalance
+      properties:
+        vaultId:
+          description: The ID of the vault.
+          format: uuid
+          title: Vault ID
+          type: string
+        vaultChainId:
+          description: The StarkEx ID of the vault.
+          title: Vault Chain ID
+          type: string
+        starkExAddress:
+          description: The address of the StarkEx instance associated with the vault.
+          format: hex
+          nullable: true
+          title: StarkEx Address
+          type: string
+        assetStarkExId:
+          description: The StarkEx ID of the asset associated with the vault.
+          format: hex
+          nullable: true
+          title: Asset StarkEx ID
+          type: string
+        userStarkKey:
+          description: The STARK key of the user associated with the vault.
+          format: hex
+          nullable: true
+          title: STARK Key
+          type: string
+        availableBalance:
+          description: The available balance of the vault.
+          title: Available Balance
+          type: string
+        accountingBalance:
+          description: The accounting balance of the vault.
+          title: Accounting Balance
+          type: string
+      type: object
+    VaultDtoPaginatedResponseDto:
+      additionalProperties: false
+      example:
+        pagination:
+          pageNumber: 0
+          pageSize: 6
+          hasNext: true
+        data:
+        - starkExAddress: starkExAddress
+          assetStarkExId: assetStarkExId
+          userStarkKey: userStarkKey
+          accountingBalance: accountingBalance
+          vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          vaultChainId: vaultChainId
+          availableBalance: availableBalance
+        - starkExAddress: starkExAddress
+          assetStarkExId: assetStarkExId
+          userStarkKey: userStarkKey
+          accountingBalance: accountingBalance
+          vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          vaultChainId: vaultChainId
+          availableBalance: availableBalance
+        totalCount: 0
+      properties:
+        data:
+          description: The data in the paginated response.
+          items:
+            $ref: '#/components/schemas/VaultDto'
+          nullable: true
+          title: Data
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationDto'
+        totalCount:
+          description: The total count of results available.
+          format: int32
+          title: TotalCount
+          type: integer
+      type: object
+    WithdrawModel:
+      additionalProperties: false
+      example:
+        amount: amount
+        vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        vaultId:
+          description: The unique identifier of the vault to withdraw from.
+          format: uuid
+          title: Vault ID
+          type: string
+        amount:
+          description: "The amount of the asset to be withdrawn, in unquantized form."
+          title: Amount
+          type: string
+      required:
+      - amount
+      - vaultId
+      type: object
+  securitySchemes:
+    oauth2:
+      flows:
+        clientCredentials:
+          scopes:
+            write:users: Access user write operations.
+            read:users: Access user read operations.
+            read:tenant_assets: Access tenant asset read operations.
+            write:tenant_assets: Access tenant asset write operations.
+            mint:assets: Access mint operations.
+            read:vaults: Access vault read operations.
+            write:transfers: Access transfer write operations.
+            read:transfers: Access transfer read operations.
+          tokenUrl: https://dev-o6vo4sdh.us.auth0.com/oauth/token
+      type: oauth2
+
