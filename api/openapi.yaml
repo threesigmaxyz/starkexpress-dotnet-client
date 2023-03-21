@@ -1338,15 +1338,22 @@ components:
         tokenId: tokenId
         vaultId: vaultId
         quantizedAmount: quantizedAmount
-        contractAddress: contractAddress
+        assetContractAddress: assetContractAddress
+        operatorContractAddress: operatorContractAddress
         starkKey: starkKey
         assetType: assetType
       properties:
-        contractAddress:
+        operatorContractAddress:
           description: The smart contract address that processes on-chain deposits.
           format: hex
           nullable: true
-          title: Smart Contract Address
+          title: Operator Smart Contract Address
+          type: string
+        assetContractAddress:
+          description: The asset's smart contract address.
+          format: hex
+          nullable: true
+          title: Asset Smart Contract Address
           type: string
         depositFunction:
           description: The deposit function to use on-chain.
@@ -2428,11 +2435,18 @@ components:
         assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         quantum: quantum
+        assetType: assetType
       properties:
         assetId:
           description: The unique identifier of the asset.
           format: uuid
           title: Asset ID
+          type: string
+        assetType:
+          description: The asset type used for on-chain interactions.
+          format: hex
+          nullable: true
+          title: Asset Type
           type: string
         address:
           description: The Ethereum address of the asset.
@@ -2468,11 +2482,13 @@ components:
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          assetType: assetType
         - symbol: symbol
           address: address
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          assetType: assetType
         totalCount: 1
       properties:
         data:
