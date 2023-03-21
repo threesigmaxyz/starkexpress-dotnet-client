@@ -63,7 +63,7 @@ namespace StarkExpress.SDK.Client.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //BatchMintRequestModel batchMintRequestModel = null;
             //var response = instance.MintAssets(batchMintRequestModel);
-            //Assert.IsType<List<VaultDto>>(response);
+            //Assert.IsType<Dictionary<string, List<VaultDto>>>(response);
         }
     }
 }

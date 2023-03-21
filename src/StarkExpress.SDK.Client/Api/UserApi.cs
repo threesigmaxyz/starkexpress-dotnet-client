@@ -100,8 +100,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>UserDto</returns>
-        UserDto GetUser(Guid userId, int operationIndex = 0);
+        /// <returns>UserWithVaultsDto</returns>
+        UserWithVaultsDto GetUser(Guid userId, int operationIndex = 0);
 
         /// <summary>
         /// Get User
@@ -112,8 +112,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of UserDto</returns>
-        ApiResponse<UserDto> GetUserWithHttpInfo(Guid userId, int operationIndex = 0);
+        /// <returns>ApiResponse of UserWithVaultsDto</returns>
+        ApiResponse<UserWithVaultsDto> GetUserWithHttpInfo(Guid userId, int operationIndex = 0);
         /// <summary>
         /// Register new User
         /// </summary>
@@ -224,8 +224,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UserDto</returns>
-        System.Threading.Tasks.Task<UserDto> GetUserAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UserWithVaultsDto</returns>
+        System.Threading.Tasks.Task<UserWithVaultsDto> GetUserAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get User
@@ -237,8 +237,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UserDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserDto>> GetUserWithHttpInfoAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UserWithVaultsDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserWithVaultsDto>> GetUserWithHttpInfoAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Register new User
         /// </summary>
@@ -844,10 +844,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>UserDto</returns>
-        public UserDto GetUser(Guid userId, int operationIndex = 0)
+        /// <returns>UserWithVaultsDto</returns>
+        public UserWithVaultsDto GetUser(Guid userId, int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<UserDto> localVarResponse = GetUserWithHttpInfo(userId);
+            StarkExpress.SDK.Client.Client.ApiResponse<UserWithVaultsDto> localVarResponse = GetUserWithHttpInfo(userId);
             return localVarResponse.Data;
         }
 
@@ -857,8 +857,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of UserDto</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<UserDto> GetUserWithHttpInfo(Guid userId, int operationIndex = 0)
+        /// <returns>ApiResponse of UserWithVaultsDto</returns>
+        public StarkExpress.SDK.Client.Client.ApiResponse<UserWithVaultsDto> GetUserWithHttpInfo(Guid userId, int operationIndex = 0)
         {
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
 
@@ -905,7 +905,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<UserDto>("/api/users/{userId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<UserWithVaultsDto>("/api/users/{userId}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetUser", localVarResponse);
@@ -925,10 +925,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UserDto</returns>
-        public async System.Threading.Tasks.Task<UserDto> GetUserAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UserWithVaultsDto</returns>
+        public async System.Threading.Tasks.Task<UserWithVaultsDto> GetUserAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<UserDto> localVarResponse = await GetUserWithHttpInfoAsync(userId, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<UserWithVaultsDto> localVarResponse = await GetUserWithHttpInfoAsync(userId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -939,8 +939,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="userId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UserDto)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<UserDto>> GetUserWithHttpInfoAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UserWithVaultsDto)</returns>
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<UserWithVaultsDto>> GetUserWithHttpInfoAsync(Guid userId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
@@ -988,7 +988,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<UserDto>("/api/users/{userId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<UserWithVaultsDto>("/api/users/{userId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

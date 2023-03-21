@@ -222,7 +222,7 @@ catch (ApiException e)
 
 <a name="getuser"></a>
 # **GetUser**
-> UserDto GetUser (Guid userId)
+> UserWithVaultsDto GetUser (Guid userId)
 
 Get User
 
@@ -253,7 +253,7 @@ namespace Example
             try
             {
                 // Get User
-                UserDto result = apiInstance.GetUser(userId);
+                UserWithVaultsDto result = apiInstance.GetUser(userId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -274,7 +274,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get User
-    ApiResponse<UserDto> response = apiInstance.GetUserWithHttpInfo(userId);
+    ApiResponse<UserWithVaultsDto> response = apiInstance.GetUserWithHttpInfo(userId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -295,7 +295,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**UserDto**](UserDto.md)
+[**UserWithVaultsDto**](UserWithVaultsDto.md)
 
 ### Authorization
 
