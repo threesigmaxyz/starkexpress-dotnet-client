@@ -28,7 +28,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Submit Settlement
+        /// Submit Settlement (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -40,7 +40,7 @@ namespace StarkExpress.SDK.Client.Api
         List<VaultDto> SubmitSettlement(SubmitSettlementModel submitSettlementModel, int operationIndex = 0);
 
         /// <summary>
-        /// Submit Settlement
+        /// Submit Settlement (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -60,7 +60,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Submit Settlement
+        /// Submit Settlement (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -73,7 +73,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<List<VaultDto>> SubmitSettlementAsync(SubmitSettlementModel submitSettlementModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Submit Settlement
+        /// Submit Settlement (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -205,7 +205,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement This endpoint submits an order settlement.
+        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -218,7 +218,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement This endpoint submits an order settlement.
+        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -276,7 +276,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement This endpoint submits an order settlement.
+        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -290,7 +290,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement This endpoint submits an order settlement.
+        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>

@@ -106,14 +106,14 @@ Class | Method | HTTP request | Description
 *FeeApi* | [**ConfigureFeeModel**](docs/FeeApi.md#configurefeemodel) | **POST** /api/fees | Configure Fee Model
 *FeeApi* | [**GetFeeModel**](docs/FeeApi.md#getfeemodel) | **GET** /api/fees/{feeId} | Get Fee Model
 *MintApi* | [**MintAssets**](docs/MintApi.md#mintassets) | **POST** /api/mint | Mint Assets
-*OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **DELETE** /api/orders/{orderId} | Cancel Order
-*OrderApi* | [**OrderDetails**](docs/OrderApi.md#orderdetails) | **POST** /api/orders/details | Get Order Details
-*OrderApi* | [**SubmitOrder**](docs/OrderApi.md#submitorder) | **POST** /api/orders | Submit Order
-*OrderbookApi* | [**CreateOrderbook**](docs/OrderbookApi.md#createorderbook) | **POST** /api/orderbooks | Create Orderbook
-*OrderbookApi* | [**GetOrderbook**](docs/OrderbookApi.md#getorderbook) | **GET** /api/orderbooks/{orderbookId} | Get Orderbook
-*OrderbookApi* | [**GetOrderbookLevel1Data**](docs/OrderbookApi.md#getorderbooklevel1data) | **GET** /api/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data
-*OrderbookApi* | [**GetOrderbookLevel2Data**](docs/OrderbookApi.md#getorderbooklevel2data) | **GET** /api/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data
-*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/settlements | Submit Settlement
+*OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **DELETE** /api/orders/{orderId} | Cancel Order (Not Implemented)
+*OrderApi* | [**OrderDetails**](docs/OrderApi.md#orderdetails) | **POST** /api/orders/details | Get Order Details (Not Implemented)
+*OrderApi* | [**SubmitOrder**](docs/OrderApi.md#submitorder) | **POST** /api/orders | Submit Order (Not Implemented)
+*OrderbookApi* | [**CreateOrderbook**](docs/OrderbookApi.md#createorderbook) | **POST** /api/orderbooks | Create Orderbook (Not Implemented)
+*OrderbookApi* | [**GetOrderbook**](docs/OrderbookApi.md#getorderbook) | **GET** /api/orderbooks/{orderbookId} | Get Orderbook (Not Implemented)
+*OrderbookApi* | [**GetOrderbookLevel1Data**](docs/OrderbookApi.md#getorderbooklevel1data) | **GET** /api/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data (Not Implemented)
+*OrderbookApi* | [**GetOrderbookLevel2Data**](docs/OrderbookApi.md#getorderbooklevel2data) | **GET** /api/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data (Not Implemented)
+*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/settlements | Submit Settlement (Not Implemented)
 *TransactionApi* | [**GetAllTransactions**](docs/TransactionApi.md#getalltransactions) | **GET** /api/transactions | Get All Transactions
 *TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /api/transactions/{transactionId} | Get Transaction
 *TransferApi* | [**Transfer**](docs/TransferApi.md#transfer) | **POST** /api/transfers | Transfer Asset

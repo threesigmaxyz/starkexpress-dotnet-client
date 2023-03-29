@@ -446,6 +446,11 @@ namespace StarkExpress.SDK.Client.Model
         NUMBER_17017 = 17017,
 
         /// <summary>
+        /// Enum NUMBER_17018 for value: 17018
+        /// </summary>
+        NUMBER_17018 = 17018,
+
+        /// <summary>
         /// Enum NUMBER_18001 for value: 18001
         /// </summary>
         NUMBER_18001 = 18001,
