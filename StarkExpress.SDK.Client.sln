@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarkExpress.SDK.Client", "src\StarkExpress.SDK.Client\StarkExpress.SDK.Client.csproj", "{7E1425AE-15E6-49BC-9066-89640AA40F13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarkExpress.SDK.Client", "src\StarkExpress.SDK.Client\StarkExpress.SDK.Client.csproj", "{1CD42617-8ED8-485B-B393-3390791AA176}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarkExpress.SDK.Client.Test", "src\StarkExpress.SDK.Client.Test\StarkExpress.SDK.Client.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7E1425AE-15E6-49BC-9066-89640AA40F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E1425AE-15E6-49BC-9066-89640AA40F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E1425AE-15E6-49BC-9066-89640AA40F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E1425AE-15E6-49BC-9066-89640AA40F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD42617-8ED8-485B-B393-3390791AA176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD42617-8ED8-485B-B393-3390791AA176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD42617-8ED8-485B-B393-3390791AA176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD42617-8ED8-485B-B393-3390791AA176}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
