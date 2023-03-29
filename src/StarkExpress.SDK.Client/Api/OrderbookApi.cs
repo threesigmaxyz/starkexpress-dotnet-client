@@ -28,7 +28,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create Orderbook
+        /// Create Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint creates an orderbook.
@@ -40,7 +40,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderbookDto CreateOrderbook(CreateOrderbookModel createOrderbookModel, int operationIndex = 0);
 
         /// <summary>
-        /// Create Orderbook
+        /// Create Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint creates an orderbook.
@@ -51,7 +51,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>ApiResponse of OrderbookDto</returns>
         ApiResponse<OrderbookDto> CreateOrderbookWithHttpInfo(CreateOrderbookModel createOrderbookModel, int operationIndex = 0);
         /// <summary>
-        /// Get Orderbook
+        /// Get Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook metadata by ID.
@@ -63,7 +63,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderbookDto GetOrderbook(Guid orderbookId, int operationIndex = 0);
 
         /// <summary>
-        /// Get Orderbook
+        /// Get Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook metadata by ID.
@@ -74,7 +74,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>ApiResponse of OrderbookDto</returns>
         ApiResponse<OrderbookDto> GetOrderbookWithHttpInfo(Guid orderbookId, int operationIndex = 0);
         /// <summary>
-        /// Get Orderbook L1 Data
+        /// Get Orderbook L1 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 1 data by ID.
@@ -86,7 +86,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderbookLevel1DataDto GetOrderbookLevel1Data(Guid orderbookId, int operationIndex = 0);
 
         /// <summary>
-        /// Get Orderbook L1 Data
+        /// Get Orderbook L1 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 1 data by ID.
@@ -97,7 +97,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>ApiResponse of OrderbookLevel1DataDto</returns>
         ApiResponse<OrderbookLevel1DataDto> GetOrderbookLevel1DataWithHttpInfo(Guid orderbookId, int operationIndex = 0);
         /// <summary>
-        /// Get Orderbook L2 Data
+        /// Get Orderbook L2 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 2 data by ID.
@@ -110,7 +110,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderbookLevel2DataDto GetOrderbookLevel2Data(Guid orderbookId, int? depth = default(int?), int operationIndex = 0);
 
         /// <summary>
-        /// Get Orderbook L2 Data
+        /// Get Orderbook L2 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 2 data by ID.
@@ -131,7 +131,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Create Orderbook
+        /// Create Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint creates an orderbook.
@@ -144,7 +144,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderbookDto> CreateOrderbookAsync(CreateOrderbookModel createOrderbookModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create Orderbook
+        /// Create Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint creates an orderbook.
@@ -156,7 +156,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>Task of ApiResponse (OrderbookDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderbookDto>> CreateOrderbookWithHttpInfoAsync(CreateOrderbookModel createOrderbookModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get Orderbook
+        /// Get Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook metadata by ID.
@@ -169,7 +169,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderbookDto> GetOrderbookAsync(Guid orderbookId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Orderbook
+        /// Get Orderbook (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook metadata by ID.
@@ -181,7 +181,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>Task of ApiResponse (OrderbookDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderbookDto>> GetOrderbookWithHttpInfoAsync(Guid orderbookId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get Orderbook L1 Data
+        /// Get Orderbook L1 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 1 data by ID.
@@ -194,7 +194,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderbookLevel1DataDto> GetOrderbookLevel1DataAsync(Guid orderbookId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Orderbook L1 Data
+        /// Get Orderbook L1 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 1 data by ID.
@@ -206,7 +206,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>Task of ApiResponse (OrderbookLevel1DataDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderbookLevel1DataDto>> GetOrderbookLevel1DataWithHttpInfoAsync(Guid orderbookId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get Orderbook L2 Data
+        /// Get Orderbook L2 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 2 data by ID.
@@ -220,7 +220,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderbookLevel2DataDto> GetOrderbookLevel2DataAsync(Guid orderbookId, int? depth = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Orderbook L2 Data
+        /// Get Orderbook L2 Data (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint fetches orderbook level 2 data by ID.
@@ -353,7 +353,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Create Orderbook This endpoint creates an orderbook.
+        /// Create Orderbook (Not Implemented) This endpoint creates an orderbook.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createOrderbookModel">The orderbook creation request.</param>
@@ -366,7 +366,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Create Orderbook This endpoint creates an orderbook.
+        /// Create Orderbook (Not Implemented) This endpoint creates an orderbook.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createOrderbookModel">The orderbook creation request.</param>
@@ -424,7 +424,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Create Orderbook This endpoint creates an orderbook.
+        /// Create Orderbook (Not Implemented) This endpoint creates an orderbook.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createOrderbookModel">The orderbook creation request.</param>
@@ -438,7 +438,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Create Orderbook This endpoint creates an orderbook.
+        /// Create Orderbook (Not Implemented) This endpoint creates an orderbook.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createOrderbookModel">The orderbook creation request.</param>
@@ -499,7 +499,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook This endpoint fetches orderbook metadata by ID.
+        /// Get Orderbook (Not Implemented) This endpoint fetches orderbook metadata by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -512,7 +512,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook This endpoint fetches orderbook metadata by ID.
+        /// Get Orderbook (Not Implemented) This endpoint fetches orderbook metadata by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -563,7 +563,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook This endpoint fetches orderbook metadata by ID.
+        /// Get Orderbook (Not Implemented) This endpoint fetches orderbook metadata by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -577,7 +577,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook This endpoint fetches orderbook metadata by ID.
+        /// Get Orderbook (Not Implemented) This endpoint fetches orderbook metadata by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -631,7 +631,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L1 Data This endpoint fetches orderbook level 1 data by ID.
+        /// Get Orderbook L1 Data (Not Implemented) This endpoint fetches orderbook level 1 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -644,7 +644,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L1 Data This endpoint fetches orderbook level 1 data by ID.
+        /// Get Orderbook L1 Data (Not Implemented) This endpoint fetches orderbook level 1 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -695,7 +695,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L1 Data This endpoint fetches orderbook level 1 data by ID.
+        /// Get Orderbook L1 Data (Not Implemented) This endpoint fetches orderbook level 1 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -709,7 +709,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L1 Data This endpoint fetches orderbook level 1 data by ID.
+        /// Get Orderbook L1 Data (Not Implemented) This endpoint fetches orderbook level 1 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -763,7 +763,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L2 Data This endpoint fetches orderbook level 2 data by ID.
+        /// Get Orderbook L2 Data (Not Implemented) This endpoint fetches orderbook level 2 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -777,7 +777,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L2 Data This endpoint fetches orderbook level 2 data by ID.
+        /// Get Orderbook L2 Data (Not Implemented) This endpoint fetches orderbook level 2 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -833,7 +833,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L2 Data This endpoint fetches orderbook level 2 data by ID.
+        /// Get Orderbook L2 Data (Not Implemented) This endpoint fetches orderbook level 2 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>
@@ -848,7 +848,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Orderbook L2 Data This endpoint fetches orderbook level 2 data by ID.
+        /// Get Orderbook L2 Data (Not Implemented) This endpoint fetches orderbook level 2 data by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderbookId"></param>

@@ -28,7 +28,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Cancel Order
+        /// Cancel Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint cancels an active order.
@@ -40,7 +40,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderDto CancelOrder(Guid orderId, int operationIndex = 0);
 
         /// <summary>
-        /// Cancel Order
+        /// Cancel Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint cancels an active order.
@@ -51,7 +51,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>ApiResponse of OrderDto</returns>
         ApiResponse<OrderDto> CancelOrderWithHttpInfo(Guid orderId, int operationIndex = 0);
         /// <summary>
-        /// Get Order Details
+        /// Get Order Details (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint allows for fetching details of an order to be signed.
@@ -63,7 +63,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderDetailsDto OrderDetails(OrderDetailsModel orderDetailsModel, int operationIndex = 0);
 
         /// <summary>
-        /// Get Order Details
+        /// Get Order Details (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint allows for fetching details of an order to be signed.
@@ -74,7 +74,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>ApiResponse of OrderDetailsDto</returns>
         ApiResponse<OrderDetailsDto> OrderDetailsWithHttpInfo(OrderDetailsModel orderDetailsModel, int operationIndex = 0);
         /// <summary>
-        /// Submit Order
+        /// Submit Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order to the matching engine.
@@ -86,7 +86,7 @@ namespace StarkExpress.SDK.Client.Api
         OrderDto SubmitOrder(SubmitOrderModel submitOrderModel, int operationIndex = 0);
 
         /// <summary>
-        /// Submit Order
+        /// Submit Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order to the matching engine.
@@ -106,7 +106,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Cancel Order
+        /// Cancel Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint cancels an active order.
@@ -119,7 +119,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderDto> CancelOrderAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Cancel Order
+        /// Cancel Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint cancels an active order.
@@ -131,7 +131,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>Task of ApiResponse (OrderDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderDto>> CancelOrderWithHttpInfoAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get Order Details
+        /// Get Order Details (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint allows for fetching details of an order to be signed.
@@ -144,7 +144,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderDetailsDto> OrderDetailsAsync(OrderDetailsModel orderDetailsModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Order Details
+        /// Get Order Details (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint allows for fetching details of an order to be signed.
@@ -156,7 +156,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <returns>Task of ApiResponse (OrderDetailsDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderDetailsDto>> OrderDetailsWithHttpInfoAsync(OrderDetailsModel orderDetailsModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Submit Order
+        /// Submit Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order to the matching engine.
@@ -169,7 +169,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<OrderDto> SubmitOrderAsync(SubmitOrderModel submitOrderModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Submit Order
+        /// Submit Order (Not Implemented)
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order to the matching engine.
@@ -301,7 +301,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Cancel Order This endpoint cancels an active order.
+        /// Cancel Order (Not Implemented) This endpoint cancels an active order.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -314,7 +314,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Cancel Order This endpoint cancels an active order.
+        /// Cancel Order (Not Implemented) This endpoint cancels an active order.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -365,7 +365,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Cancel Order This endpoint cancels an active order.
+        /// Cancel Order (Not Implemented) This endpoint cancels an active order.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -379,7 +379,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Cancel Order This endpoint cancels an active order.
+        /// Cancel Order (Not Implemented) This endpoint cancels an active order.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -433,7 +433,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Order Details This endpoint allows for fetching details of an order to be signed.
+        /// Get Order Details (Not Implemented) This endpoint allows for fetching details of an order to be signed.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderDetailsModel">The signable order details request.</param>
@@ -446,7 +446,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Order Details This endpoint allows for fetching details of an order to be signed.
+        /// Get Order Details (Not Implemented) This endpoint allows for fetching details of an order to be signed.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderDetailsModel">The signable order details request.</param>
@@ -504,7 +504,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Order Details This endpoint allows for fetching details of an order to be signed.
+        /// Get Order Details (Not Implemented) This endpoint allows for fetching details of an order to be signed.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderDetailsModel">The signable order details request.</param>
@@ -518,7 +518,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Get Order Details This endpoint allows for fetching details of an order to be signed.
+        /// Get Order Details (Not Implemented) This endpoint allows for fetching details of an order to be signed.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderDetailsModel">The signable order details request.</param>
@@ -579,7 +579,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Order This endpoint submits an order to the matching engine.
+        /// Submit Order (Not Implemented) This endpoint submits an order to the matching engine.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitOrderModel">The order submission request.</param>
@@ -592,7 +592,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Order This endpoint submits an order to the matching engine.
+        /// Submit Order (Not Implemented) This endpoint submits an order to the matching engine.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitOrderModel">The order submission request.</param>
@@ -650,7 +650,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Order This endpoint submits an order to the matching engine.
+        /// Submit Order (Not Implemented) This endpoint submits an order to the matching engine.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitOrderModel">The order submission request.</param>
@@ -664,7 +664,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Order This endpoint submits an order to the matching engine.
+        /// Submit Order (Not Implemented) This endpoint submits an order to the matching engine.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitOrderModel">The order submission request.</param>
