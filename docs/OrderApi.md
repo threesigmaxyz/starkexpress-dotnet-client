@@ -4,15 +4,15 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelOrder**](OrderApi.md#cancelorder) | **DELETE** /api/orders/{orderId} | Cancel Order |
-| [**OrderDetails**](OrderApi.md#orderdetails) | **POST** /api/orders/details | Get Order Details |
-| [**SubmitOrder**](OrderApi.md#submitorder) | **POST** /api/orders | Submit Order |
+| [**CancelOrder**](OrderApi.md#cancelorder) | **DELETE** /api/orders/{orderId} | Cancel Order (Not Implemented) |
+| [**OrderDetails**](OrderApi.md#orderdetails) | **POST** /api/orders/details | Get Order Details (Not Implemented) |
+| [**SubmitOrder**](OrderApi.md#submitorder) | **POST** /api/orders | Submit Order (Not Implemented) |
 
 <a name="cancelorder"></a>
 # **CancelOrder**
 > OrderDto CancelOrder (Guid orderId)
 
-Cancel Order
+Cancel Order (Not Implemented)
 
 This endpoint cancels an active order.
 
@@ -37,7 +37,7 @@ namespace Example
 
             try
             {
-                // Cancel Order
+                // Cancel Order (Not Implemented)
                 OrderDto result = apiInstance.CancelOrder(orderId);
                 Debug.WriteLine(result);
             }
@@ -58,7 +58,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Cancel Order
+    // Cancel Order (Not Implemented)
     ApiResponse<OrderDto> response = apiInstance.CancelOrderWithHttpInfo(orderId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -104,7 +104,7 @@ No authorization required
 # **OrderDetails**
 > OrderDetailsDto OrderDetails (OrderDetailsModel orderDetailsModel)
 
-Get Order Details
+Get Order Details (Not Implemented)
 
 This endpoint allows for fetching details of an order to be signed.
 
@@ -129,7 +129,7 @@ namespace Example
 
             try
             {
-                // Get Order Details
+                // Get Order Details (Not Implemented)
                 OrderDetailsDto result = apiInstance.OrderDetails(orderDetailsModel);
                 Debug.WriteLine(result);
             }
@@ -150,7 +150,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get Order Details
+    // Get Order Details (Not Implemented)
     ApiResponse<OrderDetailsDto> response = apiInstance.OrderDetailsWithHttpInfo(orderDetailsModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -197,7 +197,7 @@ No authorization required
 # **SubmitOrder**
 > OrderDto SubmitOrder (SubmitOrderModel submitOrderModel)
 
-Submit Order
+Submit Order (Not Implemented)
 
 This endpoint submits an order to the matching engine.
 
@@ -222,7 +222,7 @@ namespace Example
 
             try
             {
-                // Submit Order
+                // Submit Order (Not Implemented)
                 OrderDto result = apiInstance.SubmitOrder(submitOrderModel);
                 Debug.WriteLine(result);
             }
@@ -243,7 +243,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Submit Order
+    // Submit Order (Not Implemented)
     ApiResponse<OrderDto> response = apiInstance.SubmitOrderWithHttpInfo(submitOrderModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);

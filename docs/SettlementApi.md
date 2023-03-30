@@ -4,13 +4,13 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**SubmitSettlement**](SettlementApi.md#submitsettlement) | **POST** /api/settlements | Submit Settlement |
+| [**SubmitSettlement**](SettlementApi.md#submitsettlement) | **POST** /api/settlements | Submit Settlement (Not Implemented) |
 
 <a name="submitsettlement"></a>
 # **SubmitSettlement**
 > List&lt;VaultDto&gt; SubmitSettlement (SubmitSettlementModel submitSettlementModel)
 
-Submit Settlement
+Submit Settlement (Not Implemented)
 
 This endpoint submits an order settlement.
 
@@ -35,7 +35,7 @@ namespace Example
 
             try
             {
-                // Submit Settlement
+                // Submit Settlement (Not Implemented)
                 List<VaultDto> result = apiInstance.SubmitSettlement(submitSettlementModel);
                 Debug.WriteLine(result);
             }
@@ -56,7 +56,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Submit Settlement
+    // Submit Settlement (Not Implemented)
     ApiResponse<List<VaultDto>> response = apiInstance.SubmitSettlementWithHttpInfo(submitSettlementModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
