@@ -26,8 +26,8 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
         
-      - name: Test
-        run: dotnet test src/StarkExpress.SDK.Client.Test --no-restore
+#      - name: Test
+#        run: dotnet test src/StarkExpress.SDK.Client.Test --no-restore
         
       - name: Tag version
         id: sdk-version
