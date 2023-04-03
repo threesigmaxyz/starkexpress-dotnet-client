@@ -4,7 +4,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Withdraw**](WithdrawApi.md#withdraw) | **POST** /api/vaults/withdraw | Withdraw Asset |
+| [**Withdraw**](WithdrawApi.md#withdraw) | **POST** /api/v1/vaults/withdraw | Withdraw Asset |
 
 <a name="withdraw"></a>
 # **Withdraw**

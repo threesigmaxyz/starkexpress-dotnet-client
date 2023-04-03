@@ -4,8 +4,8 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetAllTransactions**](TransactionApi.md#getalltransactions) | **GET** /api/transactions | Get All Transactions |
-| [**GetTransaction**](TransactionApi.md#gettransaction) | **GET** /api/transactions/{transactionId} | Get Transaction |
+| [**GetAllTransactions**](TransactionApi.md#getalltransactions) | **GET** /api/v1/transactions | Get All Transactions |
+| [**GetTransaction**](TransactionApi.md#gettransaction) | **GET** /api/v1/transactions/{transactionId} | Get Transaction |
 
 <a name="getalltransactions"></a>
 # **GetAllTransactions**

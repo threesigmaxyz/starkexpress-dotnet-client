@@ -4,7 +4,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**DepositDetails**](DepositApi.md#depositdetails) | **POST** /api/vaults/deposit-details | Returns the deposit details for a given asset. |
+| [**DepositDetails**](DepositApi.md#depositdetails) | **POST** /api/v1/vaults/deposit-details | Returns the deposit details for a given asset. |
 
 <a name="depositdetails"></a>
 # **DepositDetails**
