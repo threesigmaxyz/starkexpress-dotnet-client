@@ -31,7 +31,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -43,7 +43,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -63,7 +63,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -76,7 +76,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -205,7 +205,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -218,7 +218,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -292,7 +292,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
@@ -306,7 +306,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
