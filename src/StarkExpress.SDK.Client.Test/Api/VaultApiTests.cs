@@ -69,5 +69,17 @@ namespace StarkExpress.SDK.Client.Test.Api
             //var response = instance.GetAllVaults(pageNumber, pageSize, tenantId, assetId, sortBy);
             //Assert.IsType<VaultDtoPaginatedResponseDto>(response);
         }
+
+        /// <summary>
+        /// Test GetVault
+        /// </summary>
+        [Fact]
+        public void GetVaultTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //Guid vaultId = null;
+            //var response = instance.GetVault(vaultId);
+            //Assert.IsType<VaultDto>(response);
+        }
     }
 }

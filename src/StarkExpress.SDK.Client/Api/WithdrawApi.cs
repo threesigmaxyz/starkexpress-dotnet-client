@@ -31,25 +31,25 @@ namespace StarkExpress.SDK.Client.Api
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>VaultDto</returns>
-        VaultDto Withdraw(WithdrawModel withdrawModel, int operationIndex = 0);
+        /// <returns>WithdrawDetailsDto</returns>
+        WithdrawDetailsDto Withdraw(WithdrawModel withdrawModel, int operationIndex = 0);
 
         /// <summary>
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of VaultDto</returns>
-        ApiResponse<VaultDto> WithdrawWithHttpInfo(WithdrawModel withdrawModel, int operationIndex = 0);
+        /// <returns>ApiResponse of WithdrawDetailsDto</returns>
+        ApiResponse<WithdrawDetailsDto> WithdrawWithHttpInfo(WithdrawModel withdrawModel, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -63,27 +63,27 @@ namespace StarkExpress.SDK.Client.Api
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of VaultDto</returns>
-        System.Threading.Tasks.Task<VaultDto> WithdrawAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of WithdrawDetailsDto</returns>
+        System.Threading.Tasks.Task<WithdrawDetailsDto> WithdrawAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Withdraw Asset
         /// </summary>
         /// <remarks>
-        /// This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// This endpoint allows for withdrawing assets from StarkExpress.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (VaultDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<VaultDto>> WithdrawWithHttpInfoAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (WithdrawDetailsDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WithdrawDetailsDto>> WithdrawWithHttpInfoAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -205,26 +205,26 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>VaultDto</returns>
-        public VaultDto Withdraw(WithdrawModel withdrawModel, int operationIndex = 0)
+        /// <returns>WithdrawDetailsDto</returns>
+        public WithdrawDetailsDto Withdraw(WithdrawModel withdrawModel, int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<VaultDto> localVarResponse = WithdrawWithHttpInfo(withdrawModel);
+            StarkExpress.SDK.Client.Client.ApiResponse<WithdrawDetailsDto> localVarResponse = WithdrawWithHttpInfo(withdrawModel);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of VaultDto</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<VaultDto> WithdrawWithHttpInfo(WithdrawModel withdrawModel, int operationIndex = 0)
+        /// <returns>ApiResponse of WithdrawDetailsDto</returns>
+        public StarkExpress.SDK.Client.Client.ApiResponse<WithdrawDetailsDto> WithdrawWithHttpInfo(WithdrawModel withdrawModel, int operationIndex = 0)
         {
             // verify the required parameter 'withdrawModel' is set
             if (withdrawModel == null)
@@ -278,7 +278,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<VaultDto>("/api/vaults/withdraw", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<WithdrawDetailsDto>("/api/vaults/withdraw", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Withdraw", localVarResponse);
@@ -292,28 +292,28 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of VaultDto</returns>
-        public async System.Threading.Tasks.Task<VaultDto> WithdrawAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of WithdrawDetailsDto</returns>
+        public async System.Threading.Tasks.Task<WithdrawDetailsDto> WithdrawAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<VaultDto> localVarResponse = await WithdrawWithHttpInfoAsync(withdrawModel, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<WithdrawDetailsDto> localVarResponse = await WithdrawWithHttpInfoAsync(withdrawModel, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Withdraw Asset This endpoint allows for transferring withdrawing assets from StarkExpress.
+        /// Withdraw Asset This endpoint allows for withdrawing assets from StarkExpress.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="withdrawModel">The withdraw request.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (VaultDto)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<VaultDto>> WithdrawWithHttpInfoAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (WithdrawDetailsDto)</returns>
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<WithdrawDetailsDto>> WithdrawWithHttpInfoAsync(WithdrawModel withdrawModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'withdrawModel' is set
             if (withdrawModel == null)
@@ -368,7 +368,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<VaultDto>("/api/vaults/withdraw", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<WithdrawDetailsDto>("/api/vaults/withdraw", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

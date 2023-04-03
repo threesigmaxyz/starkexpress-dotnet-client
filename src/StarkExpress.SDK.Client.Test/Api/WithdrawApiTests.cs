@@ -63,7 +63,7 @@ namespace StarkExpress.SDK.Client.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //WithdrawModel withdrawModel = null;
             //var response = instance.Withdraw(withdrawModel);
-            //Assert.IsType<VaultDto>(response);
+            //Assert.IsType<WithdrawDetailsDto>(response);
         }
     }
 }
