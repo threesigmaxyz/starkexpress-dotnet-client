@@ -12,7 +12,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 Withdraw Asset
 
-This endpoint allows for transferring withdrawing assets from StarkExpress.
+This endpoint allows for withdrawing assets from StarkExpress.
 
 ### Example
 ```csharp
