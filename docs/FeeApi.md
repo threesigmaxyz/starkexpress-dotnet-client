@@ -4,8 +4,8 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ConfigureFeeModel**](FeeApi.md#configurefeemodel) | **POST** /api/fees | Configure Fee Model |
-| [**GetFeeModel**](FeeApi.md#getfeemodel) | **GET** /api/fees/{feeId} | Get Fee Model |
+| [**ConfigureFeeModel**](FeeApi.md#configurefeemodel) | **POST** /api/v1/fees | Configure Fee Model |
+| [**GetFeeModel**](FeeApi.md#getfeemodel) | **GET** /api/v1/fees/{feeId} | Get Fee Model |
 
 <a name="configurefeemodel"></a>
 # **ConfigureFeeModel**

@@ -4,16 +4,16 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateOrderbook**](OrderbookApi.md#createorderbook) | **POST** /api/orderbooks | Create Orderbook |
-| [**GetOrderbook**](OrderbookApi.md#getorderbook) | **GET** /api/orderbooks/{orderbookId} | Get Orderbook |
-| [**GetOrderbookLevel1Data**](OrderbookApi.md#getorderbooklevel1data) | **GET** /api/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data |
-| [**GetOrderbookLevel2Data**](OrderbookApi.md#getorderbooklevel2data) | **GET** /api/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data |
+| [**CreateOrderbook**](OrderbookApi.md#createorderbook) | **POST** /api/v1/orderbooks | Create Orderbook (Not Implemented) |
+| [**GetOrderbook**](OrderbookApi.md#getorderbook) | **GET** /api/v1/orderbooks/{orderbookId} | Get Orderbook (Not Implemented) |
+| [**GetOrderbookLevel1Data**](OrderbookApi.md#getorderbooklevel1data) | **GET** /api/v1/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data (Not Implemented) |
+| [**GetOrderbookLevel2Data**](OrderbookApi.md#getorderbooklevel2data) | **GET** /api/v1/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data (Not Implemented) |
 
 <a name="createorderbook"></a>
 # **CreateOrderbook**
 > OrderbookDto CreateOrderbook (CreateOrderbookModel createOrderbookModel)
 
-Create Orderbook
+Create Orderbook (Not Implemented)
 
 This endpoint creates an orderbook.
 
@@ -38,7 +38,7 @@ namespace Example
 
             try
             {
-                // Create Orderbook
+                // Create Orderbook (Not Implemented)
                 OrderbookDto result = apiInstance.CreateOrderbook(createOrderbookModel);
                 Debug.WriteLine(result);
             }
@@ -59,7 +59,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Create Orderbook
+    // Create Orderbook (Not Implemented)
     ApiResponse<OrderbookDto> response = apiInstance.CreateOrderbookWithHttpInfo(createOrderbookModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -105,7 +105,7 @@ No authorization required
 # **GetOrderbook**
 > OrderbookDto GetOrderbook (Guid orderbookId)
 
-Get Orderbook
+Get Orderbook (Not Implemented)
 
 This endpoint fetches orderbook metadata by ID.
 
@@ -130,7 +130,7 @@ namespace Example
 
             try
             {
-                // Get Orderbook
+                // Get Orderbook (Not Implemented)
                 OrderbookDto result = apiInstance.GetOrderbook(orderbookId);
                 Debug.WriteLine(result);
             }
@@ -151,7 +151,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get Orderbook
+    // Get Orderbook (Not Implemented)
     ApiResponse<OrderbookDto> response = apiInstance.GetOrderbookWithHttpInfo(orderbookId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -197,7 +197,7 @@ No authorization required
 # **GetOrderbookLevel1Data**
 > OrderbookLevel1DataDto GetOrderbookLevel1Data (Guid orderbookId)
 
-Get Orderbook L1 Data
+Get Orderbook L1 Data (Not Implemented)
 
 This endpoint fetches orderbook level 1 data by ID.
 
@@ -222,7 +222,7 @@ namespace Example
 
             try
             {
-                // Get Orderbook L1 Data
+                // Get Orderbook L1 Data (Not Implemented)
                 OrderbookLevel1DataDto result = apiInstance.GetOrderbookLevel1Data(orderbookId);
                 Debug.WriteLine(result);
             }
@@ -243,7 +243,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get Orderbook L1 Data
+    // Get Orderbook L1 Data (Not Implemented)
     ApiResponse<OrderbookLevel1DataDto> response = apiInstance.GetOrderbookLevel1DataWithHttpInfo(orderbookId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -289,7 +289,7 @@ No authorization required
 # **GetOrderbookLevel2Data**
 > OrderbookLevel2DataDto GetOrderbookLevel2Data (Guid orderbookId, int? depth = null)
 
-Get Orderbook L2 Data
+Get Orderbook L2 Data (Not Implemented)
 
 This endpoint fetches orderbook level 2 data by ID.
 
@@ -315,7 +315,7 @@ namespace Example
 
             try
             {
-                // Get Orderbook L2 Data
+                // Get Orderbook L2 Data (Not Implemented)
                 OrderbookLevel2DataDto result = apiInstance.GetOrderbookLevel2Data(orderbookId, depth);
                 Debug.WriteLine(result);
             }
@@ -336,7 +336,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Get Orderbook L2 Data
+    // Get Orderbook L2 Data (Not Implemented)
     ApiResponse<OrderbookLevel2DataDto> response = apiInstance.GetOrderbookLevel2DataWithHttpInfo(orderbookId, depth);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
