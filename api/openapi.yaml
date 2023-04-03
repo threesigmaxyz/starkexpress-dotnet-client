@@ -166,7 +166,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Order Details
+      summary: Get Order Details (Not Implemented)
       tags:
       - Order
   /api/orders:
@@ -193,7 +193,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: The order submission request was invalid.
-      summary: Submit Order
+      summary: Submit Order (Not Implemented)
       tags:
       - Order
   /api/orders/{orderId}:
@@ -222,7 +222,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Cancel Order
+      summary: Cancel Order (Not Implemented)
       tags:
       - Order
   /api/orderbooks:
@@ -249,7 +249,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: The orderbook creation request was invalid.
-      summary: Create Orderbook
+      summary: Create Orderbook (Not Implemented)
       tags:
       - Orderbook
   /api/orderbooks/{orderbookId}:
@@ -278,7 +278,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Orderbook
+      summary: Get Orderbook (Not Implemented)
       tags:
       - Orderbook
   /api/orderbooks/{orderbookId}/l1:
@@ -307,7 +307,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Orderbook L1 Data
+      summary: Get Orderbook L1 Data (Not Implemented)
       tags:
       - Orderbook
   /api/orderbooks/{orderbookId}/l2:
@@ -344,7 +344,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Orderbook L2 Data
+      summary: Get Orderbook L2 Data (Not Implemented)
       tags:
       - Orderbook
   /api/settlements:
@@ -379,7 +379,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Submit Settlement
+      summary: Submit Settlement (Not Implemented)
       tags:
       - Settlement
   /api/assets:
@@ -1335,18 +1335,26 @@ components:
       additionalProperties: false
       example:
         depositFunction: depositFunction
+        amount: amount
         tokenId: tokenId
         vaultId: vaultId
         quantizedAmount: quantizedAmount
-        contractAddress: contractAddress
+        assetContractAddress: assetContractAddress
+        operatorContractAddress: operatorContractAddress
         starkKey: starkKey
         assetType: assetType
       properties:
-        contractAddress:
+        operatorContractAddress:
           description: The smart contract address that processes on-chain deposits.
           format: hex
           nullable: true
-          title: Smart Contract Address
+          title: Operator Smart Contract Address
+          type: string
+        assetContractAddress:
+          description: The asset's smart contract address.
+          format: hex
+          nullable: true
+          title: Asset Smart Contract Address
           type: string
         depositFunction:
           description: The deposit function to use on-chain.
@@ -1378,9 +1386,16 @@ components:
           title: Vault Id
           type: string
         quantizedAmount:
-          description: The quantized amount to deposit.
+          description: The quantized amount to deposit ERC-20 and ERC-1155 assets.
           format: string
+          nullable: true
           title: Quantized amount
+          type: string
+        amount:
+          description: The amount to deposit ETH.
+          format: string
+          nullable: true
+          title: Amount
           type: string
       type: object
     DepositDetailsModel:
@@ -1554,6 +1569,7 @@ components:
       - 17015
       - 17016
       - 17017
+      - 17018
       - 18001
       - 18002
       - 18003
@@ -2428,11 +2444,18 @@ components:
         assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         quantum: quantum
+        assetType: assetType
       properties:
         assetId:
           description: The unique identifier of the asset.
           format: uuid
           title: Asset ID
+          type: string
+        assetType:
+          description: The asset type used for on-chain interactions.
+          format: hex
+          nullable: true
+          title: Asset Type
           type: string
         address:
           description: The Ethereum address of the asset.
@@ -2468,11 +2491,13 @@ components:
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          assetType: assetType
         - symbol: symbol
           address: address
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          assetType: assetType
         totalCount: 1
       properties:
         data:
@@ -2842,6 +2867,7 @@ components:
           key:
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
+            assetSymbol: assetSymbol
             userStarkKey: userStarkKey
             accountingBalance: accountingBalance
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2849,6 +2875,7 @@ components:
             availableBalance: availableBalance
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
+            assetSymbol: assetSymbol
             userStarkKey: userStarkKey
             accountingBalance: accountingBalance
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2867,7 +2894,7 @@ components:
             items:
               $ref: '#/components/schemas/VaultDto'
             type: array
-          description: The user vaults grouped by the asset symbols.
+          description: The user vaults grouped by the asset id.
           nullable: true
           title: Vaults
           type: object
@@ -2877,6 +2904,7 @@ components:
       example:
         starkExAddress: starkExAddress
         assetStarkExId: assetStarkExId
+        assetSymbol: assetSymbol
         userStarkKey: userStarkKey
         accountingBalance: accountingBalance
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2897,6 +2925,12 @@ components:
           format: hex
           nullable: true
           title: StarkEx Address
+          type: string
+        assetSymbol:
+          description: The symbol of the asset associated with the vault.
+          format: string
+          nullable: true
+          title: Asset Symbol
           type: string
         assetStarkExId:
           description: The StarkEx ID of the asset associated with the vault.
@@ -2929,6 +2963,7 @@ components:
         data:
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
+          assetSymbol: assetSymbol
           userStarkKey: userStarkKey
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2936,6 +2971,7 @@ components:
           availableBalance: availableBalance
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
+          assetSymbol: assetSymbol
           userStarkKey: userStarkKey
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
