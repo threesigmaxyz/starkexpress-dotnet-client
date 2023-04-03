@@ -4,9 +4,9 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**EnableAsset**](AssetApi.md#enableasset) | **POST** /api/assets | Enable Asset |
-| [**GetAllAssets**](AssetApi.md#getallassets) | **GET** /api/assets | Get All Assets |
-| [**GetAsset**](AssetApi.md#getasset) | **GET** /api/assets/{assetId} | Get Asset |
+| [**EnableAsset**](AssetApi.md#enableasset) | **POST** /api/v1/assets | Enable Asset |
+| [**GetAllAssets**](AssetApi.md#getallassets) | **GET** /api/v1/assets | Get All Assets |
+| [**GetAsset**](AssetApi.md#getasset) | **GET** /api/v1/assets/{assetId} | Get Asset |
 
 <a name="enableasset"></a>
 # **EnableAsset**
