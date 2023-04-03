@@ -98,7 +98,7 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches a specific user by ID.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserWithVaultsDto</returns>
         UserWithVaultsDto GetUser(Guid userId, int operationIndex = 0);
@@ -110,7 +110,7 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches a specific user by ID.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserWithVaultsDto</returns>
         ApiResponse<UserWithVaultsDto> GetUserWithHttpInfo(Guid userId, int operationIndex = 0);
@@ -221,7 +221,7 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches a specific user by ID.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UserWithVaultsDto</returns>
@@ -234,7 +234,7 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches a specific user by ID.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UserWithVaultsDto)</returns>
@@ -842,7 +842,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Get User This endpoint fetches a specific user by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserWithVaultsDto</returns>
         public UserWithVaultsDto GetUser(Guid userId, int operationIndex = 0)
@@ -855,7 +855,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Get User This endpoint fetches a specific user by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserWithVaultsDto</returns>
         public StarkExpress.SDK.Client.Client.ApiResponse<UserWithVaultsDto> GetUserWithHttpInfo(Guid userId, int operationIndex = 0)
@@ -922,7 +922,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Get User This endpoint fetches a specific user by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UserWithVaultsDto</returns>
@@ -936,7 +936,7 @@ namespace StarkExpress.SDK.Client.Api
         /// Get User This endpoint fetches a specific user by ID.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="userId"></param>
+        /// <param name="userId">The user id.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UserWithVaultsDto)</returns>
