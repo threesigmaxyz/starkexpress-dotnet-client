@@ -4,7 +4,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**MintAssets**](MintApi.md#mintassets) | **POST** /api/mint | Mint Assets |
+| [**MintAssets**](MintApi.md#mintassets) | **POST** /api/v1/mint | Mint Assets |
 
 <a name="mintassets"></a>
 # **MintAssets**

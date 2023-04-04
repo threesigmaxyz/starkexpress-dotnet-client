@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>StarkExpress.SDK.Client.Test</AssemblyName>
     <RootNamespace>StarkExpress.SDK.Client.Test</RootNamespace>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
