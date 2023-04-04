@@ -81,6 +81,14 @@ namespace StarkExpress.SDK.Client.Test.Model
             // TODO unit test for the property 'StarkExAddress'
         }
         /// <summary>
+        /// Test the property 'AssetSymbol'
+        /// </summary>
+        [Fact]
+        public void AssetSymbolTest()
+        {
+            // TODO unit test for the property 'AssetSymbol'
+        }
+        /// <summary>
         /// Test the property 'AssetStarkExId'
         /// </summary>
         [Fact]

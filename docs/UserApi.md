@@ -248,7 +248,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserApi(config);
-            var userId = "userId_example";  // Guid | 
+            var userId = "userId_example";  // Guid | The user id.
 
             try
             {
@@ -291,7 +291,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **Guid** |  |  |
+| **userId** | **Guid** | The user id. |  |
 
 ### Return type
 
