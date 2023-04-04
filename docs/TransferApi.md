@@ -4,8 +4,8 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Transfer**](TransferApi.md#transfer) | **POST** /api/transfers | Transfer Asset |
-| [**TransferDetails**](TransferApi.md#transferdetails) | **POST** /api/transfers/details | Get Transfer Details |
+| [**Transfer**](TransferApi.md#transfer) | **POST** /api/v1/transfers | Transfer Asset |
+| [**TransferDetails**](TransferApi.md#transferdetails) | **POST** /api/v1/transfers/details | Get Transfer Details |
 
 <a name="transfer"></a>
 # **Transfer**
