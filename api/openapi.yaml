@@ -6,7 +6,7 @@ info:
     url: https://starkexpress.io/license
   termsOfService: https://starkexpress.io/terms
   title: StarkExpress API Docs
-  version: v1
+  version: "1.0"
   x-logo:
     url: https://starkexpress.io/_next/static/media/starkexpress-logo.c94e6c9d.svg
     altText: StarkExpress logo
@@ -39,7 +39,7 @@ tags:
 - description: Operations related with the order management.
   name: Order
 paths:
-  /api/fees:
+  /api/v1/fees:
     post:
       description: This endpoint allows to configure the fee model for a specific
         operation.
@@ -67,7 +67,7 @@ paths:
       summary: Configure Fee Model
       tags:
       - Fee
-  /api/fees/{feeId}:
+  /api/v1/fees/{feeId}:
     get:
       description: This endpoint fetches a configured operation fee by ID.
       operationId: GetFeeModel
@@ -97,7 +97,7 @@ paths:
       summary: Get Fee Model
       tags:
       - Fee
-  /api/mint:
+  /api/v1/mint:
     post:
       description: This endpoint allows for the minting of fungible and non-fungible
         assets.
@@ -136,7 +136,7 @@ paths:
       summary: Mint Assets
       tags:
       - Mint
-  /api/orders/details:
+  /api/v1/orders/details:
     post:
       description: This endpoint allows for fetching details of an order to be signed.
       operationId: OrderDetails
@@ -166,10 +166,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Order Details
+      summary: Get Order Details (Not Implemented)
       tags:
       - Order
-  /api/orders:
+  /api/v1/orders:
     post:
       description: This endpoint submits an order to the matching engine.
       operationId: SubmitOrder
@@ -193,10 +193,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: The order submission request was invalid.
-      summary: Submit Order
+      summary: Submit Order (Not Implemented)
       tags:
       - Order
-  /api/orders/{orderId}:
+  /api/v1/orders/{orderId}:
     delete:
       description: This endpoint cancels an active order.
       operationId: CancelOrder
@@ -222,10 +222,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Cancel Order
+      summary: Cancel Order (Not Implemented)
       tags:
       - Order
-  /api/orderbooks:
+  /api/v1/orderbooks:
     post:
       description: This endpoint creates an orderbook.
       operationId: CreateOrderbook
@@ -249,10 +249,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: The orderbook creation request was invalid.
-      summary: Create Orderbook
+      summary: Create Orderbook (Not Implemented)
       tags:
       - Orderbook
-  /api/orderbooks/{orderbookId}:
+  /api/v1/orderbooks/{orderbookId}:
     get:
       description: This endpoint fetches orderbook metadata by ID.
       operationId: GetOrderbook
@@ -278,10 +278,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Orderbook
+      summary: Get Orderbook (Not Implemented)
       tags:
       - Orderbook
-  /api/orderbooks/{orderbookId}/l1:
+  /api/v1/orderbooks/{orderbookId}/l1:
     get:
       description: This endpoint fetches orderbook level 1 data by ID.
       operationId: GetOrderbookLevel1Data
@@ -307,10 +307,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Orderbook L1 Data
+      summary: Get Orderbook L1 Data (Not Implemented)
       tags:
       - Orderbook
-  /api/orderbooks/{orderbookId}/l2:
+  /api/v1/orderbooks/{orderbookId}/l2:
     get:
       description: This endpoint fetches orderbook level 2 data by ID.
       operationId: GetOrderbookLevel2Data
@@ -344,10 +344,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Get Orderbook L2 Data
+      summary: Get Orderbook L2 Data (Not Implemented)
       tags:
       - Orderbook
-  /api/settlements:
+  /api/v1/settlements:
     post:
       description: This endpoint submits an order settlement.
       operationId: SubmitSettlement
@@ -379,10 +379,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Submit Settlement
+      summary: Submit Settlement (Not Implemented)
       tags:
       - Settlement
-  /api/assets:
+  /api/v1/assets:
     get:
       description: "This endpoint fetches all assets enabled in the tenant system,\
         \ with support for filters and pagination."
@@ -518,7 +518,7 @@ paths:
       summary: Enable Asset
       tags:
       - Asset
-  /api/assets/{assetId}:
+  /api/v1/assets/{assetId}:
     get:
       description: This endpoint fetches a specific enabled asset by ID.
       operationId: GetAsset
@@ -555,7 +555,7 @@ paths:
       summary: Get Asset
       tags:
       - Asset
-  /api/transactions:
+  /api/v1/transactions:
     get:
       description: "This endpoint fetches all transactions submitted by the system,\
         \ with support for filters and pagination."
@@ -642,7 +642,7 @@ paths:
       summary: Get All Transactions
       tags:
       - Transaction
-  /api/transactions/{transactionId}:
+  /api/v1/transactions/{transactionId}:
     get:
       description: This endpoint fetches a specific transaction by ID.
       operationId: GetTransaction
@@ -679,7 +679,7 @@ paths:
       summary: Get Transaction
       tags:
       - Transaction
-  /api/transfers:
+  /api/v1/transfers:
     post:
       description: This endpoint allows for transferring assets between users.
       operationId: Transfer
@@ -721,7 +721,7 @@ paths:
       summary: Transfer Asset
       tags:
       - Transfer
-  /api/transfers/details:
+  /api/v1/transfers/details:
     post:
       description: This endpoint allows for fetching details of a transfer to be signed
         (allocates a vault for the receiver)
@@ -762,7 +762,7 @@ paths:
       summary: Get Transfer Details
       tags:
       - Transfer
-  /api/users:
+  /api/v1/users:
     get:
       description: This endpoint fetches all users.
       operationId: GetAllUsers
@@ -896,7 +896,7 @@ paths:
       summary: Register new User
       tags:
       - User
-  /api/users/register-details:
+  /api/v1/users/register-details:
     get:
       description: This endpoint return the typed data to be signed with EIP712 that
         is used on user registration.
@@ -957,7 +957,7 @@ paths:
       summary: Get EIP712 data to be signed
       tags:
       - User
-  /api/users/{userId}:
+  /api/v1/users/{userId}:
     get:
       description: This endpoint fetches a specific user by ID.
       operationId: GetUser
@@ -993,7 +993,7 @@ paths:
       summary: Get User
       tags:
       - User
-  /api/vaults/deposit-details:
+  /api/v1/vaults/deposit-details:
     post:
       description: "This endpoint returns the deposit details for a given user, asset,\
         \ and data availability mode."
@@ -1035,7 +1035,7 @@ paths:
       summary: Returns the deposit details for a given asset.
       tags:
       - Deposit
-  /api/vaults:
+  /api/v1/vaults:
     get:
       description: "This endpoint fetches all vaults in the system, with support for\
         \ filters and pagination."
@@ -1111,7 +1111,7 @@ paths:
       summary: Get All Vaults
       tags:
       - Vault
-  /api/vaults/withdraw:
+  /api/v1/vaults/withdraw:
     post:
       description: This endpoint allows for transferring withdrawing assets from StarkExpress.
       operationId: Withdraw
@@ -1335,18 +1335,26 @@ components:
       additionalProperties: false
       example:
         depositFunction: depositFunction
+        amount: amount
         tokenId: tokenId
         vaultId: vaultId
         quantizedAmount: quantizedAmount
-        contractAddress: contractAddress
+        assetContractAddress: assetContractAddress
+        operatorContractAddress: operatorContractAddress
         starkKey: starkKey
         assetType: assetType
       properties:
-        contractAddress:
+        operatorContractAddress:
           description: The smart contract address that processes on-chain deposits.
           format: hex
           nullable: true
-          title: Smart Contract Address
+          title: Operator Smart Contract Address
+          type: string
+        assetContractAddress:
+          description: The asset's smart contract address.
+          format: hex
+          nullable: true
+          title: Asset Smart Contract Address
           type: string
         depositFunction:
           description: The deposit function to use on-chain.
@@ -1378,9 +1386,16 @@ components:
           title: Vault Id
           type: string
         quantizedAmount:
-          description: The quantized amount to deposit.
+          description: The quantized amount to deposit ERC-20 and ERC-1155 assets.
           format: string
+          nullable: true
           title: Quantized amount
+          type: string
+        amount:
+          description: The amount to deposit ETH.
+          format: string
+          nullable: true
+          title: Amount
           type: string
       type: object
     DepositDetailsModel:
@@ -1554,6 +1569,7 @@ components:
       - 17015
       - 17016
       - 17017
+      - 17018
       - 18001
       - 18002
       - 18003
@@ -2428,11 +2444,18 @@ components:
         assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         quantum: quantum
+        assetType: assetType
       properties:
         assetId:
           description: The unique identifier of the asset.
           format: uuid
           title: Asset ID
+          type: string
+        assetType:
+          description: The asset type used for on-chain interactions.
+          format: hex
+          nullable: true
+          title: Asset Type
           type: string
         address:
           description: The Ethereum address of the asset.
@@ -2468,11 +2491,13 @@ components:
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          assetType: assetType
         - symbol: symbol
           address: address
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          assetType: assetType
         totalCount: 1
       properties:
         data:
@@ -2842,6 +2867,7 @@ components:
           key:
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
+            assetSymbol: assetSymbol
             userStarkKey: userStarkKey
             accountingBalance: accountingBalance
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2849,6 +2875,7 @@ components:
             availableBalance: availableBalance
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
+            assetSymbol: assetSymbol
             userStarkKey: userStarkKey
             accountingBalance: accountingBalance
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2867,7 +2894,7 @@ components:
             items:
               $ref: '#/components/schemas/VaultDto'
             type: array
-          description: The user vaults grouped by the asset symbols.
+          description: The user vaults grouped by the asset id.
           nullable: true
           title: Vaults
           type: object
@@ -2877,6 +2904,7 @@ components:
       example:
         starkExAddress: starkExAddress
         assetStarkExId: assetStarkExId
+        assetSymbol: assetSymbol
         userStarkKey: userStarkKey
         accountingBalance: accountingBalance
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2897,6 +2925,12 @@ components:
           format: hex
           nullable: true
           title: StarkEx Address
+          type: string
+        assetSymbol:
+          description: The symbol of the asset associated with the vault.
+          format: string
+          nullable: true
+          title: Asset Symbol
           type: string
         assetStarkExId:
           description: The StarkEx ID of the asset associated with the vault.
@@ -2929,6 +2963,7 @@ components:
         data:
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
+          assetSymbol: assetSymbol
           userStarkKey: userStarkKey
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2936,6 +2971,7 @@ components:
           availableBalance: availableBalance
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
+          assetSymbol: assetSymbol
           userStarkKey: userStarkKey
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
