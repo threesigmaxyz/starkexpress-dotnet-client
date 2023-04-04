@@ -4,15 +4,15 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Withdraw**](WithdrawApi.md#withdraw) | **POST** /api/vaults/withdraw | Withdraw Asset |
+| [**Withdraw**](WithdrawApi.md#withdraw) | **POST** /api/v1/vaults/withdraw | Withdraw Asset |
 
 <a name="withdraw"></a>
 # **Withdraw**
-> VaultDto Withdraw (WithdrawModel withdrawModel)
+> WithdrawDetailsDto Withdraw (WithdrawModel withdrawModel)
 
 Withdraw Asset
 
-This endpoint allows for transferring withdrawing assets from StarkExpress.
+This endpoint allows for withdrawing assets from StarkExpress.
 
 ### Example
 ```csharp
@@ -39,7 +39,7 @@ namespace Example
             try
             {
                 // Withdraw Asset
-                VaultDto result = apiInstance.Withdraw(withdrawModel);
+                WithdrawDetailsDto result = apiInstance.Withdraw(withdrawModel);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -60,7 +60,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Withdraw Asset
-    ApiResponse<VaultDto> response = apiInstance.WithdrawWithHttpInfo(withdrawModel);
+    ApiResponse<WithdrawDetailsDto> response = apiInstance.WithdrawWithHttpInfo(withdrawModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -81,7 +81,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**VaultDto**](VaultDto.md)
+[**WithdrawDetailsDto**](WithdrawDetailsDto.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Returns the vault updated by the withdraw operation. |  -  |
+| **200** | Returns the details of the withdraw operation. |  -  |
 | **400** | The withdraw request was invalid. |  -  |
 | **404** | Not Found. |  -  |
 | **401** | Unauthorized. |  -  |

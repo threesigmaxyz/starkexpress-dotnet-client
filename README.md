@@ -8,7 +8,7 @@
 
 An API for the StarkExpress platform.
 
-- API version: v1
+- API version: 1.0
 - SDK version: 1.0.0
 
 <a name="frameworks-supported"></a>
@@ -99,31 +99,32 @@ All URIs are relative to base url:
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssetApi* | [**EnableAsset**](docs/AssetApi.md#enableasset) | **POST** /api/assets | Enable Asset
-*AssetApi* | [**GetAllAssets**](docs/AssetApi.md#getallassets) | **GET** /api/assets | Get All Assets
-*AssetApi* | [**GetAsset**](docs/AssetApi.md#getasset) | **GET** /api/assets/{assetId} | Get Asset
-*DepositApi* | [**DepositDetails**](docs/DepositApi.md#depositdetails) | **POST** /api/vaults/deposit-details | Returns the deposit details for a given asset.
-*FeeApi* | [**ConfigureFeeModel**](docs/FeeApi.md#configurefeemodel) | **POST** /api/fees | Configure Fee Model
-*FeeApi* | [**GetFeeModel**](docs/FeeApi.md#getfeemodel) | **GET** /api/fees/{feeId} | Get Fee Model
-*MintApi* | [**MintAssets**](docs/MintApi.md#mintassets) | **POST** /api/mint | Mint Assets
-*OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **DELETE** /api/orders/{orderId} | Cancel Order
-*OrderApi* | [**OrderDetails**](docs/OrderApi.md#orderdetails) | **POST** /api/orders/details | Get Order Details
-*OrderApi* | [**SubmitOrder**](docs/OrderApi.md#submitorder) | **POST** /api/orders | Submit Order
-*OrderbookApi* | [**CreateOrderbook**](docs/OrderbookApi.md#createorderbook) | **POST** /api/orderbooks | Create Orderbook
-*OrderbookApi* | [**GetOrderbook**](docs/OrderbookApi.md#getorderbook) | **GET** /api/orderbooks/{orderbookId} | Get Orderbook
-*OrderbookApi* | [**GetOrderbookLevel1Data**](docs/OrderbookApi.md#getorderbooklevel1data) | **GET** /api/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data
-*OrderbookApi* | [**GetOrderbookLevel2Data**](docs/OrderbookApi.md#getorderbooklevel2data) | **GET** /api/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data
-*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/settlements | Submit Settlement
-*TransactionApi* | [**GetAllTransactions**](docs/TransactionApi.md#getalltransactions) | **GET** /api/transactions | Get All Transactions
-*TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /api/transactions/{transactionId} | Get Transaction
-*TransferApi* | [**Transfer**](docs/TransferApi.md#transfer) | **POST** /api/transfers | Transfer Asset
-*TransferApi* | [**TransferDetails**](docs/TransferApi.md#transferdetails) | **POST** /api/transfers/details | Get Transfer Details
-*UserApi* | [**EIP712Details**](docs/UserApi.md#eip712details) | **GET** /api/users/register-details | Get EIP712 data to be signed
-*UserApi* | [**GetAllUsers**](docs/UserApi.md#getallusers) | **GET** /api/users | Get All Users
-*UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **GET** /api/users/{userId} | Get User
-*UserApi* | [**RegisterUser**](docs/UserApi.md#registeruser) | **POST** /api/users | Register new User
-*VaultApi* | [**GetAllVaults**](docs/VaultApi.md#getallvaults) | **GET** /api/vaults | Get All Vaults
-*WithdrawApi* | [**Withdraw**](docs/WithdrawApi.md#withdraw) | **POST** /api/vaults/withdraw | Withdraw Asset
+*AssetApi* | [**EnableAsset**](docs/AssetApi.md#enableasset) | **POST** /api/v1/assets | Enable Asset
+*AssetApi* | [**GetAllAssets**](docs/AssetApi.md#getallassets) | **GET** /api/v1/assets | Get All Assets
+*AssetApi* | [**GetAsset**](docs/AssetApi.md#getasset) | **GET** /api/v1/assets/{assetId} | Get Asset
+*DepositApi* | [**DepositDetails**](docs/DepositApi.md#depositdetails) | **POST** /api/v1/vaults/deposit-details | Returns the deposit details for a given asset.
+*FeeApi* | [**ConfigureFeeModel**](docs/FeeApi.md#configurefeemodel) | **POST** /api/v1/fees | Configure Fee Model
+*FeeApi* | [**GetFeeModel**](docs/FeeApi.md#getfeemodel) | **GET** /api/v1/fees/{feeId} | Get Fee Model
+*MintApi* | [**MintAssets**](docs/MintApi.md#mintassets) | **POST** /api/v1/mint | Mint Assets
+*OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **DELETE** /api/v1/orders/{orderId} | Cancel Order (Not Implemented)
+*OrderApi* | [**OrderDetails**](docs/OrderApi.md#orderdetails) | **POST** /api/v1/orders/details | Get Order Details (Not Implemented)
+*OrderApi* | [**SubmitOrder**](docs/OrderApi.md#submitorder) | **POST** /api/v1/orders | Submit Order (Not Implemented)
+*OrderbookApi* | [**CreateOrderbook**](docs/OrderbookApi.md#createorderbook) | **POST** /api/v1/orderbooks | Create Orderbook (Not Implemented)
+*OrderbookApi* | [**GetOrderbook**](docs/OrderbookApi.md#getorderbook) | **GET** /api/v1/orderbooks/{orderbookId} | Get Orderbook (Not Implemented)
+*OrderbookApi* | [**GetOrderbookLevel1Data**](docs/OrderbookApi.md#getorderbooklevel1data) | **GET** /api/v1/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data (Not Implemented)
+*OrderbookApi* | [**GetOrderbookLevel2Data**](docs/OrderbookApi.md#getorderbooklevel2data) | **GET** /api/v1/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data (Not Implemented)
+*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/v1/settlements | Submit Settlement (Not Implemented)
+*TransactionApi* | [**GetAllTransactions**](docs/TransactionApi.md#getalltransactions) | **GET** /api/v1/transactions | Get All Transactions
+*TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /api/v1/transactions/{transactionId} | Get Transaction
+*TransferApi* | [**Transfer**](docs/TransferApi.md#transfer) | **POST** /api/v1/transfers | Transfer Asset
+*TransferApi* | [**TransferDetails**](docs/TransferApi.md#transferdetails) | **POST** /api/v1/transfers/details | Get Transfer Details
+*UserApi* | [**EIP712Details**](docs/UserApi.md#eip712details) | **GET** /api/v1/users/register-details | Get EIP712 data to be signed
+*UserApi* | [**GetAllUsers**](docs/UserApi.md#getallusers) | **GET** /api/v1/users | Get All Users
+*UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **GET** /api/v1/users/{userId} | Get User
+*UserApi* | [**RegisterUser**](docs/UserApi.md#registeruser) | **POST** /api/v1/users | Register new User
+*VaultApi* | [**GetAllVaults**](docs/VaultApi.md#getallvaults) | **GET** /api/v1/vaults | Get All Vaults
+*VaultApi* | [**GetVault**](docs/VaultApi.md#getvault) | **GET** /api/v1/vaults/{vaultId} | Get a single Vault
+*WithdrawApi* | [**Withdraw**](docs/WithdrawApi.md#withdraw) | **POST** /api/v1/vaults/withdraw | Withdraw Asset
 
 
 <a name="documentation-for-models"></a>
@@ -181,6 +182,7 @@ Class | Method | HTTP request | Description
  - [Model.UserWithVaultsDto](docs/UserWithVaultsDto.md)
  - [Model.VaultDto](docs/VaultDto.md)
  - [Model.VaultDtoPaginatedResponseDto](docs/VaultDtoPaginatedResponseDto.md)
+ - [Model.WithdrawDetailsDto](docs/WithdrawDetailsDto.md)
  - [Model.WithdrawModel](docs/WithdrawModel.md)
 
 
