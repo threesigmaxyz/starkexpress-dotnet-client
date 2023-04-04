@@ -41,7 +41,9 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <param name="vaultId">The unique identifier of the vault to withdraw from. (required).</param>
         /// <param name="amount">The amount of the asset to be withdrawn, in unquantized form. (required).</param>
-        public WithdrawModel(Guid vaultId = default(Guid), string amount = default(string))
+        /// <param name="tokenId">The token Id for ERC-721 and ERC-1155 assets..</param>
+        /// <param name="mintingBlob">The minting blob for Mintable ERC-20, ERC-721 and ERC-1155 assets..</param>
+        public WithdrawModel(Guid vaultId = default(Guid), string amount = default(string), string tokenId = default(string), string mintingBlob = default(string))
         {
             this.VaultId = vaultId;
             // to ensure "amount" is required (not null)
@@ -50,6 +52,8 @@ namespace StarkExpress.SDK.Client.Model
                 throw new ArgumentNullException("amount is a required property for WithdrawModel and cannot be null");
             }
             this.Amount = amount;
+            this.TokenId = tokenId;
+            this.MintingBlob = mintingBlob;
         }
 
         /// <summary>
@@ -67,6 +71,20 @@ namespace StarkExpress.SDK.Client.Model
         public string Amount { get; set; }
 
         /// <summary>
+        /// The token Id for ERC-721 and ERC-1155 assets.
+        /// </summary>
+        /// <value>The token Id for ERC-721 and ERC-1155 assets.</value>
+        [DataMember(Name = "tokenId", EmitDefaultValue = true)]
+        public string TokenId { get; set; }
+
+        /// <summary>
+        /// The minting blob for Mintable ERC-20, ERC-721 and ERC-1155 assets.
+        /// </summary>
+        /// <value>The minting blob for Mintable ERC-20, ERC-721 and ERC-1155 assets.</value>
+        [DataMember(Name = "mintingBlob", EmitDefaultValue = true)]
+        public string MintingBlob { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,6 +94,8 @@ namespace StarkExpress.SDK.Client.Model
             sb.Append("class WithdrawModel {\n");
             sb.Append("  VaultId: ").Append(VaultId).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  TokenId: ").Append(TokenId).Append("\n");
+            sb.Append("  MintingBlob: ").Append(MintingBlob).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,6 +140,16 @@ namespace StarkExpress.SDK.Client.Model
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
+                ) && 
+                (
+                    this.TokenId == input.TokenId ||
+                    (this.TokenId != null &&
+                    this.TokenId.Equals(input.TokenId))
+                ) && 
+                (
+                    this.MintingBlob == input.MintingBlob ||
+                    (this.MintingBlob != null &&
+                    this.MintingBlob.Equals(input.MintingBlob))
                 );
         }
 
@@ -139,6 +169,14 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.Amount != null)
                 {
                     hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
+                if (this.TokenId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TokenId.GetHashCode();
+                }
+                if (this.MintingBlob != null)
+                {
+                    hashCode = (hashCode * 59) + this.MintingBlob.GetHashCode();
                 }
                 return hashCode;
             }
