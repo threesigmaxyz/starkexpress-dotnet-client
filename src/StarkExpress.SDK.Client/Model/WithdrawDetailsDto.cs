@@ -26,56 +26,51 @@ using OpenAPIDateConverter = StarkExpress.SDK.Client.Client.OpenAPIDateConverter
 namespace StarkExpress.SDK.Client.Model
 {
     /// <summary>
-    /// DepositDetailsDto
+    /// WithdrawDetailsDto
     /// </summary>
-    [DataContract(Name = "DepositDetailsDto")]
-    public partial class DepositDetailsDto : IEquatable<DepositDetailsDto>, IValidatableObject
+    [DataContract(Name = "WithdrawDetailsDto")]
+    public partial class WithdrawDetailsDto : IEquatable<WithdrawDetailsDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepositDetailsDto" /> class.
+        /// Initializes a new instance of the <see cref="WithdrawDetailsDto" /> class.
         /// </summary>
-        /// <param name="operatorContractAddress">The smart contract address that processes on-chain deposits..</param>
-        /// <param name="assetContractAddress">The asset&#39;s smart contract address..</param>
-        /// <param name="depositFunction">The deposit function to use on-chain..</param>
+        /// <param name="vault">vault.</param>
+        /// <param name="operatorContractAddress">The smart contract address that processes on-chain withdraws..</param>
+        /// <param name="withdrawFunction">The withdraw function to use on-chain..</param>
         /// <param name="starkKey">The user&#39;s public STARK key.</param>
         /// <param name="assetType">The asset type identifier..</param>
         /// <param name="tokenId">The token Id for ERC-721 and ERC-1155 assets..</param>
-        /// <param name="vaultId">The user&#39;s vault id..</param>
-        /// <param name="quantizedAmount">The quantized amount to deposit ERC-20 and ERC-1155 assets..</param>
-        /// <param name="amount">The amount to deposit ETH..</param>
-        public DepositDetailsDto(string operatorContractAddress = default(string), string assetContractAddress = default(string), string depositFunction = default(string), string starkKey = default(string), string assetType = default(string), string tokenId = default(string), string vaultId = default(string), string quantizedAmount = default(string), string amount = default(string))
+        /// <param name="mintingBlob">The minting blob for Mintable ERC-20, ERC-721 and ERC-1155 assets..</param>
+        public WithdrawDetailsDto(VaultDto vault = default(VaultDto), string operatorContractAddress = default(string), string withdrawFunction = default(string), string starkKey = default(string), string assetType = default(string), string tokenId = default(string), string mintingBlob = default(string))
         {
+            this.Vault = vault;
             this.OperatorContractAddress = operatorContractAddress;
-            this.AssetContractAddress = assetContractAddress;
-            this.DepositFunction = depositFunction;
+            this.WithdrawFunction = withdrawFunction;
             this.StarkKey = starkKey;
             this.AssetType = assetType;
             this.TokenId = tokenId;
-            this.VaultId = vaultId;
-            this.QuantizedAmount = quantizedAmount;
-            this.Amount = amount;
+            this.MintingBlob = mintingBlob;
         }
 
         /// <summary>
-        /// The smart contract address that processes on-chain deposits.
+        /// Gets or Sets Vault
         /// </summary>
-        /// <value>The smart contract address that processes on-chain deposits.</value>
+        [DataMember(Name = "vault", EmitDefaultValue = false)]
+        public VaultDto Vault { get; set; }
+
+        /// <summary>
+        /// The smart contract address that processes on-chain withdraws.
+        /// </summary>
+        /// <value>The smart contract address that processes on-chain withdraws.</value>
         [DataMember(Name = "operatorContractAddress", EmitDefaultValue = true)]
         public string OperatorContractAddress { get; set; }
 
         /// <summary>
-        /// The asset&#39;s smart contract address.
+        /// The withdraw function to use on-chain.
         /// </summary>
-        /// <value>The asset&#39;s smart contract address.</value>
-        [DataMember(Name = "assetContractAddress", EmitDefaultValue = true)]
-        public string AssetContractAddress { get; set; }
-
-        /// <summary>
-        /// The deposit function to use on-chain.
-        /// </summary>
-        /// <value>The deposit function to use on-chain.</value>
-        [DataMember(Name = "depositFunction", EmitDefaultValue = true)]
-        public string DepositFunction { get; set; }
+        /// <value>The withdraw function to use on-chain.</value>
+        [DataMember(Name = "withdrawFunction", EmitDefaultValue = true)]
+        public string WithdrawFunction { get; set; }
 
         /// <summary>
         /// The user&#39;s public STARK key
@@ -99,25 +94,11 @@ namespace StarkExpress.SDK.Client.Model
         public string TokenId { get; set; }
 
         /// <summary>
-        /// The user&#39;s vault id.
+        /// The minting blob for Mintable ERC-20, ERC-721 and ERC-1155 assets.
         /// </summary>
-        /// <value>The user&#39;s vault id.</value>
-        [DataMember(Name = "vaultId", EmitDefaultValue = false)]
-        public string VaultId { get; set; }
-
-        /// <summary>
-        /// The quantized amount to deposit ERC-20 and ERC-1155 assets.
-        /// </summary>
-        /// <value>The quantized amount to deposit ERC-20 and ERC-1155 assets.</value>
-        [DataMember(Name = "quantizedAmount", EmitDefaultValue = true)]
-        public string QuantizedAmount { get; set; }
-
-        /// <summary>
-        /// The amount to deposit ETH.
-        /// </summary>
-        /// <value>The amount to deposit ETH.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = true)]
-        public string Amount { get; set; }
+        /// <value>The minting blob for Mintable ERC-20, ERC-721 and ERC-1155 assets.</value>
+        [DataMember(Name = "mintingBlob", EmitDefaultValue = true)]
+        public string MintingBlob { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -126,16 +107,14 @@ namespace StarkExpress.SDK.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DepositDetailsDto {\n");
+            sb.Append("class WithdrawDetailsDto {\n");
+            sb.Append("  Vault: ").Append(Vault).Append("\n");
             sb.Append("  OperatorContractAddress: ").Append(OperatorContractAddress).Append("\n");
-            sb.Append("  AssetContractAddress: ").Append(AssetContractAddress).Append("\n");
-            sb.Append("  DepositFunction: ").Append(DepositFunction).Append("\n");
+            sb.Append("  WithdrawFunction: ").Append(WithdrawFunction).Append("\n");
             sb.Append("  StarkKey: ").Append(StarkKey).Append("\n");
             sb.Append("  AssetType: ").Append(AssetType).Append("\n");
             sb.Append("  TokenId: ").Append(TokenId).Append("\n");
-            sb.Append("  VaultId: ").Append(VaultId).Append("\n");
-            sb.Append("  QuantizedAmount: ").Append(QuantizedAmount).Append("\n");
-            sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  MintingBlob: ").Append(MintingBlob).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -156,15 +135,15 @@ namespace StarkExpress.SDK.Client.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DepositDetailsDto);
+            return this.Equals(input as WithdrawDetailsDto);
         }
 
         /// <summary>
-        /// Returns true if DepositDetailsDto instances are equal
+        /// Returns true if WithdrawDetailsDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of DepositDetailsDto to be compared</param>
+        /// <param name="input">Instance of WithdrawDetailsDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DepositDetailsDto input)
+        public bool Equals(WithdrawDetailsDto input)
         {
             if (input == null)
             {
@@ -172,19 +151,19 @@ namespace StarkExpress.SDK.Client.Model
             }
             return 
                 (
+                    this.Vault == input.Vault ||
+                    (this.Vault != null &&
+                    this.Vault.Equals(input.Vault))
+                ) && 
+                (
                     this.OperatorContractAddress == input.OperatorContractAddress ||
                     (this.OperatorContractAddress != null &&
                     this.OperatorContractAddress.Equals(input.OperatorContractAddress))
                 ) && 
                 (
-                    this.AssetContractAddress == input.AssetContractAddress ||
-                    (this.AssetContractAddress != null &&
-                    this.AssetContractAddress.Equals(input.AssetContractAddress))
-                ) && 
-                (
-                    this.DepositFunction == input.DepositFunction ||
-                    (this.DepositFunction != null &&
-                    this.DepositFunction.Equals(input.DepositFunction))
+                    this.WithdrawFunction == input.WithdrawFunction ||
+                    (this.WithdrawFunction != null &&
+                    this.WithdrawFunction.Equals(input.WithdrawFunction))
                 ) && 
                 (
                     this.StarkKey == input.StarkKey ||
@@ -202,19 +181,9 @@ namespace StarkExpress.SDK.Client.Model
                     this.TokenId.Equals(input.TokenId))
                 ) && 
                 (
-                    this.VaultId == input.VaultId ||
-                    (this.VaultId != null &&
-                    this.VaultId.Equals(input.VaultId))
-                ) && 
-                (
-                    this.QuantizedAmount == input.QuantizedAmount ||
-                    (this.QuantizedAmount != null &&
-                    this.QuantizedAmount.Equals(input.QuantizedAmount))
-                ) && 
-                (
-                    this.Amount == input.Amount ||
-                    (this.Amount != null &&
-                    this.Amount.Equals(input.Amount))
+                    this.MintingBlob == input.MintingBlob ||
+                    (this.MintingBlob != null &&
+                    this.MintingBlob.Equals(input.MintingBlob))
                 );
         }
 
@@ -227,17 +196,17 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Vault != null)
+                {
+                    hashCode = (hashCode * 59) + this.Vault.GetHashCode();
+                }
                 if (this.OperatorContractAddress != null)
                 {
                     hashCode = (hashCode * 59) + this.OperatorContractAddress.GetHashCode();
                 }
-                if (this.AssetContractAddress != null)
+                if (this.WithdrawFunction != null)
                 {
-                    hashCode = (hashCode * 59) + this.AssetContractAddress.GetHashCode();
-                }
-                if (this.DepositFunction != null)
-                {
-                    hashCode = (hashCode * 59) + this.DepositFunction.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WithdrawFunction.GetHashCode();
                 }
                 if (this.StarkKey != null)
                 {
@@ -251,17 +220,9 @@ namespace StarkExpress.SDK.Client.Model
                 {
                     hashCode = (hashCode * 59) + this.TokenId.GetHashCode();
                 }
-                if (this.VaultId != null)
+                if (this.MintingBlob != null)
                 {
-                    hashCode = (hashCode * 59) + this.VaultId.GetHashCode();
-                }
-                if (this.QuantizedAmount != null)
-                {
-                    hashCode = (hashCode * 59) + this.QuantizedAmount.GetHashCode();
-                }
-                if (this.Amount != null)
-                {
-                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MintingBlob.GetHashCode();
                 }
                 return hashCode;
             }
