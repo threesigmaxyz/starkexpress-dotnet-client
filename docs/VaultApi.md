@@ -4,7 +4,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetAllVaults**](VaultApi.md#getallvaults) | **GET** /api/vaults | Get All Vaults |
+| [**GetAllVaults**](VaultApi.md#getallvaults) | **GET** /api/v1/vaults | Get All Vaults |
 
 <a name="getallvaults"></a>
 # **GetAllVaults**
