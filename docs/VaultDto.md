@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **VaultId** | **Guid** | The ID of the vault. | [optional] 
 **VaultChainId** | **string** | The StarkEx ID of the vault. | [optional] 
 **StarkExAddress** | **string** | The address of the StarkEx instance associated with the vault. | [optional] 
+**AssetSymbol** | **string** | The symbol of the asset associated with the vault. | [optional] 
 **AssetStarkExId** | **string** | The StarkEx ID of the asset associated with the vault. | [optional] 
 **UserStarkKey** | **string** | The STARK key of the user associated with the vault. | [optional] 
 **AvailableBalance** | **string** | The available balance of the vault. | [optional] 

@@ -4,10 +4,10 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**EIP712Details**](UserApi.md#eip712details) | **GET** /api/users/register-details | Get EIP712 data to be signed |
-| [**GetAllUsers**](UserApi.md#getallusers) | **GET** /api/users | Get All Users |
-| [**GetUser**](UserApi.md#getuser) | **GET** /api/users/{userId} | Get User |
-| [**RegisterUser**](UserApi.md#registeruser) | **POST** /api/users | Register new User |
+| [**EIP712Details**](UserApi.md#eip712details) | **GET** /api/v1/users/register-details | Get EIP712 data to be signed |
+| [**GetAllUsers**](UserApi.md#getallusers) | **GET** /api/v1/users | Get All Users |
+| [**GetUser**](UserApi.md#getuser) | **GET** /api/v1/users/{userId} | Get User |
+| [**RegisterUser**](UserApi.md#registeruser) | **POST** /api/v1/users | Register new User |
 
 <a name="eip712details"></a>
 # **EIP712Details**
@@ -248,7 +248,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserApi(config);
-            var userId = "userId_example";  // Guid | 
+            var userId = "userId_example";  // Guid | The user id.
 
             try
             {
@@ -291,7 +291,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userId** | **Guid** |  |  |
+| **userId** | **Guid** | The user id. |  |
 
 ### Return type
 
