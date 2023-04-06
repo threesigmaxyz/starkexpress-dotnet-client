@@ -63,7 +63,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.starkexpress.io";
             // Configure OAuth2 access token for authorization: oauth2
-            config.OAuthTokenUrl = "https://dev-o6vo4sdh.us.auth0.com/oauth/token";
+            config.OAuthTokenUrl = "https://starkexpress-testnet.eu.auth0.com/oauth/token";
             config.OAuthClientId = "YOUR_CLIENT_ID";
             config.OAuthClientSecret = "YOUR_CLIENT_SECRET";
 
@@ -194,7 +194,7 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: application
-- **Token URL**: https://dev-o6vo4sdh.us.auth0.com/oauth/token
+- **Token URL**: https://starkexpress-testnet.eu.auth0.com/oauth/token
 - **Scopes**: 
   - write:users: Access user write operations.
   - read:users: Access user read operations.
