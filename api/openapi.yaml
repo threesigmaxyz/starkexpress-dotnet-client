@@ -3091,8 +3091,6 @@ components:
       additionalProperties: false
       example:
         amount: amount
-        mintingBlob: mintingBlob
-        tokenId: tokenId
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         vaultId:
@@ -3103,19 +3101,6 @@ components:
         amount:
           description: "The amount of the asset to be withdrawn, in unquantized form."
           title: Amount
-          type: string
-        tokenId:
-          description: The token Id for ERC-721 and ERC-1155 assets.
-          format: hex
-          nullable: true
-          title: Token Id
-          type: string
-        mintingBlob:
-          description: "The minting blob for Mintable ERC-20, ERC-721 and ERC-1155\
-            \ assets."
-          format: hex
-          nullable: true
-          title: Minting blob
           type: string
       required:
       - amount
@@ -3134,6 +3119,6 @@ components:
             read:vaults: Access vault read operations.
             write:transfers: Access transfer write operations.
             read:transfers: Access transfer read operations.
-          tokenUrl: https://dev-o6vo4sdh.us.auth0.com/oauth/token
+          tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
       type: oauth2
 

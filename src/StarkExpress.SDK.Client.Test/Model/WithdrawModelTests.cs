@@ -72,22 +72,6 @@ namespace StarkExpress.SDK.Client.Test.Model
         {
             // TODO unit test for the property 'Amount'
         }
-        /// <summary>
-        /// Test the property 'TokenId'
-        /// </summary>
-        [Fact]
-        public void TokenIdTest()
-        {
-            // TODO unit test for the property 'TokenId'
-        }
-        /// <summary>
-        /// Test the property 'MintingBlob'
-        /// </summary>
-        [Fact]
-        public void MintingBlobTest()
-        {
-            // TODO unit test for the property 'MintingBlob'
-        }
 
     }
 
