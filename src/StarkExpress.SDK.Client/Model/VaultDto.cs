@@ -38,16 +38,20 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="vaultChainId">The StarkEx ID of the vault..</param>
         /// <param name="starkExAddress">The address of the StarkEx instance associated with the vault..</param>
         /// <param name="assetSymbol">The symbol of the asset associated with the vault..</param>
+        /// <param name="tokenId">The token id of the asset associated with the vault, if the asset is an ERC721 or ERC1155..</param>
+        /// <param name="mintingBlob">The minting blob of the asset associated with the vault, if the asset is a Mintable ERC20, ERC721 or ERC1155..</param>
         /// <param name="assetStarkExId">The StarkEx ID of the asset associated with the vault..</param>
         /// <param name="userStarkKey">The STARK key of the user associated with the vault..</param>
         /// <param name="availableBalance">The available balance of the vault..</param>
         /// <param name="accountingBalance">The accounting balance of the vault..</param>
-        public VaultDto(Guid vaultId = default(Guid), string vaultChainId = default(string), string starkExAddress = default(string), string assetSymbol = default(string), string assetStarkExId = default(string), string userStarkKey = default(string), string availableBalance = default(string), string accountingBalance = default(string))
+        public VaultDto(Guid vaultId = default(Guid), string vaultChainId = default(string), string starkExAddress = default(string), string assetSymbol = default(string), string tokenId = default(string), string mintingBlob = default(string), string assetStarkExId = default(string), string userStarkKey = default(string), string availableBalance = default(string), string accountingBalance = default(string))
         {
             this.VaultId = vaultId;
             this.VaultChainId = vaultChainId;
             this.StarkExAddress = starkExAddress;
             this.AssetSymbol = assetSymbol;
+            this.TokenId = tokenId;
+            this.MintingBlob = mintingBlob;
             this.AssetStarkExId = assetStarkExId;
             this.UserStarkKey = userStarkKey;
             this.AvailableBalance = availableBalance;
@@ -81,6 +85,20 @@ namespace StarkExpress.SDK.Client.Model
         /// <value>The symbol of the asset associated with the vault.</value>
         [DataMember(Name = "assetSymbol", EmitDefaultValue = true)]
         public string AssetSymbol { get; set; }
+
+        /// <summary>
+        /// The token id of the asset associated with the vault, if the asset is an ERC721 or ERC1155.
+        /// </summary>
+        /// <value>The token id of the asset associated with the vault, if the asset is an ERC721 or ERC1155.</value>
+        [DataMember(Name = "tokenId", EmitDefaultValue = true)]
+        public string TokenId { get; set; }
+
+        /// <summary>
+        /// The minting blob of the asset associated with the vault, if the asset is a Mintable ERC20, ERC721 or ERC1155.
+        /// </summary>
+        /// <value>The minting blob of the asset associated with the vault, if the asset is a Mintable ERC20, ERC721 or ERC1155.</value>
+        [DataMember(Name = "mintingBlob", EmitDefaultValue = true)]
+        public string MintingBlob { get; set; }
 
         /// <summary>
         /// The StarkEx ID of the asset associated with the vault.
@@ -122,6 +140,8 @@ namespace StarkExpress.SDK.Client.Model
             sb.Append("  VaultChainId: ").Append(VaultChainId).Append("\n");
             sb.Append("  StarkExAddress: ").Append(StarkExAddress).Append("\n");
             sb.Append("  AssetSymbol: ").Append(AssetSymbol).Append("\n");
+            sb.Append("  TokenId: ").Append(TokenId).Append("\n");
+            sb.Append("  MintingBlob: ").Append(MintingBlob).Append("\n");
             sb.Append("  AssetStarkExId: ").Append(AssetStarkExId).Append("\n");
             sb.Append("  UserStarkKey: ").Append(UserStarkKey).Append("\n");
             sb.Append("  AvailableBalance: ").Append(AvailableBalance).Append("\n");
@@ -182,6 +202,16 @@ namespace StarkExpress.SDK.Client.Model
                     this.AssetSymbol.Equals(input.AssetSymbol))
                 ) && 
                 (
+                    this.TokenId == input.TokenId ||
+                    (this.TokenId != null &&
+                    this.TokenId.Equals(input.TokenId))
+                ) && 
+                (
+                    this.MintingBlob == input.MintingBlob ||
+                    (this.MintingBlob != null &&
+                    this.MintingBlob.Equals(input.MintingBlob))
+                ) && 
+                (
                     this.AssetStarkExId == input.AssetStarkExId ||
                     (this.AssetStarkExId != null &&
                     this.AssetStarkExId.Equals(input.AssetStarkExId))
@@ -227,6 +257,14 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.AssetSymbol != null)
                 {
                     hashCode = (hashCode * 59) + this.AssetSymbol.GetHashCode();
+                }
+                if (this.TokenId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TokenId.GetHashCode();
+                }
+                if (this.MintingBlob != null)
+                {
+                    hashCode = (hashCode * 59) + this.MintingBlob.GetHashCode();
                 }
                 if (this.AssetStarkExId != null)
                 {
