@@ -1602,6 +1602,8 @@ components:
       - 17016
       - 17017
       - 17018
+      - 17019
+      - 17020
       - 18001
       - 18002
       - 18003
@@ -3134,6 +3136,6 @@ components:
             read:vaults: Access vault read operations.
             write:transfers: Access transfer write operations.
             read:transfers: Access transfer read operations.
-          tokenUrl: https://dev-o6vo4sdh.us.auth0.com/oauth/token
+          tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
       type: oauth2
 
