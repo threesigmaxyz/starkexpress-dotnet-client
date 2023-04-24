@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **VaultChainId** | **string** | The StarkEx ID of the vault. | [optional] 
 **StarkExAddress** | **string** | The address of the StarkEx instance associated with the vault. | [optional] 
 **AssetSymbol** | **string** | The symbol of the asset associated with the vault. | [optional] 
+**TokenId** | **string** | The token id of the asset associated with the vault, if the asset is an ERC721 or ERC1155. | [optional] 
+**MintingBlob** | **string** | The minting blob of the asset associated with the vault, if the asset is a Mintable ERC20, ERC721 or ERC1155. | [optional] 
 **AssetStarkExId** | **string** | The StarkEx ID of the asset associated with the vault. | [optional] 
 **UserStarkKey** | **string** | The STARK key of the user associated with the vault. | [optional] 
 **AvailableBalance** | **string** | The available balance of the vault. | [optional] 
