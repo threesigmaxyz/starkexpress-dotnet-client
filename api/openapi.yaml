@@ -555,6 +555,41 @@ paths:
       summary: Get Asset
       tags:
       - Asset
+  /api/v1/assets/deploy:
+    post:
+      description: This endpoint allows for deploying an asset and enable it in the
+        tenant system.
+      operationId: Deploy Asset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAssetModel'
+        description: The asset deployment request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns the deployed asset.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The asset deployment request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:tenant_assets
+      summary: Deploy Asset
+      tags:
+      - Asset
   /api/v1/transactions:
     get:
       description: "This endpoint fetches all transactions submitted by the system,\
@@ -1363,6 +1398,39 @@ components:
       - 1
       format: int32
       type: integer
+    DeployAssetModel:
+      additionalProperties: false
+      example:
+        symbol: symbol
+        name: name
+        type: null
+        uri: uri
+      properties:
+        type:
+          $ref: '#/components/schemas/AssetType'
+        name:
+          description: The token's name (eg. USD Coin).
+          format: string
+          minLength: 1
+          title: Name
+          type: string
+        symbol:
+          description: The token's symbol (eg. USDC).
+          format: string
+          minLength: 1
+          title: Name
+          type: string
+        uri:
+          description: The token's metadata uri (for ERC-721 and ERC-1155 tokens).
+          format: string
+          nullable: true
+          title: Uri
+          type: string
+      required:
+      - name
+      - symbol
+      - type
+      type: object
     DepositDetailsDto:
       additionalProperties: false
       example:
@@ -1553,6 +1621,7 @@ components:
       - 10611
       - 10612
       - 10613
+      - 10614
       - 10701
       - 10801
       - 10802
@@ -1568,6 +1637,7 @@ components:
       - 12102
       - 12103
       - 12104
+      - 12105
       - 12201
       - 12301
       - 12302
@@ -1581,6 +1651,7 @@ components:
       - 14001
       - 14002
       - 14003
+      - 14004
       - 15001
       - 16001
       - 16002
@@ -1602,6 +1673,8 @@ components:
       - 17016
       - 17017
       - 17018
+      - 17019
+      - 17020
       - 18001
       - 18002
       - 18003
@@ -2902,7 +2975,9 @@ components:
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
             assetSymbol: assetSymbol
+            mintingBlob: mintingBlob
             userStarkKey: userStarkKey
+            tokenId: tokenId
             accountingBalance: accountingBalance
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             vaultChainId: vaultChainId
@@ -2910,7 +2985,9 @@ components:
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
             assetSymbol: assetSymbol
+            mintingBlob: mintingBlob
             userStarkKey: userStarkKey
+            tokenId: tokenId
             accountingBalance: accountingBalance
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             vaultChainId: vaultChainId
@@ -2939,7 +3016,9 @@ components:
         starkExAddress: starkExAddress
         assetStarkExId: assetStarkExId
         assetSymbol: assetSymbol
+        mintingBlob: mintingBlob
         userStarkKey: userStarkKey
+        tokenId: tokenId
         accountingBalance: accountingBalance
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         vaultChainId: vaultChainId
@@ -2965,6 +3044,20 @@ components:
           format: string
           nullable: true
           title: Asset Symbol
+          type: string
+        tokenId:
+          description: "The token id of the asset associated with the vault, if the\
+            \ asset is an ERC721 or ERC1155."
+          format: hex
+          nullable: true
+          title: Token ID
+          type: string
+        mintingBlob:
+          description: "The minting blob of the asset associated with the vault, if\
+            \ the asset is a Mintable ERC20, ERC721 or ERC1155."
+          format: hex
+          nullable: true
+          title: Minting Blob
           type: string
         assetStarkExId:
           description: The StarkEx ID of the asset associated with the vault.
@@ -2998,7 +3091,9 @@ components:
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
           assetSymbol: assetSymbol
+          mintingBlob: mintingBlob
           userStarkKey: userStarkKey
+          tokenId: tokenId
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
@@ -3006,7 +3101,9 @@ components:
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
           assetSymbol: assetSymbol
+          mintingBlob: mintingBlob
           userStarkKey: userStarkKey
+          tokenId: tokenId
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
@@ -3038,7 +3135,9 @@ components:
           starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
           assetSymbol: assetSymbol
+          mintingBlob: mintingBlob
           userStarkKey: userStarkKey
+          tokenId: tokenId
           accountingBalance: accountingBalance
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
@@ -3091,8 +3190,6 @@ components:
       additionalProperties: false
       example:
         amount: amount
-        mintingBlob: mintingBlob
-        tokenId: tokenId
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         vaultId:
@@ -3103,19 +3200,6 @@ components:
         amount:
           description: "The amount of the asset to be withdrawn, in unquantized form."
           title: Amount
-          type: string
-        tokenId:
-          description: The token Id for ERC-721 and ERC-1155 assets.
-          format: hex
-          nullable: true
-          title: Token Id
-          type: string
-        mintingBlob:
-          description: "The minting blob for Mintable ERC-20, ERC-721 and ERC-1155\
-            \ assets."
-          format: hex
-          nullable: true
-          title: Minting blob
           type: string
       required:
       - amount
@@ -3134,6 +3218,6 @@ components:
             read:vaults: Access vault read operations.
             write:transfers: Access transfer write operations.
             read:transfers: Access transfer read operations.
-          tokenUrl: https://dev-o6vo4sdh.us.auth0.com/oauth/token
+          tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
       type: oauth2
 
