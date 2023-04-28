@@ -594,6 +594,20 @@ paths:
         style: form
       - explode: true
         in: query
+        name: tx_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/StarkExOperation'
+        style: form
+      - explode: true
+        in: query
+        name: tx_type_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
         name: page_number
         required: true
         schema:
@@ -2355,6 +2369,7 @@ components:
       - 4
       - 5
       - 6
+      - 7
       format: int32
       type: integer
     SubmitOrderModel:
