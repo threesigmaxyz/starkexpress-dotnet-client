@@ -42,9 +42,9 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="username">The username of the user. (required).</param>
         /// <param name="starkKey">The STARK key of the user. (required).</param>
         /// <param name="starkSignature">starkSignature (required).</param>
-        /// <param name="address">The Ethereum address associated with the user. (required).</param>
+        /// <param name="address">address (required).</param>
         /// <param name="eip712Signature">The EIP-712 Signature of the Username, Stark Key and Address. (required).</param>
-        public RegisterUserModel(string username = default(string), string starkKey = default(string), SignatureModel starkSignature = default(SignatureModel), string address = default(string), string eip712Signature = default(string))
+        public RegisterUserModel(string username = default(string), string starkKey = default(string), SignatureModel starkSignature = default(SignatureModel), BlockchainAddress address = default(BlockchainAddress), string eip712Signature = default(string))
         {
             // to ensure "username" is required (not null)
             if (username == null)
@@ -99,11 +99,10 @@ namespace StarkExpress.SDK.Client.Model
         public SignatureModel StarkSignature { get; set; }
 
         /// <summary>
-        /// The Ethereum address associated with the user.
+        /// Gets or Sets Address
         /// </summary>
-        /// <value>The Ethereum address associated with the user.</value>
         [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
-        public string Address { get; set; }
+        public BlockchainAddress Address { get; set; }
 
         /// <summary>
         /// The EIP-712 Signature of the Username, Stark Key and Address.
@@ -243,12 +242,6 @@ namespace StarkExpress.SDK.Client.Model
             if (this.StarkKey != null && this.StarkKey.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for StarkKey, length must be greater than 1.", new [] { "StarkKey" });
-            }
-
-            // Address (string) minLength
-            if (this.Address != null && this.Address.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Address, length must be greater than 1.", new [] { "Address" });
             }
 
             // Eip712Signature (string) minLength

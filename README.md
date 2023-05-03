@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
  - [Model.AssetType](docs/AssetType.md)
  - [Model.BatchMintRequestModel](docs/BatchMintRequestModel.md)
  - [Model.BigInteger](docs/BigInteger.md)
+ - [Model.BlockchainAddress](docs/BlockchainAddress.md)
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
  - [Model.CreateOrderbookModel](docs/CreateOrderbookModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)

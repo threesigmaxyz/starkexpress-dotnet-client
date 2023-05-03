@@ -1301,6 +1301,15 @@ components:
           readOnly: true
           type: integer
       type: object
+    BlockchainAddress:
+      additionalProperties: false
+      example:
+        value: value
+      properties:
+        value:
+          nullable: true
+          type: string
+      type: object
     ConfigureFeeModel:
       additionalProperties: false
       description: Request model to configure the fee model for an operation.
@@ -2244,7 +2253,8 @@ components:
     RegisterUserModel:
       additionalProperties: false
       example:
-        address: address
+        address:
+          value: value
         starkSignature:
           r: r
           s: s
@@ -2268,11 +2278,7 @@ components:
         starkSignature:
           $ref: '#/components/schemas/SignatureModel'
         address:
-          description: The Ethereum address associated with the user.
-          format: hex
-          minLength: 1
-          title: Address
-          type: string
+          $ref: '#/components/schemas/BlockchainAddress'
         eip712Signature:
           description: "The EIP-712 Signature of the Username, Stark Key and Address."
           format: hex
