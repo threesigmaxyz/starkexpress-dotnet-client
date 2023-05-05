@@ -2913,6 +2913,7 @@ components:
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             vaultChainId: vaultChainId
             availableBalance: availableBalance
+            dataAvailabilityMode: null
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
             assetSymbol: assetSymbol
@@ -2923,6 +2924,7 @@ components:
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             vaultChainId: vaultChainId
             availableBalance: availableBalance
+            dataAvailabilityMode: null
         user:
           address: address
           userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2954,6 +2956,7 @@ components:
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         vaultChainId: vaultChainId
         availableBalance: availableBalance
+        dataAvailabilityMode: null
       properties:
         vaultId:
           description: The ID of the vault.
@@ -3010,6 +3013,8 @@ components:
           description: The accounting balance of the vault.
           title: Accounting Balance
           type: string
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
       type: object
     VaultDtoPaginatedResponseDto:
       additionalProperties: false
@@ -3029,6 +3034,7 @@ components:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
           availableBalance: availableBalance
+          dataAvailabilityMode: null
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
           assetSymbol: assetSymbol
@@ -3039,6 +3045,7 @@ components:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
           availableBalance: availableBalance
+          dataAvailabilityMode: null
         totalCount: 0
       properties:
         data:
@@ -3073,6 +3080,7 @@ components:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
           availableBalance: availableBalance
+          dataAvailabilityMode: null
         operatorContractAddress: operatorContractAddress
         starkKey: starkKey
         assetType: assetType
