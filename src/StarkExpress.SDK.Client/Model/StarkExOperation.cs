@@ -63,7 +63,12 @@ namespace StarkExpress.SDK.Client.Model
         /// <summary>
         /// Enum NUMBER_6 for value: 6
         /// </summary>
-        NUMBER_6 = 6
+        NUMBER_6 = 6,
+
+        /// <summary>
+        /// Enum NUMBER_7 for value: 7
+        /// </summary>
+        NUMBER_7 = 7
 
     }
 
