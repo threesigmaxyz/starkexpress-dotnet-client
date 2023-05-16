@@ -5,10 +5,10 @@ Settlement details model.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MakerAmount** | **string** | The settlement maker amount. | 
-**TakerAmount** | **string** | The settlement maker amount. | 
-**MakerFeeAmount** | **string** | The settlement maker fee amount. | 
-**TakerFeeAmount** | **string** | The settlement taker fee amount. | 
+**OrderAFeeDestinationVaultId** | **Guid** | The unique identifier of the fee destination vault. | 
+**OrderAFeeAmount** | **string** | The settlement fee amount. | 
+**OrderBFeeDestinationVaultId** | **Guid** | The unique identifier of the fee destination vault. | 
+**OrderBFeeAmount** | **string** | The settlement fee amount. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

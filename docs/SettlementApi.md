@@ -30,6 +30,9 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SettlementApi(config);
             var submitSettlementModel = new SubmitSettlementModel(); // SubmitSettlementModel | The settlement request.
 
@@ -82,7 +85,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -96,6 +99,8 @@ No authorization required
 | **200** | Returns the vaults updated by the settlement operation. |  -  |
 | **400** | The settlement request was invalid. |  -  |
 | **404** | Not Found. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

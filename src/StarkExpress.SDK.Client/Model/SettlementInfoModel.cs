@@ -39,65 +39,55 @@ namespace StarkExpress.SDK.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SettlementInfoModel" /> class.
         /// </summary>
-        /// <param name="makerAmount">The settlement maker amount. (required).</param>
-        /// <param name="takerAmount">The settlement maker amount. (required).</param>
-        /// <param name="makerFeeAmount">The settlement maker fee amount. (required).</param>
-        /// <param name="takerFeeAmount">The settlement taker fee amount. (required).</param>
-        public SettlementInfoModel(string makerAmount = default(string), string takerAmount = default(string), string makerFeeAmount = default(string), string takerFeeAmount = default(string))
+        /// <param name="orderAFeeDestinationVaultId">The unique identifier of the fee destination vault. (required).</param>
+        /// <param name="orderAFeeAmount">The settlement fee amount. (required).</param>
+        /// <param name="orderBFeeDestinationVaultId">The unique identifier of the fee destination vault. (required).</param>
+        /// <param name="orderBFeeAmount">The settlement fee amount. (required).</param>
+        public SettlementInfoModel(Guid orderAFeeDestinationVaultId = default(Guid), string orderAFeeAmount = default(string), Guid orderBFeeDestinationVaultId = default(Guid), string orderBFeeAmount = default(string))
         {
-            // to ensure "makerAmount" is required (not null)
-            if (makerAmount == null)
+            this.OrderAFeeDestinationVaultId = orderAFeeDestinationVaultId;
+            // to ensure "orderAFeeAmount" is required (not null)
+            if (orderAFeeAmount == null)
             {
-                throw new ArgumentNullException("makerAmount is a required property for SettlementInfoModel and cannot be null");
+                throw new ArgumentNullException("orderAFeeAmount is a required property for SettlementInfoModel and cannot be null");
             }
-            this.MakerAmount = makerAmount;
-            // to ensure "takerAmount" is required (not null)
-            if (takerAmount == null)
+            this.OrderAFeeAmount = orderAFeeAmount;
+            this.OrderBFeeDestinationVaultId = orderBFeeDestinationVaultId;
+            // to ensure "orderBFeeAmount" is required (not null)
+            if (orderBFeeAmount == null)
             {
-                throw new ArgumentNullException("takerAmount is a required property for SettlementInfoModel and cannot be null");
+                throw new ArgumentNullException("orderBFeeAmount is a required property for SettlementInfoModel and cannot be null");
             }
-            this.TakerAmount = takerAmount;
-            // to ensure "makerFeeAmount" is required (not null)
-            if (makerFeeAmount == null)
-            {
-                throw new ArgumentNullException("makerFeeAmount is a required property for SettlementInfoModel and cannot be null");
-            }
-            this.MakerFeeAmount = makerFeeAmount;
-            // to ensure "takerFeeAmount" is required (not null)
-            if (takerFeeAmount == null)
-            {
-                throw new ArgumentNullException("takerFeeAmount is a required property for SettlementInfoModel and cannot be null");
-            }
-            this.TakerFeeAmount = takerFeeAmount;
+            this.OrderBFeeAmount = orderBFeeAmount;
         }
 
         /// <summary>
-        /// The settlement maker amount.
+        /// The unique identifier of the fee destination vault.
         /// </summary>
-        /// <value>The settlement maker amount.</value>
-        [DataMember(Name = "makerAmount", IsRequired = true, EmitDefaultValue = true)]
-        public string MakerAmount { get; set; }
+        /// <value>The unique identifier of the fee destination vault.</value>
+        [DataMember(Name = "orderAFeeDestinationVaultId", IsRequired = true, EmitDefaultValue = true)]
+        public Guid OrderAFeeDestinationVaultId { get; set; }
 
         /// <summary>
-        /// The settlement maker amount.
+        /// The settlement fee amount.
         /// </summary>
-        /// <value>The settlement maker amount.</value>
-        [DataMember(Name = "takerAmount", IsRequired = true, EmitDefaultValue = true)]
-        public string TakerAmount { get; set; }
+        /// <value>The settlement fee amount.</value>
+        [DataMember(Name = "orderAFeeAmount", IsRequired = true, EmitDefaultValue = true)]
+        public string OrderAFeeAmount { get; set; }
 
         /// <summary>
-        /// The settlement maker fee amount.
+        /// The unique identifier of the fee destination vault.
         /// </summary>
-        /// <value>The settlement maker fee amount.</value>
-        [DataMember(Name = "makerFeeAmount", IsRequired = true, EmitDefaultValue = true)]
-        public string MakerFeeAmount { get; set; }
+        /// <value>The unique identifier of the fee destination vault.</value>
+        [DataMember(Name = "orderBFeeDestinationVaultId", IsRequired = true, EmitDefaultValue = true)]
+        public Guid OrderBFeeDestinationVaultId { get; set; }
 
         /// <summary>
-        /// The settlement taker fee amount.
+        /// The settlement fee amount.
         /// </summary>
-        /// <value>The settlement taker fee amount.</value>
-        [DataMember(Name = "takerFeeAmount", IsRequired = true, EmitDefaultValue = true)]
-        public string TakerFeeAmount { get; set; }
+        /// <value>The settlement fee amount.</value>
+        [DataMember(Name = "orderBFeeAmount", IsRequired = true, EmitDefaultValue = true)]
+        public string OrderBFeeAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,10 +97,10 @@ namespace StarkExpress.SDK.Client.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SettlementInfoModel {\n");
-            sb.Append("  MakerAmount: ").Append(MakerAmount).Append("\n");
-            sb.Append("  TakerAmount: ").Append(TakerAmount).Append("\n");
-            sb.Append("  MakerFeeAmount: ").Append(MakerFeeAmount).Append("\n");
-            sb.Append("  TakerFeeAmount: ").Append(TakerFeeAmount).Append("\n");
+            sb.Append("  OrderAFeeDestinationVaultId: ").Append(OrderAFeeDestinationVaultId).Append("\n");
+            sb.Append("  OrderAFeeAmount: ").Append(OrderAFeeAmount).Append("\n");
+            sb.Append("  OrderBFeeDestinationVaultId: ").Append(OrderBFeeDestinationVaultId).Append("\n");
+            sb.Append("  OrderBFeeAmount: ").Append(OrderBFeeAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -147,24 +137,24 @@ namespace StarkExpress.SDK.Client.Model
             }
             return 
                 (
-                    this.MakerAmount == input.MakerAmount ||
-                    (this.MakerAmount != null &&
-                    this.MakerAmount.Equals(input.MakerAmount))
+                    this.OrderAFeeDestinationVaultId == input.OrderAFeeDestinationVaultId ||
+                    (this.OrderAFeeDestinationVaultId != null &&
+                    this.OrderAFeeDestinationVaultId.Equals(input.OrderAFeeDestinationVaultId))
                 ) && 
                 (
-                    this.TakerAmount == input.TakerAmount ||
-                    (this.TakerAmount != null &&
-                    this.TakerAmount.Equals(input.TakerAmount))
+                    this.OrderAFeeAmount == input.OrderAFeeAmount ||
+                    (this.OrderAFeeAmount != null &&
+                    this.OrderAFeeAmount.Equals(input.OrderAFeeAmount))
                 ) && 
                 (
-                    this.MakerFeeAmount == input.MakerFeeAmount ||
-                    (this.MakerFeeAmount != null &&
-                    this.MakerFeeAmount.Equals(input.MakerFeeAmount))
+                    this.OrderBFeeDestinationVaultId == input.OrderBFeeDestinationVaultId ||
+                    (this.OrderBFeeDestinationVaultId != null &&
+                    this.OrderBFeeDestinationVaultId.Equals(input.OrderBFeeDestinationVaultId))
                 ) && 
                 (
-                    this.TakerFeeAmount == input.TakerFeeAmount ||
-                    (this.TakerFeeAmount != null &&
-                    this.TakerFeeAmount.Equals(input.TakerFeeAmount))
+                    this.OrderBFeeAmount == input.OrderBFeeAmount ||
+                    (this.OrderBFeeAmount != null &&
+                    this.OrderBFeeAmount.Equals(input.OrderBFeeAmount))
                 );
         }
 
@@ -177,21 +167,21 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.MakerAmount != null)
+                if (this.OrderAFeeDestinationVaultId != null)
                 {
-                    hashCode = (hashCode * 59) + this.MakerAmount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderAFeeDestinationVaultId.GetHashCode();
                 }
-                if (this.TakerAmount != null)
+                if (this.OrderAFeeAmount != null)
                 {
-                    hashCode = (hashCode * 59) + this.TakerAmount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderAFeeAmount.GetHashCode();
                 }
-                if (this.MakerFeeAmount != null)
+                if (this.OrderBFeeDestinationVaultId != null)
                 {
-                    hashCode = (hashCode * 59) + this.MakerFeeAmount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderBFeeDestinationVaultId.GetHashCode();
                 }
-                if (this.TakerFeeAmount != null)
+                if (this.OrderBFeeAmount != null)
                 {
-                    hashCode = (hashCode * 59) + this.TakerFeeAmount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderBFeeAmount.GetHashCode();
                 }
                 return hashCode;
             }

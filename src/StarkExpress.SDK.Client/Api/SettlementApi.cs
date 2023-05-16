@@ -260,6 +260,22 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "SettlementApi.SubmitSettlement";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<List<VaultDto>>("/api/v1/settlements", localVarRequestOptions, this.Configuration);
@@ -334,6 +350,22 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "SettlementApi.SubmitSettlement";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
 
             // make the HTTP request
             var localVarResponse = await this.AsynchronousClient.PostAsync<List<VaultDto>>("/api/v1/settlements", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);

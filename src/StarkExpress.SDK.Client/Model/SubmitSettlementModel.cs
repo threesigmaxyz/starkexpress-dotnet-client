@@ -39,23 +39,23 @@ namespace StarkExpress.SDK.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubmitSettlementModel" /> class.
         /// </summary>
-        /// <param name="makerOrder">makerOrder (required).</param>
-        /// <param name="takerOrder">takerOrder (required).</param>
+        /// <param name="orderA">orderA (required).</param>
+        /// <param name="orderB">orderB (required).</param>
         /// <param name="settlementInfo">settlementInfo (required).</param>
-        public SubmitSettlementModel(SubmitOrderModel makerOrder = default(SubmitOrderModel), SubmitOrderModel takerOrder = default(SubmitOrderModel), SettlementInfoModel settlementInfo = default(SettlementInfoModel))
+        public SubmitSettlementModel(SettlementOrderModel orderA = default(SettlementOrderModel), SettlementOrderModel orderB = default(SettlementOrderModel), SettlementInfoModel settlementInfo = default(SettlementInfoModel))
         {
-            // to ensure "makerOrder" is required (not null)
-            if (makerOrder == null)
+            // to ensure "orderA" is required (not null)
+            if (orderA == null)
             {
-                throw new ArgumentNullException("makerOrder is a required property for SubmitSettlementModel and cannot be null");
+                throw new ArgumentNullException("orderA is a required property for SubmitSettlementModel and cannot be null");
             }
-            this.MakerOrder = makerOrder;
-            // to ensure "takerOrder" is required (not null)
-            if (takerOrder == null)
+            this.OrderA = orderA;
+            // to ensure "orderB" is required (not null)
+            if (orderB == null)
             {
-                throw new ArgumentNullException("takerOrder is a required property for SubmitSettlementModel and cannot be null");
+                throw new ArgumentNullException("orderB is a required property for SubmitSettlementModel and cannot be null");
             }
-            this.TakerOrder = takerOrder;
+            this.OrderB = orderB;
             // to ensure "settlementInfo" is required (not null)
             if (settlementInfo == null)
             {
@@ -65,16 +65,16 @@ namespace StarkExpress.SDK.Client.Model
         }
 
         /// <summary>
-        /// Gets or Sets MakerOrder
+        /// Gets or Sets OrderA
         /// </summary>
-        [DataMember(Name = "makerOrder", IsRequired = true, EmitDefaultValue = true)]
-        public SubmitOrderModel MakerOrder { get; set; }
+        [DataMember(Name = "orderA", IsRequired = true, EmitDefaultValue = true)]
+        public SettlementOrderModel OrderA { get; set; }
 
         /// <summary>
-        /// Gets or Sets TakerOrder
+        /// Gets or Sets OrderB
         /// </summary>
-        [DataMember(Name = "takerOrder", IsRequired = true, EmitDefaultValue = true)]
-        public SubmitOrderModel TakerOrder { get; set; }
+        [DataMember(Name = "orderB", IsRequired = true, EmitDefaultValue = true)]
+        public SettlementOrderModel OrderB { get; set; }
 
         /// <summary>
         /// Gets or Sets SettlementInfo
@@ -90,8 +90,8 @@ namespace StarkExpress.SDK.Client.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SubmitSettlementModel {\n");
-            sb.Append("  MakerOrder: ").Append(MakerOrder).Append("\n");
-            sb.Append("  TakerOrder: ").Append(TakerOrder).Append("\n");
+            sb.Append("  OrderA: ").Append(OrderA).Append("\n");
+            sb.Append("  OrderB: ").Append(OrderB).Append("\n");
             sb.Append("  SettlementInfo: ").Append(SettlementInfo).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -129,14 +129,14 @@ namespace StarkExpress.SDK.Client.Model
             }
             return 
                 (
-                    this.MakerOrder == input.MakerOrder ||
-                    (this.MakerOrder != null &&
-                    this.MakerOrder.Equals(input.MakerOrder))
+                    this.OrderA == input.OrderA ||
+                    (this.OrderA != null &&
+                    this.OrderA.Equals(input.OrderA))
                 ) && 
                 (
-                    this.TakerOrder == input.TakerOrder ||
-                    (this.TakerOrder != null &&
-                    this.TakerOrder.Equals(input.TakerOrder))
+                    this.OrderB == input.OrderB ||
+                    (this.OrderB != null &&
+                    this.OrderB.Equals(input.OrderB))
                 ) && 
                 (
                     this.SettlementInfo == input.SettlementInfo ||
@@ -154,13 +154,13 @@ namespace StarkExpress.SDK.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.MakerOrder != null)
+                if (this.OrderA != null)
                 {
-                    hashCode = (hashCode * 59) + this.MakerOrder.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderA.GetHashCode();
                 }
-                if (this.TakerOrder != null)
+                if (this.OrderB != null)
                 {
-                    hashCode = (hashCode * 59) + this.TakerOrder.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderB.GetHashCode();
                 }
                 if (this.SettlementInfo != null)
                 {
