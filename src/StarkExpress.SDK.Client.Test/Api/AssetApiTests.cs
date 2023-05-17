@@ -55,6 +55,18 @@ namespace StarkExpress.SDK.Client.Test.Api
         }
 
         /// <summary>
+        /// Test DeployAsset
+        /// </summary>
+        [Fact]
+        public void DeployAssetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //DeployAssetModel deployAssetModel = null;
+            //var response = instance.DeployAsset(deployAssetModel);
+            //Assert.IsType<TenantAssetDto>(response);
+        }
+
+        /// <summary>
         /// Test EnableAsset
         /// </summary>
         [Fact]
