@@ -379,7 +379,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiErrorResponseDto'
           description: Not Found.
-      summary: Submit Settlement (Not Implemented)
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:transfers
+      summary: Submit Settlement
       tags:
       - Settlement
   /api/v1/assets:
@@ -555,6 +562,42 @@ paths:
       summary: Get Asset
       tags:
       - Asset
+  /api/v1/assets/deploy:
+    post:
+      description: This endpoint allows for deploying an asset and enable it in the
+        tenant system.
+      operationId: Deploy Asset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAssetModel'
+        description: The asset deployment request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns the deployed asset.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The asset deployment request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:tenant_assets
+        - write:smart-contracts
+      summary: Deploy Asset
+      tags:
+      - Asset
   /api/v1/transactions:
     get:
       description: "This endpoint fetches all transactions submitted by the system,\
@@ -588,6 +631,20 @@ paths:
       - explode: true
         in: query
         name: starkex_tx_id_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: tx_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/StarkExOperation'
+        style: form
+      - explode: true
+        in: query
+        name: tx_type_comparison
         required: false
         schema:
           $ref: '#/components/schemas/FilterOptions'
@@ -1363,6 +1420,46 @@ components:
       - 1
       format: int32
       type: integer
+    DeployAssetModel:
+      additionalProperties: false
+      example:
+        symbol: symbol
+        name: name
+        quantum: quantum
+        type: null
+        uri: uri
+      properties:
+        type:
+          $ref: '#/components/schemas/AssetType'
+        name:
+          description: The token's name (eg. USD Coin).
+          format: string
+          minLength: 1
+          title: Name
+          type: string
+        symbol:
+          description: The token's symbol (eg. USDC).
+          format: string
+          minLength: 1
+          title: Name
+          type: string
+        uri:
+          description: The token's metadata uri (for ERC-721 and ERC-1155 tokens).
+          format: string
+          nullable: true
+          title: Uri
+          type: string
+        quantum:
+          description: The token's StarkEx asset quantum (for ERC-20 and ERC-1155
+            tokens).
+          format: string
+          title: Quantum
+          type: string
+      required:
+      - name
+      - symbol
+      - type
+      type: object
     DepositDetailsDto:
       additionalProperties: false
       example:
@@ -1553,6 +1650,7 @@ components:
       - 10611
       - 10612
       - 10613
+      - 10614
       - 10701
       - 10801
       - 10802
@@ -1586,6 +1684,7 @@ components:
       - 15001
       - 16001
       - 16002
+      - 16003
       - 17001
       - 17002
       - 17003
@@ -1619,7 +1718,6 @@ components:
       - 20301
       - 20302
       - 20303
-      - 20305
       - 20401
       - 20501
       - 20502
@@ -2290,36 +2388,102 @@ components:
       additionalProperties: false
       description: Settlement details model.
       example:
-        makerAmount: makerAmount
-        takerFeeAmount: takerFeeAmount
-        takerAmount: takerAmount
-        makerFeeAmount: makerFeeAmount
+        orderAFeeDestinationVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        orderAFeeAmount: orderAFeeAmount
+        orderBFeeDestinationVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        orderBFeeAmount: orderBFeeAmount
       properties:
-        makerAmount:
-          description: The settlement maker amount.
-          format: string
-          title: Maker Amount
+        orderAFeeDestinationVaultId:
+          description: The unique identifier of the fee destination vault.
+          format: uuid
+          nullable: true
+          title: Fee Destination Vault ID
           type: string
-        takerAmount:
-          description: The settlement maker amount.
+        orderAFeeAmount:
+          description: The settlement fee amount.
           format: string
-          title: Taker Amount
+          nullable: true
+          title: Fee Amount
           type: string
-        makerFeeAmount:
-          description: The settlement maker fee amount.
+        orderBFeeDestinationVaultId:
+          description: The unique identifier of the fee destination vault.
+          format: uuid
+          nullable: true
+          title: Fee Destination Vault ID
+          type: string
+        orderBFeeAmount:
+          description: The settlement fee amount.
           format: string
-          title: Maker Fee Amount
+          nullable: true
+          title: Fee Amount
           type: string
-        takerFeeAmount:
-          description: The settlement taker fee amount.
-          format: string
-          title: Taker Fee Amount
+      type: object
+    SettlementOrderModel:
+      additionalProperties: false
+      example:
+        feeQuantizedAmount: feeQuantizedAmount
+        buyVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signature:
+          r: r
+          s: s
+        buyQuantizedAmount: buyQuantizedAmount
+        expirationTimestamp: 6
+        sellQuantizedAmount: sellQuantizedAmount
+        feeVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        nonce: 0
+        sellVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        buyVaultId:
+          description: The unique identifier of the transfer sender vault.
+          format: uuid
+          title: Sender Vault ID
           type: string
+        buyQuantizedAmount:
+          description: "The amount of the asset to be transferred, in quantized form."
+          title: Quantized Amount
+          type: string
+        sellVaultId:
+          description: The unique identifier of the transfer sender vault.
+          format: uuid
+          title: Sender Vault ID
+          type: string
+        sellQuantizedAmount:
+          description: "The amount of the asset to be transferred, in quantized form."
+          title: Quantized Amount
+          type: string
+        feeVaultId:
+          description: The unique identifier of the transfer sender vault.
+          format: uuid
+          nullable: true
+          title: Sender Vault ID
+          type: string
+        feeQuantizedAmount:
+          description: "The amount of the fee asset to be collected, in quantized\
+            \ form."
+          nullable: true
+          title: Quantized Fee Amount
+          type: string
+        nonce:
+          description: The unique nonce for the transfer.
+          format: int32
+          title: Nonce
+          type: integer
+        signature:
+          $ref: '#/components/schemas/SignatureModel'
+        expirationTimestamp:
+          description: "The timestamp at which this transfer becomes invalid, in seconds\
+            \ since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
       required:
-      - makerAmount
-      - makerFeeAmount
-      - takerAmount
-      - takerFeeAmount
+      - buyQuantizedAmount
+      - buyVaultId
+      - expirationTimestamp
+      - nonce
+      - sellQuantizedAmount
+      - sellVaultId
+      - signature
       type: object
     SignatureModel:
       additionalProperties: false
@@ -2355,6 +2519,7 @@ components:
       - 4
       - 5
       - 6
+      - 7
       format: int32
       type: integer
     SubmitOrderModel:
@@ -2431,48 +2596,45 @@ components:
       additionalProperties: false
       description: Request model to transfer assets between users.
       example:
-        makerOrder:
-          side: null
-          amount: amount
-          orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          signature:
-            r: r
-            s: s
-          price: 0.8008281904610115
-          sellDataAvailabilityMode: null
-          expirationTimestamp: 6
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          buyDataAvailabilityMode: null
-          nonce: 314780940
         settlementInfo:
-          makerAmount: makerAmount
-          takerFeeAmount: takerFeeAmount
-          takerAmount: takerAmount
-          makerFeeAmount: makerFeeAmount
-        takerOrder:
-          side: null
-          amount: amount
-          orderbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          orderAFeeDestinationVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          orderAFeeAmount: orderAFeeAmount
+          orderBFeeDestinationVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          orderBFeeAmount: orderBFeeAmount
+        orderB:
+          feeQuantizedAmount: feeQuantizedAmount
+          buyVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signature:
             r: r
             s: s
-          price: 0.8008281904610115
-          sellDataAvailabilityMode: null
+          buyQuantizedAmount: buyQuantizedAmount
           expirationTimestamp: 6
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          buyDataAvailabilityMode: null
-          nonce: 314780940
+          sellQuantizedAmount: sellQuantizedAmount
+          feeVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          nonce: 0
+          sellVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        orderA:
+          feeQuantizedAmount: feeQuantizedAmount
+          buyVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signature:
+            r: r
+            s: s
+          buyQuantizedAmount: buyQuantizedAmount
+          expirationTimestamp: 6
+          sellQuantizedAmount: sellQuantizedAmount
+          feeVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          nonce: 0
+          sellVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        makerOrder:
-          $ref: '#/components/schemas/SubmitOrderModel'
-        takerOrder:
-          $ref: '#/components/schemas/SubmitOrderModel'
+        orderA:
+          $ref: '#/components/schemas/SettlementOrderModel'
+        orderB:
+          $ref: '#/components/schemas/SettlementOrderModel'
         settlementInfo:
           $ref: '#/components/schemas/SettlementInfoModel'
       required:
-      - makerOrder
-      - settlementInfo
-      - takerOrder
+      - orderA
+      - orderB
       type: object
     TenantAssetDto:
       additionalProperties: false
@@ -2827,7 +2989,7 @@ components:
         receiverVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         quantizedAmount: quantizedAmount
         expirationTimestamp: 0
-        nonce: 1294386358
+        nonce: 2147483647
       properties:
         senderVaultId:
           description: The unique identifier of the transfer sender vault.
@@ -2852,7 +3014,7 @@ components:
         nonce:
           description: The unique nonce for the transfer.
           format: int32
-          maximum: 2147483647
+          maximum: 4294967295
           minimum: 0
           title: Nonce
           type: integer
@@ -3149,6 +3311,7 @@ components:
             read:vaults: Access vault read operations.
             write:transfers: Access transfer write operations.
             read:transfers: Access transfer read operations.
+            write:smart-contracts: Access to deploying smart contracts.
           tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
       type: oauth2
 
