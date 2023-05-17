@@ -9,7 +9,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 <a name="getalltransactions"></a>
 # **GetAllTransactions**
-> TransactionDtoPaginatedResponseDto GetAllTransactions (int pageNumber, int pageSize, TransactionStatus? transactionStatus = null, FilterOptions? transactionStatusComparison = null, int? starkexTxId = null, FilterOptions? starkexTxIdComparison = null, string sortBy = null)
+> TransactionDtoPaginatedResponseDto GetAllTransactions (int pageNumber, int pageSize, TransactionStatus? transactionStatus = null, FilterOptions? transactionStatusComparison = null, int? starkexTxId = null, FilterOptions? starkexTxIdComparison = null, StarkExOperation? txType = null, FilterOptions? txTypeComparison = null, string sortBy = null)
 
 Get All Transactions
 
@@ -41,12 +41,14 @@ namespace Example
             var transactionStatusComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
             var starkexTxId = 56;  // int? |  (optional) 
             var starkexTxIdComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
+            var txType = (StarkExOperation) "0";  // StarkExOperation? |  (optional) 
+            var txTypeComparison = (FilterOptions) "1";  // FilterOptions? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Transactions
-                TransactionDtoPaginatedResponseDto result = apiInstance.GetAllTransactions(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, sortBy);
+                TransactionDtoPaginatedResponseDto result = apiInstance.GetAllTransactions(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -67,7 +69,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Transactions
-    ApiResponse<TransactionDtoPaginatedResponseDto> response = apiInstance.GetAllTransactionsWithHttpInfo(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, sortBy);
+    ApiResponse<TransactionDtoPaginatedResponseDto> response = apiInstance.GetAllTransactionsWithHttpInfo(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -90,6 +92,8 @@ catch (ApiException e)
 | **transactionStatusComparison** | **FilterOptions?** |  | [optional]  |
 | **starkexTxId** | **int?** |  | [optional]  |
 | **starkexTxIdComparison** | **FilterOptions?** |  | [optional]  |
+| **txType** | **StarkExOperation?** |  | [optional]  |
+| **txTypeComparison** | **FilterOptions?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
 
 ### Return type
