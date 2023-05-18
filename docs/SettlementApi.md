@@ -4,13 +4,13 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**SubmitSettlement**](SettlementApi.md#submitsettlement) | **POST** /api/v1/settlements | Submit Settlement (Not Implemented) |
+| [**SubmitSettlement**](SettlementApi.md#submitsettlement) | **POST** /api/v1/settlements | Submit Settlement |
 
 <a name="submitsettlement"></a>
 # **SubmitSettlement**
 > List&lt;VaultDto&gt; SubmitSettlement (SubmitSettlementModel submitSettlementModel)
 
-Submit Settlement (Not Implemented)
+Submit Settlement
 
 This endpoint submits an order settlement.
 
@@ -30,12 +30,15 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SettlementApi(config);
             var submitSettlementModel = new SubmitSettlementModel(); // SubmitSettlementModel | The settlement request.
 
             try
             {
-                // Submit Settlement (Not Implemented)
+                // Submit Settlement
                 List<VaultDto> result = apiInstance.SubmitSettlement(submitSettlementModel);
                 Debug.WriteLine(result);
             }
@@ -56,7 +59,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Submit Settlement (Not Implemented)
+    // Submit Settlement
     ApiResponse<List<VaultDto>> response = apiInstance.SubmitSettlementWithHttpInfo(submitSettlementModel);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -82,7 +85,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -96,6 +99,8 @@ No authorization required
 | **200** | Returns the vaults updated by the settlement operation. |  -  |
 | **400** | The settlement request was invalid. |  -  |
 | **404** | Not Found. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
