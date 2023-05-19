@@ -57,20 +57,20 @@ namespace StarkExpress.SDK.Client.Test.Model
 
 
         /// <summary>
-        /// Test the property 'MakerOrder'
+        /// Test the property 'OrderA'
         /// </summary>
         [Fact]
-        public void MakerOrderTest()
+        public void OrderATest()
         {
-            // TODO unit test for the property 'MakerOrder'
+            // TODO unit test for the property 'OrderA'
         }
         /// <summary>
-        /// Test the property 'TakerOrder'
+        /// Test the property 'OrderB'
         /// </summary>
         [Fact]
-        public void TakerOrderTest()
+        public void OrderBTest()
         {
-            // TODO unit test for the property 'TakerOrder'
+            // TODO unit test for the property 'OrderB'
         }
         /// <summary>
         /// Test the property 'SettlementInfo'
