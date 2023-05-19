@@ -68,17 +68,17 @@ namespace Example
             config.OAuthClientSecret = "YOUR_CLIENT_SECRET";
 
             var apiInstance = new AssetApi(config);
-            var enableAssetModel = new EnableAssetModel(); // EnableAssetModel | The asset enabling request.
+            var deployAssetModel = new DeployAssetModel(); // DeployAssetModel | The asset deployment request.
 
             try
             {
-                // Enable Asset
-                TenantAssetDto result = apiInstance.EnableAsset(enableAssetModel);
+                // Deploy Asset
+                TenantAssetDto result = apiInstance.DeployAsset(deployAssetModel);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AssetApi.EnableAsset: " + e.Message );
+                Debug.Print("Exception when calling AssetApi.DeployAsset: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -99,6 +99,7 @@ All URIs are relative to base url:
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AssetApi* | [**DeployAsset**](docs/AssetApi.md#deployasset) | **POST** /api/v1/assets/deploy | Deploy Asset
 *AssetApi* | [**EnableAsset**](docs/AssetApi.md#enableasset) | **POST** /api/v1/assets | Enable Asset
 *AssetApi* | [**GetAllAssets**](docs/AssetApi.md#getallassets) | **GET** /api/v1/assets | Get All Assets
 *AssetApi* | [**GetAsset**](docs/AssetApi.md#getasset) | **GET** /api/v1/assets/{assetId} | Get Asset
@@ -113,7 +114,7 @@ Class | Method | HTTP request | Description
 *OrderbookApi* | [**GetOrderbook**](docs/OrderbookApi.md#getorderbook) | **GET** /api/v1/orderbooks/{orderbookId} | Get Orderbook (Not Implemented)
 *OrderbookApi* | [**GetOrderbookLevel1Data**](docs/OrderbookApi.md#getorderbooklevel1data) | **GET** /api/v1/orderbooks/{orderbookId}/l1 | Get Orderbook L1 Data (Not Implemented)
 *OrderbookApi* | [**GetOrderbookLevel2Data**](docs/OrderbookApi.md#getorderbooklevel2data) | **GET** /api/v1/orderbooks/{orderbookId}/l2 | Get Orderbook L2 Data (Not Implemented)
-*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/v1/settlements | Submit Settlement (Not Implemented)
+*SettlementApi* | [**SubmitSettlement**](docs/SettlementApi.md#submitsettlement) | **POST** /api/v1/settlements | Submit Settlement
 *TransactionApi* | [**GetAllTransactions**](docs/TransactionApi.md#getalltransactions) | **GET** /api/v1/transactions | Get All Transactions
 *TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /api/v1/transactions/{transactionId} | Get Transaction
 *TransferApi* | [**Transfer**](docs/TransferApi.md#transfer) | **POST** /api/v1/transfers | Transfer Asset
@@ -138,6 +139,7 @@ Class | Method | HTTP request | Description
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
  - [Model.CreateOrderbookModel](docs/CreateOrderbookModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)
+ - [Model.DeployAssetModel](docs/DeployAssetModel.md)
  - [Model.DepositDetailsDto](docs/DepositDetailsDto.md)
  - [Model.DepositDetailsModel](docs/DepositDetailsModel.md)
  - [Model.DomainDto](docs/DomainDto.md)
@@ -165,6 +167,7 @@ Class | Method | HTTP request | Description
  - [Model.RegisterDetailsDto](docs/RegisterDetailsDto.md)
  - [Model.RegisterUserModel](docs/RegisterUserModel.md)
  - [Model.SettlementInfoModel](docs/SettlementInfoModel.md)
+ - [Model.SettlementOrderModel](docs/SettlementOrderModel.md)
  - [Model.SignatureModel](docs/SignatureModel.md)
  - [Model.StarkExOperation](docs/StarkExOperation.md)
  - [Model.SubmitOrderModel](docs/SubmitOrderModel.md)
@@ -204,6 +207,7 @@ Class | Method | HTTP request | Description
   - read:vaults: Access vault read operations.
   - write:transfers: Access transfer write operations.
   - read:transfers: Access transfer read operations.
+  - write:smart-contracts: Access to deploying smart contracts.
 
 
 ---
