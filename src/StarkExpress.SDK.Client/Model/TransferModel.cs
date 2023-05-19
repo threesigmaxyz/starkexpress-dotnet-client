@@ -224,9 +224,9 @@ namespace StarkExpress.SDK.Client.Model
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
             // Nonce (int) maximum
-            if (this.Nonce > (int)2147483647)
+            if (this.Nonce > (int)4294967295)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Nonce, must be a value less than or equal to 2147483647.", new [] { "Nonce" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Nonce, must be a value less than or equal to 4294967295.", new [] { "Nonce" });
             }
 
             // Nonce (int) minimum
