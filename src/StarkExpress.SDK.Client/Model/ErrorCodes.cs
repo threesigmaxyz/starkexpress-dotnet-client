@@ -206,6 +206,11 @@ namespace StarkExpress.SDK.Client.Model
         NUMBER_10613 = 10613,
 
         /// <summary>
+        /// Enum NUMBER_10614 for value: 10614
+        /// </summary>
+        NUMBER_10614 = 10614,
+
+        /// <summary>
         /// Enum NUMBER_10701 for value: 10701
         /// </summary>
         NUMBER_10701 = 10701,
@@ -311,6 +316,66 @@ namespace StarkExpress.SDK.Client.Model
         NUMBER_12304 = 12304,
 
         /// <summary>
+        /// Enum NUMBER_12401 for value: 12401
+        /// </summary>
+        NUMBER_12401 = 12401,
+
+        /// <summary>
+        /// Enum NUMBER_12402 for value: 12402
+        /// </summary>
+        NUMBER_12402 = 12402,
+
+        /// <summary>
+        /// Enum NUMBER_12403 for value: 12403
+        /// </summary>
+        NUMBER_12403 = 12403,
+
+        /// <summary>
+        /// Enum NUMBER_12404 for value: 12404
+        /// </summary>
+        NUMBER_12404 = 12404,
+
+        /// <summary>
+        /// Enum NUMBER_12405 for value: 12405
+        /// </summary>
+        NUMBER_12405 = 12405,
+
+        /// <summary>
+        /// Enum NUMBER_12406 for value: 12406
+        /// </summary>
+        NUMBER_12406 = 12406,
+
+        /// <summary>
+        /// Enum NUMBER_12407 for value: 12407
+        /// </summary>
+        NUMBER_12407 = 12407,
+
+        /// <summary>
+        /// Enum NUMBER_12408 for value: 12408
+        /// </summary>
+        NUMBER_12408 = 12408,
+
+        /// <summary>
+        /// Enum NUMBER_12409 for value: 12409
+        /// </summary>
+        NUMBER_12409 = 12409,
+
+        /// <summary>
+        /// Enum NUMBER_12410 for value: 12410
+        /// </summary>
+        NUMBER_12410 = 12410,
+
+        /// <summary>
+        /// Enum NUMBER_12411 for value: 12411
+        /// </summary>
+        NUMBER_12411 = 12411,
+
+        /// <summary>
+        /// Enum NUMBER_12412 for value: 12412
+        /// </summary>
+        NUMBER_12412 = 12412,
+
+        /// <summary>
         /// Enum NUMBER_13001 for value: 13001
         /// </summary>
         NUMBER_13001 = 13001,
@@ -369,6 +434,11 @@ namespace StarkExpress.SDK.Client.Model
         /// Enum NUMBER_16002 for value: 16002
         /// </summary>
         NUMBER_16002 = 16002,
+
+        /// <summary>
+        /// Enum NUMBER_16003 for value: 16003
+        /// </summary>
+        NUMBER_16003 = 16003,
 
         /// <summary>
         /// Enum NUMBER_17001 for value: 17001
@@ -534,11 +604,6 @@ namespace StarkExpress.SDK.Client.Model
         /// Enum NUMBER_20303 for value: 20303
         /// </summary>
         NUMBER_20303 = 20303,
-
-        /// <summary>
-        /// Enum NUMBER_20305 for value: 20305
-        /// </summary>
-        NUMBER_20305 = 20305,
 
         /// <summary>
         /// Enum NUMBER_20401 for value: 20401
