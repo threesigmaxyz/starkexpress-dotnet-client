@@ -136,6 +136,14 @@ namespace StarkExpress.SDK.Client.Test.Model
         {
             // TODO unit test for the property 'AccountingBalance'
         }
+        /// <summary>
+        /// Test the property 'DataAvailabilityMode'
+        /// </summary>
+        [Fact]
+        public void DataAvailabilityModeTest()
+        {
+            // TODO unit test for the property 'DataAvailabilityMode'
+        }
 
     }
 

@@ -555,6 +555,42 @@ paths:
       summary: Get Asset
       tags:
       - Asset
+  /api/v1/assets/deploy:
+    post:
+      description: This endpoint allows for deploying an asset and enable it in the
+        tenant system.
+      operationId: Deploy Asset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAssetModel'
+        description: The asset deployment request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns the deployed asset.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponseDto'
+          description: The asset deployment request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:tenant_assets
+        - write:smart-contracts
+      summary: Deploy Asset
+      tags:
+      - Asset
   /api/v1/transactions:
     get:
       description: "This endpoint fetches all transactions submitted by the system,\
@@ -588,6 +624,20 @@ paths:
       - explode: true
         in: query
         name: starkex_tx_id_comparison
+        required: false
+        schema:
+          $ref: '#/components/schemas/FilterOptions'
+        style: form
+      - explode: true
+        in: query
+        name: tx_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/StarkExOperation'
+        style: form
+      - explode: true
+        in: query
+        name: tx_type_comparison
         required: false
         schema:
           $ref: '#/components/schemas/FilterOptions'
@@ -1363,6 +1413,46 @@ components:
       - 1
       format: int32
       type: integer
+    DeployAssetModel:
+      additionalProperties: false
+      example:
+        symbol: symbol
+        name: name
+        quantum: quantum
+        type: null
+        uri: uri
+      properties:
+        type:
+          $ref: '#/components/schemas/AssetType'
+        name:
+          description: The token's name (eg. USD Coin).
+          format: string
+          minLength: 1
+          title: Name
+          type: string
+        symbol:
+          description: The token's symbol (eg. USDC).
+          format: string
+          minLength: 1
+          title: Name
+          type: string
+        uri:
+          description: The token's metadata uri (for ERC-721 and ERC-1155 tokens).
+          format: string
+          nullable: true
+          title: Uri
+          type: string
+        quantum:
+          description: The token's StarkEx asset quantum (for ERC-20 and ERC-1155
+            tokens).
+          format: string
+          title: Quantum
+          type: string
+      required:
+      - name
+      - symbol
+      - type
+      type: object
     DepositDetailsDto:
       additionalProperties: false
       example:
@@ -1553,6 +1643,7 @@ components:
       - 10611
       - 10612
       - 10613
+      - 10614
       - 10701
       - 10801
       - 10802
@@ -1586,6 +1677,7 @@ components:
       - 15001
       - 16001
       - 16002
+      - 16003
       - 17001
       - 17002
       - 17003
@@ -1619,10 +1711,10 @@ components:
       - 20301
       - 20302
       - 20303
-      - 20305
       - 20401
       - 20501
       - 20502
+      - 20601
       - 50000
       format: int32
       type: integer
@@ -2355,6 +2447,7 @@ components:
       - 4
       - 5
       - 6
+      - 7
       format: int32
       type: integer
     SubmitOrderModel:
@@ -2827,7 +2920,7 @@ components:
         receiverVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         quantizedAmount: quantizedAmount
         expirationTimestamp: 0
-        nonce: 1294386358
+        nonce: 2147483647
       properties:
         senderVaultId:
           description: The unique identifier of the transfer sender vault.
@@ -2852,7 +2945,7 @@ components:
         nonce:
           description: The unique nonce for the transfer.
           format: int32
-          maximum: 2147483647
+          maximum: 4294967295
           minimum: 0
           title: Nonce
           type: integer
@@ -2913,6 +3006,7 @@ components:
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             vaultChainId: vaultChainId
             availableBalance: availableBalance
+            dataAvailabilityMode: null
           - starkExAddress: starkExAddress
             assetStarkExId: assetStarkExId
             assetSymbol: assetSymbol
@@ -2923,6 +3017,7 @@ components:
             vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             vaultChainId: vaultChainId
             availableBalance: availableBalance
+            dataAvailabilityMode: null
         user:
           address: address
           userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2954,6 +3049,7 @@ components:
         vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         vaultChainId: vaultChainId
         availableBalance: availableBalance
+        dataAvailabilityMode: null
       properties:
         vaultId:
           description: The ID of the vault.
@@ -3010,6 +3106,8 @@ components:
           description: The accounting balance of the vault.
           title: Accounting Balance
           type: string
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
       type: object
     VaultDtoPaginatedResponseDto:
       additionalProperties: false
@@ -3029,6 +3127,7 @@ components:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
           availableBalance: availableBalance
+          dataAvailabilityMode: null
         - starkExAddress: starkExAddress
           assetStarkExId: assetStarkExId
           assetSymbol: assetSymbol
@@ -3039,6 +3138,7 @@ components:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
           availableBalance: availableBalance
+          dataAvailabilityMode: null
         totalCount: 0
       properties:
         data:
@@ -3073,6 +3173,7 @@ components:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           vaultChainId: vaultChainId
           availableBalance: availableBalance
+          dataAvailabilityMode: null
         operatorContractAddress: operatorContractAddress
         starkKey: starkKey
         assetType: assetType
@@ -3149,6 +3250,7 @@ components:
             read:vaults: Access vault read operations.
             write:transfers: Access transfer write operations.
             read:transfers: Access transfer read operations.
-          tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
+            write:smart-contracts: Access to deploying smart contracts.
+          tokenUrl: https://dev-o6vo4sdh.us.auth0.com/oauth/token
       type: oauth2
 
