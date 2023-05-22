@@ -63,22 +63,22 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.starkexpress.io";
             // Configure OAuth2 access token for authorization: oauth2
-            config.OAuthTokenUrl = "https://starkexpress-testnet.eu.auth0.com/oauth/token";
+            config.OAuthTokenUrl = "https://dev-o6vo4sdh.us.auth0.com/oauth/token";
             config.OAuthClientId = "YOUR_CLIENT_ID";
             config.OAuthClientSecret = "YOUR_CLIENT_SECRET";
 
             var apiInstance = new AssetApi(config);
-            var enableAssetModel = new EnableAssetModel(); // EnableAssetModel | The asset enabling request.
+            var deployAssetModel = new DeployAssetModel(); // DeployAssetModel | The asset deployment request.
 
             try
             {
-                // Enable Asset
-                TenantAssetDto result = apiInstance.EnableAsset(enableAssetModel);
+                // Deploy Asset
+                TenantAssetDto result = apiInstance.DeployAsset(deployAssetModel);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AssetApi.EnableAsset: " + e.Message );
+                Debug.Print("Exception when calling AssetApi.DeployAsset: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -99,6 +99,7 @@ All URIs are relative to base url:
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AssetApi* | [**DeployAsset**](docs/AssetApi.md#deployasset) | **POST** /api/v1/assets/deploy | Deploy Asset
 *AssetApi* | [**EnableAsset**](docs/AssetApi.md#enableasset) | **POST** /api/v1/assets | Enable Asset
 *AssetApi* | [**GetAllAssets**](docs/AssetApi.md#getallassets) | **GET** /api/v1/assets | Get All Assets
 *AssetApi* | [**GetAsset**](docs/AssetApi.md#getasset) | **GET** /api/v1/assets/{assetId} | Get Asset
@@ -138,6 +139,7 @@ Class | Method | HTTP request | Description
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
  - [Model.CreateOrderbookModel](docs/CreateOrderbookModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)
+ - [Model.DeployAssetModel](docs/DeployAssetModel.md)
  - [Model.DepositDetailsDto](docs/DepositDetailsDto.md)
  - [Model.DepositDetailsModel](docs/DepositDetailsModel.md)
  - [Model.DomainDto](docs/DomainDto.md)
@@ -194,7 +196,7 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: application
-- **Token URL**: https://starkexpress-testnet.eu.auth0.com/oauth/token
+- **Token URL**: https://dev-o6vo4sdh.us.auth0.com/oauth/token
 - **Scopes**: 
   - write:users: Access user write operations.
   - read:users: Access user read operations.
@@ -204,6 +206,7 @@ Class | Method | HTTP request | Description
   - read:vaults: Access vault read operations.
   - write:transfers: Access transfer write operations.
   - read:transfers: Access transfer read operations.
+  - write:smart-contracts: Access to deploying smart contracts.
 
 
 ---
