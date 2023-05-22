@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **UserStarkKey** | **string** | The STARK key of the user associated with the vault. | [optional] 
 **AvailableBalance** | **string** | The available balance of the vault. | [optional] 
 **AccountingBalance** | **string** | The accounting balance of the vault. | [optional] 
+**DataAvailabilityMode** | **DataAvailabilityModes** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
