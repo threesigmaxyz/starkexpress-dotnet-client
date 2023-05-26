@@ -31,6 +31,12 @@ namespace StarkExpress.SDK.Client.Model
     [DataContract(Name = "VaultDto")]
     public partial class VaultDto : IEquatable<VaultDto>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets DataAvailabilityMode
+        /// </summary>
+        [DataMember(Name = "dataAvailabilityMode", EmitDefaultValue = false)]
+        public DataAvailabilityModes? DataAvailabilityMode { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="VaultDto" /> class.
         /// </summary>
@@ -44,7 +50,8 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="userStarkKey">The STARK key of the user associated with the vault..</param>
         /// <param name="availableBalance">The available balance of the vault..</param>
         /// <param name="accountingBalance">The accounting balance of the vault..</param>
-        public VaultDto(Guid vaultId = default(Guid), string vaultChainId = default(string), string starkExAddress = default(string), string assetSymbol = default(string), string tokenId = default(string), string mintingBlob = default(string), string assetStarkExId = default(string), string userStarkKey = default(string), string availableBalance = default(string), string accountingBalance = default(string))
+        /// <param name="dataAvailabilityMode">dataAvailabilityMode.</param>
+        public VaultDto(Guid vaultId = default(Guid), string vaultChainId = default(string), string starkExAddress = default(string), string assetSymbol = default(string), string tokenId = default(string), string mintingBlob = default(string), string assetStarkExId = default(string), string userStarkKey = default(string), string availableBalance = default(string), string accountingBalance = default(string), DataAvailabilityModes? dataAvailabilityMode = default(DataAvailabilityModes?))
         {
             this.VaultId = vaultId;
             this.VaultChainId = vaultChainId;
@@ -56,6 +63,7 @@ namespace StarkExpress.SDK.Client.Model
             this.UserStarkKey = userStarkKey;
             this.AvailableBalance = availableBalance;
             this.AccountingBalance = accountingBalance;
+            this.DataAvailabilityMode = dataAvailabilityMode;
         }
 
         /// <summary>
@@ -146,6 +154,7 @@ namespace StarkExpress.SDK.Client.Model
             sb.Append("  UserStarkKey: ").Append(UserStarkKey).Append("\n");
             sb.Append("  AvailableBalance: ").Append(AvailableBalance).Append("\n");
             sb.Append("  AccountingBalance: ").Append(AccountingBalance).Append("\n");
+            sb.Append("  DataAvailabilityMode: ").Append(DataAvailabilityMode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -230,6 +239,10 @@ namespace StarkExpress.SDK.Client.Model
                     this.AccountingBalance == input.AccountingBalance ||
                     (this.AccountingBalance != null &&
                     this.AccountingBalance.Equals(input.AccountingBalance))
+                ) && 
+                (
+                    this.DataAvailabilityMode == input.DataAvailabilityMode ||
+                    this.DataAvailabilityMode.Equals(input.DataAvailabilityMode)
                 );
         }
 
@@ -282,6 +295,7 @@ namespace StarkExpress.SDK.Client.Model
                 {
                     hashCode = (hashCode * 59) + this.AccountingBalance.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.DataAvailabilityMode.GetHashCode();
                 return hashCode;
             }
         }
