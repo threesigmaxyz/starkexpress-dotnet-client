@@ -1,13 +1,13 @@
-name: Main branch workflow
+name: Pull request workflow
 
 on:
   push:
-    branches:
-      - 'master'
+    branches-ignore:
+      - master
 
 jobs:
   build:
-    name: Build and Publish SDKs
+    name: Build SDKs
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
@@ -33,7 +33,10 @@ jobs:
 
       - name: Build
         run: dotnet build --configuration Release --no-restore
-
+        
+#      - name: Test
+#        run: dotnet test src/StarkExpress.SDK.Client.Test --no-restore
+        
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
