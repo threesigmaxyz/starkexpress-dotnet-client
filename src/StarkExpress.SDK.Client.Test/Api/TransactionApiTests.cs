@@ -67,8 +67,10 @@ namespace StarkExpress.SDK.Client.Test.Api
             //FilterOptions? transactionStatusComparison = null;
             //int? starkexTxId = null;
             //FilterOptions? starkexTxIdComparison = null;
+            //StarkExOperation? txType = null;
+            //FilterOptions? txTypeComparison = null;
             //string sortBy = null;
-            //var response = instance.GetAllTransactions(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, sortBy);
+            //var response = instance.GetAllTransactions(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy);
             //Assert.IsType<TransactionDtoPaginatedResponseDto>(response);
         }
 
