@@ -28,7 +28,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Submit Settlement (Not Implemented)
+        /// Submit Settlement
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -40,7 +40,7 @@ namespace StarkExpress.SDK.Client.Api
         List<VaultDto> SubmitSettlement(SubmitSettlementModel submitSettlementModel, int operationIndex = 0);
 
         /// <summary>
-        /// Submit Settlement (Not Implemented)
+        /// Submit Settlement
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -60,7 +60,7 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Submit Settlement (Not Implemented)
+        /// Submit Settlement
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -73,7 +73,7 @@ namespace StarkExpress.SDK.Client.Api
         System.Threading.Tasks.Task<List<VaultDto>> SubmitSettlementAsync(SubmitSettlementModel submitSettlementModel, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Submit Settlement (Not Implemented)
+        /// Submit Settlement
         /// </summary>
         /// <remarks>
         /// This endpoint submits an order settlement.
@@ -205,7 +205,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
+        /// Submit Settlement This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -218,7 +218,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
+        /// Submit Settlement This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -260,6 +260,22 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "SettlementApi.SubmitSettlement";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<List<VaultDto>>("/api/v1/settlements", localVarRequestOptions, this.Configuration);
@@ -276,7 +292,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
+        /// Submit Settlement This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -290,7 +306,7 @@ namespace StarkExpress.SDK.Client.Api
         }
 
         /// <summary>
-        /// Submit Settlement (Not Implemented) This endpoint submits an order settlement.
+        /// Submit Settlement This endpoint submits an order settlement.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="submitSettlementModel">The settlement request.</param>
@@ -334,6 +350,22 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "SettlementApi.SubmitSettlement";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
 
             // make the HTTP request
             var localVarResponse = await this.AsynchronousClient.PostAsync<List<VaultDto>>("/api/v1/settlements", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
