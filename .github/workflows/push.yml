@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
-      pull-requests: write # to be able to comment on released pull requests
     env:
       dotnet-version: '6.0'
 
