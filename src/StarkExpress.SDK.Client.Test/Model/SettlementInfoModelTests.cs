@@ -57,36 +57,36 @@ namespace StarkExpress.SDK.Client.Test.Model
 
 
         /// <summary>
-        /// Test the property 'MakerAmount'
+        /// Test the property 'OrderAFeeDestinationVaultId'
         /// </summary>
         [Fact]
-        public void MakerAmountTest()
+        public void OrderAFeeDestinationVaultIdTest()
         {
-            // TODO unit test for the property 'MakerAmount'
+            // TODO unit test for the property 'OrderAFeeDestinationVaultId'
         }
         /// <summary>
-        /// Test the property 'TakerAmount'
+        /// Test the property 'OrderAFeeAmount'
         /// </summary>
         [Fact]
-        public void TakerAmountTest()
+        public void OrderAFeeAmountTest()
         {
-            // TODO unit test for the property 'TakerAmount'
+            // TODO unit test for the property 'OrderAFeeAmount'
         }
         /// <summary>
-        /// Test the property 'MakerFeeAmount'
+        /// Test the property 'OrderBFeeDestinationVaultId'
         /// </summary>
         [Fact]
-        public void MakerFeeAmountTest()
+        public void OrderBFeeDestinationVaultIdTest()
         {
-            // TODO unit test for the property 'MakerFeeAmount'
+            // TODO unit test for the property 'OrderBFeeDestinationVaultId'
         }
         /// <summary>
-        /// Test the property 'TakerFeeAmount'
+        /// Test the property 'OrderBFeeAmount'
         /// </summary>
         [Fact]
-        public void TakerFeeAmountTest()
+        public void OrderBFeeAmountTest()
         {
-            // TODO unit test for the property 'TakerFeeAmount'
+            // TODO unit test for the property 'OrderBFeeAmount'
         }
 
     }

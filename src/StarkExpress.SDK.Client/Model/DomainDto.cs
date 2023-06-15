@@ -35,13 +35,13 @@ namespace StarkExpress.SDK.Client.Model
         /// Initializes a new instance of the <see cref="DomainDto" /> class.
         /// </summary>
         /// <param name="name">The name of the domain for the EIP712 signing..</param>
-        /// <param name="version">The version of the domain for the EIP712 signing..</param>
+        /// <param name="varVersion">The version of the domain for the EIP712 signing..</param>
         /// <param name="chainId">The chainId for the domain for the EIP712 signing..</param>
         /// <param name="verifyingContract">The verifying contract for the domain for the EIP712 signing..</param>
-        public DomainDto(string name = default(string), string version = default(string), string chainId = default(string), string verifyingContract = default(string))
+        public DomainDto(string name = default(string), string varVersion = default(string), string chainId = default(string), string verifyingContract = default(string))
         {
             this.Name = name;
-            this._Version = version;
+            this.VarVersion = varVersion;
             this.ChainId = chainId;
             this.VerifyingContract = verifyingContract;
         }
@@ -58,7 +58,7 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <value>The version of the domain for the EIP712 signing.</value>
         [DataMember(Name = "version", EmitDefaultValue = true)]
-        public string _Version { get; set; }
+        public string VarVersion { get; set; }
 
         /// <summary>
         /// The chainId for the domain for the EIP712 signing.
@@ -83,7 +83,7 @@ namespace StarkExpress.SDK.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DomainDto {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("  VerifyingContract: ").Append(VerifyingContract).Append("\n");
             sb.Append("}\n");
@@ -127,9 +127,9 @@ namespace StarkExpress.SDK.Client.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this._Version == input._Version ||
-                    (this._Version != null &&
-                    this._Version.Equals(input._Version))
+                    this.VarVersion == input.VarVersion ||
+                    (this.VarVersion != null &&
+                    this.VarVersion.Equals(input.VarVersion))
                 ) && 
                 (
                     this.ChainId == input.ChainId ||
@@ -156,9 +156,9 @@ namespace StarkExpress.SDK.Client.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this._Version != null)
+                if (this.VarVersion != null)
                 {
-                    hashCode = (hashCode * 59) + this._Version.GetHashCode();
+                    hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
                 }
                 if (this.ChainId != null)
                 {
