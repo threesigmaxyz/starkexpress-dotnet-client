@@ -1,0 +1,25 @@
+{
+  "name": "starkexpress-dotnet-client",
+  "version": "0.0.0",
+  "description": "StarkExpress .NET Client",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "@semantic-release/commit-analyzer": "*",
+    "@semantic-release/release-notes-generator": "*",
+    "@semantic-release/changelog": "*",
+    "@droidsolutions-oss/semantic-release-update-file": "*",
+    "@semantic-release/npm": "*",
+    "@droidsolutions-oss/semantic-release-nuget": "*",
+    "@semantic-release/git": "*",
+    "@semantic-release/github": "*",
+    "semantic-release": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
