@@ -204,7 +204,7 @@ namespace StarkExpress.SDK.Client.Model
                 }
                 if (this.QuantizedAmount != null)
                 {
-                    hashCode = (hashCode * 59) + QuantizedAmount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.QuantizedAmount.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ExpirationTimestamp.GetHashCode();
                 hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
