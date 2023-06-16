@@ -11,6 +11,7 @@
     <AssemblyTitle>OpenAPI Library</AssemblyTitle>
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
+    <Version>0.0.0</Version>
     <RootNamespace>StarkExpress.SDK.Client</RootNamespace>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\StarkExpress.SDK.Client.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/threesigmaxyz/starkexpress-dotnet-client</RepositoryUrl>
