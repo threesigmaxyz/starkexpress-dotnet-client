@@ -28,607 +28,728 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines ErrorCodes
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ErrorCodes
     {
         /// <summary>
-        /// Enum NUMBER_10000 for value: 10000
+        /// Enum ModelStateInvalid for value: ModelStateInvalid
         /// </summary>
-        NUMBER_10000 = 10000,
+        [EnumMember(Value = "ModelStateInvalid")]
+        ModelStateInvalid = 1,
 
         /// <summary>
-        /// Enum NUMBER_10001 for value: 10001
+        /// Enum InvalidGuid for value: InvalidGuid
         /// </summary>
-        NUMBER_10001 = 10001,
+        [EnumMember(Value = "InvalidGuid")]
+        InvalidGuid = 2,
 
         /// <summary>
-        /// Enum NUMBER_10002 for value: 10002
+        /// Enum FilterIsRequired for value: FilterIsRequired
         /// </summary>
-        NUMBER_10002 = 10002,
+        [EnumMember(Value = "FilterIsRequired")]
+        FilterIsRequired = 3,
 
         /// <summary>
-        /// Enum NUMBER_10101 for value: 10101
+        /// Enum UsernameRequired for value: UsernameRequired
         /// </summary>
-        NUMBER_10101 = 10101,
+        [EnumMember(Value = "UsernameRequired")]
+        UsernameRequired = 4,
 
         /// <summary>
-        /// Enum NUMBER_10102 for value: 10102
+        /// Enum UsernameLengthInvalid for value: UsernameLengthInvalid
         /// </summary>
-        NUMBER_10102 = 10102,
+        [EnumMember(Value = "UsernameLengthInvalid")]
+        UsernameLengthInvalid = 5,
 
         /// <summary>
-        /// Enum NUMBER_10103 for value: 10103
+        /// Enum UsernameAlreadyRegistered for value: UsernameAlreadyRegistered
         /// </summary>
-        NUMBER_10103 = 10103,
+        [EnumMember(Value = "UsernameAlreadyRegistered")]
+        UsernameAlreadyRegistered = 6,
 
         /// <summary>
-        /// Enum NUMBER_10104 for value: 10104
+        /// Enum UsersRequired for value: UsersRequired
         /// </summary>
-        NUMBER_10104 = 10104,
+        [EnumMember(Value = "UsersRequired")]
+        UsersRequired = 7,
 
         /// <summary>
-        /// Enum NUMBER_10105 for value: 10105
+        /// Enum UserIdRequired for value: UserIdRequired
         /// </summary>
-        NUMBER_10105 = 10105,
+        [EnumMember(Value = "UserIdRequired")]
+        UserIdRequired = 8,
 
         /// <summary>
-        /// Enum NUMBER_10106 for value: 10106
+        /// Enum UserIdNotFound for value: UserIdNotFound
         /// </summary>
-        NUMBER_10106 = 10106,
+        [EnumMember(Value = "UserIdNotFound")]
+        UserIdNotFound = 9,
 
         /// <summary>
-        /// Enum NUMBER_10201 for value: 10201
+        /// Enum AddressRequired for value: AddressRequired
         /// </summary>
-        NUMBER_10201 = 10201,
+        [EnumMember(Value = "AddressRequired")]
+        AddressRequired = 10,
 
         /// <summary>
-        /// Enum NUMBER_10202 for value: 10202
+        /// Enum AddressInvalid for value: AddressInvalid
         /// </summary>
-        NUMBER_10202 = 10202,
+        [EnumMember(Value = "AddressInvalid")]
+        AddressInvalid = 11,
 
         /// <summary>
-        /// Enum NUMBER_10203 for value: 10203
+        /// Enum AddressAlreadyRegistered for value: AddressAlreadyRegistered
         /// </summary>
-        NUMBER_10203 = 10203,
+        [EnumMember(Value = "AddressAlreadyRegistered")]
+        AddressAlreadyRegistered = 12,
 
         /// <summary>
-        /// Enum NUMBER_10301 for value: 10301
+        /// Enum StarkSignatureRequired for value: StarkSignatureRequired
         /// </summary>
-        NUMBER_10301 = 10301,
+        [EnumMember(Value = "StarkSignatureRequired")]
+        StarkSignatureRequired = 13,
 
         /// <summary>
-        /// Enum NUMBER_10302 for value: 10302
+        /// Enum StarkSignatureRRequired for value: StarkSignatureRRequired
         /// </summary>
-        NUMBER_10302 = 10302,
+        [EnumMember(Value = "StarkSignatureRRequired")]
+        StarkSignatureRRequired = 14,
 
         /// <summary>
-        /// Enum NUMBER_10303 for value: 10303
+        /// Enum StarkSignatureSRequired for value: StarkSignatureSRequired
         /// </summary>
-        NUMBER_10303 = 10303,
+        [EnumMember(Value = "StarkSignatureSRequired")]
+        StarkSignatureSRequired = 15,
 
         /// <summary>
-        /// Enum NUMBER_10304 for value: 10304
+        /// Enum StarkSignatureInvalid for value: StarkSignatureInvalid
         /// </summary>
-        NUMBER_10304 = 10304,
+        [EnumMember(Value = "StarkSignatureInvalid")]
+        StarkSignatureInvalid = 16,
 
         /// <summary>
-        /// Enum NUMBER_10401 for value: 10401
+        /// Enum StarkKeyRequired for value: StarkKeyRequired
         /// </summary>
-        NUMBER_10401 = 10401,
+        [EnumMember(Value = "StarkKeyRequired")]
+        StarkKeyRequired = 17,
 
         /// <summary>
-        /// Enum NUMBER_10402 for value: 10402
+        /// Enum StarkKeyLengthInvalid for value: StarkKeyLengthInvalid
         /// </summary>
-        NUMBER_10402 = 10402,
+        [EnumMember(Value = "StarkKeyLengthInvalid")]
+        StarkKeyLengthInvalid = 18,
 
         /// <summary>
-        /// Enum NUMBER_10403 for value: 10403
+        /// Enum StarkKeyFormatInvalid for value: StarkKeyFormatInvalid
         /// </summary>
-        NUMBER_10403 = 10403,
+        [EnumMember(Value = "StarkKeyFormatInvalid")]
+        StarkKeyFormatInvalid = 19,
 
         /// <summary>
-        /// Enum NUMBER_10404 for value: 10404
+        /// Enum StarkKeyAlreadyInuse for value: StarkKeyAlreadyInuse
         /// </summary>
-        NUMBER_10404 = 10404,
+        [EnumMember(Value = "StarkKeyAlreadyInuse")]
+        StarkKeyAlreadyInuse = 20,
 
         /// <summary>
-        /// Enum NUMBER_10501 for value: 10501
+        /// Enum Eip712SignatureRequired for value: Eip712SignatureRequired
         /// </summary>
-        NUMBER_10501 = 10501,
+        [EnumMember(Value = "Eip712SignatureRequired")]
+        Eip712SignatureRequired = 21,
 
         /// <summary>
-        /// Enum NUMBER_10502 for value: 10502
+        /// Enum Eip712SignatureInvalid for value: Eip712SignatureInvalid
         /// </summary>
-        NUMBER_10502 = 10502,
+        [EnumMember(Value = "Eip712SignatureInvalid")]
+        Eip712SignatureInvalid = 22,
 
         /// <summary>
-        /// Enum NUMBER_10601 for value: 10601
+        /// Enum AssetAlreadyWhitelisted for value: AssetAlreadyWhitelisted
         /// </summary>
-        NUMBER_10601 = 10601,
+        [EnumMember(Value = "AssetAlreadyWhitelisted")]
+        AssetAlreadyWhitelisted = 23,
 
         /// <summary>
-        /// Enum NUMBER_10602 for value: 10602
+        /// Enum AssetDisabled for value: AssetDisabled
         /// </summary>
-        NUMBER_10602 = 10602,
+        [EnumMember(Value = "AssetDisabled")]
+        AssetDisabled = 24,
 
         /// <summary>
-        /// Enum NUMBER_10603 for value: 10603
+        /// Enum InvalidAssetType for value: InvalidAssetType
         /// </summary>
-        NUMBER_10603 = 10603,
+        [EnumMember(Value = "InvalidAssetType")]
+        InvalidAssetType = 25,
 
         /// <summary>
-        /// Enum NUMBER_10604 for value: 10604
+        /// Enum AssetAddressIsNotAContract for value: AssetAddressIsNotAContract
         /// </summary>
-        NUMBER_10604 = 10604,
+        [EnumMember(Value = "AssetAddressIsNotAContract")]
+        AssetAddressIsNotAContract = 26,
 
         /// <summary>
-        /// Enum NUMBER_10605 for value: 10605
+        /// Enum AssetContractIsNotMintable for value: AssetContractIsNotMintable
         /// </summary>
-        NUMBER_10605 = 10605,
+        [EnumMember(Value = "AssetContractIsNotMintable")]
+        AssetContractIsNotMintable = 27,
 
         /// <summary>
-        /// Enum NUMBER_10606 for value: 10606
+        /// Enum AssetIdRequired for value: AssetIdRequired
         /// </summary>
-        NUMBER_10606 = 10606,
+        [EnumMember(Value = "AssetIdRequired")]
+        AssetIdRequired = 28,
 
         /// <summary>
-        /// Enum NUMBER_10607 for value: 10607
+        /// Enum AssetNameRequired for value: AssetNameRequired
         /// </summary>
-        NUMBER_10607 = 10607,
+        [EnumMember(Value = "AssetNameRequired")]
+        AssetNameRequired = 29,
 
         /// <summary>
-        /// Enum NUMBER_10608 for value: 10608
+        /// Enum AssetSymbolRequired for value: AssetSymbolRequired
         /// </summary>
-        NUMBER_10608 = 10608,
+        [EnumMember(Value = "AssetSymbolRequired")]
+        AssetSymbolRequired = 30,
 
         /// <summary>
-        /// Enum NUMBER_10609 for value: 10609
+        /// Enum AssetQuantumRequired for value: AssetQuantumRequired
         /// </summary>
-        NUMBER_10609 = 10609,
+        [EnumMember(Value = "AssetQuantumRequired")]
+        AssetQuantumRequired = 31,
 
         /// <summary>
-        /// Enum NUMBER_10610 for value: 10610
+        /// Enum AssetUriRequired for value: AssetUriRequired
         /// </summary>
-        NUMBER_10610 = 10610,
+        [EnumMember(Value = "AssetUriRequired")]
+        AssetUriRequired = 32,
 
         /// <summary>
-        /// Enum NUMBER_10611 for value: 10611
+        /// Enum AssetAlreadyRegistered for value: AssetAlreadyRegistered
         /// </summary>
-        NUMBER_10611 = 10611,
+        [EnumMember(Value = "AssetAlreadyRegistered")]
+        AssetAlreadyRegistered = 33,
 
         /// <summary>
-        /// Enum NUMBER_10612 for value: 10612
+        /// Enum AssetNotRegistered for value: AssetNotRegistered
         /// </summary>
-        NUMBER_10612 = 10612,
+        [EnumMember(Value = "AssetNotRegistered")]
+        AssetNotRegistered = 34,
 
         /// <summary>
-        /// Enum NUMBER_10613 for value: 10613
+        /// Enum AssetNotConfirmed for value: AssetNotConfirmed
         /// </summary>
-        NUMBER_10613 = 10613,
+        [EnumMember(Value = "AssetNotConfirmed")]
+        AssetNotConfirmed = 35,
 
         /// <summary>
-        /// Enum NUMBER_10614 for value: 10614
+        /// Enum AssetNotSupported for value: AssetNotSupported
         /// </summary>
-        NUMBER_10614 = 10614,
+        [EnumMember(Value = "AssetNotSupported")]
+        AssetNotSupported = 36,
 
         /// <summary>
-        /// Enum NUMBER_10701 for value: 10701
+        /// Enum AssetQuantumInvalid for value: AssetQuantumInvalid
         /// </summary>
-        NUMBER_10701 = 10701,
+        [EnumMember(Value = "AssetQuantumInvalid")]
+        AssetQuantumInvalid = 37,
 
         /// <summary>
-        /// Enum NUMBER_10801 for value: 10801
+        /// Enum OperationAmountRequired for value: OperationAmountRequired
         /// </summary>
-        NUMBER_10801 = 10801,
+        [EnumMember(Value = "OperationAmountRequired")]
+        OperationAmountRequired = 38,
 
         /// <summary>
-        /// Enum NUMBER_10802 for value: 10802
+        /// Enum OperationAmountInvalid for value: OperationAmountInvalid
         /// </summary>
-        NUMBER_10802 = 10802,
+        [EnumMember(Value = "OperationAmountInvalid")]
+        OperationAmountInvalid = 39,
 
         /// <summary>
-        /// Enum NUMBER_10803 for value: 10803
+        /// Enum OperationAmountUnquantizable for value: OperationAmountUnquantizable
         /// </summary>
-        NUMBER_10803 = 10803,
+        [EnumMember(Value = "OperationAmountUnquantizable")]
+        OperationAmountUnquantizable = 40,
 
         /// <summary>
-        /// Enum NUMBER_10901 for value: 10901
+        /// Enum VaultNotRegistered for value: VaultNotRegistered
         /// </summary>
-        NUMBER_10901 = 10901,
+        [EnumMember(Value = "VaultNotRegistered")]
+        VaultNotRegistered = 41,
 
         /// <summary>
-        /// Enum NUMBER_10902 for value: 10902
+        /// Enum VaultOutOfBounds for value: VaultOutOfBounds
         /// </summary>
-        NUMBER_10902 = 10902,
+        [EnumMember(Value = "VaultOutOfBounds")]
+        VaultOutOfBounds = 42,
 
         /// <summary>
-        /// Enum NUMBER_10903 for value: 10903
+        /// Enum VaultIdRequired for value: VaultIdRequired
         /// </summary>
-        NUMBER_10903 = 10903,
+        [EnumMember(Value = "VaultIdRequired")]
+        VaultIdRequired = 43,
 
         /// <summary>
-        /// Enum NUMBER_11001 for value: 11001
+        /// Enum TokenIdRequired for value: TokenIdRequired
         /// </summary>
-        NUMBER_11001 = 11001,
+        [EnumMember(Value = "TokenIdRequired")]
+        TokenIdRequired = 44,
 
         /// <summary>
-        /// Enum NUMBER_12001 for value: 12001
+        /// Enum StarkTypeInvalid for value: StarkTypeInvalid
         /// </summary>
-        NUMBER_12001 = 12001,
+        [EnumMember(Value = "StarkTypeInvalid")]
+        StarkTypeInvalid = 45,
 
         /// <summary>
-        /// Enum NUMBER_12002 for value: 12002
+        /// Enum StarkTypeInvalidFormat for value: StarkTypeInvalidFormat
         /// </summary>
-        NUMBER_12002 = 12002,
+        [EnumMember(Value = "StarkTypeInvalidFormat")]
+        StarkTypeInvalidFormat = 46,
 
         /// <summary>
-        /// Enum NUMBER_12003 for value: 12003
+        /// Enum StarkTypeRequired for value: StarkTypeRequired
         /// </summary>
-        NUMBER_12003 = 12003,
+        [EnumMember(Value = "StarkTypeRequired")]
+        StarkTypeRequired = 47,
 
         /// <summary>
-        /// Enum NUMBER_12101 for value: 12101
+        /// Enum MintsRequired for value: MintsRequired
         /// </summary>
-        NUMBER_12101 = 12101,
+        [EnumMember(Value = "MintsRequired")]
+        MintsRequired = 48,
 
         /// <summary>
-        /// Enum NUMBER_12102 for value: 12102
+        /// Enum MintingBlobRequired for value: MintingBlobRequired
         /// </summary>
-        NUMBER_12102 = 12102,
+        [EnumMember(Value = "MintingBlobRequired")]
+        MintingBlobRequired = 49,
 
         /// <summary>
-        /// Enum NUMBER_12103 for value: 12103
+        /// Enum DuplicatedUserIds for value: DuplicatedUserIds
         /// </summary>
-        NUMBER_12103 = 12103,
+        [EnumMember(Value = "DuplicatedUserIds")]
+        DuplicatedUserIds = 50,
 
         /// <summary>
-        /// Enum NUMBER_12104 for value: 12104
+        /// Enum DuplicatedMints for value: DuplicatedMints
         /// </summary>
-        NUMBER_12104 = 12104,
+        [EnumMember(Value = "DuplicatedMints")]
+        DuplicatedMints = 51,
 
         /// <summary>
-        /// Enum NUMBER_12105 for value: 12105
+        /// Enum ExistingMintingBlob for value: ExistingMintingBlob
         /// </summary>
-        NUMBER_12105 = 12105,
+        [EnumMember(Value = "ExistingMintingBlob")]
+        ExistingMintingBlob = 52,
 
         /// <summary>
-        /// Enum NUMBER_12201 for value: 12201
+        /// Enum DataAvailabilityRequired for value: DataAvailabilityRequired
         /// </summary>
-        NUMBER_12201 = 12201,
+        [EnumMember(Value = "DataAvailabilityRequired")]
+        DataAvailabilityRequired = 53,
 
         /// <summary>
-        /// Enum NUMBER_12301 for value: 12301
+        /// Enum FeeActionRequired for value: FeeActionRequired
         /// </summary>
-        NUMBER_12301 = 12301,
+        [EnumMember(Value = "FeeActionRequired")]
+        FeeActionRequired = 54,
 
         /// <summary>
-        /// Enum NUMBER_12302 for value: 12302
+        /// Enum FeeBasisPointsRequired for value: FeeBasisPointsRequired
         /// </summary>
-        NUMBER_12302 = 12302,
+        [EnumMember(Value = "FeeBasisPointsRequired")]
+        FeeBasisPointsRequired = 55,
 
         /// <summary>
-        /// Enum NUMBER_12303 for value: 12303
+        /// Enum FeeNotConfigured for value: FeeNotConfigured
         /// </summary>
-        NUMBER_12303 = 12303,
+        [EnumMember(Value = "FeeNotConfigured")]
+        FeeNotConfigured = 56,
 
         /// <summary>
-        /// Enum NUMBER_12304 for value: 12304
+        /// Enum FeeBasisPointOutOfRange for value: FeeBasisPointOutOfRange
         /// </summary>
-        NUMBER_12304 = 12304,
+        [EnumMember(Value = "FeeBasisPointOutOfRange")]
+        FeeBasisPointOutOfRange = 57,
 
         /// <summary>
-        /// Enum NUMBER_12401 for value: 12401
+        /// Enum FeeVaultIdRequired for value: FeeVaultIdRequired
         /// </summary>
-        NUMBER_12401 = 12401,
+        [EnumMember(Value = "FeeVaultIdRequired")]
+        FeeVaultIdRequired = 58,
 
         /// <summary>
-        /// Enum NUMBER_12402 for value: 12402
+        /// Enum FeeQuantizedAmountRequired for value: FeeQuantizedAmountRequired
         /// </summary>
-        NUMBER_12402 = 12402,
+        [EnumMember(Value = "FeeQuantizedAmountRequired")]
+        FeeQuantizedAmountRequired = 59,
 
         /// <summary>
-        /// Enum NUMBER_12403 for value: 12403
+        /// Enum BuyVaultIdRequired for value: BuyVaultIdRequired
         /// </summary>
-        NUMBER_12403 = 12403,
+        [EnumMember(Value = "BuyVaultIdRequired")]
+        BuyVaultIdRequired = 60,
 
         /// <summary>
-        /// Enum NUMBER_12404 for value: 12404
+        /// Enum BuyAmountRequired for value: BuyAmountRequired
         /// </summary>
-        NUMBER_12404 = 12404,
+        [EnumMember(Value = "BuyAmountRequired")]
+        BuyAmountRequired = 61,
 
         /// <summary>
-        /// Enum NUMBER_12405 for value: 12405
+        /// Enum SellVaultIdRequired for value: SellVaultIdRequired
         /// </summary>
-        NUMBER_12405 = 12405,
+        [EnumMember(Value = "SellVaultIdRequired")]
+        SellVaultIdRequired = 62,
 
         /// <summary>
-        /// Enum NUMBER_12406 for value: 12406
+        /// Enum SellAmountRequired for value: SellAmountRequired
         /// </summary>
-        NUMBER_12406 = 12406,
+        [EnumMember(Value = "SellAmountRequired")]
+        SellAmountRequired = 63,
 
         /// <summary>
-        /// Enum NUMBER_12407 for value: 12407
+        /// Enum OrderARequired for value: OrderARequired
         /// </summary>
-        NUMBER_12407 = 12407,
+        [EnumMember(Value = "OrderARequired")]
+        OrderARequired = 64,
 
         /// <summary>
-        /// Enum NUMBER_12408 for value: 12408
+        /// Enum OrderBRequired for value: OrderBRequired
         /// </summary>
-        NUMBER_12408 = 12408,
+        [EnumMember(Value = "OrderBRequired")]
+        OrderBRequired = 65,
 
         /// <summary>
-        /// Enum NUMBER_12409 for value: 12409
+        /// Enum OrderAFeeAmountRequired for value: OrderAFeeAmountRequired
         /// </summary>
-        NUMBER_12409 = 12409,
+        [EnumMember(Value = "OrderAFeeAmountRequired")]
+        OrderAFeeAmountRequired = 66,
 
         /// <summary>
-        /// Enum NUMBER_12410 for value: 12410
+        /// Enum OrderBFeeAmountRequired for value: OrderBFeeAmountRequired
         /// </summary>
-        NUMBER_12410 = 12410,
+        [EnumMember(Value = "OrderBFeeAmountRequired")]
+        OrderBFeeAmountRequired = 67,
 
         /// <summary>
-        /// Enum NUMBER_12411 for value: 12411
+        /// Enum OrderAFeeDestinationVaultIdRequired for value: OrderAFeeDestinationVaultIdRequired
         /// </summary>
-        NUMBER_12411 = 12411,
+        [EnumMember(Value = "OrderAFeeDestinationVaultIdRequired")]
+        OrderAFeeDestinationVaultIdRequired = 68,
 
         /// <summary>
-        /// Enum NUMBER_12412 for value: 12412
+        /// Enum OrderBFeeDestinationVaultIdRequired for value: OrderBFeeDestinationVaultIdRequired
         /// </summary>
-        NUMBER_12412 = 12412,
+        [EnumMember(Value = "OrderBFeeDestinationVaultIdRequired")]
+        OrderBFeeDestinationVaultIdRequired = 69,
 
         /// <summary>
-        /// Enum NUMBER_13001 for value: 13001
+        /// Enum SenderVaultIdRequired for value: SenderVaultIdRequired
         /// </summary>
-        NUMBER_13001 = 13001,
+        [EnumMember(Value = "SenderVaultIdRequired")]
+        SenderVaultIdRequired = 70,
 
         /// <summary>
-        /// Enum NUMBER_13002 for value: 13002
+        /// Enum ReceiverVaultIdRequired for value: ReceiverVaultIdRequired
         /// </summary>
-        NUMBER_13002 = 13002,
+        [EnumMember(Value = "ReceiverVaultIdRequired")]
+        ReceiverVaultIdRequired = 71,
 
         /// <summary>
-        /// Enum NUMBER_13003 for value: 13003
+        /// Enum ExpirationTimestampRequired for value: ExpirationTimestampRequired
         /// </summary>
-        NUMBER_13003 = 13003,
+        [EnumMember(Value = "ExpirationTimestampRequired")]
+        ExpirationTimestampRequired = 72,
 
         /// <summary>
-        /// Enum NUMBER_13004 for value: 13004
+        /// Enum NonceRequired for value: NonceRequired
         /// </summary>
-        NUMBER_13004 = 13004,
+        [EnumMember(Value = "NonceRequired")]
+        NonceRequired = 73,
 
         /// <summary>
-        /// Enum NUMBER_13005 for value: 13005
+        /// Enum TransactionIdNotFound for value: TransactionIdNotFound
         /// </summary>
-        NUMBER_13005 = 13005,
+        [EnumMember(Value = "TransactionIdNotFound")]
+        TransactionIdNotFound = 74,
 
         /// <summary>
-        /// Enum NUMBER_14001 for value: 14001
+        /// Enum AssetTypeRequired for value: AssetTypeRequired
         /// </summary>
-        NUMBER_14001 = 14001,
+        [EnumMember(Value = "AssetTypeRequired")]
+        AssetTypeRequired = 75,
 
         /// <summary>
-        /// Enum NUMBER_14002 for value: 14002
+        /// Enum SenderDataAvailabilityModeRequired for value: SenderDataAvailabilityModeRequired
         /// </summary>
-        NUMBER_14002 = 14002,
+        [EnumMember(Value = "SenderDataAvailabilityModeRequired")]
+        SenderDataAvailabilityModeRequired = 76,
 
         /// <summary>
-        /// Enum NUMBER_14003 for value: 14003
+        /// Enum ReceiverDataAvailabilityModeRequired for value: ReceiverDataAvailabilityModeRequired
         /// </summary>
-        NUMBER_14003 = 14003,
+        [EnumMember(Value = "ReceiverDataAvailabilityModeRequired")]
+        ReceiverDataAvailabilityModeRequired = 77,
 
         /// <summary>
-        /// Enum NUMBER_14004 for value: 14004
+        /// Enum MintingBlobNotFound for value: MintingBlobNotFound
         /// </summary>
-        NUMBER_14004 = 14004,
+        [EnumMember(Value = "MintingBlobNotFound")]
+        MintingBlobNotFound = 78,
 
         /// <summary>
-        /// Enum NUMBER_15001 for value: 15001
+        /// Enum InvalidHexString for value: InvalidHexString
         /// </summary>
-        NUMBER_15001 = 15001,
+        [EnumMember(Value = "InvalidHexString")]
+        InvalidHexString = 79,
 
         /// <summary>
-        /// Enum NUMBER_16001 for value: 16001
+        /// Enum TenantNameAlreadyRegistered for value: TenantNameAlreadyRegistered
         /// </summary>
-        NUMBER_16001 = 16001,
+        [EnumMember(Value = "TenantNameAlreadyRegistered")]
+        TenantNameAlreadyRegistered = 80,
 
         /// <summary>
-        /// Enum NUMBER_16002 for value: 16002
+        /// Enum TenantIdNotFound for value: TenantIdNotFound
         /// </summary>
-        NUMBER_16002 = 16002,
+        [EnumMember(Value = "TenantIdNotFound")]
+        TenantIdNotFound = 81,
 
         /// <summary>
-        /// Enum NUMBER_16003 for value: 16003
+        /// Enum TenantOwnerRequired for value: TenantOwnerRequired
         /// </summary>
-        NUMBER_16003 = 16003,
+        [EnumMember(Value = "TenantOwnerRequired")]
+        TenantOwnerRequired = 82,
 
         /// <summary>
-        /// Enum NUMBER_17001 for value: 17001
+        /// Enum StarkExInstanceNotFound for value: StarkExInstanceNotFound
         /// </summary>
-        NUMBER_17001 = 17001,
+        [EnumMember(Value = "StarkExInstanceNotFound")]
+        StarkExInstanceNotFound = 83,
 
         /// <summary>
-        /// Enum NUMBER_17002 for value: 17002
+        /// Enum StarkExContractAlreadyRegistered for value: StarkExContractAlreadyRegistered
         /// </summary>
-        NUMBER_17002 = 17002,
+        [EnumMember(Value = "StarkExContractAlreadyRegistered")]
+        StarkExContractAlreadyRegistered = 84,
 
         /// <summary>
-        /// Enum NUMBER_17003 for value: 17003
+        /// Enum StarkExNameAlreadyRegistered for value: StarkExNameAlreadyRegistered
         /// </summary>
-        NUMBER_17003 = 17003,
+        [EnumMember(Value = "StarkExNameAlreadyRegistered")]
+        StarkExNameAlreadyRegistered = 85,
 
         /// <summary>
-        /// Enum NUMBER_17004 for value: 17004
+        /// Enum StarkExAddressRequired for value: StarkExAddressRequired
         /// </summary>
-        NUMBER_17004 = 17004,
+        [EnumMember(Value = "StarkExAddressRequired")]
+        StarkExAddressRequired = 86,
 
         /// <summary>
-        /// Enum NUMBER_17005 for value: 17005
+        /// Enum StarkExContractTokensAdminKeyRequired for value: StarkExContractTokensAdminKeyRequired
         /// </summary>
-        NUMBER_17005 = 17005,
+        [EnumMember(Value = "StarkExContractTokensAdminKeyRequired")]
+        StarkExContractTokensAdminKeyRequired = 87,
 
         /// <summary>
-        /// Enum NUMBER_17006 for value: 17006
+        /// Enum StarkExInstanceNameRequired for value: StarkExInstanceNameRequired
         /// </summary>
-        NUMBER_17006 = 17006,
+        [EnumMember(Value = "StarkExInstanceNameRequired")]
+        StarkExInstanceNameRequired = 88,
 
         /// <summary>
-        /// Enum NUMBER_17007 for value: 17007
+        /// Enum ValidiumTreeHeightRequired for value: ValidiumTreeHeightRequired
         /// </summary>
-        NUMBER_17007 = 17007,
+        [EnumMember(Value = "ValidiumTreeHeightRequired")]
+        ValidiumTreeHeightRequired = 89,
 
         /// <summary>
-        /// Enum NUMBER_17008 for value: 17008
+        /// Enum ZkRollupTreeHeightRequired for value: ZkRollupTreeHeightRequired
         /// </summary>
-        NUMBER_17008 = 17008,
+        [EnumMember(Value = "ZkRollupTreeHeightRequired")]
+        ZkRollupTreeHeightRequired = 90,
 
         /// <summary>
-        /// Enum NUMBER_17009 for value: 17009
+        /// Enum ValidiumTreeHeightOutOfRange for value: ValidiumTreeHeightOutOfRange
         /// </summary>
-        NUMBER_17009 = 17009,
+        [EnumMember(Value = "ValidiumTreeHeightOutOfRange")]
+        ValidiumTreeHeightOutOfRange = 91,
 
         /// <summary>
-        /// Enum NUMBER_17010 for value: 17010
+        /// Enum ZkRollupTreeHeightOutOfRange for value: ZkRollupTreeHeightOutOfRange
         /// </summary>
-        NUMBER_17010 = 17010,
+        [EnumMember(Value = "ZkRollupTreeHeightOutOfRange")]
+        ZkRollupTreeHeightOutOfRange = 92,
 
         /// <summary>
-        /// Enum NUMBER_17011 for value: 17011
+        /// Enum StarkExHostnameRequired for value: StarkExHostnameRequired
         /// </summary>
-        NUMBER_17011 = 17011,
+        [EnumMember(Value = "StarkExHostnameRequired")]
+        StarkExHostnameRequired = 93,
 
         /// <summary>
-        /// Enum NUMBER_17012 for value: 17012
+        /// Enum StarkExVersionRequired for value: StarkExVersionRequired
         /// </summary>
-        NUMBER_17012 = 17012,
+        [EnumMember(Value = "StarkExVersionRequired")]
+        StarkExVersionRequired = 94,
 
         /// <summary>
-        /// Enum NUMBER_17013 for value: 17013
+        /// Enum StarkExHostnameInvalid for value: StarkExHostnameInvalid
         /// </summary>
-        NUMBER_17013 = 17013,
+        [EnumMember(Value = "StarkExHostnameInvalid")]
+        StarkExHostnameInvalid = 95,
 
         /// <summary>
-        /// Enum NUMBER_17014 for value: 17014
+        /// Enum StarkExVersionNotSupported for value: StarkExVersionNotSupported
         /// </summary>
-        NUMBER_17014 = 17014,
+        [EnumMember(Value = "StarkExVersionNotSupported")]
+        StarkExVersionNotSupported = 96,
 
         /// <summary>
-        /// Enum NUMBER_17015 for value: 17015
+        /// Enum IsUniqueMintingEnabledRequired for value: IsUniqueMintingEnabledRequired
         /// </summary>
-        NUMBER_17015 = 17015,
+        [EnumMember(Value = "IsUniqueMintingEnabledRequired")]
+        IsUniqueMintingEnabledRequired = 97,
 
         /// <summary>
-        /// Enum NUMBER_17016 for value: 17016
+        /// Enum StarkExCertificateRequired for value: StarkExCertificateRequired
         /// </summary>
-        NUMBER_17016 = 17016,
+        [EnumMember(Value = "StarkExCertificateRequired")]
+        StarkExCertificateRequired = 98,
 
         /// <summary>
-        /// Enum NUMBER_17017 for value: 17017
+        /// Enum StarkExCertificateIsInvalid for value: StarkExCertificateIsInvalid
         /// </summary>
-        NUMBER_17017 = 17017,
+        [EnumMember(Value = "StarkExCertificateIsInvalid")]
+        StarkExCertificateIsInvalid = 99,
 
         /// <summary>
-        /// Enum NUMBER_17018 for value: 17018
+        /// Enum StarkExInstanceTokenAdminPrivateKeySecretNotFound for value: StarkExInstanceTokenAdminPrivateKeySecretNotFound
         /// </summary>
-        NUMBER_17018 = 17018,
+        [EnumMember(Value = "StarkExInstanceTokenAdminPrivateKeySecretNotFound")]
+        StarkExInstanceTokenAdminPrivateKeySecretNotFound = 100,
 
         /// <summary>
-        /// Enum NUMBER_17019 for value: 17019
+        /// Enum StarkExDeploymentBlockMissing for value: StarkExDeploymentBlockMissing
         /// </summary>
-        NUMBER_17019 = 17019,
+        [EnumMember(Value = "StarkExDeploymentBlockMissing")]
+        StarkExDeploymentBlockMissing = 101,
 
         /// <summary>
-        /// Enum NUMBER_17020 for value: 17020
+        /// Enum StarkExDeploymentBlockOutOfRange for value: StarkExDeploymentBlockOutOfRange
         /// </summary>
-        NUMBER_17020 = 17020,
+        [EnumMember(Value = "StarkExDeploymentBlockOutOfRange")]
+        StarkExDeploymentBlockOutOfRange = 102,
 
         /// <summary>
-        /// Enum NUMBER_18001 for value: 18001
+        /// Enum OrderbookIdRequired for value: OrderbookIdRequired
         /// </summary>
-        NUMBER_18001 = 18001,
+        [EnumMember(Value = "OrderbookIdRequired")]
+        OrderbookIdRequired = 103,
 
         /// <summary>
-        /// Enum NUMBER_18002 for value: 18002
+        /// Enum BaseAssetIdRequired for value: BaseAssetIdRequired
         /// </summary>
-        NUMBER_18002 = 18002,
+        [EnumMember(Value = "BaseAssetIdRequired")]
+        BaseAssetIdRequired = 104,
 
         /// <summary>
-        /// Enum NUMBER_18003 for value: 18003
+        /// Enum QuoteAssetIdRequired for value: QuoteAssetIdRequired
         /// </summary>
-        NUMBER_18003 = 18003,
+        [EnumMember(Value = "QuoteAssetIdRequired")]
+        QuoteAssetIdRequired = 105,
 
         /// <summary>
-        /// Enum NUMBER_18004 for value: 18004
+        /// Enum BaseAssetPrecisionRequired for value: BaseAssetPrecisionRequired
         /// </summary>
-        NUMBER_18004 = 18004,
+        [EnumMember(Value = "BaseAssetPrecisionRequired")]
+        BaseAssetPrecisionRequired = 106,
 
         /// <summary>
-        /// Enum NUMBER_18005 for value: 18005
+        /// Enum QuoteAssetPrecisionRequired for value: QuoteAssetPrecisionRequired
         /// </summary>
-        NUMBER_18005 = 18005,
+        [EnumMember(Value = "QuoteAssetPrecisionRequired")]
+        QuoteAssetPrecisionRequired = 107,
 
         /// <summary>
-        /// Enum NUMBER_19001 for value: 19001
+        /// Enum OrderIdRequired for value: OrderIdRequired
         /// </summary>
-        NUMBER_19001 = 19001,
+        [EnumMember(Value = "OrderIdRequired")]
+        OrderIdRequired = 108,
 
         /// <summary>
-        /// Enum NUMBER_19002 for value: 19002
+        /// Enum OrderSideRequired for value: OrderSideRequired
         /// </summary>
-        NUMBER_19002 = 19002,
+        [EnumMember(Value = "OrderSideRequired")]
+        OrderSideRequired = 109,
 
         /// <summary>
-        /// Enum NUMBER_19003 for value: 19003
+        /// Enum OrderPriceRequired for value: OrderPriceRequired
         /// </summary>
-        NUMBER_19003 = 19003,
+        [EnumMember(Value = "OrderPriceRequired")]
+        OrderPriceRequired = 110,
 
         /// <summary>
-        /// Enum NUMBER_19004 for value: 19004
+        /// Enum OrderAmountRequired for value: OrderAmountRequired
         /// </summary>
-        NUMBER_19004 = 19004,
+        [EnumMember(Value = "OrderAmountRequired")]
+        OrderAmountRequired = 111,
 
         /// <summary>
-        /// Enum NUMBER_20101 for value: 20101
+        /// Enum InsufficientBalance for value: InsufficientBalance
         /// </summary>
-        NUMBER_20101 = 20101,
+        [EnumMember(Value = "InsufficientBalance")]
+        InsufficientBalance = 112,
 
         /// <summary>
-        /// Enum NUMBER_20301 for value: 20301
+        /// Enum TimestampOutsideValidRange for value: TimestampOutsideValidRange
         /// </summary>
-        NUMBER_20301 = 20301,
+        [EnumMember(Value = "TimestampOutsideValidRange")]
+        TimestampOutsideValidRange = 113,
 
         /// <summary>
-        /// Enum NUMBER_20302 for value: 20302
+        /// Enum TransferIntoSameVault for value: TransferIntoSameVault
         /// </summary>
-        NUMBER_20302 = 20302,
+        [EnumMember(Value = "TransferIntoSameVault")]
+        TransferIntoSameVault = 114,
 
         /// <summary>
-        /// Enum NUMBER_20303 for value: 20303
+        /// Enum ConflictingVaultAssets for value: ConflictingVaultAssets
         /// </summary>
-        NUMBER_20303 = 20303,
+        [EnumMember(Value = "ConflictingVaultAssets")]
+        ConflictingVaultAssets = 115,
 
         /// <summary>
-        /// Enum NUMBER_20401 for value: 20401
+        /// Enum FeeAlreadyConfigured for value: FeeAlreadyConfigured
         /// </summary>
-        NUMBER_20401 = 20401,
+        [EnumMember(Value = "FeeAlreadyConfigured")]
+        FeeAlreadyConfigured = 116,
 
         /// <summary>
-        /// Enum NUMBER_20501 for value: 20501
+        /// Enum MintingBlobInvalid for value: MintingBlobInvalid
         /// </summary>
-        NUMBER_20501 = 20501,
+        [EnumMember(Value = "MintingBlobInvalid")]
+        MintingBlobInvalid = 117,
 
         /// <summary>
-        /// Enum NUMBER_20502 for value: 20502
+        /// Enum TokenIdInvalid for value: TokenIdInvalid
         /// </summary>
-        NUMBER_20502 = 20502,
+        [EnumMember(Value = "TokenIdInvalid")]
+        TokenIdInvalid = 118,
 
         /// <summary>
-        /// Enum NUMBER_20601 for value: 20601
+        /// Enum TenantOwnerUnauthorized for value: TenantOwnerUnauthorized
         /// </summary>
-        NUMBER_20601 = 20601,
+        [EnumMember(Value = "TenantOwnerUnauthorized")]
+        TenantOwnerUnauthorized = 119,
 
         /// <summary>
-        /// Enum NUMBER_50000 for value: 50000
+        /// Enum InternalError for value: InternalError
         /// </summary>
-        NUMBER_50000 = 50000
+        [EnumMember(Value = "InternalError")]
+        InternalError = 120
 
     }
 

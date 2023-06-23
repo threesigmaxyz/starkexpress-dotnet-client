@@ -28,17 +28,20 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines DataAvailabilityModes
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DataAvailabilityModes
     {
         /// <summary>
-        /// Enum NUMBER_0 for value: 0
+        /// Enum ZkRollup for value: ZkRollup
         /// </summary>
-        NUMBER_0 = 0,
+        [EnumMember(Value = "ZkRollup")]
+        ZkRollup = 1,
 
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum Validium for value: Validium
         /// </summary>
-        NUMBER_1 = 1
+        [EnumMember(Value = "Validium")]
+        Validium = 2
 
     }
 

@@ -908,9 +908,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/UserDto'
-                type: array
+                $ref: '#/components/schemas/UserDtoPaginatedResponseDto'
           description: Returns all users.
         "401":
           description: Unauthorized.
@@ -1275,14 +1273,13 @@ components:
       type: object
     AssetType:
       enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      format: int32
-      type: integer
+      - Eth
+      - Erc20
+      - Erc721
+      - Erc1155
+      - MintableErc20
+      - MintableErc721
+      type: string
     BatchMintRequestModel:
       additionalProperties: false
       description: Request model to mint a batch of assets.
@@ -1418,10 +1415,9 @@ components:
       type: object
     DataAvailabilityModes:
       enum:
-      - 0
-      - 1
-      format: int32
-      type: integer
+      - ZkRollup
+      - Validium
+      type: string
     DeployAssetModel:
       additionalProperties: false
       example:
@@ -1617,136 +1613,134 @@ components:
       type: object
     ErrorCodes:
       enum:
-      - 10000
-      - 10001
-      - 10002
-      - 10101
-      - 10102
-      - 10103
-      - 10104
-      - 10105
-      - 10106
-      - 10201
-      - 10202
-      - 10203
-      - 10301
-      - 10302
-      - 10303
-      - 10304
-      - 10401
-      - 10402
-      - 10403
-      - 10404
-      - 10501
-      - 10502
-      - 10601
-      - 10602
-      - 10603
-      - 10604
-      - 10605
-      - 10606
-      - 10607
-      - 10608
-      - 10609
-      - 10610
-      - 10611
-      - 10612
-      - 10613
-      - 10614
-      - 10701
-      - 10801
-      - 10802
-      - 10803
-      - 10901
-      - 10902
-      - 10903
-      - 11001
-      - 12001
-      - 12002
-      - 12003
-      - 12101
-      - 12102
-      - 12103
-      - 12104
-      - 12105
-      - 12201
-      - 12301
-      - 12302
-      - 12303
-      - 12304
-      - 12401
-      - 12402
-      - 12403
-      - 12404
-      - 12405
-      - 12406
-      - 12407
-      - 12408
-      - 12409
-      - 12410
-      - 12411
-      - 12412
-      - 13001
-      - 13002
-      - 13003
-      - 13004
-      - 13005
-      - 14001
-      - 14002
-      - 14003
-      - 14004
-      - 15001
-      - 16001
-      - 16002
-      - 16003
-      - 17001
-      - 17002
-      - 17003
-      - 17004
-      - 17005
-      - 17006
-      - 17007
-      - 17008
-      - 17009
-      - 17010
-      - 17011
-      - 17012
-      - 17013
-      - 17014
-      - 17015
-      - 17016
-      - 17017
-      - 17018
-      - 17019
-      - 17020
-      - 18001
-      - 18002
-      - 18003
-      - 18004
-      - 18005
-      - 19001
-      - 19002
-      - 19003
-      - 19004
-      - 20101
-      - 20301
-      - 20302
-      - 20303
-      - 20401
-      - 20501
-      - 20502
-      - 20601
-      - 50000
-      format: int32
-      type: integer
+      - ModelStateInvalid
+      - InvalidGuid
+      - FilterIsRequired
+      - UsernameRequired
+      - UsernameLengthInvalid
+      - UsernameAlreadyRegistered
+      - UsersRequired
+      - UserIdRequired
+      - UserIdNotFound
+      - AddressRequired
+      - AddressInvalid
+      - AddressAlreadyRegistered
+      - StarkSignatureRequired
+      - StarkSignatureRRequired
+      - StarkSignatureSRequired
+      - StarkSignatureInvalid
+      - StarkKeyRequired
+      - StarkKeyLengthInvalid
+      - StarkKeyFormatInvalid
+      - StarkKeyAlreadyInuse
+      - Eip712SignatureRequired
+      - Eip712SignatureInvalid
+      - AssetAlreadyWhitelisted
+      - AssetDisabled
+      - InvalidAssetType
+      - AssetAddressIsNotAContract
+      - AssetContractIsNotMintable
+      - AssetIdRequired
+      - AssetNameRequired
+      - AssetSymbolRequired
+      - AssetQuantumRequired
+      - AssetUriRequired
+      - AssetAlreadyRegistered
+      - AssetNotRegistered
+      - AssetNotConfirmed
+      - AssetNotSupported
+      - AssetQuantumInvalid
+      - OperationAmountRequired
+      - OperationAmountInvalid
+      - OperationAmountUnquantizable
+      - VaultNotRegistered
+      - VaultOutOfBounds
+      - VaultIdRequired
+      - TokenIdRequired
+      - StarkTypeInvalid
+      - StarkTypeInvalidFormat
+      - StarkTypeRequired
+      - MintsRequired
+      - MintingBlobRequired
+      - DuplicatedUserIds
+      - DuplicatedMints
+      - ExistingMintingBlob
+      - DataAvailabilityRequired
+      - FeeActionRequired
+      - FeeBasisPointsRequired
+      - FeeNotConfigured
+      - FeeBasisPointOutOfRange
+      - FeeVaultIdRequired
+      - FeeQuantizedAmountRequired
+      - BuyVaultIdRequired
+      - BuyAmountRequired
+      - SellVaultIdRequired
+      - SellAmountRequired
+      - OrderARequired
+      - OrderBRequired
+      - OrderAFeeAmountRequired
+      - OrderBFeeAmountRequired
+      - OrderAFeeDestinationVaultIdRequired
+      - OrderBFeeDestinationVaultIdRequired
+      - SenderVaultIdRequired
+      - ReceiverVaultIdRequired
+      - ExpirationTimestampRequired
+      - NonceRequired
+      - TransactionIdNotFound
+      - AssetTypeRequired
+      - SenderDataAvailabilityModeRequired
+      - ReceiverDataAvailabilityModeRequired
+      - MintingBlobNotFound
+      - InvalidHexString
+      - TenantNameAlreadyRegistered
+      - TenantIdNotFound
+      - TenantOwnerRequired
+      - StarkExInstanceNotFound
+      - StarkExContractAlreadyRegistered
+      - StarkExNameAlreadyRegistered
+      - StarkExAddressRequired
+      - StarkExContractTokensAdminKeyRequired
+      - StarkExInstanceNameRequired
+      - ValidiumTreeHeightRequired
+      - ZkRollupTreeHeightRequired
+      - ValidiumTreeHeightOutOfRange
+      - ZkRollupTreeHeightOutOfRange
+      - StarkExHostnameRequired
+      - StarkExVersionRequired
+      - StarkExHostnameInvalid
+      - StarkExVersionNotSupported
+      - IsUniqueMintingEnabledRequired
+      - StarkExCertificateRequired
+      - StarkExCertificateIsInvalid
+      - StarkExInstanceTokenAdminPrivateKeySecretNotFound
+      - StarkExDeploymentBlockMissing
+      - StarkExDeploymentBlockOutOfRange
+      - OrderbookIdRequired
+      - BaseAssetIdRequired
+      - QuoteAssetIdRequired
+      - BaseAssetPrecisionRequired
+      - QuoteAssetPrecisionRequired
+      - OrderIdRequired
+      - OrderSideRequired
+      - OrderPriceRequired
+      - OrderAmountRequired
+      - InsufficientBalance
+      - TimestampOutsideValidRange
+      - TransferIntoSameVault
+      - ConflictingVaultAssets
+      - FeeAlreadyConfigured
+      - MintingBlobInvalid
+      - TokenIdInvalid
+      - TenantOwnerUnauthorized
+      - InternalError
+      type: string
     FeeAction:
       enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      format: int32
-      type: integer
+      - Transfer
+      - ConditionalTransfer
+      - MakerOrder
+      - TakerOrder
+      type: string
     FeeConfigDto:
       additionalProperties: false
       example:
@@ -1808,20 +1802,19 @@ components:
       type: object
     FilterOptions:
       enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      format: int32
-      type: integer
+      - StartsWith
+      - EndsWith
+      - Contains
+      - DoesNotContain
+      - IsEmpty
+      - IsNotEmpty
+      - IsGreaterThan
+      - IsGreaterThanOrEqualTo
+      - IsLessThan
+      - IsLessThanOrEqualTo
+      - IsEqualTo
+      - IsNotEqualTo
+      type: string
     MemberDescriptionDto:
       additionalProperties: false
       example:
@@ -2118,10 +2111,9 @@ components:
       type: object
     OrderSide:
       enum:
-      - 0
-      - 1
-      format: int32
-      type: integer
+      - Bid
+      - Ask
+      type: string
     OrderbookAssetDto:
       additionalProperties: false
       example:
@@ -2531,16 +2523,15 @@ components:
       type: object
     StarkExOperation:
       enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      format: int32
-      type: integer
+      - Deposit
+      - Withdrawal
+      - Mint
+      - MultiTransaction
+      - Transfer
+      - FullWithdrawal
+      - FalseFullWithdrawal
+      - Settlement
+      type: string
     SubmitOrderModel:
       additionalProperties: false
       description: Request model to submit an orderbook order.
@@ -2742,7 +2733,7 @@ components:
           type: type
         starkExTransactionId: 0
         tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        creationDate: 2000-01-23
+        creationDate: 2000-01-23T04:56:07.000+00:00
         operation: null
         transactionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: null
@@ -2774,7 +2765,7 @@ components:
           $ref: '#/components/schemas/TransactionStatus'
         creationDate:
           description: The date the transaction was created.
-          format: date
+          format: date-time
           title: Creation Date
           type: string
         rawTransaction:
@@ -2793,7 +2784,7 @@ components:
             type: type
           starkExTransactionId: 0
           tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          creationDate: 2000-01-23
+          creationDate: 2000-01-23T04:56:07.000+00:00
           operation: null
           transactionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: null
@@ -2802,7 +2793,7 @@ components:
             type: type
           starkExTransactionId: 0
           tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          creationDate: 2000-01-23
+          creationDate: 2000-01-23T04:56:07.000+00:00
           operation: null
           transactionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: null
@@ -2835,13 +2826,12 @@ components:
       type: object
     TransactionStatus:
       enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      format: int32
-      type: integer
+      - Streamed
+      - Pending
+      - Confirmed
+      - Reverted
+      - Failed
+      type: string
     TransferDetailsDto:
       additionalProperties: false
       example:
@@ -3078,6 +3068,39 @@ components:
           nullable: true
           title: Address
           type: string
+      type: object
+    UserDtoPaginatedResponseDto:
+      additionalProperties: false
+      example:
+        pagination:
+          pageNumber: 0
+          pageSize: 6
+          hasNext: true
+        data:
+        - address: address
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          starkKey: starkKey
+          username: username
+        - address: address
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          starkKey: starkKey
+          username: username
+        totalCount: 0
+      properties:
+        data:
+          description: The data in the paginated response.
+          items:
+            $ref: '#/components/schemas/UserDto'
+          nullable: true
+          title: Data
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationDto'
+        totalCount:
+          description: The total count of results available.
+          format: int32
+          title: TotalCount
+          type: integer
       type: object
     UserWithVaultsDto:
       additionalProperties: false

@@ -28,67 +28,80 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines FilterOptions
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum FilterOptions
     {
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum StartsWith for value: StartsWith
         /// </summary>
-        NUMBER_1 = 1,
+        [EnumMember(Value = "StartsWith")]
+        StartsWith = 1,
 
         /// <summary>
-        /// Enum NUMBER_2 for value: 2
+        /// Enum EndsWith for value: EndsWith
         /// </summary>
-        NUMBER_2 = 2,
+        [EnumMember(Value = "EndsWith")]
+        EndsWith = 2,
 
         /// <summary>
-        /// Enum NUMBER_3 for value: 3
+        /// Enum Contains for value: Contains
         /// </summary>
-        NUMBER_3 = 3,
+        [EnumMember(Value = "Contains")]
+        Contains = 3,
 
         /// <summary>
-        /// Enum NUMBER_4 for value: 4
+        /// Enum DoesNotContain for value: DoesNotContain
         /// </summary>
-        NUMBER_4 = 4,
+        [EnumMember(Value = "DoesNotContain")]
+        DoesNotContain = 4,
 
         /// <summary>
-        /// Enum NUMBER_5 for value: 5
+        /// Enum IsEmpty for value: IsEmpty
         /// </summary>
-        NUMBER_5 = 5,
+        [EnumMember(Value = "IsEmpty")]
+        IsEmpty = 5,
 
         /// <summary>
-        /// Enum NUMBER_6 for value: 6
+        /// Enum IsNotEmpty for value: IsNotEmpty
         /// </summary>
-        NUMBER_6 = 6,
+        [EnumMember(Value = "IsNotEmpty")]
+        IsNotEmpty = 6,
 
         /// <summary>
-        /// Enum NUMBER_7 for value: 7
+        /// Enum IsGreaterThan for value: IsGreaterThan
         /// </summary>
-        NUMBER_7 = 7,
+        [EnumMember(Value = "IsGreaterThan")]
+        IsGreaterThan = 7,
 
         /// <summary>
-        /// Enum NUMBER_8 for value: 8
+        /// Enum IsGreaterThanOrEqualTo for value: IsGreaterThanOrEqualTo
         /// </summary>
-        NUMBER_8 = 8,
+        [EnumMember(Value = "IsGreaterThanOrEqualTo")]
+        IsGreaterThanOrEqualTo = 8,
 
         /// <summary>
-        /// Enum NUMBER_9 for value: 9
+        /// Enum IsLessThan for value: IsLessThan
         /// </summary>
-        NUMBER_9 = 9,
+        [EnumMember(Value = "IsLessThan")]
+        IsLessThan = 9,
 
         /// <summary>
-        /// Enum NUMBER_10 for value: 10
+        /// Enum IsLessThanOrEqualTo for value: IsLessThanOrEqualTo
         /// </summary>
-        NUMBER_10 = 10,
+        [EnumMember(Value = "IsLessThanOrEqualTo")]
+        IsLessThanOrEqualTo = 10,
 
         /// <summary>
-        /// Enum NUMBER_11 for value: 11
+        /// Enum IsEqualTo for value: IsEqualTo
         /// </summary>
-        NUMBER_11 = 11,
+        [EnumMember(Value = "IsEqualTo")]
+        IsEqualTo = 11,
 
         /// <summary>
-        /// Enum NUMBER_12 for value: 12
+        /// Enum IsNotEqualTo for value: IsNotEqualTo
         /// </summary>
-        NUMBER_12 = 12
+        [EnumMember(Value = "IsNotEqualTo")]
+        IsNotEqualTo = 12
 
     }
 

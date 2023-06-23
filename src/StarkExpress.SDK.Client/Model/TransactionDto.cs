@@ -99,7 +99,6 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <value>The date the transaction was created.</value>
         [DataMember(Name = "creationDate", EmitDefaultValue = false)]
-        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime CreationDate { get; set; }
 
         /// <summary>
