@@ -28,27 +28,32 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines FeeAction
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum FeeAction
     {
         /// <summary>
-        /// Enum NUMBER_0 for value: 0
+        /// Enum Transfer for value: Transfer
         /// </summary>
-        NUMBER_0 = 0,
+        [EnumMember(Value = "Transfer")]
+        Transfer = 1,
 
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum ConditionalTransfer for value: ConditionalTransfer
         /// </summary>
-        NUMBER_1 = 1,
+        [EnumMember(Value = "ConditionalTransfer")]
+        ConditionalTransfer = 2,
 
         /// <summary>
-        /// Enum NUMBER_2 for value: 2
+        /// Enum MakerOrder for value: MakerOrder
         /// </summary>
-        NUMBER_2 = 2,
+        [EnumMember(Value = "MakerOrder")]
+        MakerOrder = 3,
 
         /// <summary>
-        /// Enum NUMBER_3 for value: 3
+        /// Enum TakerOrder for value: TakerOrder
         /// </summary>
-        NUMBER_3 = 3
+        [EnumMember(Value = "TakerOrder")]
+        TakerOrder = 4
 
     }
 

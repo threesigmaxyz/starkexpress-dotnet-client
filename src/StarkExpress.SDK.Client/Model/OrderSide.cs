@@ -28,17 +28,20 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines OrderSide
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum OrderSide
     {
         /// <summary>
-        /// Enum NUMBER_0 for value: 0
+        /// Enum Bid for value: Bid
         /// </summary>
-        NUMBER_0 = 0,
+        [EnumMember(Value = "Bid")]
+        Bid = 1,
 
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum Ask for value: Ask
         /// </summary>
-        NUMBER_1 = 1
+        [EnumMember(Value = "Ask")]
+        Ask = 2
 
     }
 

@@ -28,32 +28,38 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines TransactionStatus
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum TransactionStatus
     {
         /// <summary>
-        /// Enum NUMBER_0 for value: 0
+        /// Enum Streamed for value: Streamed
         /// </summary>
-        NUMBER_0 = 0,
+        [EnumMember(Value = "Streamed")]
+        Streamed = 1,
 
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum Pending for value: Pending
         /// </summary>
-        NUMBER_1 = 1,
+        [EnumMember(Value = "Pending")]
+        Pending = 2,
 
         /// <summary>
-        /// Enum NUMBER_2 for value: 2
+        /// Enum Confirmed for value: Confirmed
         /// </summary>
-        NUMBER_2 = 2,
+        [EnumMember(Value = "Confirmed")]
+        Confirmed = 3,
 
         /// <summary>
-        /// Enum NUMBER_3 for value: 3
+        /// Enum Reverted for value: Reverted
         /// </summary>
-        NUMBER_3 = 3,
+        [EnumMember(Value = "Reverted")]
+        Reverted = 4,
 
         /// <summary>
-        /// Enum NUMBER_4 for value: 4
+        /// Enum Failed for value: Failed
         /// </summary>
-        NUMBER_4 = 4
+        [EnumMember(Value = "Failed")]
+        Failed = 5
 
     }
 
