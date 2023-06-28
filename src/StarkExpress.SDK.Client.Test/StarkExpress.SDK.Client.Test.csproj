@@ -15,5 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StarkExpress.SDK.Client\StarkExpress.SDK.Client.csproj" />
+    
   </ItemGroup>
 </Project>
