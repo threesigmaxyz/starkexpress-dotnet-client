@@ -70,8 +70,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="creationDateComparison"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;UserDto&gt;</returns>
-        List<UserDto> GetAllUsers(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        /// <returns>UserDtoPaginatedResponseDto</returns>
+        UserDtoPaginatedResponseDto GetAllUsers(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get All Users
@@ -89,8 +89,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="creationDateComparison"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;UserDto&gt;</returns>
-        ApiResponse<List<UserDto>> GetAllUsersWithHttpInfo(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        /// <returns>ApiResponse of UserDtoPaginatedResponseDto</returns>
+        ApiResponse<UserDtoPaginatedResponseDto> GetAllUsersWithHttpInfo(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
         /// <summary>
         /// Get User
         /// </summary>
@@ -192,8 +192,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;UserDto&gt;</returns>
-        System.Threading.Tasks.Task<List<UserDto>> GetAllUsersAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UserDtoPaginatedResponseDto</returns>
+        System.Threading.Tasks.Task<UserDtoPaginatedResponseDto> GetAllUsersAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get All Users
@@ -212,8 +212,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;UserDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<UserDto>>> GetAllUsersWithHttpInfoAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UserDtoPaginatedResponseDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserDtoPaginatedResponseDto>> GetAllUsersWithHttpInfoAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get User
         /// </summary>
@@ -609,10 +609,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="creationDateComparison"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;UserDto&gt;</returns>
-        public List<UserDto> GetAllUsers(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        /// <returns>UserDtoPaginatedResponseDto</returns>
+        public UserDtoPaginatedResponseDto GetAllUsers(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<List<UserDto>> localVarResponse = GetAllUsersWithHttpInfo(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
+            StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> localVarResponse = GetAllUsersWithHttpInfo(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
             return localVarResponse.Data;
         }
 
@@ -629,8 +629,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="creationDateComparison"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;UserDto&gt;</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<List<UserDto>> GetAllUsersWithHttpInfo(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        /// <returns>ApiResponse of UserDtoPaginatedResponseDto</returns>
+        public StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> GetAllUsersWithHttpInfo(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
         {
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
 
@@ -702,7 +702,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<UserDto>>("/api/v1/users", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<UserDtoPaginatedResponseDto>("/api/v1/users", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAllUsers", localVarResponse);
@@ -729,10 +729,10 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;UserDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<UserDto>> GetAllUsersAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UserDtoPaginatedResponseDto</returns>
+        public async System.Threading.Tasks.Task<UserDtoPaginatedResponseDto> GetAllUsersAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<List<UserDto>> localVarResponse = await GetAllUsersWithHttpInfoAsync(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> localVarResponse = await GetAllUsersWithHttpInfoAsync(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -750,8 +750,8 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;UserDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<List<UserDto>>> GetAllUsersWithHttpInfoAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UserDtoPaginatedResponseDto)</returns>
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto>> GetAllUsersWithHttpInfoAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
@@ -824,7 +824,7 @@ namespace StarkExpress.SDK.Client.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<UserDto>>("/api/v1/users", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<UserDtoPaginatedResponseDto>("/api/v1/users", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

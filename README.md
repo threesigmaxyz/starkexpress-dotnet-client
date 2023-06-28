@@ -182,6 +182,7 @@ Class | Method | HTTP request | Description
  - [Model.TransferDetailsModel](docs/TransferDetailsModel.md)
  - [Model.TransferModel](docs/TransferModel.md)
  - [Model.UserDto](docs/UserDto.md)
+ - [Model.UserDtoPaginatedResponseDto](docs/UserDtoPaginatedResponseDto.md)
  - [Model.UserWithVaultsDto](docs/UserWithVaultsDto.md)
  - [Model.VaultDto](docs/VaultDto.md)
  - [Model.VaultDtoPaginatedResponseDto](docs/VaultDtoPaginatedResponseDto.md)

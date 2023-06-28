@@ -84,7 +84,7 @@ namespace StarkExpress.SDK.Client.Test.Api
             //FilterOptions? creationDateComparison = null;
             //string sortBy = null;
             //var response = instance.GetAllUsers(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
-            //Assert.IsType<List<UserDto>>(response);
+            //Assert.IsType<UserDtoPaginatedResponseDto>(response);
         }
 
         /// <summary>

@@ -28,47 +28,56 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines StarkExOperation
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum StarkExOperation
     {
         /// <summary>
-        /// Enum NUMBER_0 for value: 0
+        /// Enum Deposit for value: Deposit
         /// </summary>
-        NUMBER_0 = 0,
+        [EnumMember(Value = "Deposit")]
+        Deposit = 1,
 
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum Withdrawal for value: Withdrawal
         /// </summary>
-        NUMBER_1 = 1,
+        [EnumMember(Value = "Withdrawal")]
+        Withdrawal = 2,
 
         /// <summary>
-        /// Enum NUMBER_2 for value: 2
+        /// Enum Mint for value: Mint
         /// </summary>
-        NUMBER_2 = 2,
+        [EnumMember(Value = "Mint")]
+        Mint = 3,
 
         /// <summary>
-        /// Enum NUMBER_3 for value: 3
+        /// Enum MultiTransaction for value: MultiTransaction
         /// </summary>
-        NUMBER_3 = 3,
+        [EnumMember(Value = "MultiTransaction")]
+        MultiTransaction = 4,
 
         /// <summary>
-        /// Enum NUMBER_4 for value: 4
+        /// Enum Transfer for value: Transfer
         /// </summary>
-        NUMBER_4 = 4,
+        [EnumMember(Value = "Transfer")]
+        Transfer = 5,
 
         /// <summary>
-        /// Enum NUMBER_5 for value: 5
+        /// Enum FullWithdrawal for value: FullWithdrawal
         /// </summary>
-        NUMBER_5 = 5,
+        [EnumMember(Value = "FullWithdrawal")]
+        FullWithdrawal = 6,
 
         /// <summary>
-        /// Enum NUMBER_6 for value: 6
+        /// Enum FalseFullWithdrawal for value: FalseFullWithdrawal
         /// </summary>
-        NUMBER_6 = 6,
+        [EnumMember(Value = "FalseFullWithdrawal")]
+        FalseFullWithdrawal = 7,
 
         /// <summary>
-        /// Enum NUMBER_7 for value: 7
+        /// Enum Settlement for value: Settlement
         /// </summary>
-        NUMBER_7 = 7
+        [EnumMember(Value = "Settlement")]
+        Settlement = 8
 
     }
 

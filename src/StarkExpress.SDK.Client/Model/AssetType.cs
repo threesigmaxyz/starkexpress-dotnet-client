@@ -28,37 +28,44 @@ namespace StarkExpress.SDK.Client.Model
     /// <summary>
     /// Defines AssetType
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum AssetType
     {
         /// <summary>
-        /// Enum NUMBER_0 for value: 0
+        /// Enum Eth for value: Eth
         /// </summary>
-        NUMBER_0 = 0,
+        [EnumMember(Value = "Eth")]
+        Eth = 1,
 
         /// <summary>
-        /// Enum NUMBER_1 for value: 1
+        /// Enum Erc20 for value: Erc20
         /// </summary>
-        NUMBER_1 = 1,
+        [EnumMember(Value = "Erc20")]
+        Erc20 = 2,
 
         /// <summary>
-        /// Enum NUMBER_2 for value: 2
+        /// Enum Erc721 for value: Erc721
         /// </summary>
-        NUMBER_2 = 2,
+        [EnumMember(Value = "Erc721")]
+        Erc721 = 3,
 
         /// <summary>
-        /// Enum NUMBER_3 for value: 3
+        /// Enum Erc1155 for value: Erc1155
         /// </summary>
-        NUMBER_3 = 3,
+        [EnumMember(Value = "Erc1155")]
+        Erc1155 = 4,
 
         /// <summary>
-        /// Enum NUMBER_4 for value: 4
+        /// Enum MintableErc20 for value: MintableErc20
         /// </summary>
-        NUMBER_4 = 4,
+        [EnumMember(Value = "MintableErc20")]
+        MintableErc20 = 5,
 
         /// <summary>
-        /// Enum NUMBER_5 for value: 5
+        /// Enum MintableErc721 for value: MintableErc721
         /// </summary>
-        NUMBER_5 = 5
+        [EnumMember(Value = "MintableErc721")]
+        MintableErc721 = 6
 
     }
 

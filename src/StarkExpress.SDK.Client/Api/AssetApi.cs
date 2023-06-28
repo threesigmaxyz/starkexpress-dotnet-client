@@ -90,7 +90,7 @@ namespace StarkExpress.SDK.Client.Api
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TenantAssetDtoPaginatedResponseDto</returns>
-        TenantAssetDtoPaginatedResponseDto GetAllAssets(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType), FilterOptions? assetTypeComparison = default(FilterOptions), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        TenantAssetDtoPaginatedResponseDto GetAllAssets(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get All Assets
