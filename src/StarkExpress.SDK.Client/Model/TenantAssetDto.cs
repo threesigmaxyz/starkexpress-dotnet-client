@@ -31,6 +31,12 @@ namespace StarkExpress.SDK.Client.Model
     [DataContract(Name = "TenantAssetDto")]
     public partial class TenantAssetDto : IEquatable<TenantAssetDto>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public AssetType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TenantAssetDto" /> class.
         /// </summary>
@@ -40,7 +46,8 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="name">The name of the asset..</param>
         /// <param name="symbol">The symbol of the asset..</param>
         /// <param name="quantum">The quantum of the asset..</param>
-        public TenantAssetDto(Guid assetId = default(Guid), string assetType = default(string), string address = default(string), string name = default(string), string symbol = default(string), string quantum = default(string))
+        /// <param name="type">type.</param>
+        public TenantAssetDto(Guid assetId = default(Guid), string assetType = default(string), string address = default(string), string name = default(string), string symbol = default(string), string quantum = default(string), AssetType? type = default(AssetType?))
         {
             this.AssetId = assetId;
             this.AssetType = assetType;
@@ -48,6 +55,7 @@ namespace StarkExpress.SDK.Client.Model
             this.Name = name;
             this.Symbol = symbol;
             this.Quantum = quantum;
+            this.Type = type;
         }
 
         /// <summary>
@@ -106,6 +114,7 @@ namespace StarkExpress.SDK.Client.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Symbol: ").Append(Symbol).Append("\n");
             sb.Append("  Quantum: ").Append(Quantum).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -170,6 +179,10 @@ namespace StarkExpress.SDK.Client.Model
                     this.Quantum == input.Quantum ||
                     (this.Quantum != null &&
                     this.Quantum.Equals(input.Quantum))
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    this.Type.Equals(input.Type)
                 );
         }
 
@@ -206,6 +219,7 @@ namespace StarkExpress.SDK.Client.Model
                 {
                     hashCode = (hashCode * 59) + this.Quantum.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 return hashCode;
             }
         }

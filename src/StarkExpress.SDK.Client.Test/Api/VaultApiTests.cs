@@ -55,6 +55,18 @@ namespace StarkExpress.SDK.Client.Test.Api
         }
 
         /// <summary>
+        /// Test AllocateVault
+        /// </summary>
+        [Fact]
+        public void AllocateVaultTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //AllocateVaultModel allocateVaultModel = null;
+            //var response = instance.AllocateVault(allocateVaultModel);
+            //Assert.IsType<VaultDto>(response);
+        }
+
+        /// <summary>
         /// Test GetAllVaults
         /// </summary>
         [Fact]

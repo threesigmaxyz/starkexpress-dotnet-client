@@ -28,6 +28,29 @@ namespace StarkExpress.SDK.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Allocate vault
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </remarks>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>VaultDto</returns>
+        VaultDto AllocateVault(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0);
+
+        /// <summary>
+        /// Allocate vault
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </remarks>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of VaultDto</returns>
+        ApiResponse<VaultDto> AllocateVaultWithHttpInfo(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0);
+        /// <summary>
         /// Get All Vaults
         /// </summary>
         /// <remarks>
@@ -90,6 +113,31 @@ namespace StarkExpress.SDK.Client.Api
     public interface IVaultApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Allocate vault
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </remarks>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VaultDto</returns>
+        System.Threading.Tasks.Task<VaultDto> AllocateVaultAsync(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Allocate vault
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </remarks>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VaultDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VaultDto>> AllocateVaultWithHttpInfoAsync(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get All Vaults
         /// </summary>
@@ -266,6 +314,172 @@ namespace StarkExpress.SDK.Client.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Allocate vault This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </summary>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>VaultDto</returns>
+        public VaultDto AllocateVault(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0)
+        {
+            StarkExpress.SDK.Client.Client.ApiResponse<VaultDto> localVarResponse = AllocateVaultWithHttpInfo(allocateVaultModel);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Allocate vault This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </summary>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of VaultDto</returns>
+        public StarkExpress.SDK.Client.Client.ApiResponse<VaultDto> AllocateVaultWithHttpInfo(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0)
+        {
+            StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = StarkExpress.SDK.Client.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = StarkExpress.SDK.Client.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = allocateVaultModel;
+
+            localVarRequestOptions.Operation = "VaultApi.AllocateVault";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<VaultDto>("/api/v1/vaults", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AllocateVault", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Allocate vault This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </summary>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VaultDto</returns>
+        public async System.Threading.Tasks.Task<VaultDto> AllocateVaultAsync(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            StarkExpress.SDK.Client.Client.ApiResponse<VaultDto> localVarResponse = await AllocateVaultWithHttpInfoAsync(allocateVaultModel, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Allocate vault This endpoint allocates a new vault for a given asset, if there isn&#39;t one already allocated.
+        /// </summary>
+        /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="allocateVaultModel"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VaultDto)</returns>
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<VaultDto>> AllocateVaultWithHttpInfoAsync(AllocateVaultModel allocateVaultModel = default(AllocateVaultModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = StarkExpress.SDK.Client.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = StarkExpress.SDK.Client.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = allocateVaultModel;
+
+            localVarRequestOptions.Operation = "VaultApi.AllocateVault";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VaultDto>("/api/v1/vaults", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AllocateVault", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the asset. | [optional] 
 **Symbol** | **string** | The symbol of the asset. | [optional] 
 **Quantum** | **string** | The quantum of the asset. | [optional] 
+**Type** | **AssetType** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
