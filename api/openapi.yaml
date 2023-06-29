@@ -64,7 +64,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The fee model configuration request was invalid.
       summary: Configure Fee Model
       tags:
@@ -94,7 +94,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
       summary: Get Fee Model
       tags:
@@ -126,7 +126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The mint request was invalid.
         "401":
           description: Unauthorized.
@@ -160,13 +160,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The signable order request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
       summary: Get Order Details (Not Implemented)
       tags:
@@ -193,7 +193,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The order submission request was invalid.
       summary: Submit Order (Not Implemented)
       tags:
@@ -222,7 +222,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
       summary: Cancel Order (Not Implemented)
       tags:
@@ -249,7 +249,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The orderbook creation request was invalid.
       summary: Create Orderbook (Not Implemented)
       tags:
@@ -278,7 +278,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
       summary: Get Orderbook (Not Implemented)
       tags:
@@ -307,7 +307,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
       summary: Get Orderbook L1 Data (Not Implemented)
       tags:
@@ -344,7 +344,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
       summary: Get Orderbook L2 Data (Not Implemented)
       tags:
@@ -373,13 +373,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The settlement request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -509,13 +509,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The asset enabling request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -552,7 +552,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -587,7 +587,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The asset deployment request was invalid.
         "401":
           description: Unauthorized.
@@ -726,7 +726,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -762,13 +762,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The transfer request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -803,13 +803,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The signable transfer request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -941,7 +941,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The user registration request was invalid.
         "401":
           description: Unauthorized.
@@ -1002,7 +1002,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -1039,7 +1039,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -1074,13 +1074,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The deposit details request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -1169,6 +1169,44 @@ paths:
       summary: Get All Vaults
       tags:
       - Vault
+    post:
+      description: "This endpoint allocates a new vault for a given asset, if there\
+        \ isn't one already allocated."
+      operationId: AllocateVault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AllocateVaultModel'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VaultDto'
+          description: Returns the newly allocated vault.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The vault allocation request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - oauth2:
+        - write:vaults
+      summary: Allocate vault
+      tags:
+      - Vault
   /api/v1/vaults/{vaultId}:
     get:
       description: This endpoint fetches a vault identified by its unique id.
@@ -1222,13 +1260,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: The withdraw request was invalid.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiErrorResponseDto'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found.
         "401":
           description: Unauthorized.
@@ -1242,34 +1280,44 @@ paths:
       - Withdraw
 components:
   schemas:
-    ApiErrorDto:
+    AllocateVaultModel:
       additionalProperties: false
+      example:
+        mintingBlob: mintingBlob
+        tokenId: tokenId
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dataAvailabilityMode: null
       properties:
-        errorCode:
-          $ref: '#/components/schemas/ErrorCodes'
-        fieldName:
-          description: The request field that originated the error.
-          nullable: true
-          title: Field
+        assetId:
+          description: The unique identifier of the asset.
+          format: uuid
+          title: Asset ID
           type: string
-        errorMessage:
-          description: The explicit error message.
-          nullable: true
-          readOnly: true
-          title: Error Message
+        userId:
+          description: The unique identifier of the user.
+          format: uuid
+          title: User ID
           type: string
-      type: object
-    ApiErrorResponseDto:
-      additionalProperties: false
-      properties:
-        errors:
-          description: The array of errors triggered by the request.
-          format: array
-          items:
-            $ref: '#/components/schemas/ApiErrorDto'
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        tokenId:
+          description: "The hexadecimal string representation of the vault's asset\
+            \ token ID, if applicable (ie. ERC-721/ERC-1155)."
+          format: hex
           nullable: true
-          title: Errors
-          type: array
+          title: Token ID
+          type: string
+        mintingBlob:
+          description: "The hexadecimal string representation of the vault's asset\
+            \ minting blob, if applicable (ie. Mintable ERC-20/Mintable ERC-721/Mintable\
+            \ ERC-1155)."
+          format: hex
+          nullable: true
+          title: Minting Blob
+          type: string
+      required:
+      - dataAvailabilityMode
       type: object
     AssetType:
       enum:
@@ -1611,129 +1659,6 @@ components:
       required:
       - assetId
       type: object
-    ErrorCodes:
-      enum:
-      - ModelStateInvalid
-      - InvalidGuid
-      - FilterIsRequired
-      - UsernameRequired
-      - UsernameLengthInvalid
-      - UsernameAlreadyRegistered
-      - UsersRequired
-      - UserIdRequired
-      - UserIdNotFound
-      - AddressRequired
-      - AddressInvalid
-      - AddressAlreadyRegistered
-      - StarkSignatureRequired
-      - StarkSignatureRRequired
-      - StarkSignatureSRequired
-      - StarkSignatureInvalid
-      - StarkKeyRequired
-      - StarkKeyLengthInvalid
-      - StarkKeyFormatInvalid
-      - StarkKeyAlreadyInuse
-      - Eip712SignatureRequired
-      - Eip712SignatureInvalid
-      - AssetAlreadyWhitelisted
-      - AssetDisabled
-      - InvalidAssetType
-      - AssetAddressIsNotAContract
-      - AssetContractIsNotMintable
-      - AssetIdRequired
-      - AssetNameRequired
-      - AssetSymbolRequired
-      - AssetQuantumRequired
-      - AssetUriRequired
-      - AssetAlreadyRegistered
-      - AssetNotRegistered
-      - AssetNotConfirmed
-      - AssetNotSupported
-      - AssetQuantumInvalid
-      - OperationAmountRequired
-      - OperationAmountInvalid
-      - OperationAmountUnquantizable
-      - VaultNotRegistered
-      - VaultOutOfBounds
-      - VaultIdRequired
-      - TokenIdRequired
-      - StarkTypeInvalid
-      - StarkTypeInvalidFormat
-      - StarkTypeRequired
-      - MintsRequired
-      - MintingBlobRequired
-      - DuplicatedUserIds
-      - DuplicatedMints
-      - ExistingMintingBlob
-      - DataAvailabilityRequired
-      - FeeActionRequired
-      - FeeBasisPointsRequired
-      - FeeNotConfigured
-      - FeeBasisPointOutOfRange
-      - FeeVaultIdRequired
-      - FeeQuantizedAmountRequired
-      - BuyVaultIdRequired
-      - BuyAmountRequired
-      - SellVaultIdRequired
-      - SellAmountRequired
-      - OrderARequired
-      - OrderBRequired
-      - OrderAFeeAmountRequired
-      - OrderBFeeAmountRequired
-      - OrderAFeeDestinationVaultIdRequired
-      - OrderBFeeDestinationVaultIdRequired
-      - SenderVaultIdRequired
-      - ReceiverVaultIdRequired
-      - ExpirationTimestampRequired
-      - NonceRequired
-      - TransactionIdNotFound
-      - AssetTypeRequired
-      - SenderDataAvailabilityModeRequired
-      - ReceiverDataAvailabilityModeRequired
-      - MintingBlobNotFound
-      - InvalidHexString
-      - TenantNameAlreadyRegistered
-      - TenantIdNotFound
-      - TenantOwnerRequired
-      - StarkExInstanceNotFound
-      - StarkExContractAlreadyRegistered
-      - StarkExNameAlreadyRegistered
-      - StarkExAddressRequired
-      - StarkExContractTokensAdminKeyRequired
-      - StarkExInstanceNameRequired
-      - ValidiumTreeHeightRequired
-      - ZkRollupTreeHeightRequired
-      - ValidiumTreeHeightOutOfRange
-      - ZkRollupTreeHeightOutOfRange
-      - StarkExHostnameRequired
-      - StarkExVersionRequired
-      - StarkExHostnameInvalid
-      - StarkExVersionNotSupported
-      - IsUniqueMintingEnabledRequired
-      - StarkExCertificateRequired
-      - StarkExCertificateIsInvalid
-      - StarkExInstanceTokenAdminPrivateKeySecretNotFound
-      - StarkExDeploymentBlockMissing
-      - StarkExDeploymentBlockOutOfRange
-      - OrderbookIdRequired
-      - BaseAssetIdRequired
-      - QuoteAssetIdRequired
-      - BaseAssetPrecisionRequired
-      - QuoteAssetPrecisionRequired
-      - OrderIdRequired
-      - OrderSideRequired
-      - OrderPriceRequired
-      - OrderAmountRequired
-      - InsufficientBalance
-      - TimestampOutsideValidRange
-      - TransferIntoSameVault
-      - ConflictingVaultAssets
-      - FeeAlreadyConfigured
-      - MintingBlobInvalid
-      - TokenIdInvalid
-      - TenantOwnerUnauthorized
-      - InternalError
-      type: string
     FeeAction:
       enum:
       - Transfer
@@ -2285,6 +2210,26 @@ components:
           title: HasNext
           type: boolean
       type: object
+    ProblemDetails:
+      additionalProperties: {}
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+      type: object
     RegisterDetailsDto:
       additionalProperties: false
       example:
@@ -2654,6 +2599,7 @@ components:
         assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         quantum: quantum
+        type: null
         assetType: assetType
       properties:
         assetId:
@@ -2687,6 +2633,8 @@ components:
           description: The quantum of the asset.
           title: Quantum
           type: string
+        type:
+          $ref: '#/components/schemas/AssetType'
       type: object
     TenantAssetDtoPaginatedResponseDto:
       additionalProperties: false
@@ -2701,12 +2649,14 @@ components:
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          type: null
           assetType: assetType
         - symbol: symbol
           address: address
           assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           quantum: quantum
+          type: null
           assetType: assetType
         totalCount: 1
       properties:

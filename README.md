@@ -123,6 +123,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**GetAllUsers**](docs/UserApi.md#getallusers) | **GET** /api/v1/users | Get All Users
 *UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **GET** /api/v1/users/{userId} | Get User
 *UserApi* | [**RegisterUser**](docs/UserApi.md#registeruser) | **POST** /api/v1/users | Register new User
+*VaultApi* | [**AllocateVault**](docs/VaultApi.md#allocatevault) | **POST** /api/v1/vaults | Allocate vault
 *VaultApi* | [**GetAllVaults**](docs/VaultApi.md#getallvaults) | **GET** /api/v1/vaults | Get All Vaults
 *VaultApi* | [**GetVault**](docs/VaultApi.md#getvault) | **GET** /api/v1/vaults/{vaultId} | Get a single Vault
 *WithdrawApi* | [**Withdraw**](docs/WithdrawApi.md#withdraw) | **POST** /api/v1/vaults/withdraw | Withdraw Asset
@@ -131,8 +132,7 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [Model.ApiErrorDto](docs/ApiErrorDto.md)
- - [Model.ApiErrorResponseDto](docs/ApiErrorResponseDto.md)
+ - [Model.AllocateVaultModel](docs/AllocateVaultModel.md)
  - [Model.AssetType](docs/AssetType.md)
  - [Model.BatchMintRequestModel](docs/BatchMintRequestModel.md)
  - [Model.BigInteger](docs/BigInteger.md)
@@ -144,7 +144,6 @@ Class | Method | HTTP request | Description
  - [Model.DepositDetailsModel](docs/DepositDetailsModel.md)
  - [Model.DomainDto](docs/DomainDto.md)
  - [Model.EnableAssetModel](docs/EnableAssetModel.md)
- - [Model.ErrorCodes](docs/ErrorCodes.md)
  - [Model.FeeAction](docs/FeeAction.md)
  - [Model.FeeConfigDto](docs/FeeConfigDto.md)
  - [Model.FeeDto](docs/FeeDto.md)
@@ -164,6 +163,7 @@ Class | Method | HTTP request | Description
  - [Model.OrderbookLevel2DataDto](docs/OrderbookLevel2DataDto.md)
  - [Model.OrderbookLevel2EntryDto](docs/OrderbookLevel2EntryDto.md)
  - [Model.PaginationDto](docs/PaginationDto.md)
+ - [Model.ProblemDetails](docs/ProblemDetails.md)
  - [Model.RegisterDetailsDto](docs/RegisterDetailsDto.md)
  - [Model.RegisterUserModel](docs/RegisterUserModel.md)
  - [Model.SettlementInfoModel](docs/SettlementInfoModel.md)

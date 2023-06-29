@@ -104,6 +104,14 @@ namespace StarkExpress.SDK.Client.Test.Model
         {
             // TODO unit test for the property 'Quantum'
         }
+        /// <summary>
+        /// Test the property 'Type'
+        /// </summary>
+        [Fact]
+        public void TypeTest()
+        {
+            // TODO unit test for the property 'Type'
+        }
 
     }
 
