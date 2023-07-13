@@ -61,17 +61,17 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all users.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserDtoPaginatedResponseDto</returns>
-        UserDtoPaginatedResponseDto GetAllUsers(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        UserDtoPaginatedResponseDto GetAllUsers(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get All Users
@@ -80,17 +80,17 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all users.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserDtoPaginatedResponseDto</returns>
-        ApiResponse<UserDtoPaginatedResponseDto> GetAllUsersWithHttpInfo(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        ApiResponse<UserDtoPaginatedResponseDto> GetAllUsersWithHttpInfo(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
         /// <summary>
         /// Get User
         /// </summary>
@@ -182,18 +182,18 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all users.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UserDtoPaginatedResponseDto</returns>
-        System.Threading.Tasks.Task<UserDtoPaginatedResponseDto> GetAllUsersAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UserDtoPaginatedResponseDto> GetAllUsersAsync(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get All Users
@@ -202,18 +202,18 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all users.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UserDtoPaginatedResponseDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserDtoPaginatedResponseDto>> GetAllUsersWithHttpInfoAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UserDtoPaginatedResponseDto>> GetAllUsersWithHttpInfoAsync(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get User
         /// </summary>
@@ -457,6 +457,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.EIP712Details";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -564,6 +569,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.EIP712Details";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -600,19 +610,19 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Users This endpoint fetches all users.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserDtoPaginatedResponseDto</returns>
-        public UserDtoPaginatedResponseDto GetAllUsers(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        public UserDtoPaginatedResponseDto GetAllUsers(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> localVarResponse = GetAllUsersWithHttpInfo(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
+            StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> localVarResponse = GetAllUsersWithHttpInfo(username, usernameComparison, address, creationDate, creationDateComparison, pageNumber, pageSize, sortBy);
             return localVarResponse.Data;
         }
 
@@ -620,17 +630,17 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Users This endpoint fetches all users.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserDtoPaginatedResponseDto</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> GetAllUsersWithHttpInfo(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        public StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> GetAllUsersWithHttpInfo(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
 
@@ -674,8 +684,14 @@ namespace StarkExpress.SDK.Client.Api
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "creation_date_comparison", creationDateComparison));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -684,6 +700,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.GetAllUsers";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -719,20 +740,20 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Users This endpoint fetches all users.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UserDtoPaginatedResponseDto</returns>
-        public async System.Threading.Tasks.Task<UserDtoPaginatedResponseDto> GetAllUsersAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UserDtoPaginatedResponseDto> GetAllUsersAsync(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> localVarResponse = await GetAllUsersWithHttpInfoAsync(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto> localVarResponse = await GetAllUsersWithHttpInfoAsync(username, usernameComparison, address, creationDate, creationDateComparison, pageNumber, pageSize, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -740,18 +761,18 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Users This endpoint fetches all users.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="username"> (optional)</param>
         /// <param name="usernameComparison"> (optional)</param>
         /// <param name="address"> (optional)</param>
         /// <param name="creationDate"> (optional)</param>
         /// <param name="creationDateComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UserDtoPaginatedResponseDto)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto>> GetAllUsersWithHttpInfoAsync(int pageNumber, int pageSize, string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<UserDtoPaginatedResponseDto>> GetAllUsersWithHttpInfoAsync(string username = default(string), FilterOptions? usernameComparison = default(FilterOptions?), string address = default(string), string creationDate = default(string), FilterOptions? creationDateComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
@@ -796,8 +817,14 @@ namespace StarkExpress.SDK.Client.Api
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "creation_date_comparison", creationDateComparison));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -806,6 +833,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.GetAllUsers";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -887,6 +919,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.GetUser";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -970,6 +1007,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.GetUser";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -1058,6 +1100,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.RegisterUser";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -1148,6 +1195,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "UserApi.RegisterUser";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))

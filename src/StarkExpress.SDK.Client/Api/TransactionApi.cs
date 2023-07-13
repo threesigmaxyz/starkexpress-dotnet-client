@@ -34,18 +34,18 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionDtoPaginatedResponseDto</returns>
-        TransactionDtoPaginatedResponseDto GetAllTransactions(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        TransactionDtoPaginatedResponseDto GetAllTransactions(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get All Transactions
@@ -54,18 +54,18 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionDtoPaginatedResponseDto</returns>
-        ApiResponse<TransactionDtoPaginatedResponseDto> GetAllTransactionsWithHttpInfo(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        ApiResponse<TransactionDtoPaginatedResponseDto> GetAllTransactionsWithHttpInfo(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
         /// <summary>
         /// Get Transaction
         /// </summary>
@@ -105,19 +105,19 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TransactionDtoPaginatedResponseDto</returns>
-        System.Threading.Tasks.Task<TransactionDtoPaginatedResponseDto> GetAllTransactionsAsync(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TransactionDtoPaginatedResponseDto> GetAllTransactionsAsync(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get All Transactions
@@ -126,19 +126,19 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TransactionDtoPaginatedResponseDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TransactionDtoPaginatedResponseDto>> GetAllTransactionsWithHttpInfoAsync(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TransactionDtoPaginatedResponseDto>> GetAllTransactionsWithHttpInfoAsync(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get Transaction
         /// </summary>
@@ -288,20 +288,20 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Transactions This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionDtoPaginatedResponseDto</returns>
-        public TransactionDtoPaginatedResponseDto GetAllTransactions(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        public TransactionDtoPaginatedResponseDto GetAllTransactions(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto> localVarResponse = GetAllTransactionsWithHttpInfo(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy);
+            StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto> localVarResponse = GetAllTransactionsWithHttpInfo(transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, pageNumber, pageSize, sortBy);
             return localVarResponse.Data;
         }
 
@@ -309,18 +309,18 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Transactions This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionDtoPaginatedResponseDto</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto> GetAllTransactionsWithHttpInfo(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        public StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto> GetAllTransactionsWithHttpInfo(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
 
@@ -368,8 +368,14 @@ namespace StarkExpress.SDK.Client.Api
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "tx_type_comparison", txTypeComparison));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -378,6 +384,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransactionApi.GetAllTransactions";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -413,21 +424,21 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Transactions This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TransactionDtoPaginatedResponseDto</returns>
-        public async System.Threading.Tasks.Task<TransactionDtoPaginatedResponseDto> GetAllTransactionsAsync(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TransactionDtoPaginatedResponseDto> GetAllTransactionsAsync(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto> localVarResponse = await GetAllTransactionsWithHttpInfoAsync(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto> localVarResponse = await GetAllTransactionsWithHttpInfoAsync(transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, pageNumber, pageSize, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -435,19 +446,19 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Transactions This endpoint fetches all transactions submitted by the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="transactionStatus"> (optional)</param>
         /// <param name="transactionStatusComparison"> (optional)</param>
         /// <param name="starkexTxId"> (optional)</param>
         /// <param name="starkexTxIdComparison"> (optional)</param>
         /// <param name="txType"> (optional)</param>
         /// <param name="txTypeComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TransactionDtoPaginatedResponseDto)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto>> GetAllTransactionsWithHttpInfoAsync(int pageNumber, int pageSize, TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<TransactionDtoPaginatedResponseDto>> GetAllTransactionsWithHttpInfoAsync(TransactionStatus? transactionStatus = default(TransactionStatus?), FilterOptions? transactionStatusComparison = default(FilterOptions?), int? starkexTxId = default(int?), FilterOptions? starkexTxIdComparison = default(FilterOptions?), StarkExOperation? txType = default(StarkExOperation?), FilterOptions? txTypeComparison = default(FilterOptions?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
@@ -496,8 +507,14 @@ namespace StarkExpress.SDK.Client.Api
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "tx_type_comparison", txTypeComparison));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -506,6 +523,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransactionApi.GetAllTransactions";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -587,6 +609,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransactionApi.GetTransaction";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -670,6 +697,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransactionApi.GetTransaction";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))

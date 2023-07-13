@@ -135,6 +135,8 @@ paths:
       security:
       - oauth2:
         - mint:assets
+      - apikey:
+        - mint:assets
       summary: Mint Assets
       tags:
       - Mint
@@ -388,6 +390,8 @@ paths:
       security:
       - oauth2:
         - write:settlements
+      - apikey:
+        - write:settlements
       summary: Submit Settlement
       tags:
       - Settlement
@@ -441,24 +445,24 @@ paths:
       - explode: true
         in: query
         name: page_number
-        required: true
+        required: false
         schema:
           description: The page number to retrieve.
           format: int32
           maximum: 2147483647
-          minimum: 1
+          minimum: 0
           title: Page Number
           type: integer
         style: form
       - explode: true
         in: query
         name: page_size
-        required: true
+        required: false
         schema:
           description: The number of items to retrieve per page.
           format: int32
-          maximum: 2147483647
-          minimum: 1
+          maximum: 100
+          minimum: 0
           title: Page Size
           type: integer
         style: form
@@ -484,6 +488,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:tenant_assets
+      - apikey:
         - read:tenant_assets
       summary: Get All Assets
       tags:
@@ -524,6 +530,8 @@ paths:
       security:
       - oauth2:
         - write:tenant_assets
+      - apikey:
+        - write:tenant_assets
       summary: Enable Asset
       tags:
       - Asset
@@ -561,6 +569,8 @@ paths:
       security:
       - oauth2:
         - read:tenant_assets
+      - apikey:
+        - read:tenant_assets
       summary: Get Asset
       tags:
       - Asset
@@ -595,6 +605,9 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - write:tenant_assets
+        - write:smart-contracts
+      - apikey:
         - write:tenant_assets
         - write:smart-contracts
       summary: Deploy Asset
@@ -654,24 +667,24 @@ paths:
       - explode: true
         in: query
         name: page_number
-        required: true
+        required: false
         schema:
           description: The page number to retrieve.
           format: int32
           maximum: 2147483647
-          minimum: 1
+          minimum: 0
           title: Page Number
           type: integer
         style: form
       - explode: true
         in: query
         name: page_size
-        required: true
+        required: false
         schema:
           description: The number of items to retrieve per page.
           format: int32
-          maximum: 2147483647
-          minimum: 1
+          maximum: 100
+          minimum: 0
           title: Page Size
           type: integer
         style: form
@@ -697,6 +710,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:transactions
+      - apikey:
         - read:transactions
       summary: Get All Transactions
       tags:
@@ -734,6 +749,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:transactions
+      - apikey:
         - read:transactions
       summary: Get Transaction
       tags:
@@ -777,6 +794,8 @@ paths:
       security:
       - oauth2:
         - write:transfers
+      - apikey:
+        - write:transfers
       summary: Transfer Asset
       tags:
       - Transfer
@@ -817,6 +836,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - write:transfers
+      - apikey:
         - write:transfers
       summary: Get Transfer Details
       tags:
@@ -873,24 +894,24 @@ paths:
       - explode: true
         in: query
         name: page_number
-        required: true
+        required: false
         schema:
           description: The page number to retrieve.
           format: int32
           maximum: 2147483647
-          minimum: 1
+          minimum: 0
           title: Page Number
           type: integer
         style: form
       - explode: true
         in: query
         name: page_size
-        required: true
+        required: false
         schema:
           description: The number of items to retrieve per page.
           format: int32
-          maximum: 2147483647
-          minimum: 1
+          maximum: 100
+          minimum: 0
           title: Page Size
           type: integer
         style: form
@@ -916,6 +937,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:users
+      - apikey:
         - read:users
       summary: Get All Users
       tags:
@@ -949,6 +972,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - write:users
+      - apikey:
         - write:users
       summary: Register new User
       tags:
@@ -1011,6 +1036,8 @@ paths:
       security:
       - oauth2:
         - read:users
+      - apikey:
+        - read:users
       summary: Get EIP712 data to be signed
       tags:
       - User
@@ -1047,6 +1074,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:users
+      - apikey:
         - read:users
       summary: Get User
       tags:
@@ -1090,6 +1119,9 @@ paths:
       - oauth2:
         - read:vaults
         - write:vaults
+      - apikey:
+        - read:vaults
+        - write:vaults
       summary: Returns the deposit details for a given asset.
       tags:
       - Deposit
@@ -1099,16 +1131,6 @@ paths:
         \ filters and pagination."
       operationId: GetAllVaults
       parameters:
-      - explode: true
-        in: query
-        name: tenant_id
-        required: false
-        schema:
-          description: The unique identifier of the tenant.
-          format: uuid
-          title: Tenant ID
-          type: string
-        style: form
       - explode: true
         in: query
         name: asset_id
@@ -1122,24 +1144,24 @@ paths:
       - explode: true
         in: query
         name: page_number
-        required: true
+        required: false
         schema:
           description: The page number to retrieve.
           format: int32
           maximum: 2147483647
-          minimum: 1
+          minimum: 0
           title: Page Number
           type: integer
         style: form
       - explode: true
         in: query
         name: page_size
-        required: true
+        required: false
         schema:
           description: The number of items to retrieve per page.
           format: int32
-          maximum: 2147483647
-          minimum: 1
+          maximum: 100
+          minimum: 0
           title: Page Size
           type: integer
         style: form
@@ -1165,6 +1187,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:vaults
+      - apikey:
         - read:vaults
       summary: Get All Vaults
       tags:
@@ -1204,6 +1228,8 @@ paths:
       security:
       - oauth2:
         - write:vaults
+      - apikey:
+        - write:vaults
       summary: Allocate vault
       tags:
       - Vault
@@ -1234,6 +1260,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - read:vaults
+      - apikey:
         - read:vaults
       summary: Get a single Vault
       tags:
@@ -1274,6 +1302,8 @@ paths:
           description: Forbidden.
       security:
       - oauth2:
+        - write:vaults
+      - apikey:
         - write:vaults
       summary: Withdraw Asset
       tags:
@@ -3315,4 +3345,9 @@ components:
             write:settlements: Access settlement write operations.
           tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
       type: oauth2
+    apikey:
+      description: API Key Authentication
+      in: header
+      name: x-api-key
+      type: apiKey
 

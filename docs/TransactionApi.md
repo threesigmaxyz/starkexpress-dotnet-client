@@ -9,7 +9,7 @@ All URIs are relative to *https://testnet-api.starkexpress.io*
 
 <a name="getalltransactions"></a>
 # **GetAllTransactions**
-> TransactionDtoPaginatedResponseDto GetAllTransactions (int pageNumber, int pageSize, TransactionStatus? transactionStatus = null, FilterOptions? transactionStatusComparison = null, int? starkexTxId = null, FilterOptions? starkexTxIdComparison = null, StarkExOperation? txType = null, FilterOptions? txTypeComparison = null, string sortBy = null)
+> TransactionDtoPaginatedResponseDto GetAllTransactions (TransactionStatus? transactionStatus = null, FilterOptions? transactionStatusComparison = null, int? starkexTxId = null, FilterOptions? starkexTxIdComparison = null, StarkExOperation? txType = null, FilterOptions? txTypeComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
 
 Get All Transactions
 
@@ -31,24 +31,24 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
             var apiInstance = new TransactionApi(config);
-            var pageNumber = 56;  // int | 
-            var pageSize = 56;  // int | 
             var transactionStatus = (TransactionStatus) "Streamed";  // TransactionStatus? |  (optional) 
             var transactionStatusComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
             var starkexTxId = 56;  // int? |  (optional) 
             var starkexTxIdComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
             var txType = (StarkExOperation) "Deposit";  // StarkExOperation? |  (optional) 
             var txTypeComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
+            var pageNumber = 56;  // int? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Transactions
-                TransactionDtoPaginatedResponseDto result = apiInstance.GetAllTransactions(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy);
+                TransactionDtoPaginatedResponseDto result = apiInstance.GetAllTransactions(transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, pageNumber, pageSize, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -69,7 +69,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Transactions
-    ApiResponse<TransactionDtoPaginatedResponseDto> response = apiInstance.GetAllTransactionsWithHttpInfo(pageNumber, pageSize, transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, sortBy);
+    ApiResponse<TransactionDtoPaginatedResponseDto> response = apiInstance.GetAllTransactionsWithHttpInfo(transactionStatus, transactionStatusComparison, starkexTxId, starkexTxIdComparison, txType, txTypeComparison, pageNumber, pageSize, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -86,14 +86,14 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pageNumber** | **int** |  |  |
-| **pageSize** | **int** |  |  |
 | **transactionStatus** | **TransactionStatus?** |  | [optional]  |
 | **transactionStatusComparison** | **FilterOptions?** |  | [optional]  |
 | **starkexTxId** | **int?** |  | [optional]  |
 | **starkexTxIdComparison** | **FilterOptions?** |  | [optional]  |
 | **txType** | **StarkExOperation?** |  | [optional]  |
 | **txTypeComparison** | **FilterOptions?** |  | [optional]  |
+| **pageNumber** | **int?** |  | [optional]  |
+| **pageSize** | **int?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
 
 ### Return type
@@ -102,7 +102,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,8 +143,8 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
             var apiInstance = new TransactionApi(config);
             var transactionId = "transactionId_example";  // Guid | The transaction ID.
@@ -198,7 +198,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

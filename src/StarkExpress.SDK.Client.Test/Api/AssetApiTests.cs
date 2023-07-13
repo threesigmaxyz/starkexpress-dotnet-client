@@ -85,15 +85,15 @@ namespace StarkExpress.SDK.Client.Test.Api
         public void GetAllAssetsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int pageNumber = null;
-            //int pageSize = null;
             //Guid? assetId = null;
             //AssetType? assetType = null;
             //FilterOptions? assetTypeComparison = null;
             //string assetSymbol = null;
             //FilterOptions? assetSymbolComparison = null;
+            //int? pageNumber = null;
+            //int? pageSize = null;
             //string sortBy = null;
-            //var response = instance.GetAllAssets(pageNumber, pageSize, assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, sortBy);
+            //var response = instance.GetAllAssets(assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, pageNumber, pageSize, sortBy);
             //Assert.IsType<TenantAssetDtoPaginatedResponseDto>(response);
         }
 
