@@ -32,6 +32,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -87,7 +91,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -108,7 +112,7 @@ catch (ApiException e)
 
 <a name="getallvaults"></a>
 # **GetAllVaults**
-> VaultDtoPaginatedResponseDto GetAllVaults (int pageNumber, int pageSize, Guid? tenantId = null, Guid? assetId = null, string sortBy = null)
+> VaultDtoPaginatedResponseDto GetAllVaults (Guid? assetId = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
 
 Get All Vaults
 
@@ -130,20 +134,23 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new VaultApi(config);
-            var pageNumber = 56;  // int | 
-            var pageSize = 56;  // int | 
-            var tenantId = "tenantId_example";  // Guid? |  (optional) 
             var assetId = "assetId_example";  // Guid? |  (optional) 
+            var pageNumber = 56;  // int? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Vaults
-                VaultDtoPaginatedResponseDto result = apiInstance.GetAllVaults(pageNumber, pageSize, tenantId, assetId, sortBy);
+                VaultDtoPaginatedResponseDto result = apiInstance.GetAllVaults(assetId, pageNumber, pageSize, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -164,7 +171,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Vaults
-    ApiResponse<VaultDtoPaginatedResponseDto> response = apiInstance.GetAllVaultsWithHttpInfo(pageNumber, pageSize, tenantId, assetId, sortBy);
+    ApiResponse<VaultDtoPaginatedResponseDto> response = apiInstance.GetAllVaultsWithHttpInfo(assetId, pageNumber, pageSize, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -181,10 +188,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pageNumber** | **int** |  |  |
-| **pageSize** | **int** |  |  |
-| **tenantId** | **Guid?** |  | [optional]  |
 | **assetId** | **Guid?** |  | [optional]  |
+| **pageNumber** | **int?** |  | [optional]  |
+| **pageSize** | **int?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
 
 ### Return type
@@ -193,7 +199,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -234,6 +240,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -289,7 +299,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

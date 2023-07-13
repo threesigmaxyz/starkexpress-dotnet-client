@@ -31,6 +31,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -86,7 +90,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -129,6 +133,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -184,7 +192,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

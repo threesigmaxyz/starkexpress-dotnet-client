@@ -33,6 +33,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -88,7 +92,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -130,6 +134,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -185,7 +193,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -206,7 +214,7 @@ catch (ApiException e)
 
 <a name="getallassets"></a>
 # **GetAllAssets**
-> TenantAssetDtoPaginatedResponseDto GetAllAssets (int pageNumber, int pageSize, Guid? assetId = null, AssetType? assetType = null, FilterOptions? assetTypeComparison = null, string assetSymbol = null, FilterOptions? assetSymbolComparison = null, string sortBy = null)
+> TenantAssetDtoPaginatedResponseDto GetAllAssets (Guid? assetId = null, AssetType???????????????????????????????????????????????????????? assetType = null, FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = null, string assetSymbol = null, FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
 
 Get All Assets
 
@@ -228,23 +236,27 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new AssetApi(config);
-            var pageNumber = 56;  // int | 
-            var pageSize = 56;  // int | 
             var assetId = "assetId_example";  // Guid? |  (optional) 
-            var assetType = (AssetType) "Eth";  // AssetType? |  (optional) 
-            var assetTypeComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
+            var assetType = (AssetType) "Eth";  // AssetType???????????????????????????????????????????????????????? |  (optional) 
+            var assetTypeComparison = (FilterOptions) "StartsWith";  // FilterOptions???????????????????????????????????????????????????????? |  (optional) 
             var assetSymbol = "assetSymbol_example";  // string |  (optional) 
-            var assetSymbolComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
+            var assetSymbolComparison = (FilterOptions) "StartsWith";  // FilterOptions???????????????????????????????????????????????????????? |  (optional) 
+            var pageNumber = 56;  // int? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Assets
-                TenantAssetDtoPaginatedResponseDto result = apiInstance.GetAllAssets(pageNumber, pageSize, assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, sortBy);
+                TenantAssetDtoPaginatedResponseDto result = apiInstance.GetAllAssets(assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, pageNumber, pageSize, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -265,7 +277,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Assets
-    ApiResponse<TenantAssetDtoPaginatedResponseDto> response = apiInstance.GetAllAssetsWithHttpInfo(pageNumber, pageSize, assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, sortBy);
+    ApiResponse<TenantAssetDtoPaginatedResponseDto> response = apiInstance.GetAllAssetsWithHttpInfo(assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, pageNumber, pageSize, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -282,13 +294,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pageNumber** | **int** |  |  |
-| **pageSize** | **int** |  |  |
 | **assetId** | **Guid?** |  | [optional]  |
-| **assetType** | **AssetType?** |  | [optional]  |
-| **assetTypeComparison** | **FilterOptions?** |  | [optional]  |
+| **assetType** | **AssetType????????????????????????????????????????????????????????** |  | [optional]  |
+| **assetTypeComparison** | **FilterOptions????????????????????????????????????????????????????????** |  | [optional]  |
 | **assetSymbol** | **string** |  | [optional]  |
-| **assetSymbolComparison** | **FilterOptions?** |  | [optional]  |
+| **assetSymbolComparison** | **FilterOptions????????????????????????????????????????????????????????** |  | [optional]  |
+| **pageNumber** | **int?** |  | [optional]  |
+| **pageSize** | **int?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
 
 ### Return type
@@ -297,7 +309,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -338,6 +350,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -393,7 +409,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

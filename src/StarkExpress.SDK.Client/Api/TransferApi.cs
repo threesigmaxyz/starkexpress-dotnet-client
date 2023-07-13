@@ -308,6 +308,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransferApi.Transfer";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -398,6 +403,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransferApi.Transfer";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -486,6 +496,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransferApi.TransferDetails";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -576,6 +591,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "TransferApi.TransferDetails";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))

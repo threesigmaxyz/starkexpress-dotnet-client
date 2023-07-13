@@ -33,6 +33,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -92,7 +96,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -112,7 +116,7 @@ catch (ApiException e)
 
 <a name="getallusers"></a>
 # **GetAllUsers**
-> UserDtoPaginatedResponseDto GetAllUsers (int pageNumber, int pageSize, string username = null, FilterOptions? usernameComparison = null, string address = null, string creationDate = null, FilterOptions? creationDateComparison = null, string sortBy = null)
+> UserDtoPaginatedResponseDto GetAllUsers (string username = null, FilterOptions???????????????????????????????????????????????????????? usernameComparison = null, string address = null, string creationDate = null, FilterOptions???????????????????????????????????????????????????????? creationDateComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
 
 Get All Users
 
@@ -134,23 +138,27 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserApi(config);
-            var pageNumber = 56;  // int | 
-            var pageSize = 56;  // int | 
             var username = "username_example";  // string |  (optional) 
-            var usernameComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
+            var usernameComparison = (FilterOptions) "StartsWith";  // FilterOptions???????????????????????????????????????????????????????? |  (optional) 
             var address = "address_example";  // string |  (optional) 
             var creationDate = "creationDate_example";  // string |  (optional) 
-            var creationDateComparison = (FilterOptions) "StartsWith";  // FilterOptions? |  (optional) 
+            var creationDateComparison = (FilterOptions) "StartsWith";  // FilterOptions???????????????????????????????????????????????????????? |  (optional) 
+            var pageNumber = 56;  // int? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
 
             try
             {
                 // Get All Users
-                UserDtoPaginatedResponseDto result = apiInstance.GetAllUsers(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
+                UserDtoPaginatedResponseDto result = apiInstance.GetAllUsers(username, usernameComparison, address, creationDate, creationDateComparison, pageNumber, pageSize, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -171,7 +179,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get All Users
-    ApiResponse<UserDtoPaginatedResponseDto> response = apiInstance.GetAllUsersWithHttpInfo(pageNumber, pageSize, username, usernameComparison, address, creationDate, creationDateComparison, sortBy);
+    ApiResponse<UserDtoPaginatedResponseDto> response = apiInstance.GetAllUsersWithHttpInfo(username, usernameComparison, address, creationDate, creationDateComparison, pageNumber, pageSize, sortBy);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -188,13 +196,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pageNumber** | **int** |  |  |
-| **pageSize** | **int** |  |  |
 | **username** | **string** |  | [optional]  |
-| **usernameComparison** | **FilterOptions?** |  | [optional]  |
+| **usernameComparison** | **FilterOptions????????????????????????????????????????????????????????** |  | [optional]  |
 | **address** | **string** |  | [optional]  |
 | **creationDate** | **string** |  | [optional]  |
-| **creationDateComparison** | **FilterOptions?** |  | [optional]  |
+| **creationDateComparison** | **FilterOptions????????????????????????????????????????????????????????** |  | [optional]  |
+| **pageNumber** | **int?** |  | [optional]  |
+| **pageSize** | **int?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
 
 ### Return type
@@ -203,7 +211,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -244,6 +252,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -299,7 +311,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -341,6 +353,10 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("x-api-key", "Bearer");
             // Configure OAuth2 access token for authorization: oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -396,7 +412,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

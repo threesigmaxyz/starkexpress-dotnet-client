@@ -22,7 +22,7 @@ An API for the StarkExpress platform.
 You can install the publicly available nuget packages via the following command.
 We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages.
 ```bash
-dotnet add package StarkExpress.SDK.Client --version 0.0.1
+dotnet add package StarkExpress.SDK.Client
 ```
 
 Then add the packages to your project, use the namespaces:
@@ -62,10 +62,19 @@ namespace Example
 
             Configuration config = new Configuration();
             config.BasePath = "https://api.starkexpress.io";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.OAuthTokenUrl = "https://starkexpress-testnet.eu.auth0.com/oauth/token";
-            config.OAuthClientId = "YOUR_CLIENT_ID";
-            config.OAuthClientSecret = "YOUR_CLIENT_SECRET";
+            // Configure API key authorization: apikey
+            config.ApiKey.Add("x-api-key", "YOUR_API_KEY");
+<!-- In theory this is still supported but deprecated. Because swagger still has references to it, this shows
+ in the readme but shouldn't. Can be uncommented later -->
+<!--            -->
+<!-- In theory this is still supported but deprecated. Because swagger still has references to it, this shows
+ in the readme but shouldn't. Can be uncommented later -->
+<!--            -->
+<!--            // Configure OAuth2 access token for authorization: oauth2-->
+<!--            config.OAuthTokenUrl = "https://starkexpress-testnet.eu.auth0.com/oauth/token";-->
+<!--            config.OAuthClientId = "YOUR_CLIENT_ID";-->
+<!--            config.OAuthClientSecret = "YOUR_CLIENT_SECRET";-->
+<!--            -->
 
             var apiInstance = new AssetApi(config);
             var deployAssetModel = new DeployAssetModel(); // DeployAssetModel | The asset deployment request.
@@ -196,20 +205,34 @@ Class | Method | HTTP request | Description
 <a name="oauth2"></a>
 ### oauth2
 
-- **Type**: OAuth
-- **Flow**: application
-- **Token URL**: https://starkexpress-testnet.eu.auth0.com/oauth/token
-- **Scopes**: 
-  - write:users: Access user write operations.
-  - read:users: Access user read operations.
-  - read:tenant_assets: Access tenant asset read operations.
-  - write:tenant_assets: Access tenant asset write operations.
-  - mint:assets: Access mint operations.
-  - read:vaults: Access vault read operations.
-  - write:transfers: Access transfer write operations.
-  - read:transfers: Access transfer read operations.
-  - write:smart-contracts: Access to deploying smart contracts.
-  - write:settlements: Access settlement write operations.
+<!-- In theory this is still supported but deprecated. Because swagger still has references to it, this shows
+in the readme but shouldn't. Can be uncommented later -->
+<!--- **Type**: OAuth-->
+<!--- **Flow**: application-->
+<!--- **Token URL**: https://starkexpress-testnet.eu.auth0.com/oauth/token-->
+<!--- **Scopes**: -->
+<!--  - write:users: Access user write operations.-->
+<!--  - read:users: Access user read operations.-->
+<!--  - read:tenant_assets: Access tenant asset read operations.-->
+<!--  - write:tenant_assets: Access tenant asset write operations.-->
+<!--  - mint:assets: Access mint operations.-->
+<!--  - read:vaults: Access vault read operations.-->
+<!--  - write:transfers: Access transfer write operations.-->
+<!--  - read:transfers: Access transfer read operations.-->
+<!--  - write:smart-contracts: Access to deploying smart contracts.-->
+<!--  - write:settlements: Access settlement write operations.-->
+<!---->
+<!---->
+
+<a name="apikey"></a>
+### apikey
+
+- **Type**: API key
+- **API key parameter name**: x-api-key
+- **Location**: HTTP header
+<!-- In theory this is still supported but deprecated. Because swagger still has references to it, this shows
+in the readme but shouldn't. Can be uncommented later -->
+<!---->
 
 
 ---

@@ -80,17 +80,17 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TenantAssetDtoPaginatedResponseDto</returns>
-        TenantAssetDtoPaginatedResponseDto GetAllAssets(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        TenantAssetDtoPaginatedResponseDto GetAllAssets(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get All Assets
@@ -99,17 +99,17 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TenantAssetDtoPaginatedResponseDto</returns>
-        ApiResponse<TenantAssetDtoPaginatedResponseDto> GetAllAssetsWithHttpInfo(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0);
+        ApiResponse<TenantAssetDtoPaginatedResponseDto> GetAllAssetsWithHttpInfo(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
         /// <summary>
         /// Get Asset
         /// </summary>
@@ -199,18 +199,18 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TenantAssetDtoPaginatedResponseDto</returns>
-        System.Threading.Tasks.Task<TenantAssetDtoPaginatedResponseDto> GetAllAssetsAsync(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TenantAssetDtoPaginatedResponseDto> GetAllAssetsAsync(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get All Assets
@@ -219,18 +219,18 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TenantAssetDtoPaginatedResponseDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TenantAssetDtoPaginatedResponseDto>> GetAllAssetsWithHttpInfoAsync(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TenantAssetDtoPaginatedResponseDto>> GetAllAssetsWithHttpInfoAsync(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get Asset
         /// </summary>
@@ -432,6 +432,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.DeployAsset";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -522,6 +527,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.DeployAsset";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -610,6 +620,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.EnableAsset";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -700,6 +715,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.EnableAsset";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -736,19 +756,19 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Assets This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TenantAssetDtoPaginatedResponseDto</returns>
-        public TenantAssetDtoPaginatedResponseDto GetAllAssets(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        public TenantAssetDtoPaginatedResponseDto GetAllAssets(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto> localVarResponse = GetAllAssetsWithHttpInfo(pageNumber, pageSize, assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, sortBy);
+            StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto> localVarResponse = GetAllAssetsWithHttpInfo(assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, pageNumber, pageSize, sortBy);
             return localVarResponse.Data;
         }
 
@@ -756,17 +776,17 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Assets This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TenantAssetDtoPaginatedResponseDto</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto> GetAllAssetsWithHttpInfo(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0)
+        public StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto> GetAllAssetsWithHttpInfo(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
 
@@ -810,8 +830,14 @@ namespace StarkExpress.SDK.Client.Api
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "asset_symbol_comparison", assetSymbolComparison));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -820,6 +846,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.GetAllAssets";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -855,20 +886,20 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Assets This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TenantAssetDtoPaginatedResponseDto</returns>
-        public async System.Threading.Tasks.Task<TenantAssetDtoPaginatedResponseDto> GetAllAssetsAsync(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TenantAssetDtoPaginatedResponseDto> GetAllAssetsAsync(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto> localVarResponse = await GetAllAssetsWithHttpInfoAsync(pageNumber, pageSize, assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto> localVarResponse = await GetAllAssetsWithHttpInfoAsync(assetId, assetType, assetTypeComparison, assetSymbol, assetSymbolComparison, pageNumber, pageSize, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -876,18 +907,18 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Assets This endpoint fetches all assets enabled in the tenant system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
         /// <param name="assetId"> (optional)</param>
         /// <param name="assetType"> (optional)</param>
         /// <param name="assetTypeComparison"> (optional)</param>
         /// <param name="assetSymbol"> (optional)</param>
         /// <param name="assetSymbolComparison"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TenantAssetDtoPaginatedResponseDto)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto>> GetAllAssetsWithHttpInfoAsync(int pageNumber, int pageSize, Guid? assetId = default(Guid?), AssetType? assetType = default(AssetType?), FilterOptions? assetTypeComparison = default(FilterOptions?), string assetSymbol = default(string), FilterOptions? assetSymbolComparison = default(FilterOptions?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<TenantAssetDtoPaginatedResponseDto>> GetAllAssetsWithHttpInfoAsync(Guid? assetId = default(Guid?), AssetType???????????????????????????????????????????????????????? assetType = default(AssetType????????????????????????????????????????????????????????), FilterOptions???????????????????????????????????????????????????????? assetTypeComparison = default(FilterOptions????????????????????????????????????????????????????????), string assetSymbol = default(string), FilterOptions???????????????????????????????????????????????????????? assetSymbolComparison = default(FilterOptions????????????????????????????????????????????????????????), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
@@ -932,8 +963,14 @@ namespace StarkExpress.SDK.Client.Api
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "asset_symbol_comparison", assetSymbolComparison));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -942,6 +979,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.GetAllAssets";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -1023,6 +1065,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.GetAsset";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -1106,6 +1153,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "AssetApi.GetAsset";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
