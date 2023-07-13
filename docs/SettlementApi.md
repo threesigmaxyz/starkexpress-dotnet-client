@@ -30,8 +30,8 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
             var apiInstance = new SettlementApi(config);
             var submitSettlementModel = new SubmitSettlementModel(); // SubmitSettlementModel | The settlement request.
@@ -85,7 +85,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -57,14 +57,13 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>VaultDtoPaginatedResponseDto</returns>
-        VaultDtoPaginatedResponseDto GetAllVaults(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0);
+        VaultDtoPaginatedResponseDto GetAllVaults(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
 
         /// <summary>
         /// Get All Vaults
@@ -73,14 +72,13 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of VaultDtoPaginatedResponseDto</returns>
-        ApiResponse<VaultDtoPaginatedResponseDto> GetAllVaultsWithHttpInfo(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0);
+        ApiResponse<VaultDtoPaginatedResponseDto> GetAllVaultsWithHttpInfo(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0);
         /// <summary>
         /// Get a single Vault
         /// </summary>
@@ -145,15 +143,14 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of VaultDtoPaginatedResponseDto</returns>
-        System.Threading.Tasks.Task<VaultDtoPaginatedResponseDto> GetAllVaultsAsync(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<VaultDtoPaginatedResponseDto> GetAllVaultsAsync(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get All Vaults
@@ -162,15 +159,14 @@ namespace StarkExpress.SDK.Client.Api
         /// This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </remarks>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (VaultDtoPaginatedResponseDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<VaultDtoPaginatedResponseDto>> GetAllVaultsWithHttpInfoAsync(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<VaultDtoPaginatedResponseDto>> GetAllVaultsWithHttpInfoAsync(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get a single Vault
         /// </summary>
@@ -366,6 +362,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "VaultApi.AllocateVault";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -450,6 +451,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "VaultApi.AllocateVault";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -486,16 +492,15 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Vaults This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>VaultDtoPaginatedResponseDto</returns>
-        public VaultDtoPaginatedResponseDto GetAllVaults(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0)
+        public VaultDtoPaginatedResponseDto GetAllVaults(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto> localVarResponse = GetAllVaultsWithHttpInfo(pageNumber, pageSize, tenantId, assetId, sortBy);
+            StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto> localVarResponse = GetAllVaultsWithHttpInfo(assetId, pageNumber, pageSize, sortBy);
             return localVarResponse.Data;
         }
 
@@ -503,14 +508,13 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Vaults This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of VaultDtoPaginatedResponseDto</returns>
-        public StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto> GetAllVaultsWithHttpInfo(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0)
+        public StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto> GetAllVaultsWithHttpInfo(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0)
         {
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
 
@@ -534,16 +538,18 @@ namespace StarkExpress.SDK.Client.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            if (tenantId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "tenant_id", tenantId));
-            }
             if (assetId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "asset_id", assetId));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -552,6 +558,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "VaultApi.GetAllVaults";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -587,17 +598,16 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Vaults This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of VaultDtoPaginatedResponseDto</returns>
-        public async System.Threading.Tasks.Task<VaultDtoPaginatedResponseDto> GetAllVaultsAsync(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<VaultDtoPaginatedResponseDto> GetAllVaultsAsync(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto> localVarResponse = await GetAllVaultsWithHttpInfoAsync(pageNumber, pageSize, tenantId, assetId, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto> localVarResponse = await GetAllVaultsWithHttpInfoAsync(assetId, pageNumber, pageSize, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -605,15 +615,14 @@ namespace StarkExpress.SDK.Client.Api
         /// Get All Vaults This endpoint fetches all vaults in the system, with support for filters and pagination.
         /// </summary>
         /// <exception cref="StarkExpress.SDK.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageNumber"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="tenantId"> (optional)</param>
         /// <param name="assetId"> (optional)</param>
+        /// <param name="pageNumber"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
         /// <param name="sortBy"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (VaultDtoPaginatedResponseDto)</returns>
-        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto>> GetAllVaultsWithHttpInfoAsync(int pageNumber, int pageSize, Guid? tenantId = default(Guid?), Guid? assetId = default(Guid?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StarkExpress.SDK.Client.Client.ApiResponse<VaultDtoPaginatedResponseDto>> GetAllVaultsWithHttpInfoAsync(Guid? assetId = default(Guid?), int? pageNumber = default(int?), int? pageSize = default(int?), string sortBy = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             StarkExpress.SDK.Client.Client.RequestOptions localVarRequestOptions = new StarkExpress.SDK.Client.Client.RequestOptions();
@@ -638,16 +647,18 @@ namespace StarkExpress.SDK.Client.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            if (tenantId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "tenant_id", tenantId));
-            }
             if (assetId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "asset_id", assetId));
             }
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
-            localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            if (pageNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_number", pageNumber));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             if (sortBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(StarkExpress.SDK.Client.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
@@ -656,6 +667,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "VaultApi.GetAllVaults";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -737,6 +753,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "VaultApi.GetVault";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -820,6 +841,11 @@ namespace StarkExpress.SDK.Client.Api
             localVarRequestOptions.Operation = "VaultApi.GetVault";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (apikey) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
             // authentication (oauth2) required
             // oauth required
             if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))

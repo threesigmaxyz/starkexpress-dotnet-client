@@ -31,8 +31,8 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
             var apiInstance = new TransferApi(config);
             var transferModel = new TransferModel(); // TransferModel | The transfer request.
@@ -86,7 +86,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -129,8 +129,8 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://testnet-api.starkexpress.io";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
             var apiInstance = new TransferApi(config);
             var transferDetailsModel = new TransferDetailsModel(); // TransferDetailsModel | The signable transfer details request.
@@ -184,7 +184,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
