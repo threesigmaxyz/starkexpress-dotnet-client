@@ -191,16 +191,16 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
-<a name="oauth2"></a>
-### oauth2
-
-
 <a name="apikey"></a>
 ### apikey
 
 - **Type**: API key
 - **API key parameter name**: x-api-key
 - **Location**: HTTP header
+
+<a name="oauth2"></a>
+### oauth2
+
 
 
 ---

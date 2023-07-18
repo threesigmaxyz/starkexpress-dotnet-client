@@ -133,9 +133,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - mint:assets
       - apikey:
+        - mint:assets
+      - oauth2:
         - mint:assets
       summary: Mint Assets
       tags:
@@ -388,9 +388,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:settlements
       - apikey:
+        - write:settlements
+      - oauth2:
         - write:settlements
       summary: Submit Settlement
       tags:
@@ -487,9 +487,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:tenant_assets
       - apikey:
+        - read:tenant_assets
+      - oauth2:
         - read:tenant_assets
       summary: Get All Assets
       tags:
@@ -528,9 +528,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:tenant_assets
       - apikey:
+        - write:tenant_assets
+      - oauth2:
         - write:tenant_assets
       summary: Enable Asset
       tags:
@@ -567,9 +567,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:tenant_assets
       - apikey:
+        - read:tenant_assets
+      - oauth2:
         - read:tenant_assets
       summary: Get Asset
       tags:
@@ -604,10 +604,10 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
+      - apikey:
         - write:tenant_assets
         - write:smart-contracts
-      - apikey:
+      - oauth2:
         - write:tenant_assets
         - write:smart-contracts
       summary: Deploy Asset
@@ -709,9 +709,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:transactions
       - apikey:
+        - read:transactions
+      - oauth2:
         - read:transactions
       summary: Get All Transactions
       tags:
@@ -748,9 +748,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:transactions
       - apikey:
+        - read:transactions
+      - oauth2:
         - read:transactions
       summary: Get Transaction
       tags:
@@ -792,9 +792,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:transfers
       - apikey:
+        - write:transfers
+      - oauth2:
         - write:transfers
       summary: Transfer Asset
       tags:
@@ -835,9 +835,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:transfers
       - apikey:
+        - write:transfers
+      - oauth2:
         - write:transfers
       summary: Get Transfer Details
       tags:
@@ -936,9 +936,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:users
       - apikey:
+        - read:users
+      - oauth2:
         - read:users
       summary: Get All Users
       tags:
@@ -971,9 +971,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:users
       - apikey:
+        - write:users
+      - oauth2:
         - write:users
       summary: Register new User
       tags:
@@ -1034,9 +1034,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:users
       - apikey:
+        - read:users
+      - oauth2:
         - read:users
       summary: Get EIP712 data to be signed
       tags:
@@ -1073,9 +1073,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:users
       - apikey:
+        - read:users
+      - oauth2:
         - read:users
       summary: Get User
       tags:
@@ -1116,10 +1116,10 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
+      - apikey:
         - read:vaults
         - write:vaults
-      - apikey:
+      - oauth2:
         - read:vaults
         - write:vaults
       summary: Returns the deposit details for a given asset.
@@ -1186,9 +1186,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:vaults
       - apikey:
+        - read:vaults
+      - oauth2:
         - read:vaults
       summary: Get All Vaults
       tags:
@@ -1226,9 +1226,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:vaults
       - apikey:
+        - write:vaults
+      - oauth2:
         - write:vaults
       summary: Allocate vault
       tags:
@@ -1259,9 +1259,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - read:vaults
       - apikey:
+        - read:vaults
+      - oauth2:
         - read:vaults
       summary: Get a single Vault
       tags:
@@ -1301,9 +1301,9 @@ paths:
         "403":
           description: Forbidden.
       security:
-      - oauth2:
-        - write:vaults
       - apikey:
+        - write:vaults
+      - oauth2:
         - write:vaults
       summary: Withdraw Asset
       tags:
@@ -1357,6 +1357,7 @@ components:
       - Erc1155
       - MintableErc20
       - MintableErc721
+      - MintableErc1155
       type: string
     BatchMintRequestModel:
       additionalProperties: false
@@ -3329,6 +3330,11 @@ components:
       - vaultId
       type: object
   securitySchemes:
+    apikey:
+      description: API Key Authentication
+      in: header
+      name: x-api-key
+      type: apiKey
     oauth2:
       flows:
         clientCredentials:
@@ -3345,9 +3351,4 @@ components:
             write:settlements: Access settlement write operations.
           tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
       type: oauth2
-    apikey:
-      description: API Key Authentication
-      in: header
-      name: x-api-key
-      type: apiKey
 

@@ -65,7 +65,13 @@ namespace StarkExpress.SDK.Client.Model
         /// Enum MintableErc721 for value: MintableErc721
         /// </summary>
         [EnumMember(Value = "MintableErc721")]
-        MintableErc721 = 6
+        MintableErc721 = 6,
+
+        /// <summary>
+        /// Enum MintableErc1155 for value: MintableErc1155
+        /// </summary>
+        [EnumMember(Value = "MintableErc1155")]
+        MintableErc1155 = 7
 
     }
 
