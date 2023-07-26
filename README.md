@@ -148,6 +148,7 @@ Class | Method | HTTP request | Description
  - [Model.FilterOptions](docs/FilterOptions.md)
  - [Model.MemberDescriptionDto](docs/MemberDescriptionDto.md)
  - [Model.MemberValueDto](docs/MemberValueDto.md)
+ - [Model.MessageDto](docs/MessageDto.md)
  - [Model.MintDataModel](docs/MintDataModel.md)
  - [Model.MintRequestDataModel](docs/MintRequestDataModel.md)
  - [Model.OrderDetailsDto](docs/OrderDetailsDto.md)

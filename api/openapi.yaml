@@ -1357,7 +1357,6 @@ components:
       - Erc1155
       - MintableErc20
       - MintableErc721
-      - MintableErc1155
       type: string
     BatchMintRequestModel:
       additionalProperties: false
@@ -1646,7 +1645,7 @@ components:
     DomainDto:
       additionalProperties: false
       example:
-        chainId: chainId
+        chainId: 0
         name: name
         version: version
         verifyingContract: verifyingContract
@@ -1668,7 +1667,7 @@ components:
           format: string
           nullable: true
           title: ChainId
-          type: string
+          type: integer
         verifyingContract:
           description: The verifying contract for the domain for the EIP712 signing.
           format: hex
@@ -1807,6 +1806,23 @@ components:
           format: string
           nullable: true
           title: Value
+          type: string
+      type: object
+    MessageDto:
+      additionalProperties: false
+      example:
+        address: address
+        starkKey: starkKey
+        username: username
+      properties:
+        username:
+          nullable: true
+          type: string
+        starkKey:
+          nullable: true
+          type: string
+        address:
+          nullable: true
           type: string
       type: object
     MintDataModel:
@@ -2277,15 +2293,14 @@ components:
           value: value
         primaryType: primaryType
         domain:
-          chainId: chainId
+          chainId: 0
           name: name
           version: version
           verifyingContract: verifyingContract
         message:
-        - typeName: typeName
-          value: value
-        - typeName: typeName
-          value: value
+          address: address
+          starkKey: starkKey
+          username: username
       properties:
         domain:
           $ref: '#/components/schemas/DomainDto'
@@ -2306,13 +2321,7 @@ components:
           title: Primary Type
           type: string
         message:
-          description: The register details message to be signed.
-          format: array
-          items:
-            $ref: '#/components/schemas/MemberValueDto'
-          nullable: true
-          title: Message
-          type: array
+          $ref: '#/components/schemas/MessageDto'
         domainRawValues:
           description: The STARK key of the sender.
           format: array
