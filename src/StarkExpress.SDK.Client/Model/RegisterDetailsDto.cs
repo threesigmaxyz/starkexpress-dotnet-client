@@ -37,9 +37,9 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="domain">domain.</param>
         /// <param name="types">The types in the EIP712 message..</param>
         /// <param name="primaryType">The message primary type..</param>
-        /// <param name="message">The register details message to be signed..</param>
+        /// <param name="message">message.</param>
         /// <param name="domainRawValues">The STARK key of the sender..</param>
-        public RegisterDetailsDto(DomainDto domain = default(DomainDto), Dictionary<string, List<MemberDescriptionDto>> types = default(Dictionary<string, List<MemberDescriptionDto>>), string primaryType = default(string), List<MemberValueDto> message = default(List<MemberValueDto>), List<MemberValueDto> domainRawValues = default(List<MemberValueDto>))
+        public RegisterDetailsDto(DomainDto domain = default(DomainDto), Dictionary<string, List<MemberDescriptionDto>> types = default(Dictionary<string, List<MemberDescriptionDto>>), string primaryType = default(string), MessageDto message = default(MessageDto), List<MemberValueDto> domainRawValues = default(List<MemberValueDto>))
         {
             this.Domain = domain;
             this.Types = types;
@@ -69,11 +69,10 @@ namespace StarkExpress.SDK.Client.Model
         public string PrimaryType { get; set; }
 
         /// <summary>
-        /// The register details message to be signed.
+        /// Gets or Sets Message
         /// </summary>
-        /// <value>The register details message to be signed.</value>
-        [DataMember(Name = "message", EmitDefaultValue = true)]
-        public List<MemberValueDto> Message { get; set; }
+        [DataMember(Name = "message", EmitDefaultValue = false)]
+        public MessageDto Message { get; set; }
 
         /// <summary>
         /// The STARK key of the sender.
@@ -148,9 +147,8 @@ namespace StarkExpress.SDK.Client.Model
                 ) && 
                 (
                     this.Message == input.Message ||
-                    this.Message != null &&
-                    input.Message != null &&
-                    this.Message.SequenceEqual(input.Message)
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 ) && 
                 (
                     this.DomainRawValues == input.DomainRawValues ||

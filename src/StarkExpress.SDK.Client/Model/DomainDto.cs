@@ -38,7 +38,7 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="varVersion">The version of the domain for the EIP712 signing..</param>
         /// <param name="chainId">The chainId for the domain for the EIP712 signing..</param>
         /// <param name="verifyingContract">The verifying contract for the domain for the EIP712 signing..</param>
-        public DomainDto(string name = default(string), string varVersion = default(string), string chainId = default(string), string verifyingContract = default(string))
+        public DomainDto(string name = default(string), string varVersion = default(string), int? chainId = default(int?), string verifyingContract = default(string))
         {
             this.Name = name;
             this.VarVersion = varVersion;
@@ -65,7 +65,7 @@ namespace StarkExpress.SDK.Client.Model
         /// </summary>
         /// <value>The chainId for the domain for the EIP712 signing.</value>
         [DataMember(Name = "chainId", EmitDefaultValue = true)]
-        public string ChainId { get; set; }
+        public int? ChainId { get; set; }
 
         /// <summary>
         /// The verifying contract for the domain for the EIP712 signing.
