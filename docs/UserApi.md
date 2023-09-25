@@ -1,6 +1,6 @@
 # StarkExpress.SDK.Client.Api.UserApi
 
-All URIs are relative to *https://testnet-api.starkexpress.io*
+All URIs are relative to *https://testnet-api.onarc.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -21,6 +21,7 @@ This endpoint return the typed data to be signed with EIP712 that is used on use
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -32,11 +33,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var username = "username_example";  // string | 
             var starkKey = "starkKey_example";  // string | 
             var address = "address_example";  // string | 
@@ -92,7 +96,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -112,7 +116,7 @@ catch (ApiException e)
 
 <a name="getallusers"></a>
 # **GetAllUsers**
-> UserDtoPaginatedResponseDto GetAllUsers (string username = null, FilterOptions????????????????????????????????????????????????????????? usernameComparison = null, string address = null, string creationDate = null, FilterOptions????????????????????????????????????????????????????????? creationDateComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
+> UserDtoPaginatedResponseDto GetAllUsers (string username = null, FilterOptions usernameComparison = null, string address = null, string creationDate = null, FilterOptions creationDateComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
 
 Get All Users
 
@@ -122,6 +126,7 @@ This endpoint fetches all users.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -133,16 +138,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var username = "username_example";  // string |  (optional) 
-            var usernameComparison = (FilterOptions) "StartsWith";  // FilterOptions????????????????????????????????????????????????????????? |  (optional) 
+            var usernameComparison = new FilterOptions(); // FilterOptions |  (optional) 
             var address = "address_example";  // string |  (optional) 
             var creationDate = "creationDate_example";  // string |  (optional) 
-            var creationDateComparison = (FilterOptions) "StartsWith";  // FilterOptions????????????????????????????????????????????????????????? |  (optional) 
+            var creationDateComparison = new FilterOptions(); // FilterOptions |  (optional) 
             var pageNumber = 56;  // int? |  (optional) 
             var pageSize = 56;  // int? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
@@ -189,10 +197,10 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **username** | **string** |  | [optional]  |
-| **usernameComparison** | **FilterOptions?????????????????????????????????????????????????????????** |  | [optional]  |
+| **usernameComparison** | [**FilterOptions**](FilterOptions.md) |  | [optional]  |
 | **address** | **string** |  | [optional]  |
 | **creationDate** | **string** |  | [optional]  |
-| **creationDateComparison** | **FilterOptions?????????????????????????????????????????????????????????** |  | [optional]  |
+| **creationDateComparison** | [**FilterOptions**](FilterOptions.md) |  | [optional]  |
 | **pageNumber** | **int?** |  | [optional]  |
 | **pageSize** | **int?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
@@ -203,7 +211,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -232,6 +240,7 @@ This endpoint fetches a specific user by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -243,11 +252,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var userId = "userId_example";  // Guid | The user id.
 
             try
@@ -299,7 +311,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -329,6 +341,7 @@ This endpoint registers a user.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -340,11 +353,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new UserApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new UserApi(httpClient, config, httpClientHandler);
             var registerUserModel = new RegisterUserModel(); // RegisterUserModel | The user registration request.
 
             try
@@ -396,7 +412,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 

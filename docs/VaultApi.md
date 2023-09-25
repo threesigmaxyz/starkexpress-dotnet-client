@@ -1,6 +1,6 @@
 # StarkExpress.SDK.Client.Api.VaultApi
 
-All URIs are relative to *https://testnet-api.starkexpress.io*
+All URIs are relative to *https://testnet-api.onarc.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -20,6 +20,7 @@ This endpoint allocates a new vault for a given asset, if there isn't one alread
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -31,11 +32,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new VaultApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new VaultApi(httpClient, config, httpClientHandler);
             var allocateVaultModel = new AllocateVaultModel(); // AllocateVaultModel |  (optional) 
 
             try
@@ -87,7 +91,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -118,6 +122,7 @@ This endpoint fetches all vaults in the system, with support for filters and pag
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -129,11 +134,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new VaultApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new VaultApi(httpClient, config, httpClientHandler);
             var assetId = "assetId_example";  // Guid? |  (optional) 
             var pageNumber = 56;  // int? |  (optional) 
             var pageSize = 56;  // int? |  (optional) 
@@ -191,7 +199,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -220,6 +228,7 @@ This endpoint fetches a vault identified by its unique id.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -231,11 +240,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new VaultApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new VaultApi(httpClient, config, httpClientHandler);
             var vaultId = "vaultId_example";  // Guid | The vault id.
 
             try
@@ -287,7 +299,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 

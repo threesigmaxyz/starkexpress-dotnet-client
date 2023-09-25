@@ -1,11 +1,13 @@
 # StarkExpress.SDK.Client.Api.AssetApi
 
-All URIs are relative to *https://testnet-api.starkexpress.io*
+All URIs are relative to *https://testnet-api.onarc.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**DeployAsset**](AssetApi.md#deployasset) | **POST** /api/v1/assets/deploy | Deploy Asset |
+| [**DisableAsset**](AssetApi.md#disableasset) | **POST** /api/v1/assets/disable | Disable Asset |
 | [**EnableAsset**](AssetApi.md#enableasset) | **POST** /api/v1/assets | Enable Asset |
+| [**EstimateAssetDeployCost**](AssetApi.md#estimateassetdeploycost) | **GET** /api/v1/assets/estimate-deploy | Estimate cost of the deployment for a new Asset |
 | [**GetAllAssets**](AssetApi.md#getallassets) | **GET** /api/v1/assets | Get All Assets |
 | [**GetAsset**](AssetApi.md#getasset) | **GET** /api/v1/assets/{assetId} | Get Asset |
 
@@ -21,6 +23,7 @@ This endpoint allows for deploying an asset and enable it in the tenant system.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -32,11 +35,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new AssetApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
             var deployAssetModel = new DeployAssetModel(); // DeployAssetModel | The asset deployment request.
 
             try
@@ -88,7 +94,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -106,6 +112,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="disableasset"></a>
+# **DisableAsset**
+> TenantAssetDto DisableAsset (DisableAssetModel disableAssetModel)
+
+Disable Asset
+
+This endpoint allows to disable an asset in the tenant system.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using StarkExpress.SDK.Client.Api;
+using StarkExpress.SDK.Client.Client;
+using StarkExpress.SDK.Client.Model;
+
+namespace Example
+{
+    public class DisableAssetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://testnet-api.onarc.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
+            var disableAssetModel = new DisableAssetModel(); // DisableAssetModel | The asset disabling request.
+
+            try
+            {
+                // Disable Asset
+                TenantAssetDto result = apiInstance.DisableAsset(disableAssetModel);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AssetApi.DisableAsset: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DisableAssetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Disable Asset
+    ApiResponse<TenantAssetDto> response = apiInstance.DisableAssetWithHttpInfo(disableAssetModel);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AssetApi.DisableAssetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **disableAssetModel** | [**DisableAssetModel**](DisableAssetModel.md) | The asset disabling request. |  |
+
+### Return type
+
+[**TenantAssetDto**](TenantAssetDto.md)
+
+### Authorization
+
+[apikey](../README.md#apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the disabled asset. |  -  |
+| **400** | The asset disabling request was invalid. |  -  |
+| **404** | Not Found. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="enableasset"></a>
 # **EnableAsset**
 > TenantAssetDto EnableAsset (EnableAssetModel enableAssetModel)
@@ -118,6 +226,7 @@ This endpoint allows to enable an asset in the tenant system.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -129,11 +238,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new AssetApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
             var enableAssetModel = new EnableAssetModel(); // EnableAssetModel | The asset enabling request.
 
             try
@@ -185,7 +297,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -204,9 +316,110 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="estimateassetdeploycost"></a>
+# **EstimateAssetDeployCost**
+> TenantAssetDto EstimateAssetDeployCost (AssetType assetType)
+
+Estimate cost of the deployment for a new Asset
+
+This endpoint allows for deploying an asset and enable it in the tenant system.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using StarkExpress.SDK.Client.Api;
+using StarkExpress.SDK.Client.Client;
+using StarkExpress.SDK.Client.Model;
+
+namespace Example
+{
+    public class EstimateAssetDeployCostExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://testnet-api.onarc.io";
+            // Configure API key authorization: apikey
+            config.AddApiKey("x-api-key", "YOUR_API_KEY");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
+            var assetType = new AssetType(); // AssetType | 
+
+            try
+            {
+                // Estimate cost of the deployment for a new Asset
+                TenantAssetDto result = apiInstance.EstimateAssetDeployCost(assetType);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AssetApi.EstimateAssetDeployCost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EstimateAssetDeployCostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Estimate cost of the deployment for a new Asset
+    ApiResponse<TenantAssetDto> response = apiInstance.EstimateAssetDeployCostWithHttpInfo(assetType);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AssetApi.EstimateAssetDeployCostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **assetType** | [**AssetType**](AssetType.md) |  |  |
+
+### Return type
+
+[**TenantAssetDto**](TenantAssetDto.md)
+
+### Authorization
+
+[apikey](../README.md#apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns the estimated cost of the asset deployment. |  -  |
+| **400** | The asset deployment estimation request was invalid. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallassets"></a>
 # **GetAllAssets**
-> TenantAssetDtoPaginatedResponseDto GetAllAssets (Guid? assetId = null, AssetType????????????????????????????????????????????????????????? assetType = null, FilterOptions????????????????????????????????????????????????????????? assetTypeComparison = null, string assetSymbol = null, FilterOptions????????????????????????????????????????????????????????? assetSymbolComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
+> TenantAssetDtoPaginatedResponseDto GetAllAssets (Guid? assetId = null, AssetType assetType = null, FilterOptions assetTypeComparison = null, string assetSymbol = null, FilterOptions assetSymbolComparison = null, int? pageNumber = null, int? pageSize = null, string sortBy = null)
 
 Get All Assets
 
@@ -216,6 +429,7 @@ This endpoint fetches all assets enabled in the tenant system, with support for 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -227,16 +441,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new AssetApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
             var assetId = "assetId_example";  // Guid? |  (optional) 
-            var assetType = (AssetType) "Eth";  // AssetType????????????????????????????????????????????????????????? |  (optional) 
-            var assetTypeComparison = (FilterOptions) "StartsWith";  // FilterOptions????????????????????????????????????????????????????????? |  (optional) 
+            var assetType = new AssetType(); // AssetType |  (optional) 
+            var assetTypeComparison = new FilterOptions(); // FilterOptions |  (optional) 
             var assetSymbol = "assetSymbol_example";  // string |  (optional) 
-            var assetSymbolComparison = (FilterOptions) "StartsWith";  // FilterOptions????????????????????????????????????????????????????????? |  (optional) 
+            var assetSymbolComparison = new FilterOptions(); // FilterOptions |  (optional) 
             var pageNumber = 56;  // int? |  (optional) 
             var pageSize = 56;  // int? |  (optional) 
             var sortBy = "sortBy_example";  // string |  (optional) 
@@ -283,10 +500,10 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **assetId** | **Guid?** |  | [optional]  |
-| **assetType** | **AssetType?????????????????????????????????????????????????????????** |  | [optional]  |
-| **assetTypeComparison** | **FilterOptions?????????????????????????????????????????????????????????** |  | [optional]  |
+| **assetType** | [**AssetType**](AssetType.md) |  | [optional]  |
+| **assetTypeComparison** | [**FilterOptions**](FilterOptions.md) |  | [optional]  |
 | **assetSymbol** | **string** |  | [optional]  |
-| **assetSymbolComparison** | **FilterOptions?????????????????????????????????????????????????????????** |  | [optional]  |
+| **assetSymbolComparison** | [**FilterOptions**](FilterOptions.md) |  | [optional]  |
 | **pageNumber** | **int?** |  | [optional]  |
 | **pageSize** | **int?** |  | [optional]  |
 | **sortBy** | **string** |  | [optional]  |
@@ -297,7 +514,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -326,6 +543,7 @@ This endpoint fetches a specific enabled asset by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -337,11 +555,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new AssetApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
             var assetId = "assetId_example";  // Guid | The asset ID.
 
             try
@@ -393,7 +614,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 

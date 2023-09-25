@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Symbol** | **string** | The symbol of the asset. | [optional] 
 **Quantum** | **string** | The quantum of the asset. | [optional] 
 **Type** | **AssetType** |  | [optional] 
+**Enabled** | **bool** | Is the asset enabled for the given tenant | [optional] 
+**Confirmed** | **bool** | Has the asset register transaction been confirmed in the Blockchain | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,6 +1,6 @@
 # StarkExpress.SDK.Client.Api.TransferApi
 
-All URIs are relative to *https://testnet-api.starkexpress.io*
+All URIs are relative to *https://testnet-api.onarc.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -19,6 +19,7 @@ This endpoint allows for transferring assets between users.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -30,11 +31,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new TransferApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new TransferApi(httpClient, config, httpClientHandler);
             var transferModel = new TransferModel(); // TransferModel | The transfer request.
 
             try
@@ -86,7 +90,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
@@ -117,6 +121,7 @@ This endpoint allows for fetching details of a transfer to be signed (allocates 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -128,11 +133,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
+            config.BasePath = "https://testnet-api.onarc.io";
             // Configure API key authorization: apikey
             config.AddApiKey("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new TransferApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new TransferApi(httpClient, config, httpClientHandler);
             var transferDetailsModel = new TransferDetailsModel(); // TransferDetailsModel | The signable transfer details request.
 
             try
@@ -184,7 +192,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+[apikey](../README.md#apikey)
 
 ### HTTP request headers
 
