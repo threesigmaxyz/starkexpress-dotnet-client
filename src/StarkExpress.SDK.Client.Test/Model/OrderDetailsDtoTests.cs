@@ -97,6 +97,22 @@ namespace StarkExpress.SDK.Client.Test.Model
             // TODO unit test for the property 'BuyVaultChainId'
         }
         /// <summary>
+        /// Test the property 'SellVaultId'
+        /// </summary>
+        [Fact]
+        public void SellVaultIdTest()
+        {
+            // TODO unit test for the property 'SellVaultId'
+        }
+        /// <summary>
+        /// Test the property 'BuyVaultId'
+        /// </summary>
+        [Fact]
+        public void BuyVaultIdTest()
+        {
+            // TODO unit test for the property 'BuyVaultId'
+        }
+        /// <summary>
         /// Test the property 'Fee'
         /// </summary>
         [Fact]
