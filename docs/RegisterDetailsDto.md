@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **PrimaryType** | **string** | The message primary type. | [optional] 
 **Message** | [**MessageDto**](MessageDto.md) |  | [optional] 
 **DomainRawValues** | [**List&lt;MemberValueDto&gt;**](MemberValueDto.md) | The STARK key of the sender. | [optional] 
+**SignablePayload** | **string** | The signable payload. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

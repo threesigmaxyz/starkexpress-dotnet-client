@@ -6,7 +6,7 @@
 [license]: https://opensource.org/licenses/MIT
 [license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
 
-An API for the StarkExpress platform.
+An API for the Arc platform.
 
 - API version: 1.0
 - SDK version: 1.0.0
@@ -43,12 +43,40 @@ webProxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
 c.Proxy = webProxy;
 ```
 
+### Connections
+Each ApiClass (properly the ApiClient inside it) will create an instance of HttpClient. It will use that for the entire lifecycle and dispose it when called the Dispose method.
+
+To better manager the connections it's a common practice to reuse the HttpClient and HttpClientHandler (see [here](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net) for details). To use your own HttpClient instance just pass it to the ApiClass constructor.
+
+```csharp
+HttpClientHandler yourHandler = new HttpClientHandler();
+HttpClient yourHttpClient = new HttpClient(yourHandler);
+var api = new YourApiClass(yourHttpClient, yourHandler);
+```
+
+If you want to use an HttpClient and don't have access to the handler, for example in a DI context in Asp.net Core when using IHttpClientFactory.
+
+```csharp
+HttpClient yourHttpClient = new HttpClient();
+var api = new YourApiClass(yourHttpClient);
+```
+You'll loose some configuration settings, the features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings. You need to either manually handle those in your setup of the HttpClient or they won't be available.
+
+Here an example of DI setup in a sample web project:
+
+```csharp
+services.AddHttpClient<YourApiClass>(httpClient =>
+   new YourApiClass(httpClient));
+```
+
+
 <a name="getting-started"></a>
 ## Getting Started
 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -65,7 +93,10 @@ namespace Example
             // Configure API key authorization: apikey
             config.ApiKey.Add("x-api-key", "YOUR_API_KEY");
 
-            var apiInstance = new AssetApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AssetApi(httpClient, config, httpClientHandler);
             var deployAssetModel = new DeployAssetModel(); // DeployAssetModel | The asset deployment request.
 
             try
@@ -90,20 +121,29 @@ namespace Example
 ## Documentation for API Endpoints
 | Base URL | Description |
 |------------|-------------|
-| https://testnet-api.starkexpress.io | Testnet server (uses test data). |
-| https://api.starkexpress.io | Mainnet server (uses live data). |
+| https://testnet-api.onarc.io | Testnet server (uses test data). |
+| https://api.onarc.io | Mainnet server (uses live data). |
 
 All URIs are relative to base url:
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssetApi* | [**DeployAsset**](docs/AssetApi.md#deployasset) | **POST** /api/v1/assets/deploy | Deploy Asset
+*AssetApi* | [**DisableAsset**](docs/AssetApi.md#disableasset) | **POST** /api/v1/assets/disable | Disable Asset
 *AssetApi* | [**EnableAsset**](docs/AssetApi.md#enableasset) | **POST** /api/v1/assets | Enable Asset
+*AssetApi* | [**EstimateAssetDeployCost**](docs/AssetApi.md#estimateassetdeploycost) | **GET** /api/v1/assets/estimate-deploy | Estimate cost of the deployment for a new Asset
 *AssetApi* | [**GetAllAssets**](docs/AssetApi.md#getallassets) | **GET** /api/v1/assets | Get All Assets
 *AssetApi* | [**GetAsset**](docs/AssetApi.md#getasset) | **GET** /api/v1/assets/{assetId} | Get Asset
 *DepositApi* | [**DepositDetails**](docs/DepositApi.md#depositdetails) | **POST** /api/v1/vaults/deposit-details | Returns the deposit details for a given asset.
 *FeeApi* | [**ConfigureFeeModel**](docs/FeeApi.md#configurefeemodel) | **POST** /api/v1/fees | Configure Fee Model
 *FeeApi* | [**GetFeeModel**](docs/FeeApi.md#getfeemodel) | **GET** /api/v1/fees/{feeId} | Get Fee Model
+*MarketplaceApi* | [**BuyOrderDetails**](docs/MarketplaceApi.md#buyorderdetails) | **POST** /api/v1/marketplace/buy-details | Get buy order details
+*MarketplaceApi* | [**DeleteSellOffer**](docs/MarketplaceApi.md#deleteselloffer) | **DELETE** /api/v1/marketplace/sell/{offerId} | Delete sell offer
+*MarketplaceApi* | [**ListBuyOrders**](docs/MarketplaceApi.md#listbuyorders) | **GET** /api/v1/marketplace/buy-orders | List buy orders
+*MarketplaceApi* | [**ListSellOffers**](docs/MarketplaceApi.md#listselloffers) | **GET** /api/v1/marketplace/sell-offers | List sell offers
+*MarketplaceApi* | [**RegisterBuyOrder**](docs/MarketplaceApi.md#registerbuyorder) | **POST** /api/v1/marketplace/buy | Register buy order
+*MarketplaceApi* | [**RegisterSellOffer**](docs/MarketplaceApi.md#registerselloffer) | **POST** /api/v1/marketplace/sell | Register sell offer
+*MarketplaceApi* | [**SellOfferDetails**](docs/MarketplaceApi.md#sellofferdetails) | **POST** /api/v1/marketplace/sell-details | Get sell offer details
 *MintApi* | [**MintAssets**](docs/MintApi.md#mintassets) | **POST** /api/v1/mint | Mint Assets
 *OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **DELETE** /api/v1/orders/{orderId} | Cancel Order (Not Implemented)
 *OrderApi* | [**OrderDetails**](docs/OrderApi.md#orderdetails) | **POST** /api/v1/orders/details | Get Order Details (Not Implemented)
@@ -134,23 +174,30 @@ Class | Method | HTTP request | Description
  - [Model.AssetType](docs/AssetType.md)
  - [Model.BatchMintRequestModel](docs/BatchMintRequestModel.md)
  - [Model.BigInteger](docs/BigInteger.md)
+ - [Model.BuyOrderDetailsModel](docs/BuyOrderDetailsModel.md)
  - [Model.ConfigureFeeModel](docs/ConfigureFeeModel.md)
  - [Model.CreateOrderbookModel](docs/CreateOrderbookModel.md)
  - [Model.DataAvailabilityModes](docs/DataAvailabilityModes.md)
  - [Model.DeployAssetModel](docs/DeployAssetModel.md)
  - [Model.DepositDetailsDto](docs/DepositDetailsDto.md)
  - [Model.DepositDetailsModel](docs/DepositDetailsModel.md)
+ - [Model.DisableAssetModel](docs/DisableAssetModel.md)
  - [Model.DomainDto](docs/DomainDto.md)
  - [Model.EnableAssetModel](docs/EnableAssetModel.md)
  - [Model.FeeAction](docs/FeeAction.md)
  - [Model.FeeConfigDto](docs/FeeConfigDto.md)
  - [Model.FeeDto](docs/FeeDto.md)
  - [Model.FilterOptions](docs/FilterOptions.md)
+ - [Model.MarketplaceOrderDto](docs/MarketplaceOrderDto.md)
+ - [Model.MarketplaceOrderDtoPaginatedResponseDto](docs/MarketplaceOrderDtoPaginatedResponseDto.md)
  - [Model.MemberDescriptionDto](docs/MemberDescriptionDto.md)
  - [Model.MemberValueDto](docs/MemberValueDto.md)
  - [Model.MessageDto](docs/MessageDto.md)
  - [Model.MintDataModel](docs/MintDataModel.md)
  - [Model.MintRequestDataModel](docs/MintRequestDataModel.md)
+ - [Model.OfferDto](docs/OfferDto.md)
+ - [Model.OfferDtoPaginatedResponseDto](docs/OfferDtoPaginatedResponseDto.md)
+ - [Model.OfferStatus](docs/OfferStatus.md)
  - [Model.OrderDetailsDto](docs/OrderDetailsDto.md)
  - [Model.OrderDetailsModel](docs/OrderDetailsModel.md)
  - [Model.OrderDto](docs/OrderDto.md)
@@ -163,8 +210,11 @@ Class | Method | HTTP request | Description
  - [Model.OrderbookLevel2EntryDto](docs/OrderbookLevel2EntryDto.md)
  - [Model.PaginationDto](docs/PaginationDto.md)
  - [Model.ProblemDetails](docs/ProblemDetails.md)
+ - [Model.RegisterBuyOrderModel](docs/RegisterBuyOrderModel.md)
  - [Model.RegisterDetailsDto](docs/RegisterDetailsDto.md)
+ - [Model.RegisterSellOfferModel](docs/RegisterSellOfferModel.md)
  - [Model.RegisterUserModel](docs/RegisterUserModel.md)
+ - [Model.SellOfferDetailsModel](docs/SellOfferDetailsModel.md)
  - [Model.SettlementInfoModel](docs/SettlementInfoModel.md)
  - [Model.SettlementOrderModel](docs/SettlementOrderModel.md)
  - [Model.SignatureModel](docs/SignatureModel.md)
@@ -198,10 +248,6 @@ Class | Method | HTTP request | Description
 - **Type**: API key
 - **API key parameter name**: x-api-key
 - **Location**: HTTP header
-
-<a name="oauth2"></a>
-### oauth2
-
 
 
 ---

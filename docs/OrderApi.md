@@ -1,6 +1,6 @@
 # StarkExpress.SDK.Client.Api.OrderApi
 
-All URIs are relative to *https://testnet-api.starkexpress.io*
+All URIs are relative to *https://testnet-api.onarc.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -20,6 +20,7 @@ This endpoint cancels an active order.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -31,8 +32,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderApi(httpClient, config, httpClientHandler);
             var orderId = "orderId_example";  // Guid | 
 
             try
@@ -112,6 +116,7 @@ This endpoint allows for fetching details of an order to be signed.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -123,8 +128,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderApi(httpClient, config, httpClientHandler);
             var orderDetailsModel = new OrderDetailsModel(); // OrderDetailsModel | The signable order details request.
 
             try
@@ -205,6 +213,7 @@ This endpoint submits an order to the matching engine.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -216,8 +225,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderApi(httpClient, config, httpClientHandler);
             var submitOrderModel = new SubmitOrderModel(); // SubmitOrderModel | The order submission request.
 
             try

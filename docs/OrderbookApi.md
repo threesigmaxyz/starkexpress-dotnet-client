@@ -1,6 +1,6 @@
 # StarkExpress.SDK.Client.Api.OrderbookApi
 
-All URIs are relative to *https://testnet-api.starkexpress.io*
+All URIs are relative to *https://testnet-api.onarc.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -21,6 +21,7 @@ This endpoint creates an orderbook.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -32,8 +33,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderbookApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderbookApi(httpClient, config, httpClientHandler);
             var createOrderbookModel = new CreateOrderbookModel(); // CreateOrderbookModel | The orderbook creation request.
 
             try
@@ -113,6 +117,7 @@ This endpoint fetches orderbook metadata by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -124,8 +129,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderbookApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderbookApi(httpClient, config, httpClientHandler);
             var orderbookId = "orderbookId_example";  // Guid | 
 
             try
@@ -205,6 +213,7 @@ This endpoint fetches orderbook level 1 data by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -216,8 +225,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderbookApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderbookApi(httpClient, config, httpClientHandler);
             var orderbookId = "orderbookId_example";  // Guid | 
 
             try
@@ -297,6 +309,7 @@ This endpoint fetches orderbook level 2 data by ID.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using StarkExpress.SDK.Client.Api;
 using StarkExpress.SDK.Client.Client;
 using StarkExpress.SDK.Client.Model;
@@ -308,8 +321,11 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://testnet-api.starkexpress.io";
-            var apiInstance = new OrderbookApi(config);
+            config.BasePath = "https://testnet-api.onarc.io";
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new OrderbookApi(httpClient, config, httpClientHandler);
             var orderbookId = "orderbookId_example";  // Guid | 
             var depth = 56;  // int? |  (optional) 
 

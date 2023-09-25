@@ -1,20 +1,20 @@
 openapi: 3.0.1
 info:
-  description: An API for the StarkExpress platform.
+  description: An API for the Arc platform.
   license:
     name: License
-    url: https://starkexpress.io/license
-  termsOfService: https://starkexpress.io/terms
-  title: StarkExpress API Docs
+    url: https://onarc.io/license
+  termsOfService: https://onarc.io/terms
+  title: Arc API Docs
   version: "1.0"
   x-logo:
-    url: https://starkexpress.io/_next/static/media/starkexpress-logo.c94e6c9d.svg
-    altText: StarkExpress logo
+    url: https://www.onarc.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_arc.9cf6e0e6.svg&w=828&q=75
+    altText: Arc logo
 servers:
 - description: Testnet server (uses test data).
-  url: https://testnet-api.starkexpress.io
+  url: https://testnet-api.onarc.io
 - description: Mainnet server (uses live data).
-  url: https://api.starkexpress.io
+  url: https://api.onarc.io
 tags:
 - description: Operations related with the user management.
   name: User
@@ -99,6 +99,348 @@ paths:
       summary: Get Fee Model
       tags:
       - Fee
+  /api/v1/marketplace/sell-details:
+    post:
+      description: This endpoint returns the details for a sell offer in the public
+        marketplace.
+      operationId: SellOfferDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SellOfferDetailsModel'
+        description: The sell offer details request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetailsDto'
+          description: Returns the details for a sell offer in the public marketplace.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The sell offer details request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - write:sell-offers
+      summary: Get sell offer details
+      tags:
+      - Marketplace
+  /api/v1/marketplace/sell:
+    post:
+      description: This endpoint registers a sell offer in the public marketplace.
+      operationId: RegisterSellOffer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterSellOfferModel'
+        description: The sell offer registration request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferDto'
+          description: Returns the newly registered sell offer.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The sell offer registration request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - write:sell-offers
+      summary: Register sell offer
+      tags:
+      - Marketplace
+  /api/v1/marketplace/sell/{offerId}:
+    delete:
+      description: This endpoint deletes a sell offer in the public marketplace.
+      operationId: DeleteSellOffer
+      parameters:
+      - description: The offer id.
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferDto'
+          description: The sell offer was successfully deleted.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The sell offer deletion request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The sell offer doesn't exist.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - write:sell-offers
+      summary: Delete sell offer
+      tags:
+      - Marketplace
+  /api/v1/marketplace/sell-offers:
+    get:
+      description: This endpoint returns a paginated list of sell offer in the public
+        marketplace.
+      operationId: ListSellOffers
+      parameters:
+      - explode: true
+        in: query
+        name: offer_status
+        required: false
+        schema:
+          $ref: '#/components/schemas/OfferStatus'
+        style: form
+      - explode: true
+        in: query
+        name: product_id
+        required: true
+        schema:
+          description: The unique identifier of the product.
+          format: guid
+          title: Product ID
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user_id
+        required: false
+        schema:
+          description: The unique identifier of the user.
+          format: guid
+          title: User ID
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_number
+        required: false
+        schema:
+          description: The page number to retrieve.
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          title: Page Number
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          description: The number of items to retrieve per page.
+          format: int32
+          maximum: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          description: The field to sort the results by.
+          title: Sort By
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferDtoPaginatedResponseDto'
+          description: Returns a paginated list of sell offers.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The sell offer filters were invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - read:sell-offers
+      summary: List sell offers
+      tags:
+      - Marketplace
+  /api/v1/marketplace/buy-details:
+    post:
+      description: This endpoint returns the details for a buy order in the public
+        marketplace.
+      operationId: BuyOrderDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuyOrderDetailsModel'
+        description: The buy order details request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetailsDto'
+          description: Returns the order details for a buy order in the public marketplace.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The buy order details request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - write:buy-orders
+      summary: Get buy order details
+      tags:
+      - Marketplace
+  /api/v1/marketplace/buy:
+    post:
+      description: This endpoint buys a product listed in the public marketplace.
+      operationId: RegisterBuyOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterBuyOrderModel'
+        description: The buy order registration request.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferDto'
+          description: Returns the newly registered buy order.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The buy order registration request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - write:buy-orders
+      summary: Register buy order
+      tags:
+      - Marketplace
+  /api/v1/marketplace/buy-orders:
+    get:
+      description: This endpoint returns a paginated list of buy orders in the public
+        marketplace.
+      operationId: ListBuyOrders
+      parameters:
+      - explode: true
+        in: query
+        name: offer_id
+        required: true
+        schema:
+          description: The unique identifier of the offer.
+          format: guid
+          title: Offer ID
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_number
+        required: false
+        schema:
+          description: The page number to retrieve.
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          title: Page Number
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          description: The number of items to retrieve per page.
+          format: int32
+          maximum: 100
+          minimum: 0
+          title: Page Size
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          description: The field to sort the results by.
+          title: Sort By
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketplaceOrderDtoPaginatedResponseDto'
+          description: Returns a paginated list of buy orders.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The buy order filters were invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - read:buy-orders
+      summary: List buy orders
+      tags:
+      - Marketplace
   /api/v1/mint:
     post:
       description: This endpoint allows for the minting of fungible and non-fungible
@@ -134,8 +476,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - mint:assets
-      - oauth2:
         - mint:assets
       summary: Mint Assets
       tags:
@@ -390,8 +730,6 @@ paths:
       security:
       - apikey:
         - write:settlements
-      - oauth2:
-        - write:settlements
       summary: Submit Settlement
       tags:
       - Settlement
@@ -489,8 +827,6 @@ paths:
       security:
       - apikey:
         - read:tenant_assets
-      - oauth2:
-        - read:tenant_assets
       summary: Get All Assets
       tags:
       - Asset
@@ -530,9 +866,47 @@ paths:
       security:
       - apikey:
         - write:tenant_assets
-      - oauth2:
-        - write:tenant_assets
       summary: Enable Asset
+      tags:
+      - Asset
+  /api/v1/assets/disable:
+    post:
+      description: This endpoint allows to disable an asset in the tenant system.
+      operationId: DisableAsset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DisableAssetModel'
+        description: The asset disabling request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns the disabled asset.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The asset disabling request was invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
+        - write:tenant_assets
+      summary: Disable Asset
       tags:
       - Asset
   /api/v1/assets/{assetId}:
@@ -568,8 +942,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - read:tenant_assets
-      - oauth2:
         - read:tenant_assets
       summary: Get Asset
       tags:
@@ -607,10 +979,44 @@ paths:
       - apikey:
         - write:tenant_assets
         - write:smart-contracts
-      - oauth2:
+      summary: Deploy Asset
+      tags:
+      - Asset
+  /api/v1/assets/estimate-deploy:
+    get:
+      description: This endpoint allows for deploying an asset and enable it in the
+        tenant system.
+      operationId: Estimate Asset Deploy Cost
+      parameters:
+      - explode: true
+        in: query
+        name: asset_type
+        required: true
+        schema:
+          $ref: '#/components/schemas/AssetType'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantAssetDto'
+          description: Returns the estimated cost of the asset deployment.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: The asset deployment estimation request was invalid.
+        "401":
+          description: Unauthorized.
+        "403":
+          description: Forbidden.
+      security:
+      - apikey:
         - write:tenant_assets
         - write:smart-contracts
-      summary: Deploy Asset
+      summary: Estimate cost of the deployment for a new Asset
       tags:
       - Asset
   /api/v1/transactions:
@@ -711,8 +1117,6 @@ paths:
       security:
       - apikey:
         - read:transactions
-      - oauth2:
-        - read:transactions
       summary: Get All Transactions
       tags:
       - Transaction
@@ -749,8 +1153,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - read:transactions
-      - oauth2:
         - read:transactions
       summary: Get Transaction
       tags:
@@ -794,8 +1196,6 @@ paths:
       security:
       - apikey:
         - write:transfers
-      - oauth2:
-        - write:transfers
       summary: Transfer Asset
       tags:
       - Transfer
@@ -836,8 +1236,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - write:transfers
-      - oauth2:
         - write:transfers
       summary: Get Transfer Details
       tags:
@@ -938,8 +1336,6 @@ paths:
       security:
       - apikey:
         - read:users
-      - oauth2:
-        - read:users
       summary: Get All Users
       tags:
       - User
@@ -972,8 +1368,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - write:users
-      - oauth2:
         - write:users
       summary: Register new User
       tags:
@@ -1036,8 +1430,6 @@ paths:
       security:
       - apikey:
         - read:users
-      - oauth2:
-        - read:users
       summary: Get EIP712 data to be signed
       tags:
       - User
@@ -1074,8 +1466,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - read:users
-      - oauth2:
         - read:users
       summary: Get User
       tags:
@@ -1117,9 +1507,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - read:vaults
-        - write:vaults
-      - oauth2:
         - read:vaults
         - write:vaults
       summary: Returns the deposit details for a given asset.
@@ -1188,8 +1575,6 @@ paths:
       security:
       - apikey:
         - read:vaults
-      - oauth2:
-        - read:vaults
       summary: Get All Vaults
       tags:
       - Vault
@@ -1228,8 +1613,6 @@ paths:
       security:
       - apikey:
         - write:vaults
-      - oauth2:
-        - write:vaults
       summary: Allocate vault
       tags:
       - Vault
@@ -1260,8 +1643,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - read:vaults
-      - oauth2:
         - read:vaults
       summary: Get a single Vault
       tags:
@@ -1302,8 +1683,6 @@ paths:
           description: Forbidden.
       security:
       - apikey:
-        - write:vaults
-      - oauth2:
         - write:vaults
       summary: Withdraw Asset
       tags:
@@ -1357,6 +1736,7 @@ components:
       - Erc1155
       - MintableErc20
       - MintableErc721
+      - MintableErc1155
       type: string
     BatchMintRequestModel:
       additionalProperties: false
@@ -1434,6 +1814,30 @@ components:
           format: int32
           readOnly: true
           type: integer
+      type: object
+    BuyOrderDetailsModel:
+      additionalProperties: false
+      example:
+        offerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        buyerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dataAvailabilityMode: null
+      properties:
+        buyerId:
+          description: The unique identifier of the user who is placing the buy order.
+          format: uuid
+          title: Buyer ID
+          type: string
+        offerId:
+          description: The unique identifier of the offer that is being bought.
+          format: uuid
+          title: Offer ID
+          type: string
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+      required:
+      - buyerId
+      - dataAvailabilityMode
+      - offerId
       type: object
     ConfigureFeeModel:
       additionalProperties: false
@@ -1642,6 +2046,20 @@ components:
       - dataAvailabilityMode
       - userId
       type: object
+    DisableAssetModel:
+      additionalProperties: false
+      description: Request model to enable an asset in the tenant system.
+      example:
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        assetId:
+          description: The unique identifier of the asset to disable.
+          format: uuid
+          title: Asset ID
+          type: string
+      required:
+      - assetId
+      type: object
     DomainDto:
       additionalProperties: false
       example:
@@ -1770,6 +2188,76 @@ components:
       - IsEqualTo
       - IsNotEqualTo
       type: string
+    MarketplaceOrderDto:
+      additionalProperties: false
+      example:
+        date: 2000-01-23
+        quantity: quantity
+        productId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        price: price
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: The ID of the order.
+          format: uuid
+          title: Order ID
+          type: string
+        productId:
+          description: The ID of the product.
+          format: uuid
+          title: Product ID
+          type: string
+        quantity:
+          description: Quantity of the product order.
+          format: int
+          title: Quantity
+          type: string
+        price:
+          description: The price on the product order.
+          format: int
+          title: Price
+          type: string
+        date:
+          description: The date of the product order.
+          format: date
+          title: Date
+          type: string
+      type: object
+    MarketplaceOrderDtoPaginatedResponseDto:
+      additionalProperties: false
+      example:
+        pagination:
+          pageNumber: 0
+          pageSize: 6
+          hasNext: true
+        data:
+        - date: 2000-01-23
+          quantity: quantity
+          productId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          price: price
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - date: 2000-01-23
+          quantity: quantity
+          productId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          price: price
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        totalCount: 0
+      properties:
+        data:
+          description: The data in the paginated response.
+          items:
+            $ref: '#/components/schemas/MarketplaceOrderDto'
+          nullable: true
+          title: Data
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationDto'
+        totalCount:
+          description: The total count of results available.
+          format: int32
+          title: TotalCount
+          type: integer
+      type: object
     MemberDescriptionDto:
       additionalProperties: false
       example:
@@ -1890,6 +2378,92 @@ components:
       - mints
       - userId
       type: object
+    OfferDto:
+      additionalProperties: false
+      example:
+        quantity: quantity
+        productId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        price: price
+        offerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        creationDate: 2000-01-23
+        closingDate: 2000-01-23
+      properties:
+        offerId:
+          description: The ID of the offer.
+          format: uuid
+          title: Offer ID
+          type: string
+        productId:
+          description: The ID of the product.
+          format: uuid
+          title: Product ID
+          type: string
+        quantity:
+          description: Quantity of the product offer.
+          format: int
+          title: Quantity
+          type: string
+        price:
+          description: The price on the product offer.
+          format: int
+          title: Price
+          type: string
+        creationDate:
+          description: The date of creation of the product offer.
+          format: date
+          title: Creation Date
+          type: string
+        closingDate:
+          description: The date of closure of the product offer.
+          format: date
+          nullable: true
+          title: Closing Date
+          type: string
+      type: object
+    OfferDtoPaginatedResponseDto:
+      additionalProperties: false
+      example:
+        pagination:
+          pageNumber: 0
+          pageSize: 6
+          hasNext: true
+        data:
+        - quantity: quantity
+          productId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          price: price
+          offerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          creationDate: 2000-01-23
+          closingDate: 2000-01-23
+        - quantity: quantity
+          productId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          price: price
+          offerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          creationDate: 2000-01-23
+          closingDate: 2000-01-23
+        totalCount: 1
+      properties:
+        data:
+          description: The data in the paginated response.
+          items:
+            $ref: '#/components/schemas/OfferDto'
+          nullable: true
+          title: Data
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationDto'
+        totalCount:
+          description: The total count of results available.
+          format: int32
+          title: TotalCount
+          type: integer
+      type: object
+    OfferStatus:
+      enum:
+      - Open
+      - Cancelled
+      - Closed
+      - Expired
+      type: string
     OrderDetailsDto:
       additionalProperties: false
       example:
@@ -2277,6 +2851,63 @@ components:
           nullable: true
           type: string
       type: object
+    RegisterBuyOrderModel:
+      additionalProperties: false
+      example:
+        productVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signature:
+          r: r
+          s: s
+        currencyVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        offerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        expirationTimestamp: 0
+        buyerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        nonce: 1294386358
+      properties:
+        offerId:
+          description: The unique identifier of the marketplace offer.
+          format: uuid
+          title: Offer ID
+          type: string
+        buyerId:
+          description: The unique identifier of the user who is placing the buy order.
+          format: uuid
+          title: Buyer ID
+          type: string
+        productVaultId:
+          description: The unique identifier of the product vault.
+          format: uuid
+          title: Product Vault ID
+          type: string
+        currencyVaultId:
+          description: The unique identifier of the currency vault.
+          format: uuid
+          title: Currency Vault ID
+          type: string
+        expirationTimestamp:
+          description: "The timestamp at which this transfer becomes invalid, in seconds\
+            \ since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
+        nonce:
+          description: The unique nonce for the settlement.
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          title: Nonce
+          type: integer
+        signature:
+          $ref: '#/components/schemas/SignatureModel'
+      required:
+      - buyerId
+      - currencyVaultId
+      - expirationTimestamp
+      - nonce
+      - offerId
+      - productVaultId
+      - signature
+      type: object
     RegisterDetailsDto:
       additionalProperties: false
       example:
@@ -2286,6 +2917,7 @@ components:
             type: type
           - name: name
             type: type
+        signablePayload: signablePayload
         domainRawValues:
         - typeName: typeName
           value: value
@@ -2330,6 +2962,93 @@ components:
           nullable: true
           title: Sender STARK Key
           type: array
+        signablePayload:
+          description: The signable payload.
+          format: string
+          nullable: true
+          title: Signable Payload
+          type: string
+      type: object
+    RegisterSellOfferModel:
+      additionalProperties: false
+      example:
+        productVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        productAmount: productAmount
+        sellerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signature:
+          r: r
+          s: s
+        currencyVaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        currencyAmount: currencyAmount
+        expirationTimestamp: 0
+        nonce: 1294386358
+        productName: productName
+        productDescription: productDescription
+      properties:
+        sellerId:
+          description: The unique identifier of the user who is placing the sell offer.
+          format: uuid
+          title: Seller ID
+          type: string
+        productVaultId:
+          description: The unique identifier of the product vault.
+          format: uuid
+          title: Product Vault ID
+          type: string
+        productAmount:
+          description: The quantized amount of the product being sold.
+          title: Product Amount
+          type: string
+        currencyVaultId:
+          description: The unique identifier of the currency vault.
+          format: uuid
+          title: Currency Vault ID
+          type: string
+        currencyAmount:
+          description: The quantized amount of the currency for which the product
+            is being sold.
+          title: Currency Amount
+          type: string
+        expirationTimestamp:
+          description: "The timestamp at which this settlement becomes invalid, in\
+            \ seconds since the Unix epoch."
+          format: int64
+          title: Expiration Timestamp
+          type: integer
+        nonce:
+          description: The unique nonce for the transfer.
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          title: Nonce
+          type: integer
+        productName:
+          description: The product name if the product hasn't been listed before in
+            the marketplace.
+          format: string
+          maxLength: 100
+          nullable: true
+          title: Product name
+          type: string
+        productDescription:
+          description: The product description if the product hasn't been listed before
+            in the marketplace.
+          format: string
+          maxLength: 300
+          nullable: true
+          title: Product description
+          type: string
+        signature:
+          $ref: '#/components/schemas/SignatureModel'
+      required:
+      - currencyAmount
+      - currencyVaultId
+      - expirationTimestamp
+      - nonce
+      - productAmount
+      - productVaultId
+      - sellerId
+      - signature
       type: object
     RegisterUserModel:
       additionalProperties: false
@@ -2375,6 +3094,65 @@ components:
       - starkKey
       - starkSignature
       - username
+      type: object
+    SellOfferDetailsModel:
+      additionalProperties: false
+      example:
+        sellerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        quantity: quantity
+        mintingBlob: mintingBlob
+        tokenId: tokenId
+        assetId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        price: price
+        currencyId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dataAvailabilityMode: null
+      properties:
+        sellerId:
+          description: The unique identifier of the user who is placing the sell offer.
+          format: uuid
+          title: Seller ID
+          type: string
+        assetId:
+          description: The unique identifier of the asset that is being sold.
+          format: uuid
+          title: Asset ID
+          type: string
+        quantity:
+          description: The quantity of the product that is being sold.
+          title: Quantity
+          type: string
+        tokenId:
+          description: "The hexadecimal string representation of the token ID, if\
+            \ applicable (ie. ERC-721/ERC-1155)."
+          format: hex
+          nullable: true
+          title: Token ID
+          type: string
+        mintingBlob:
+          description: "The hexadecimal string representation of the minting blob,\
+            \ if applicable (ie. Mintable ERC-20/ERC-721/ERC-1155)."
+          format: hex
+          nullable: true
+          title: Minting Blob
+          type: string
+        currencyId:
+          description: The unique identifier of the asset that is being used as currency.
+          format: uuid
+          title: Currency ID
+          type: string
+        dataAvailabilityMode:
+          $ref: '#/components/schemas/DataAvailabilityModes'
+        price:
+          description: The price of the asset that is being sold.
+          title: Price
+          type: string
+      required:
+      - assetId
+      - currencyId
+      - dataAvailabilityMode
+      - price
+      - quantity
+      - sellerId
       type: object
     SettlementInfoModel:
       additionalProperties: false
@@ -2640,6 +3418,8 @@ components:
         name: name
         quantum: quantum
         type: null
+        confirmed: true
+        enabled: true
         assetType: assetType
       properties:
         assetId:
@@ -2675,6 +3455,14 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/AssetType'
+        enabled:
+          description: Is the asset enabled for the given tenant
+          title: Enabled
+          type: boolean
+        confirmed:
+          description: Has the asset register transaction been confirmed in the Blockchain
+          title: Confirmed
+          type: boolean
       type: object
     TenantAssetDtoPaginatedResponseDto:
       additionalProperties: false
@@ -2690,6 +3478,8 @@ components:
           name: name
           quantum: quantum
           type: null
+          confirmed: true
+          enabled: true
           assetType: assetType
         - symbol: symbol
           address: address
@@ -2697,8 +3487,10 @@ components:
           name: name
           quantum: quantum
           type: null
+          confirmed: true
+          enabled: true
           assetType: assetType
-        totalCount: 1
+        totalCount: 0
       properties:
         data:
           description: The data in the paginated response.
@@ -2816,6 +3608,7 @@ components:
       type: object
     TransactionStatus:
       enum:
+      - Created
       - Streamed
       - Pending
       - Confirmed
@@ -3344,20 +4137,4 @@ components:
       in: header
       name: x-api-key
       type: apiKey
-    oauth2:
-      flows:
-        clientCredentials:
-          scopes:
-            write:users: Access user write operations.
-            read:users: Access user read operations.
-            read:tenant_assets: Access tenant asset read operations.
-            write:tenant_assets: Access tenant asset write operations.
-            mint:assets: Access mint operations.
-            read:vaults: Access vault read operations.
-            write:transfers: Access transfer write operations.
-            read:transfers: Access transfer read operations.
-            write:smart-contracts: Access to deploying smart contracts.
-            write:settlements: Access settlement write operations.
-          tokenUrl: https://starkexpress-testnet.eu.auth0.com/oauth/token
-      type: oauth2
 
