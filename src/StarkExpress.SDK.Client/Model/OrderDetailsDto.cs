@@ -40,17 +40,21 @@ namespace StarkExpress.SDK.Client.Model
         /// <param name="buyQuantizedAmount">The amount to be bough, in quantized form..</param>
         /// <param name="sellVaultChainId">The vault chain ID for the asset being sold..</param>
         /// <param name="buyVaultChainId">The vault chain ID for the asset being bought..</param>
+        /// <param name="sellVaultId">The vault ID for the asset being sold..</param>
+        /// <param name="buyVaultId">The vault ID for the asset being bought..</param>
         /// <param name="fee">fee.</param>
         /// <param name="expirationTimestamp">The timestamp at which this order becomes invalid, in seconds since the Unix epoch..</param>
         /// <param name="nonce">The unique nonce for the order..</param>
         /// <param name="signablePayload">The signable payload for the order..</param>
-        public OrderDetailsDto(string starkKey = default(string), string sellQuantizedAmount = default(string), string buyQuantizedAmount = default(string), string sellVaultChainId = default(string), string buyVaultChainId = default(string), FeeDto fee = default(FeeDto), long expirationTimestamp = default(long), int nonce = default(int), string signablePayload = default(string))
+        public OrderDetailsDto(string starkKey = default(string), string sellQuantizedAmount = default(string), string buyQuantizedAmount = default(string), string sellVaultChainId = default(string), string buyVaultChainId = default(string), string sellVaultId = default(string), string buyVaultId = default(string), FeeDto fee = default(FeeDto), long expirationTimestamp = default(long), int nonce = default(int), string signablePayload = default(string))
         {
             this.StarkKey = starkKey;
             this.SellQuantizedAmount = sellQuantizedAmount;
             this.BuyQuantizedAmount = buyQuantizedAmount;
             this.SellVaultChainId = sellVaultChainId;
             this.BuyVaultChainId = buyVaultChainId;
+            this.SellVaultId = sellVaultId;
+            this.BuyVaultId = buyVaultId;
             this.Fee = fee;
             this.ExpirationTimestamp = expirationTimestamp;
             this.Nonce = nonce;
@@ -93,6 +97,20 @@ namespace StarkExpress.SDK.Client.Model
         public string BuyVaultChainId { get; set; }
 
         /// <summary>
+        /// The vault ID for the asset being sold.
+        /// </summary>
+        /// <value>The vault ID for the asset being sold.</value>
+        [DataMember(Name = "sellVaultId", EmitDefaultValue = false)]
+        public string SellVaultId { get; set; }
+
+        /// <summary>
+        /// The vault ID for the asset being bought.
+        /// </summary>
+        /// <value>The vault ID for the asset being bought.</value>
+        [DataMember(Name = "buyVaultId", EmitDefaultValue = false)]
+        public string BuyVaultId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Fee
         /// </summary>
         [DataMember(Name = "fee", EmitDefaultValue = false)]
@@ -132,6 +150,8 @@ namespace StarkExpress.SDK.Client.Model
             sb.Append("  BuyQuantizedAmount: ").Append(BuyQuantizedAmount).Append("\n");
             sb.Append("  SellVaultChainId: ").Append(SellVaultChainId).Append("\n");
             sb.Append("  BuyVaultChainId: ").Append(BuyVaultChainId).Append("\n");
+            sb.Append("  SellVaultId: ").Append(SellVaultId).Append("\n");
+            sb.Append("  BuyVaultId: ").Append(BuyVaultId).Append("\n");
             sb.Append("  Fee: ").Append(Fee).Append("\n");
             sb.Append("  ExpirationTimestamp: ").Append(ExpirationTimestamp).Append("\n");
             sb.Append("  Nonce: ").Append(Nonce).Append("\n");
@@ -197,6 +217,16 @@ namespace StarkExpress.SDK.Client.Model
                     this.BuyVaultChainId.Equals(input.BuyVaultChainId))
                 ) && 
                 (
+                    this.SellVaultId == input.SellVaultId ||
+                    (this.SellVaultId != null &&
+                    this.SellVaultId.Equals(input.SellVaultId))
+                ) && 
+                (
+                    this.BuyVaultId == input.BuyVaultId ||
+                    (this.BuyVaultId != null &&
+                    this.BuyVaultId.Equals(input.BuyVaultId))
+                ) && 
+                (
                     this.Fee == input.Fee ||
                     (this.Fee != null &&
                     this.Fee.Equals(input.Fee))
@@ -244,6 +274,14 @@ namespace StarkExpress.SDK.Client.Model
                 if (this.BuyVaultChainId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyVaultChainId.GetHashCode();
+                }
+                if (this.SellVaultId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellVaultId.GetHashCode();
+                }
+                if (this.BuyVaultId != null)
+                {
+                    hashCode = (hashCode * 59) + this.BuyVaultId.GetHashCode();
                 }
                 if (this.Fee != null)
                 {

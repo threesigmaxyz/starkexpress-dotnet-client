@@ -2469,6 +2469,7 @@ components:
       example:
         sellVaultChainId: sellVaultChainId
         signablePayload: signablePayload
+        buyVaultId: buyVaultId
         buyQuantizedAmount: buyQuantizedAmount
         fee:
           vaultId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2494,6 +2495,7 @@ components:
         sellQuantizedAmount: sellQuantizedAmount
         nonce: 3
         starkKey: starkKey
+        sellVaultId: sellVaultId
       properties:
         starkKey:
           description: The STARK key of the user.
@@ -2518,6 +2520,16 @@ components:
           description: The vault chain ID for the asset being bought.
           format: string
           title: Sell Vault Chain ID
+          type: string
+        sellVaultId:
+          description: The vault ID for the asset being sold.
+          format: guid
+          title: Sell Vault ID
+          type: string
+        buyVaultId:
+          description: The vault ID for the asset being bought.
+          format: guid
+          title: Sell Vault ID
           type: string
         fee:
           $ref: '#/components/schemas/FeeDto'
